@@ -1,0 +1,18 @@
+r2qr3/2pp1pkp/b1p3p1/p7/P7/1PnBPQ2/2PN1PPP/R4RK1 w - - 0 1 ; Bxa6 Rxa6 e4 Qf6 Qd3 Raa8 f4
+r1b3kn/2p1q1p1/2p2rP1/p2p1p2/4pP2/1PN1P3/PKPPQ3/3R2NR w - - 0 1 ;  Rxh8+
+r3k1nr/2p1q1pp/p1p5/3pQ3/8/1PN1P1P1/PBPP3P/R5K1 w kq - 0 1 ;  Nxd5
+r1bq2r1/ppp3bk/3p2pp/4p3/3nP3/1PNP1NQ1/P1P3PP/R1B2RK1 w - - 0 1 ; Ng5+ if hxg5 Bxg5
+rnbq1rk1/ppp2pbp/6p1/4p3/2B5/1P2P3/PBPP2PP/RN1Q1RK1 w - - 0 1 ; Ba3
+r1bq1rk1/ppp2p1p/2np2p1/3N4/2PQPP2/1P6/P5PP/R3KB1R w KQ - 0 1 ;  Nf6+ if Kh8 Qc3
+r2qr1k1/1p3pn1/p1bbp1p1/2pp2P1/6PQ/1P1PP3/PBPN3P/R4RK1 w - - 0 1 ;  Bxg7 if Kxg7 Rxf7+ mates
+3r1rk1/pp3ppp/1qpbpn2/4n3/4P3/1P4PP/PBPNQPBK/R4R2 w - - 0 1 ; f4
+2kr3r/p1q2ppp/1p1b4/2p1p3/4PP2/1P3Q2/PBP3PP/R4RK1 w - - 0 1 ;fxe5 if Bxe5 Qf5+
+1n1r3r/Nppkq1b1/p2p1np1/3P3p/2B1p3/1P2P2P/PBPQ2P1/4RRK1 w - - 0 1 ;  Qb4 if b5 Bxb5+
+1k1r2nr/p1p2qpp/Q1p2p2/2bp4/3N1Pb1/1PN3P1/PBPP3P/R3R1K1 w - - 0 1 ;  Na4 if Qf8 Nxc5 Qxc5 b4 if Bxd4+ Bxd4 c5 Bxc5 c6 Re8
+r4rk1/1pp1bppp/p1bp1n2/8/5Nq1/1PN1P1Q1/PBPP2PP/R4RK1 w - - 0 1 ; Nd5
+2k3nr/1ppr2pp/p1n2p2/1qb5/N2P4/8/PB3PPP/2RQ1RK1 w - - 0 1 ;  Rxc5 Qb4 a3
+r1b2rk1/pp3ppp/5n2/q2p2P1/1b1p4/1PNB1P2/PBPQ3P/2KR3R w - - 0 1 ; gxf6 if dxc3 Qg5 mates
+1rbq1r1k/pp2p3/2npBb2/2p2Pp1/8/1P4P1/PBPPN3/1R1Q1RK1 w - - 0 1 ; Nf4
+r1b2rk1/1ppq1pBp/1p1pn3/5N2/8/1P1n4/P1P2PPP/R2QR1K1 w - - 0 1 ;  Bf6 if h6 Qxd3 or if d8 Nh6+
+r3kb1r/ppp1pppp/3qbn2/3pN3/3Pn3/1P1BP3/PBP2PPP/RN1QK2R w KQkq - 0 1 ;  f3 if Ng5 h4
+r4rk1/4qppp/p2p1n2/1pp2b2/5N2/1P2PQ2/PBPP2PP/R4RK1 w - - 0 1 ;  Bxf6 w/Nd5 
