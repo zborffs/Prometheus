@@ -1,0 +1,10 @@
+cmake-build-debug/*
+cmake-build-debug/
+cmake-build-debug-sse/*
+cmake-build-debug-sse/
+cmake-build-release/*
+cmake-build-release/
+cmake-build-release-sse/*
+cmake-build-release-sse/
+logs/*
+logs/
