@@ -1,0 +1,16 @@
+image: gcc
+
+build:
+  stage: build
+  before_script:
+    - apt update && apt -y install make cmake
+  script:
+    - mkdir -p cmake-build-debug && cd cmake-build-debug && cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" .. && make -j
+  artifacts:
+    paths:
+      - cmake-build-debug/
+
+test:
+  stage: test
+  script:
+    - ./cmake-build-debug/test/AttackTestRunner
