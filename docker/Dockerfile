@@ -1,7 +1,7 @@
 FROM gcc
 
 RUN apt-get -y update && \
-    apt-get install -y git cmake make vim && \
+    apt-get install -y git cmake make vim python3 python3-pip && \
     mkdir -p /opt && cd /opt && \
     git clone https://github.com/google/googletest.git && \
     cd googletest && \
@@ -17,4 +17,4 @@ RUN apt-get -y update && \
     make install && \
     git clone https://github.com/linux-test-project/lcov.git && \
     make -C lcov install && \
-    cd $HOME
+    pip3 install gcovr
