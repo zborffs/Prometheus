@@ -7,6 +7,7 @@
 
 /// STL includes
 #include <numeric>
+#include <iomanip>
 
 /// Project includes
 #include "defines.hpp"
