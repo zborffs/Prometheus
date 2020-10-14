@@ -10,8 +10,8 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
 # Import Packages
-find_package(gtest REQUIRED) # Unit-Testing Library
-find_package(benchmark REQUIRED) # Benchmarking Library
+find_package(GTest REQUIRED) # Unit-Testing Library
+# find_package(benchmark REQUIRED) # Benchmarking Library
 find_package(spdlog CONFIG REQUIRED) # Logging Library
 
 # Include Library Directories

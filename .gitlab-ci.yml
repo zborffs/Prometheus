@@ -12,7 +12,10 @@ build:
     - make install
     - cd $CI_PROJECT_DIR
   script:
-    - mkdir -p cmake-build-debug && cd cmake-build-debug && cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" .. && make -j
+    - mkdir -p cmake-build-debug
+    - cd cmake-build-debug
+    - cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" ..
+    - make -j
   artifacts:
     paths:
       - cmake-build-debug/
