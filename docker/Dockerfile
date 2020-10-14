@@ -1,5 +1,7 @@
+# Base is gcc to duplicate .gitlab-ci functionality
 FROM gcc
 
+# Download and install cmake, make, vim, python3, pip3, GTest, spdlog, lcov, and gcovr
 RUN apt-get -y update && \
     apt-get install -y git cmake make vim python3 python3-pip && \
     mkdir -p /opt && cd /opt && \
@@ -18,3 +20,5 @@ RUN apt-get -y update && \
     git clone https://github.com/linux-test-project/lcov.git && \
     make -C lcov install && \
     pip3 install gcovr
+
+# Usually, I clone this repository (newest master) and build

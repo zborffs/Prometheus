@@ -37,9 +37,7 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O3")
 endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 
-########################################################################################################################
-################################################# PROMETHEUS / ENGINE ##################################################
-########################################################################################################################
+# Put all source files excluding main.cpp into library source variable
 set(PROMETHEUS_LIB_SRCS
         src/attack.cpp
         src/bitmask.cpp
@@ -56,17 +54,23 @@ set(PROMETHEUS_LIB_SRCS
         src/uci_options.cpp
         )
 
+# Create library, link external libraries against it
 add_library(Prometheus-lib ${PROMETHEUS_LIB_SRCS})
 set_target_properties(Prometheus-lib PROPERTIES PREFIX "")
 target_include_directories(Prometheus-lib PUBLIC ${CMAKE_SOURCE_DIR}/include ${CMAKE_BINARY_DIR}/include ${GTEST_INCLUDE_DIR} ${SPDLOG_INCLUDE_DIR})
+
+# Create Main Executable
 add_executable(Prometheus src/main.cpp)
 target_link_libraries(Prometheus Prometheus-lib Threads::Threads spdlog::spdlog)
 install(TARGETS Prometheus DESTINATION bin)
 install(TARGETS Prometheus-lib ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIME DESTINATION bin)
 
+# If we want to build a test, then build them
 if(BUILD_TESTS)
     #    add_subdirectory(benchmark/engine)
     add_subdirectory(test)
+
+    # If we want to do code coverage, then do it
     if (CODE_COVERAGE MATCHES ON)
         include(cmake/CodeCoverage.cmake)
         target_link_libraries(Prometheus-lib --coverage)

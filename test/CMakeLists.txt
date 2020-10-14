@@ -21,6 +21,7 @@ if (CODE_COVERAGE MATCHES ON)
     target_link_libraries(PerftTestRunner --coverage)
     target_link_libraries(EvalTestRunner --coverage)
 endif()
+
 target_link_libraries(AttackTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
 target_link_libraries(BitmaskTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
 target_link_libraries(BoardTestRunner Prometheus-lib ${GTEST_LIBRARIES}  Threads::Threads)

@@ -1,7 +1,11 @@
+# Use gcc Docker Image
 image: gcc
 
+# Build Stage: Compile and Link Libraries and Executables
 build:
   stage: build
+
+  # Download and Install make, cmake, python3, pip3, googletest, spdlog, and gcovr
   before_script:
     - apt -y update && apt -y install make cmake git python3 python3-pip
     - mkdir -p /opt && cd /opt
@@ -18,8 +22,13 @@ build:
     - cmake ..
     - make -j
     - make install
+    - cd /opt
+    - git clone https://github.com/linux-test-project/lcov.git
+    - make -C lcov install
     - pip3 install gcovr
     - cd $CI_PROJECT_DIR
+
+  # Build Debug, Release, and Code Coverage versions of Source
   script:
     - mkdir -p cmake-build-debug
     - cd cmake-build-debug
@@ -35,12 +44,15 @@ build:
     - cd cmake-build-coverage
     - cmake -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON -G "CodeBlocks - Unix Makefiles" ..
     - make -j
+
+  # Extract everything in each cmake build directory
   artifacts:
     paths:
       - cmake-build-debug/
       - cmake-build-release/
       - cmake-build-coverage/
 
+# Run all test executables
 test:
   stage: test
   script:
@@ -50,7 +62,7 @@ test:
     - ./cmake-build-debug/test/ChessClockTestRunner
     - ./cmake-build-debug/test/ChessHashTestRunner
     - ./cmake-build-debug/test/ChessMoveTestRunner
-    - ./cmake-build-debug/test/EvalTestRunner
+    - ./cmake-build-debug/test/EvalTestRunner data/eval-test/FullEvalTest.fen
     - ./cmake-build-debug/test/StringManipTestRunner
     - ./cmake-build-debug/test/UCIOptionsTestRunner
     - ./cmake-build-debug/test/AttackTestRunner
@@ -59,6 +71,7 @@ test:
     - ./cmake-build-release/test/ChessClockTestRunner
     - ./cmake-build-release/test/ChessHashTestRunner
     - ./cmake-build-release/test/ChessMoveTestRunner
-    - ./cmake-build-release/test/EvalTestRunner
+    - ./cmake-build-release/test/EvalTestRunner data/eval-test/FullEvalTest.fen
     - ./cmake-build-release/test/StringManipTestRunner
     - ./cmake-build-release/test/UCIOptionsTestRunner
+#    - ./cmake-build-release/test/PerftTestRunner data/perft/positions.perft
