@@ -1,7 +1,7 @@
 FROM gcc
 
 RUN apt-get -y update && \
-    apt-get install -y git cmake make && \
+    apt-get install -y git cmake make vim && \
     mkdir -p /opt && cd /opt && \
     git clone https://github.com/google/googletest.git && \
     cd googletest && \
@@ -14,4 +14,7 @@ RUN apt-get -y update && \
     cd build && \
     cmake .. && \
     make -j && \
-    make install
+    make install && \
+    git clone https://github.com/linux-test-project/lcov.git && \
+    make -C lcov install && \
+    cd $HOME
