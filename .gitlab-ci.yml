@@ -3,7 +3,14 @@ image: gcc
 build:
   stage: build
   before_script:
-    - apt update && apt -y install make cmake
+    - apt update && apt -y install make cmake git
+    - mkdir -p /opt && cd /opt
+    - git clone https://github.com/google/googletest.git
+    - cd googletest
+    - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local .
+    - make -j
+    - make install
+    - cd $CI_PROJECT_DIR
   script:
     - mkdir -p cmake-build-debug && cd cmake-build-debug && cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" .. && make -j
   artifacts:
