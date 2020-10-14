@@ -24,11 +24,40 @@ build:
     - cd cmake-build-debug
     - cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" ..
     - make -j
+    - cd ../
+    - mkdir -p cmake-build-release
+    - cd cmake-build-release
+    - cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" ..
+    - make -j
+    - cd ../
+    - mkdir -p cmake-build-coverage
+    - cd cmake-build-coverage
+    - cmake -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON -G "CodeBlocks - Unix Makefiles" ..
+    - make -j
   artifacts:
     paths:
       - cmake-build-debug/
+      - cmake-build-release/
+      - cmake-build-coverage/
 
 test:
   stage: test
   script:
     - ./cmake-build-debug/test/AttackTestRunner
+    - ./cmake-build-debug/test/BitmaskTestRunner
+    - ./cmake-build-debug/test/BoardTestRunner
+    - ./cmake-build-debug/test/ChessClockTestRunner
+    - ./cmake-build-debug/test/ChessHashTestRunner
+    - ./cmake-build-debug/test/ChessMoveTestRunner
+    - ./cmake-build-debug/test/EvalTestRunner
+    - ./cmake-build-debug/test/StringManipTestRunner
+    - ./cmake-build-debug/test/UCIOptionsTestRunner
+    - ./cmake-build-debug/test/AttackTestRunner
+    - ./cmake-build-release/test/BitmaskTestRunner
+    - ./cmake-build-release/test/BoardTestRunner
+    - ./cmake-build-release/test/ChessClockTestRunner
+    - ./cmake-build-release/test/ChessHashTestRunner
+    - ./cmake-build-release/test/ChessMoveTestRunner
+    - ./cmake-build-release/test/EvalTestRunner
+    - ./cmake-build-release/test/StringManipTestRunner
+    - ./cmake-build-release/test/UCIOptionsTestRunner
