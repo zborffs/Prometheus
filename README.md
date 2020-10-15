@@ -22,6 +22,5 @@ To run in terminal:
 ```shell
 ./Prometheus
 ```
-if the program immediately terminates, something went wrong. Try adding a logs/ directory in the directory where the 
-executable is. Otherwise, you'll be prompted with an empty terminal. Type "console" for the custom console mode and 
-"uci" for UCI mode. 
+if the program immediately terminates, something went wrong. Try adding a logs/ directory in the project home directory. 
+Otherwise, you'll be prompted with an empty terminal. Type "console" for the custom console mode and "uci" for UCI mode. 
