@@ -137,12 +137,22 @@ int main(int argc, char **argv) {
 
     /// Get path to the eval file from executable directory and command line arguments
     exec_path = std::string(argv[0]);
+    bool first_is_slash = exec_path[0] == '/';
     auto splitvec = split(exec_path, '/');
     std::string s{""};
-    for (int i = 0; i < splitvec.size() - 1; i++) {
+    assert(!splitvec.empty());
+
+    if (first_is_slash) {
+        s += "/" + splitvec[0];
+    } else {
+        s += splitvec[0];
+    }
+
+    for (int i = 1; i < splitvec.size() - 1; i++) {
         s += std::string("/" + splitvec[i]);
     }
     fen_path = std::string(s + "/../../" + argv[1]);
+    std::cout << fen_path << std::endl;
 
     return RUN_ALL_TESTS();
 }
