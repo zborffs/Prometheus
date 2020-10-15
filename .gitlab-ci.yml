@@ -44,16 +44,14 @@ build:
     - cd cmake-build-coverage
     - cmake -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON -G "CodeBlocks - Unix Makefiles" ..
     - make -j
-    - make AttackCoverage
     - make BitmaskCoverage
     - make BoardCoverage
     - make ChessClockCoverage
-    - make ChessHashCoverage
     - make ChessMoveCoverage
     - make StringManipCoverage
     - make UCIOptionsCoverage
     - make EvalCoverage
-    - lcov --add-tracefile AttackCoverage.info --add-tracefile BitmaskCoverage.info --add-tracefile BoardCoverage.info --add-tracefile ChessClockCoverage.info --add-tracefile ChessHashCoverage.info --add-tracefile ChessMoveCoverage.info --add-tracefile StringManipCoverage.info --add-tracefile UCIOptionsCoverage.info --add-tracefile EvalCoverage.info --output-file CompleteCoverage.info
+    - lcov --add-tracefile BitmaskCoverage.info --add-tracefile BoardCoverage.info --add-tracefile ChessClockCoverage.info --add-tracefile ChessMoveCoverage.info --add-tracefile StringManipCoverage.info --add-tracefile UCIOptionsCoverage.info --add-tracefile EvalCoverage.info --output-file CompleteCoverage.info
     - lcov --remove CompleteCoverage.info '/usr/local/*' '/usr/include/*' -o CompleteCoverageFiltered.info
 
   # Extract everything in each cmake build directory

@@ -19,6 +19,11 @@ RUN apt-get -y update && \
     make install && \
     git clone https://github.com/linux-test-project/lcov.git && \
     make -C lcov install && \
-    pip3 install gcovr
+    pip3 install gcovr && \
+    cd /root && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+CMD ["/bin/bash"]
 
 # Usually, I clone this repository (newest master) and build
