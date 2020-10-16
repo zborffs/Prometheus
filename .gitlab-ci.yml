@@ -51,6 +51,7 @@ build:
     - make StringManipCoverage
     - make UCIOptionsCoverage
     - make EvalCoverage
+#    - make PerftCoverage
     - lcov --add-tracefile BitmaskCoverage.info --add-tracefile BoardCoverage.info --add-tracefile ChessClockCoverage.info --add-tracefile ChessMoveCoverage.info --add-tracefile StringManipCoverage.info --add-tracefile UCIOptionsCoverage.info --add-tracefile EvalCoverage.info --output-file CompleteCoverage.info
     - lcov --remove CompleteCoverage.info '/usr/local/*' '/usr/include/*' -o CompleteCoverageFiltered.info
 
@@ -83,4 +84,4 @@ test:
     - ./cmake-build-release/test/EvalTestRunner data/eval-test/FullEvalTest.fen
     - ./cmake-build-release/test/StringManipTestRunner
     - ./cmake-build-release/test/UCIOptionsTestRunner
-#    - ./cmake-build-release/test/PerftTestRunner data/perft/positions.perft
+    - ./cmake-build-release/test/PerftTestRunner data/perft/positions.perft
