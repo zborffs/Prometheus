@@ -152,7 +152,6 @@ int main(int argc, char **argv) {
         s += std::string("/" + splitvec[i]);
     }
     fen_path = std::string(s + "/../../" + argv[1]);
-    std::cout << fen_path << std::endl;
 
     return RUN_ALL_TESTS();
 }
