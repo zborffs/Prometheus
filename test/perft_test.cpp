@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
     for (int i = 0; i < splitvec.size() - 1; i++) {
         s += std::string("/" + splitvec[i]);
     }
-    perft_path = std::string(s + "/../../../" + argv[1]);
+    perft_path = std::string(s + "/../../" + argv[1]);
 
     return RUN_ALL_TESTS();
 }
