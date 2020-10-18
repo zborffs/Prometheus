@@ -30,11 +30,6 @@ build:
 
   # Build Debug, Release, and Code Coverage versions of Source
   script:
-    - mkdir -p cmake-build-debug
-    - cd cmake-build-debug
-    - cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" ..
-    - make -j
-    - cd ../
     - mkdir -p cmake-build-release
     - cd cmake-build-release
     - cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" ..
