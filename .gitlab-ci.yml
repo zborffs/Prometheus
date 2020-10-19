@@ -4,6 +4,7 @@ image: gcc
 # Build Stage: Compile and Link Libraries and Executables
 build:
   stage: build
+  timeout: 8 hours
 
   # Download and Install make, cmake, python3, pip3, googletest, spdlog, and gcovr
   before_script:
@@ -59,6 +60,8 @@ build:
 
 # Run all test executables
 test:
+  timeout: 8 hours
+
   stage: test
   script:
     - ./cmake-build-debug/test/AttackTestRunner
