@@ -54,7 +54,6 @@ build:
   # Extract everything in each cmake build directory
   artifacts:
     paths:
-      - cmake-build-debug/
       - cmake-build-release/
       - cmake-build-coverage/
 
@@ -64,16 +63,6 @@ test:
 
   stage: test
   script:
-    - ./cmake-build-debug/test/AttackTestRunner
-    - ./cmake-build-debug/test/BitmaskTestRunner
-    - ./cmake-build-debug/test/BoardTestRunner
-    - ./cmake-build-debug/test/ChessClockTestRunner
-    - ./cmake-build-debug/test/ChessHashTestRunner
-    - ./cmake-build-debug/test/ChessMoveTestRunner
-    - ./cmake-build-debug/test/EvalTestRunner data/eval-test/FullEvalTest.fen
-    - ./cmake-build-debug/test/StringManipTestRunner
-    - ./cmake-build-debug/test/UCIOptionsTestRunner
-    - ./cmake-build-debug/test/AttackTestRunner
     - ./cmake-build-release/test/BitmaskTestRunner
     - ./cmake-build-release/test/BoardTestRunner
     - ./cmake-build-release/test/ChessClockTestRunner
