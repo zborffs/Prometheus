@@ -881,12 +881,12 @@ Centipawns_t evaluate(const Board& board, EvaluationState& es, bool verbose) {
 
     Centipawns_t ret = internal::material(board, es, Color::BOTH, verbose);
     ret += internal::eval_pawns(board, es, verbose);
-//    ret += internal::eval_rooks(board, es, verbose);
-//    ret += internal::eval_knights(board, es, verbose);
-//    ret += internal::eval_bishop(board, es, verbose);
-//    ret += internal::eval_queens(board, es, verbose);
-//    ret += internal::eval_kings(board, es, verbose);
-//    ret += internal::eval_tempo(board, es, verbose);
+    ret += internal::eval_rooks(board, es, verbose);
+    ret += internal::eval_knights(board, es, verbose);
+    ret += internal::eval_bishop(board, es, verbose);
+    ret += internal::eval_queens(board, es, verbose);
+    ret += internal::eval_kings(board, es, verbose);
+    ret += internal::eval_tempo(board, es, verbose);
 
     return ret;
 }

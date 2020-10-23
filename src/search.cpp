@@ -343,14 +343,14 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
         search_state.clock.stop();
         Milliseconds_t time_elapsed = search_state.clock.duration() / 1000000;
         std::cout << "info score cp " << score << " time " << time_elapsed << " depth " << depth <<
-                  #ifndef NDEBUG
-                  " raw_nodes " << search_state.raw_nodes <<
+#ifndef NDEBUG
+            " raw_nodes " << search_state.raw_nodes <<
             " leaf_nodes " << search_state.leaf_nodes <<
             " nps " << (double)(search_state.raw_nodes / (time_elapsed / 1000.)) <<
             " ordering " << search_state.ordering() <<
             " window_ratio " << search_state.window_ratio() <<
-                  #endif // NDEBUG
-                  std::endl;
+#endif // NDEBUG
+            std::endl;
     }
 
     return best_move;
@@ -373,8 +373,8 @@ void perft(Board& board, Depth depth, int& leaf_nodes) {
     gen_all_moves(board, movelist);
 
     /// loop through the moves at the current depth
-    for (int i = 0; i < movelist.size(); i++) {
-        board.make_move(movelist[i]);
+    for (auto & i : movelist) {
+        board.make_move(i);
 
         if(!board.is_king_checked(!board.side_2_move())) {
             perft(board, depth - 1, leaf_nodes);

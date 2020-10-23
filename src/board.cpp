@@ -386,15 +386,15 @@ bool Board::is_sq_attacked(const Square_t sq, const Color_t attacking_color) noe
     if (diag_mask(sq, occupied_bb_) & (piece_bb_[W_BISHOP + attacking_color] | piece_bb_[W_QUEEN + attacking_color])) {
         return true;
 
-        /// if the horzvertmask intersecting with the opponent's rook or queen contains a 1, then it's being attacked
+    /// if the horzvertmask intersecting with the opponent's rook or queen contains a 1, then it's being attacked
     } else if(horzvert_mask(sq, occupied_bb_) & (piece_bb_[W_ROOK + attacking_color] | piece_bb_[W_QUEEN + attacking_color])) {
         return true;
 
-        /// if the knightmask intersecting with the opponent's knight contains a 1, then it's being attacked
+    /// if the knightmask intersecting with the opponent's knight contains a 1, then it's being attacked
     } else if(KNIGHT_ATTACK_ARRAY[sq] & piece_bb_[W_KNIGHT + attacking_color]) {
         return true;
 
-        /// if the kingmask intersecting with the opponent's king contains a 1, then it's being attacked
+    /// if the kingmask intersecting with the opponent's king contains a 1, then it's being attacked
     } else if(KING_ATTACK_ARRAY[sq] & piece_bb_[W_KING + attacking_color]) {
         return true;
     }
@@ -1274,14 +1274,3 @@ void Board::init_pos_keys() noexcept {
     key_ ^= CASTLE_PERMISSION_KEYS[castle_perm_];
     key_ ^= EN_PASSANT_KEYS[ep_sq_];
 }
-
-
-
-
-
-
-
-
-
-
-
