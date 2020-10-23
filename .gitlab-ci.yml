@@ -68,7 +68,7 @@ test:
     - ./cmake-build-release/test/ChessClockTestRunner
     - ./cmake-build-release/test/ChessHashTestRunner
     - ./cmake-build-release/test/ChessMoveTestRunner
-    - ./cmake-build-release/test/EvalTestRunner data/eval-test/FullEvalTest.fen
+    - ./cmake-build-release/test/EvalTestRunner data/eval-test/FullEvalTest.fen data/eval-test/NearlyFullEvalTest.fen
     - ./cmake-build-release/test/StringManipTestRunner
     - ./cmake-build-release/test/UCIOptionsTestRunner
     - ./cmake-build-release/test/PerftTestRunner data/perft/positions.perft

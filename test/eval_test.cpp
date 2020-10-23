@@ -12,6 +12,7 @@
 
 std::string exec_path;
 std::string fen_path;
+std::string fen_path_queen;
 
 class EvaluationTester : public ::testing::Test {
 protected:
@@ -132,6 +133,176 @@ TEST_F(EvaluationTester, PawnSymmetry) {
     }
 }
 
+TEST_F(EvaluationTester, RookSymmetry) {
+    try {
+        auto fens = read_all_fen_from_file(fen_path);
+        for (auto & fen : fens) {
+            auto separated_fen = split(fen, ';');
+            std::string fen_string = separated_fen[0];
+            board.set_board(fen_string);
+            std::cout << fen_string << std::endl << board << std::endl;
+            internal::def_stage(board, eval_state);
+            internal::def_pos_type(board, eval_state);
+            Centipawns_t eval1 = internal::eval_rooks(board, eval_state, true);
+
+            /// Flip Sides
+            auto split_fen = split(fen_string);
+            split_fen[0] = swap_lower_upper_case(split_fen[0]);
+            split_fen[1][0] = split_fen[1][0] == 'w' ? 'b' : 'w';
+            std::reverse(split_fen[0].begin(), split_fen[0].end());
+
+            /// Set board again and evaluate
+            board.set_board(split_fen.begin(), split_fen.end());
+            for (int i = 0; i < split_fen.size(); i++) {
+                std::cout << split_fen[i] << " ";
+            }
+            std::cout <<  std::endl << board << std::endl;
+            internal::def_stage(board, eval_state);
+            internal::def_pos_type(board, eval_state);
+            Centipawns_t eval2 = internal::eval_rooks(board, eval_state, true);
+            EXPECT_EQ(eval1, -eval2);
+        }
+    } catch (const std::exception& e) {
+        throw;
+    }
+}
+
+TEST_F(EvaluationTester, KnightSymmetry) {
+    try {
+        auto fens = read_all_fen_from_file(fen_path);
+        for (auto & fen : fens) {
+            auto separated_fen = split(fen, ';');
+            std::string fen_string = separated_fen[0];
+            board.set_board(fen_string);
+            std::cout << fen_string << std::endl << board << std::endl;
+            internal::def_stage(board, eval_state);
+            internal::def_pos_type(board, eval_state);
+            Centipawns_t eval1 = internal::eval_knights(board, eval_state, true);
+
+            /// Flip Sides
+            auto split_fen = split(fen_string);
+            split_fen[0] = swap_lower_upper_case(split_fen[0]);
+            split_fen[1][0] = split_fen[1][0] == 'w' ? 'b' : 'w';
+            std::reverse(split_fen[0].begin(), split_fen[0].end());
+
+            /// Set board again and evaluate
+            board.set_board(split_fen.begin(), split_fen.end());
+            for (int i = 0; i < split_fen.size(); i++) {
+                std::cout << split_fen[i] << " ";
+            }
+            std::cout <<  std::endl << board << std::endl;
+            internal::def_stage(board, eval_state);
+            internal::def_pos_type(board, eval_state);
+            Centipawns_t eval2 = internal::eval_knights(board, eval_state, true);
+            EXPECT_EQ(eval1, -eval2);
+        }
+    } catch (const std::exception& e) {
+        throw;
+    }
+}
+
+TEST_F(EvaluationTester, BishopSymmetry) {
+    try {
+        auto fens = read_all_fen_from_file(fen_path);
+        for (auto & fen : fens) {
+            auto separated_fen = split(fen, ';');
+            std::string fen_string = separated_fen[0];
+            board.set_board(fen_string);
+            std::cout << fen_string << std::endl << board << std::endl;
+            internal::def_stage(board, eval_state);
+            internal::def_pos_type(board, eval_state);
+            Centipawns_t eval1 = internal::eval_bishop(board, eval_state, true);
+
+            /// Flip Sides
+            auto split_fen = split(fen_string);
+            split_fen[0] = swap_lower_upper_case(split_fen[0]);
+            split_fen[1][0] = split_fen[1][0] == 'w' ? 'b' : 'w';
+            std::reverse(split_fen[0].begin(), split_fen[0].end());
+
+            /// Set board again and evaluate
+            board.set_board(split_fen.begin(), split_fen.end());
+            for (int i = 0; i < split_fen.size(); i++) {
+                std::cout << split_fen[i] << " ";
+            }
+            std::cout <<  std::endl << board << std::endl;
+            internal::def_stage(board, eval_state);
+            internal::def_pos_type(board, eval_state);
+            Centipawns_t eval2 = internal::eval_bishop(board, eval_state, true);
+            EXPECT_EQ(eval1, -eval2);
+        }
+    } catch (const std::exception& e) {
+        throw;
+    }
+}
+
+TEST_F(EvaluationTester, QueenSymmetry) {
+    try {
+        auto fens = read_all_fen_from_file(fen_path_queen);
+        for (auto & fen : fens) {
+            auto separated_fen = split(fen, ';');
+            std::string fen_string = separated_fen[0];
+            board.set_board(fen_string);
+            std::cout << fen_string << std::endl << board << std::endl;
+            internal::def_stage(board, eval_state);
+            internal::def_pos_type(board, eval_state);
+            Centipawns_t eval1 = internal::eval_queens(board, eval_state, true);
+
+            /// Flip Sides
+            auto split_fen = split(fen_string);
+            split_fen[0] = swap_lower_upper_case(split_fen[0]);
+            split_fen[1][0] = split_fen[1][0] == 'w' ? 'b' : 'w';
+            std::reverse(split_fen[0].begin(), split_fen[0].end());
+
+            /// Set board again and evaluate
+            board.set_board(split_fen.begin(), split_fen.end());
+            for (int i = 0; i < split_fen.size(); i++) {
+                std::cout << split_fen[i] << " ";
+            }
+            std::cout <<  std::endl << board << std::endl;
+            internal::def_stage(board, eval_state);
+            internal::def_pos_type(board, eval_state);
+            Centipawns_t eval2 = internal::eval_queens(board, eval_state, true);
+            EXPECT_EQ(eval1, -eval2);
+        }
+    } catch (const std::exception& e) {
+        throw;
+    }
+}
+
+TEST_F(EvaluationTester, KingSymmetry) {
+    try {
+        auto fens = read_all_fen_from_file(fen_path);
+        for (auto & fen : fens) {
+            auto separated_fen = split(fen, ';');
+            std::string fen_string = separated_fen[0];
+            board.set_board(fen_string);
+            std::cout << fen_string << std::endl << board << std::endl;
+            internal::def_stage(board, eval_state);
+            internal::def_pos_type(board, eval_state);
+            Centipawns_t eval1 = internal::eval_kings(board, eval_state, true);
+
+            /// Flip Sides
+            auto split_fen = split(fen_string);
+            split_fen[0] = swap_lower_upper_case(split_fen[0]);
+            split_fen[1][0] = split_fen[1][0] == 'w' ? 'b' : 'w';
+            std::reverse(split_fen[0].begin(), split_fen[0].end());
+
+            /// Set board again and evaluate
+            board.set_board(split_fen.begin(), split_fen.end());
+            for (int i = 0; i < split_fen.size(); i++) {
+                std::cout << split_fen[i] << " ";
+            }
+            std::cout <<  std::endl << board << std::endl;
+            internal::def_stage(board, eval_state);
+            internal::def_pos_type(board, eval_state);
+            Centipawns_t eval2 = internal::eval_kings(board, eval_state, true);
+            EXPECT_EQ(eval1, -eval2);
+        }
+    } catch (const std::exception& e) {
+        throw;
+    }
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
 
@@ -152,6 +323,7 @@ int main(int argc, char **argv) {
         s += std::string("/" + splitvec[i]);
     }
     fen_path = std::string(s + "/../../" + argv[1]);
+    fen_path_queen = std::string(s + "/../../" + argv[2]);
 
     return RUN_ALL_TESTS();
 }

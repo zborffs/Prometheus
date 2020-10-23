@@ -218,7 +218,7 @@ namespace internal {
      * @param es    instance of a EvaluationState object informing how to score
      * @return      the rook score differential in centipawns
      */
-    Centipawns_t eval_rooks(const Board &board, EvaluationState &es, bool verbose) {
+    Centipawns_t eval_rooks(const Board& board, EvaluationState& es, bool verbose) {
         Bitboard w = board.piece_bb(W_ROOK);
         Bitboard b = board.piece_bb(B_ROOK);
         Centipawns_t ret{0};
@@ -251,7 +251,8 @@ namespace internal {
                 while (push_rook) {
                     to_sq = bitscan_forward(push_rook);
                     piece_defending = board.piece_type(to_sq, col);
-                    ret += ((CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_ROOK - 2) / 2])) * color_multiplier;
+                    Centipawns_t s = ((CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_ROOK - 2) / 2]) * color_multiplier);
+                    ret += s;
 
                     // bonus for connected rooks
                     if (piece_defending == W_ROOK + col) {
@@ -325,7 +326,8 @@ namespace internal {
                 while (push_knight) {
                     to_sq = bitscan_forward(push_knight);
                     piece_defending = board.piece_type(to_sq, col);
-                    ret += (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_KNIGHT - 2) / 2]) * color_multiplier;
+                    Centipawns_t s = (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_KNIGHT - 2) / 2]) * color_multiplier;
+                    ret += s;
                     push_knight -= C64(1) << to_sq;
                 }
 
@@ -362,10 +364,10 @@ namespace internal {
         ret -= dot_product(flip_flop(b), &BISHOP_PST[0]);
 
         /// Bishop Pair Advantage
-        if (pop_count(w >= 2)) {
+        if (pop_count(w) >= 2) {
             ret += BISHOP_PAIR_BONUS;
         }
-        if (pop_count(b >= 2)) {
+        if (pop_count(b) >= 2) {
             ret -= BISHOP_PAIR_BONUS;
         }
 
@@ -383,7 +385,8 @@ namespace internal {
                 while (push_bishop) {
                     to_sq = bitscan_forward(push_bishop);
                     piece_defending = board.piece_type(to_sq, col);
-                    ret += (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_BISHOP - 2) / 2]) * color_multiplier;
+                    Centipawns_t s = (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_BISHOP - 2) / 2]) * color_multiplier;
+                    ret += s;
                     push_bishop -= C64(1) << to_sq;
                 }
 
@@ -430,21 +433,23 @@ namespace internal {
                 while (push_queen) {
                     to_sq = bitscan_forward(push_queen);
                     piece_defending = board.piece_type(to_sq, col);
-                    ret += (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_QUEEN - 2) / 2]) *
-                           color_multiplier;
+                    Centipawns_t s = (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_QUEEN - 2) / 2]) * color_multiplier;
+                    ret += s;
                     push_queen -= C64(1) << to_sq;
                 }
 
-                /// Penalize for opening quickly
-                if (es.stage == OPENING) {
-                    if (from_sq != D1 && col == WHITE) {
-                        ret += QUEEN_OPENING_QUICK_PENALTY;
-                    } else if (from_sq != D8 && col == BLACK) {
-                        ret -= QUEEN_OPENING_QUICK_PENALTY;
-                    }
-                }
-
                 queen_bb -= C64(1) << from_sq;
+            }
+        }
+
+        /// Penalize for opening quickly
+        if (es.stage == OPENING) {
+            if (board.piece_bb(W_QUEEN) != (C64(1) << D1)) {
+                ret += QUEEN_OPENING_QUICK_PENALTY;
+            }
+
+            if (board.piece_bb(B_QUEEN) != (C64(1) << D8)) {
+                ret -= QUEEN_OPENING_QUICK_PENALTY;
             }
         }
 
@@ -467,7 +472,7 @@ namespace internal {
         Centipawns_t ret{0};
 
         Bitboard push_king;
-        Square_t from_sq;
+        Bitboard king_bb;
         Square_t to_sq;
         PieceType_t piece_defending;
 
@@ -483,18 +488,10 @@ namespace internal {
         }
 
         for (Color_t col = WHITE; col <= BLACK; col++) {
-            from_sq = board.king_location(col);
-            push_king = king_moves(from_sq);
+            king_bb = board.piece_bb(W_KING + col);
+            push_king = king_moves(king_bb);
             Centipawns_t color_multiplier = col * -2 + 1;
-            ret += pop_count(push_king & (board.capturable(!(col)) | board.empty_bb())) * color_multiplier;
-
-            push_king &= board.capturable(col);
-            while (push_king) {
-                to_sq = bitscan_forward(push_king);
-                piece_defending = board.piece_type(to_sq, col);
-                ret += (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_KING - 2) / 2]) * color_multiplier;
-                push_king -= C64(1) << to_sq;
-            }
+            ret += pop_count(push_king & (board.capturable(!col) | board.empty_bb())) * color_multiplier;
         }
 
         if (verbose) {
