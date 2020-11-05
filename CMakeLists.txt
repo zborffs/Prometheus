@@ -1,6 +1,6 @@
 # Define CMake version, project name, and C++ standard
 cmake_minimum_required(VERSION 3.13)
-project(ChessEngine)
+project(AsterionEngine)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)

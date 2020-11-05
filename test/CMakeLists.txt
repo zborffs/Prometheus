@@ -8,6 +8,7 @@ add_executable(StringManipTestRunner string_manip_test.cpp)
 add_executable(UCIOptionsTestRunner ucis_options_test.cpp)
 add_executable(PerftTestRunner perft_test.cpp)
 add_executable(EvalTestRunner eval_test.cpp)
+add_executable(SearchTestRunner search_test.cpp)
 
 if (CODE_COVERAGE MATCHES ON)
     target_link_libraries(AttackTestRunner --coverage)
@@ -20,6 +21,7 @@ if (CODE_COVERAGE MATCHES ON)
     target_link_libraries(UCIOptionsTestRunner --coverage)
     target_link_libraries(PerftTestRunner --coverage)
     target_link_libraries(EvalTestRunner --coverage)
+    target_link_libraries(SearchTestRunner --coverage)
 endif()
 
 target_link_libraries(AttackTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
@@ -32,6 +34,7 @@ target_link_libraries(StringManipTestRunner Prometheus-lib ${GTEST_LIBRARIES} Th
 target_link_libraries(UCIOptionsTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
 target_link_libraries(PerftTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
 target_link_libraries(EvalTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
+target_link_libraries(SearchTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
 
 add_test(AttackTest AttackTestRunner)
 add_test(BitmaskTest BitmaskTestRunner)

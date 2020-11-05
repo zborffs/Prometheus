@@ -93,7 +93,7 @@ namespace internal {
         }
 
         /// If the user has sent any moves, then process it/them.
-        for(auto itr = moves_itr + 1; itr != commands.end(); ++itr) {
+        for(auto itr = moves_itr + 1; itr < commands.end(); ++itr) {
             auto move = parse_move(board, *itr);
 
             /// If the command is invalid or the move is illegal, then don't process it
@@ -160,7 +160,7 @@ namespace internal {
             options.moves_to_go = std::stoi(*(itr + 1));
 
             /// If we haven't received a "movestogo" command, but we have set wtime and btime variables, then this is a
-            /// suddent death game, so set the "sudden death" variable
+            /// sudden death game, so set the "sudden death" variable
         } else {
             if (options.w_time_milli == -1 && options.b_time_milli == -1) {
                 options.sudden_death = true;
@@ -425,6 +425,8 @@ void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_s
             /// DEBUG COMMMAND (NOT UCI COMMAND): print the evaluation of current position
         } else if (commands[0] == "eval") {
             std::cout << "Evaluation: " << evaluate(board, eval_state) << std::endl;
+        } else if (commands[0] == "searchstate") {
+            std::cout << search_state << std::endl;
         } else {
             // do nothing
         }

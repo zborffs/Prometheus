@@ -1,50 +1,59 @@
 //
-// Created by Zach Bortoff on 2020-06-25.
+// Created by Zach Bortoff on 2020-11-04.
 //
+
+/// Project Includes
 #include "defines.hpp"
 #include "globals.hpp"
-#include <gtest/gtest.h>
 #include "board.hpp"
-#include "move_gen.hpp"
 #include "chess_clock.hpp"
 #include "search.hpp"
+
+/// External Library Includes
+#include <gtest/gtest.h>
+
+/// Standard Library Includes
 #include <iostream>
 #include <string>
 
+
+/// Global variables for this tes
 std::string exec_path;
 std::string mate_in_2_path;
 
-class PerftTester : public ::testing::Test {
+class SearchTester : public ::testing::Test {
 protected:
     Board board;
     ChessClock clock;
+    SearchState search_state;
+    EvaluationState eval_state;
+    UCIOptions options;
 };
 
-TEST_F(PerftTester, Positions_Perft_1) {
+TEST_F(SearchTester, Mate_In_2) {
+    options.reset_game_state_vars();
+    options.infinite = true;
+
     try {
         auto fens = read_all_fen_from_file(mate_in_2_path);
-        uint64_t total_nodes{0};
         double d{0.0};
+        uint64_t total_nodes{0};
 
         for (auto & fen : fens) {
             auto separated_fen = split(fen, ';');
             std::string fen_string = separated_fen[0];
             board.set_board(fen_string);
             std::cout << fen_string << std::endl << board << std::endl;
-
-            for (unsigned i = 1; i < separated_fen.size(); i++) {
-                auto depth_string = split(separated_fen[i]);
-                assert(depth_string.size() == 2);
-                Depth depth = i;
-                int expected_leaf_nodes = std::stoi(depth_string[1]);
-                std::cout << "[" << (int)depth << "/" << separated_fen.size() - 1 << "]" << std::endl;
-                clock.start();
-                int leaf_nodes = 0; perft(board, depth, leaf_nodes);
-                clock.stop();
-                d += clock.duration();
-                total_nodes += leaf_nodes;
-                EXPECT_EQ(leaf_nodes, expected_leaf_nodes);
+            std::string expected_move_str = split(separated_fen[1], ' ')[0];
+            clock.start();
+            ChessMove best_move = think(board, options, search_state, eval_state);
+            clock.stop();
+            d += clock.duration();
+            std::string move_str = best_move.to_algebraic_notation();
+            if (expected_move_str[expected_move_str.size() - 1] == '+') {
+                expected_move_str = std::string(expected_move_str.begin(), expected_move_str.end() - 1);
             }
+            EXPECT_EQ(expected_move_str, move_str);
         }
 
         double seconds = d / 1000000000;
@@ -56,11 +65,10 @@ TEST_F(PerftTester, Positions_Perft_1) {
     }
 }
 
-
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
 
-    /// Get path to the perft file from executable directory and command line arguments
+    /// Get path to the "mate-in-2.puz" file from executable directory and command line arguments
     exec_path = std::string(argv[0]);
     bool first_is_slash = exec_path[0] == '/';
     auto splitvec = split(exec_path, '/');

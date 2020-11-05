@@ -41,8 +41,18 @@ struct SearchState {
     void reset();
 
     friend std::ostream& operator<<(std::ostream& os, const SearchState& ss) {
+        std::string result_flag_str{};
+
+        switch (ss.result_flag) {
+            case NO_RESULT: result_flag_str = "No Result"; break;
+            case WHITE_IS_MATED: result_flag_str = "Black Wins!"; break;
+            case BLACK_IS_MATED: result_flag_str = "White Wins!"; break;
+            case DRAW: result_flag_str = "Draw"; break;
+            case STALEMATE: result_flag_str = "Stalemate"; break;
+        }
+
         os << "SearchState:" << std::endl;
-        os << "- result_flag: " << ss.result_flag << std::endl;
+        os << "- result_flag: " << result_flag_str << std::endl;
 
 #ifndef NDEBUG
         os << "  leaf_nodes: " << ss.leaf_nodes << std::endl;
@@ -59,7 +69,7 @@ struct SearchState {
 };
 
 namespace internal {
-    ChessMove search_root(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState &eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta);
+    std::tuple<ChessMove, Centipawns_t> search_root(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState &eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta);
     Centipawns_t search(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta, bool do_null);
     Centipawns_t q_search(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta);
     bool check_stop_search(unsigned depth, UCIOptions& options, SearchState& search_state);

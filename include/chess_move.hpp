@@ -37,6 +37,10 @@ struct ChessMove {
     [[nodiscard]] bool ep_flag() const noexcept;
     MoveFlag_t flag() noexcept;
     [[nodiscard]] MoveFlag_t flag() const noexcept;
+    std::string to_algebraic_notation() noexcept;
+    [[nodiscard]] std::string to_algebraic_notation() const noexcept;
+    std::string to_string() noexcept;
+    [[nodiscard]] std::string to_string() const noexcept;
 
     /**
      * prints the ChessMove object

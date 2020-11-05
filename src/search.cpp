@@ -40,12 +40,12 @@ namespace internal {
      * @param depth        the depth to which we want to search
      * @param alpha        the lower bound on the score in centipawns
      * @param beta         the upper bound on the score in centipawns
-     * @return             the best move from the root
+     * @return             the best move from the root and its score
      */
-    ChessMove search_root(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState &eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta) {
+    std::tuple<ChessMove, Centipawns_t> search_root(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState &eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta) {
         if (board.is_draw()) {
             search_state.result_flag = Result::DRAW;
-            return ChessMove();
+            return std::tuple<ChessMove, Centipawns_t>(ChessMove(), 0);
         }
 
         Centipawns_t init_alpha = alpha;
@@ -74,22 +74,34 @@ namespace internal {
 
             board.unmake_move();
 
-            if (root_score > alpha) {
+            if (root_score > alpha || best_move == ChessMove()) {
                 alpha = root_score;
                 best_move = movelist[i];
             }
         }
 
-        if (movelist.size() == 0) {
+
+
+        if (movelist.empty()) {
+            Centipawns_t ret_score = 0;
             if (board.is_king_checked(board.side_2_move())) {
-                search_state.result_flag = (board.side_2_move() == WHITE) ? WHITE_IS_MATED : BLACK_IS_MATED;
+                if (board.side_2_move() == WHITE) {
+                    search_state.result_flag = WHITE_IS_MATED;
+                    // ***** MAY NEED TO BE CHANGED TO 'INF' not '-INF'
+                    ret_score = -INF;
+                } else {
+                    search_state.result_flag = BLACK_IS_MATED;
+                    // ***** MAY NEED TO BE CHANGED TO '-INF' not 'INF'
+                    ret_score = -INF;
+                }
             } else {
-                search_state.result_flag = DRAW;
+                search_state.result_flag = STALEMATE;
             }
-            return ChessMove();
+
+            return std::tuple<ChessMove, Centipawns_t>(ChessMove(), ret_score);
         }
 
-        return best_move;
+        return std::tuple<ChessMove, Centipawns_t>(best_move, alpha);
     }
 
     /**
@@ -111,6 +123,10 @@ namespace internal {
 
         if ((int)depth == 0) {
             return q_search(board, options, search_state, eval_state, MAX_DEPTH, alpha, beta);
+        }
+
+        if (internal::check_stop_search(depth, options, search_state)) {
+            return 0;
         }
 
         Centipawns_t init_alpha = alpha;
@@ -146,6 +162,24 @@ namespace internal {
 
                 alpha = score;
                 best_move = movelist[i];
+            }
+        }
+
+        /// if no moves were found, it's either checkmate or stalemate
+        if (movelist.empty()) {
+            if (board.is_king_checked(board.side_2_move())) {
+                if (board.side_2_move() == WHITE) {
+                    search_state.result_flag = WHITE_IS_MATED;
+                    // ***** MAY NEED TO BE CHANGED TO 'INF' not '-INF'
+                    alpha = -INF + board.current_ply();
+                } else {
+                    search_state.result_flag = BLACK_IS_MATED;
+                    // ***** MAY NEED TO BE CHANGED TO '-INF' not 'INF'
+                    alpha = -INF + board.current_ply();
+                }
+            } else {
+                search_state.result_flag = STALEMATE;
+                alpha = 0;
             }
         }
 
@@ -211,7 +245,7 @@ namespace internal {
             }
         }
 
-        if (movelist.size() == 0) {
+        if (movelist.empty()) {
             return standing_pat;
         }
 
@@ -334,7 +368,9 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
     search_state.clock.start();
 
     for (unsigned depth = 1; depth < MAX_DEPTH; depth++, alpha = -INF, beta = INF) {
-        best_move = internal::search_root(board, options, search_state, eval_state, depth, alpha, beta);
+        std::tuple<ChessMove, Centipawns_t> tup = internal::search_root(board, options, search_state, eval_state, depth, alpha, beta);
+        best_move = std::get<0>(tup);
+        score = std::get<1>(tup);
 
         if (internal::check_stop_search(depth, options, search_state)) {
             break;
