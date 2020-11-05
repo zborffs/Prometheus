@@ -19,8 +19,8 @@ SearchState::SearchState() : result_flag(Result::NO_RESULT)
  * resets all SearchState member variables to default values
  */
 void SearchState::reset() {
-#ifndef NDEBUG
     result_flag = Result::NO_RESULT;
+#ifndef NDEBUG
     leaf_nodes = 0;
     raw_nodes = 0;
     fail_high_count = 0;
@@ -32,7 +32,7 @@ void SearchState::reset() {
 
 namespace internal {
     /**
-     * searches all moves eminating from the root of the search tree
+     * searches all moves emanating from the root of the search tree
      * @param board        instance of Board object under search
      * @param options      instance of UCIOptions object informing exit conditions
      * @param search_state instance of SearchState object holding search data
@@ -43,22 +43,25 @@ namespace internal {
      * @return             the best move from the root and its score
      */
     std::tuple<ChessMove, Centipawns_t> search_root(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState &eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta) {
+        /// If it's a draw from the root position, then just return a dummy and a score of 0, and change the result flag
         if (board.is_draw()) {
             search_state.result_flag = Result::DRAW;
             return std::tuple<ChessMove, Centipawns_t>(ChessMove(), 0);
         }
 
+        /// initialize all the local variables at the top
         Centipawns_t init_alpha = alpha;
         std::vector<ChessMove> movelist;
-        movelist.reserve(128);
+        movelist.reserve(128); // reserve 128 for performance (should be less than that)
         ChessMove best_move;
         Centipawns_t root_score = -INF;
 
+        /// generate all the moves
         gen_all_moves(board, movelist);
 
         for (int i = 0; i < movelist.size(); i++) {
+            /// make the move, then determine if it's legal by playing it and seeing whether you put yourself in check
             board.make_move(movelist[i]);
-
             if (board.is_king_checked((!board.side_2_move()))) {
                 movelist.erase(movelist.begin() + i);
                 board.unmake_move();
@@ -66,24 +69,27 @@ namespace internal {
                 continue;
             }
 
+            /// in debug mode, it's useful to count raw nodes, so do so
 #ifndef NDEBUG
             search_state.raw_nodes++;
 #endif // NDEBUG
 
+            /// Search the current position using negamax and null-move pruning
             root_score = -search(board, options, search_state, eval_state, depth - 1, -beta, -alpha, true);
-
             board.unmake_move();
 
+            /// if the root score exceeds the current best move score or there's not best yet, then update those fields
             if (root_score > alpha || best_move == ChessMove()) {
                 alpha = root_score;
                 best_move = movelist[i];
             }
         }
 
-
-
+        /// if there are no legal moves from the current position, then it's either a stalemate or a checkmate
         if (movelist.empty()) {
             Centipawns_t ret_score = 0;
+
+            /// it's a checkmate if the king is checked
             if (board.is_king_checked(board.side_2_move())) {
                 if (board.side_2_move() == WHITE) {
                     search_state.result_flag = WHITE_IS_MATED;
@@ -91,7 +97,7 @@ namespace internal {
                     ret_score = -INF;
                 } else {
                     search_state.result_flag = BLACK_IS_MATED;
-                    // ***** MAY NEED TO BE CHANGED TO '-INF' not 'INF'
+                    // ***** MAY NEED TO BE CHANGED TO 'INF' not '-INF'
                     ret_score = -INF;
                 }
             } else {
@@ -117,30 +123,34 @@ namespace internal {
      * @return             the score of the best position in centipawns
      */
     Centipawns_t search(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta, bool do_null) {
+        /// if the current position is a draw, return 0 immediately
         if (board.is_draw()) {
             return 0;
         }
 
+        /// if this is the last depth we want to search to, then perform the quiescence search
         if ((int)depth == 0) {
             return q_search(board, options, search_state, eval_state, MAX_DEPTH, alpha, beta);
         }
 
+        /// if we've run out of time, then quit. By returning alpha, we don't give any new information
         if (internal::check_stop_search(depth, options, search_state)) {
-            return 0;
+            return alpha;
         }
 
+        /// initialize local variables
         Centipawns_t init_alpha = alpha;
         Centipawns_t score = -INF;
-
         ChessMove best_move;
         std::vector<ChessMove> movelist;
-        movelist.reserve(128);
+        movelist.reserve(128); // performance
 
+        /// generate all the moves from this position
         gen_all_moves(board, movelist);
 
         for (int i = 0; i < movelist.size(); i++) {
+            /// for each move, determine its legality by playing it and seeing whether you put yourself in check
             board.make_move(movelist[i]);
-
             if (board.is_king_checked(!board.side_2_move())) {
                 movelist.erase(movelist.begin() + i);
                 board.unmake_move();
@@ -152,14 +162,16 @@ namespace internal {
             search_state.raw_nodes++;
 #endif // NDEBUG
 
+            /// recursively call this function, decrementing the depth and flipping the scores
             score = -search(board, options, search_state, eval_state, depth - 1, -beta, -alpha, true);
             board.unmake_move();
 
+            /// if the score exceeds alpha (the best score found so far), then update the alpha value
             if (score > alpha) {
+                /// if this score is better than or equal to beta, return immediately (beta-cutoff)
                 if (score >= beta) {
                     return beta;
                 }
-
                 alpha = score;
                 best_move = movelist[i];
             }
@@ -167,15 +179,16 @@ namespace internal {
 
         /// if no moves were found, it's either checkmate or stalemate
         if (movelist.empty()) {
+            /// checkmate if the king is checked
             if (board.is_king_checked(board.side_2_move())) {
                 if (board.side_2_move() == WHITE) {
                     search_state.result_flag = WHITE_IS_MATED;
                     // ***** MAY NEED TO BE CHANGED TO 'INF' not '-INF'
-                    alpha = -INF + board.current_ply();
+                    alpha = -INF + board.current_ply(); // this makes sure closer mates are prioritized
                 } else {
                     search_state.result_flag = BLACK_IS_MATED;
                     // ***** MAY NEED TO BE CHANGED TO '-INF' not 'INF'
-                    alpha = -INF + board.current_ply();
+                    alpha = -INF + board.current_ply(); // this makes sure closer mates are prioritized
                 }
             } else {
                 search_state.result_flag = STALEMATE;
@@ -198,28 +211,31 @@ namespace internal {
      * @return             the score of the best position in centipawns
      */
     Centipawns_t q_search(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta) {
+        /// initialize the local variables
         Centipawns_t score = -INF;
-        Centipawns_t standing_pat = evaluate(board, eval_state);
         Centipawns_t init_alpha = alpha;
+        Centipawns_t standing_pat = evaluate(board, eval_state); // evaluate the current position
 
+        /// if this a leaf node (can't go any further) or it's better than the cutoff score, return immediately
         if ((int)depth == 0 || standing_pat >= beta) {
 #ifndef NDEBUG
             search_state.leaf_nodes++;
 #endif // NDEBUG
             return standing_pat;
         } else if (standing_pat > alpha) {
-            alpha = standing_pat;
+            alpha = standing_pat; // update the best score with the current score, if the current score is better
         }
 
         ChessMove best_move;
         std::vector<ChessMove> movelist;
         movelist.reserve(128);
 
+        /// only generate captures and promotions
         gen_all_caps(board, movelist);
 
         for (int i = 0; i < movelist.size(); i++) {
+            /// make the move and test that it's legal
             board.make_move(movelist[i]);
-
             if (board.is_king_checked(!board.side_2_move())) {
                 movelist.erase(movelist.begin() + i);
                 board.unmake_move();
@@ -231,10 +247,11 @@ namespace internal {
             search_state.raw_nodes++;
 #endif // NDEBUG
 
+            /// recursively search and return to the original position
             score = -q_search(board, options, search_state, eval_state, depth - 1, -beta, -alpha);
-
             board.unmake_move();
 
+            /// update the score if it's better than alpha, and return immediately if it's better than beta
             if (score > alpha) {
                 if (score >= beta) {
                     return beta;
@@ -245,6 +262,7 @@ namespace internal {
             }
         }
 
+        /// if the movelist if empty i.e. there are no captures or whatever, just return the standing pat
         if (movelist.empty()) {
             return standing_pat;
         }
@@ -328,13 +346,16 @@ namespace internal {
  * @return          true if the move is legal, false if the move is illegal
  */
 bool is_move_legal(Board& board, ChessMove& chessmove) {
+    /// create the movelist and reserve 128 moves
     std::vector<ChessMove> movelist;
     movelist.reserve(128);
 
+    /// generate all moves
     gen_all_moves(board, movelist);
-    for (int i = 0; i < movelist.size(); i++) {
-        board.make_move(movelist[i]);
 
+    for (int i = 0; i < movelist.size(); i++) {
+        /// iterate through the moves and if a legal move equals the given move, return true
+        board.make_move(movelist[i]);
         if(!board.is_king_checked(!board.side_2_move())) {
             if (chessmove == movelist[i]) {
                 board.unmake_move();
@@ -367,17 +388,18 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
     search_state.clock.alloc_time(options, board.side_2_move());
     search_state.clock.start();
 
+    /// Starting at a depth of 1, perform a depth first search
     for (unsigned depth = 1; depth < MAX_DEPTH; depth++, alpha = -INF, beta = INF) {
+        /// think and extract the best move and the corresponding scre
         std::tuple<ChessMove, Centipawns_t> tup = internal::search_root(board, options, search_state, eval_state, depth, alpha, beta);
         best_move = std::get<0>(tup);
         score = std::get<1>(tup);
 
-        if (internal::check_stop_search(depth, options, search_state)) {
-            break;
-        }
-
+        /// Get a split from the clock and compute the time elapsed in milliseconds
         search_state.clock.stop();
         Milliseconds_t time_elapsed = search_state.clock.duration() / 1000000;
+
+        /// print search information
         std::cout << "info score cp " << score << " time " << time_elapsed << " depth " << depth <<
 #ifndef NDEBUG
             " raw_nodes " << search_state.raw_nodes <<
@@ -387,6 +409,11 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
             " window_ratio " << search_state.window_ratio() <<
 #endif // NDEBUG
             std::endl;
+
+        /// if we've run out of time or the user has said "stop" or whatever, then break out of the loop and just return
+        if (internal::check_stop_search(depth, options, search_state)) {
+            break;
+        }
     }
 
     return best_move;

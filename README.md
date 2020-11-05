@@ -1,16 +1,16 @@
-Chess Engine
-============
+Asterion Engine
+===============
 [![pipeline status](https://gitlab.com/asterion-project/chess-engine/badges/master/pipeline.svg)](https://gitlab.com/asterion-project/chess-engine/-/commits/master)
 [![coverage report](https://gitlab.com/asterion-project/chess-engine/badges/master/coverage.svg)](https://gitlab.com/asterion-project/chess-engine/-/commits/master)
-
-This is a chess engine written in C++ by Zach Bortoff.
+ 
+This is a chess engine written in C++.
 
 How to Use
 ----------
 To download and build:
 ```shell
-git clone https://gitlab.com/asterion-project/chess-engine.git
-cd chess-engine
+git clone https://gitlab.com/asterion-project/asterion-engine.git
+cd asterion-engine
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
