@@ -5,19 +5,22 @@
 #ifndef PROMETHEUS_TRANSPOSITIONTABLE_HPP
 #define PROMETHEUS_TRANSPOSITIONTABLE_HPP
 
-/// Standard Library Includes
-#include <unordered_set>
-#include <set>
-
 /// External Library Includes
 #include <spdlog/spdlog.h>
 
 /// Internal Library Includes
 #include "chess_hash.hpp"
+#include "extern.hpp"
+
+#define HASHES_LENGTH 4
+
+/// The reason there are four is because my cacheline size is 64 bytes, and a chesshash is 16 bytes, so that fits 4
+struct TranspositionTableEntry {
+    ChessHash hashes[HASHES_LENGTH];
+};
 
 class TranspositionTable {
-    using Entry = std::set<ChessHash>;
-    using Itr = std::set<ChessHash>*;
+    using Entry = TranspositionTableEntry;
 
     int tt_size_;
     Entry* table_;
@@ -29,8 +32,13 @@ class TranspositionTable {
     int num_type_2_hash_misses_;
 #endif // NDEBUG
 
-    int index(PositionKey key) noexcept;
-    [[nodiscard]] int index(PositionKey key) const noexcept;
+    inline int index(PositionKey key) noexcept {
+        return key % tt_size_;
+    }
+
+    inline int index(PositionKey key) const noexcept {
+        return key % tt_size_;
+    }
 
 public:
     explicit TranspositionTable(const int tt_size) : tt_size_(tt_size)
@@ -50,13 +58,15 @@ public:
     void reset_tracking_variables();
 #endif // NDEBUG
 
-    int size() noexcept;
-    int size() const noexcept;
+    inline int size() noexcept {
+        return tt_size_;
+    }
+    inline int size() const noexcept {
+        return tt_size_;
+    }
 
-    Entry* find(PositionKey key);
-    std::pair<Itr, bool> insert(const ChessHash& hash);
-    std::pair<Itr, bool> insert(ChessHash&& hash);
-    std::pair<Itr, bool> emplace(ChessHash&& hash);
+    ChessHash* find(PositionKey key);
+    bool insert(const ChessHash& hash);
 };
 
 

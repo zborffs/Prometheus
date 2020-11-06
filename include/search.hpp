@@ -65,7 +65,6 @@ struct SearchState {
 
         return os;
     }
-
 };
 
 namespace internal {
@@ -73,6 +72,7 @@ namespace internal {
     Centipawns_t search(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta, bool do_null);
     Centipawns_t q_search(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta);
     bool check_stop_search(unsigned depth, UCIOptions& options, SearchState& search_state);
+    void order_moves(std::vector<ChessMove>& movelist, ChessMove* hash_move = nullptr);
 };
 
 bool is_move_legal(Board& board, ChessMove& move);

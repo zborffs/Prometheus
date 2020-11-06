@@ -52,6 +52,7 @@ set(PROMETHEUS_LIB_SRCS
         src/search.cpp
         src/string_manip.cpp
         src/uci_options.cpp
+        src/transposition_table.cpp
         )
 
 # Create library, link external libraries against it

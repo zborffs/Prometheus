@@ -22,6 +22,10 @@ ChessMove::ChessMove() : from_sq(A1), to_sq(A1), mf(NO_MOVE_FLAG), pf(NO_MOVE_FL
 ChessMove::ChessMove(Square_t from_sq, Square_t to_sq, MoveFlag_t flag, PieceType_t moved, PieceType_t captured) :
         from_sq(from_sq), to_sq(to_sq), mf(flag & 3), pf(flag >> 2), moved(moved), captured(captured), score(0) {
 
+    if (captured != NO_PIECE) {
+        score = MVVLVA[captured / 2 - 1][moved / 2 - 1];
+    }
+
     /// Make sure that both the moved and captured PieceTypes are valid PieceTypes (0 and 1 are W_PIECES and B_PIECES)
     assert(from_sq != to_sq);
     assert(captured != W_KING && captured != B_KING);

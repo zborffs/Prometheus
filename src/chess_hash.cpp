@@ -2,97 +2,85 @@
 // Created by Zach Bortoff on 2019-10-06.
 //
 
-#ifndef PROMETHEUS_CHESS_HASH_HPP
-#define PROMETHEUS_CHESS_HASH_HPP
-
 #include "defines.hpp"
-#include <ostream>
+#include "chess_hash.hpp"
 
-struct ChessHash {
-    /// Member Variables
-    PositionKey key;
-    Score score;
-    Square_t from_sq : 6;
-    MoveFlag_t mf : 2;
-    Square_t to_sq : 6;
-    MoveFlag_t pf : 2;
-    Depth depth : 5;
-    HashFlag hash_flag : 3;
-    Depth age;
+/**
+ * default constructor gives nominal values for all member variables
+ */
+ChessHash::ChessHash()
+: key(0), score(0), from_sq(A1), mf(NO_MOVE_FLAG), to_sq(A1), pf(NO_MOVE_FLAG), depth(0), hash_flag(NO_INFO), age(0) {
 
-    /// Constructors
-    ChessHash();
-    ChessHash(PositionKey, Score, Square_t, Square_t, MoveFlag_t, Depth, HashFlag, Depth);
+}
 
-    /// Getters
-    MoveFlag_t flag() noexcept;
-    MoveFlag_t flag() const noexcept;
+/**
+ * Constructor given exact member variables values for every variable
+ * @param k        Position Key (basically position index)
+ * @param s        Evaluation from that position (given a certain depth)
+ * @param fs       from square of move
+ * @param ts       to square of move
+ * @param moveflag type of move it was
+ * @param d        depth search was at when it put this in
+ * @param hashflag the type of move this was
+ * @param a        the age (for determining how old this element is)
+ */
+ChessHash::ChessHash(PositionKey k, Centipawns_t s, Square_t fs, Square_t ts, MoveFlag_t moveflag, Depth d, HashFlag hashflag, Depth a)
+: key(k), score(s), from_sq(fs), mf(moveflag & 3), to_sq(ts),  pf(moveflag >> 2), depth(d), hash_flag(hashflag), age(a) {
 
-    /// Equivalence Operators
-    bool operator==(const ChessHash&) noexcept;
-    bool operator==(const ChessHash&) const noexcept;
-    bool operator!=(const ChessHash&) noexcept;
-    bool operator!=(const ChessHash&) const noexcept;
+}
 
-    /**
-     * Prints ChessHash object
-     * @param os
-     * @param hash
-     * @return
-     */
-    friend std::ostream& operator<<(std::ostream& os, const ChessHash& hash) {
-        if (hash.from_sq == hash.to_sq) {
-            return os << "ChessHash: Dummy";
-        }
+/**
+ * the move flag as reconstructed by 'mf' and 'pf' member variables
+ * @return MoveFlag_t of the ChessMove stored by this hash
+ */
+MoveFlag_t ChessHash::m_flag() noexcept {
+    return mf | (pf << 2);
+}
 
-        char from_file = (hash.from_sq & 7) + 'a';
-        int from_rank = (hash.from_sq / 8) + 1;
-        char to_file = (hash.to_sq & 7) + 'a';
-        int to_rank = (hash.to_sq / 8) + 1;
+/**
+ * the move flag as reconstructed by 'mf' and 'pf' member variables
+ * @return MoveFlag_t of the ChessMove stored by this hash
+ */
+MoveFlag_t ChessHash::m_flag() const noexcept {
+    return mf | (pf << 2);
+}
 
-        os << "ChessHash:" << std::endl;
-        os << "- Position Key: " << hash.key << std::endl;
-        os << "  Score: " << hash.score << std::endl;
-        os << "  From Square: " << from_file << from_rank << std::endl;
-        os << "  To Square: " << to_file << to_rank << std::endl;
-        os << "  Move Flag: ";
+/**
+ * computes whether two hash values are equal by comparing purely board-state info
+ * @param hash the ChessHash object being compared against
+ * @return     whether the two ChessHash objects are from the same move and the same position
+ */
+bool ChessHash::operator==(const ChessHash& hash) noexcept {
+    /// I need to decide what I mean by equal, to do that, I need to use this function.
+    /// Equal could mean having the exact same member variables
+    /// OR equal could mean having all member variables equal except ones that would change depending on the search information (like score, depth, hash flag, and age)
+    return this->key == hash.key && this->from_sq == hash.from_sq && this->to_sq == hash.to_sq && this->m_flag() == hash.m_flag();
+}
 
-        switch (hash.flag()) {
-            case QUIET_MOVE: os << "Quiet Move"; break;
-            case DOUBLE_PUSH_PAWN: os << "Double Push Pawn"; break;
-            case KING_CASTLE: os << "King Castle"; break;
-            case QUEEN_CASTLE: os << "Queen Castle"; break;
-            case CAPTURE_MOVE: os << "Capture"; break;
-            case ENPASSANT: os << "En Passant"; break;
-            case ROOK_PROMO: os << "Rook Promotion"; break;
-            case KNIGHT_PROMO: os << "Knight Promotion"; break;
-            case BISHOP_PROMO: os << "Bishop Promotion"; break;
-            case QUEEN_PROMO: os << "Queen Promotion"; break;
-            case ROOK_PROMO_CAPTURE: os << "Rook Promotion and Capture"; break;
-            case KNIGHT_PROMO_CAPTURE: os << "Knight Promotion and Capture"; break;
-            case BISHOP_PROMO_CAPTURE: os << "Bishop Promotion and Capture"; break;
-            case QUEEN_PROMO_CAPTURE: os << "Queen Promotion and Capture"; break;
-        }
+/**
+ * computes whether two hash values are equal by comparing purely board-state info
+ * @param hash the ChessHash object being compared against
+ * @return     whether the two ChessHash objects are from the same move and the same position
+ */
+bool ChessHash::operator==(const ChessHash& hash) const noexcept {
+    return this->key == hash.key && this->from_sq == hash.from_sq && this->to_sq == hash.to_sq && this->m_flag() == hash.m_flag();
+}
 
-        os << std::endl;
+/**
+ * computes whether two hash values are NOT equal by comparing purely board-state info
+ * @param hash the ChessHash object being compared against
+ * @return     whether the two ChessHash objects are NOT from the same move and the same position
+ */
+bool ChessHash::operator!=(const ChessHash& hash) noexcept {
+    return !(*this == hash);
+}
 
-        os << "  Depth: " << static_cast<int>(hash.depth) << std::endl;
-        os << "  Hash Flag: ";
+/**
+ * computes whether two hash values are NOT equal by comparing purely board-state info
+ * @param hash the ChessHash object being compared against
+ * @return     whether the two ChessHash objects are NOT from the same move and the same position
+ */
+bool ChessHash::operator!=(const ChessHash& hash) const noexcept {
+    return !(*this == hash);
+}
 
-        switch (hash.hash_flag) {
-            case NO_INFO: os << "No Information"; break;
-            case AVOID_NULL: os << "Avoid Null Move"; break;
-            case EXACT: os << "Exact"; break;
-            case UPPER_BOUND: os << "Upper Bound"; break;
-            case LOWER_BOUND: os << "Lower Bound"; break;
-            default: break;
-        }
-
-        os << std::endl;
-        os << "  Age: " << static_cast<int>(hash.age) << std::endl;
-
-        return os;
-    }
-};
-
-#endif //PROMETHEUS_CHESS_HASH_HPP

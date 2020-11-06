@@ -58,6 +58,7 @@ namespace internal {
 
         /// generate all the moves
         gen_all_moves(board, movelist);
+//        order_moves(movelist);
 
         for (int i = 0; i < movelist.size(); i++) {
             /// make the move, then determine if it's legal by playing it and seeing whether you put yourself in check
@@ -147,6 +148,7 @@ namespace internal {
 
         /// generate all the moves from this position
         gen_all_moves(board, movelist);
+//        order_moves(movelist);
 
         for (int i = 0; i < movelist.size(); i++) {
             /// for each move, determine its legality by playing it and seeing whether you put yourself in check
@@ -170,6 +172,12 @@ namespace internal {
             if (score > alpha) {
                 /// if this score is better than or equal to beta, return immediately (beta-cutoff)
                 if (score >= beta) {
+#ifndef NDEBUG
+                    if (i == 0) {
+                        ++search_state.fail_high_first_count;
+                    }
+                    ++search_state.fail_high_count;
+#endif // NDEBUG
                     return beta;
                 }
                 alpha = score;
@@ -232,6 +240,7 @@ namespace internal {
 
         /// only generate captures and promotions
         gen_all_caps(board, movelist);
+//        order_moves(movelist);
 
         for (int i = 0; i < movelist.size(); i++) {
             /// make the move and test that it's legal
@@ -254,6 +263,12 @@ namespace internal {
             /// update the score if it's better than alpha, and return immediately if it's better than beta
             if (score > alpha) {
                 if (score >= beta) {
+#ifndef NDEBUG
+                    if (i == 0) {
+                        ++search_state.fail_high_first_count;
+                    }
+                    ++search_state.fail_high_count;
+#endif // NDEBUG
                     return beta;
                 }
 
@@ -336,6 +351,20 @@ namespace internal {
 
         return false;
 
+    }
+
+    void order_moves(std::vector<ChessMove>& movelist, ChessMove* hash_move) {
+        MoveScore score = 0;
+
+        for (int i = 0; i < movelist.size(); i++) {
+            score += movelist[i].score;
+
+            if (hash_move != nullptr && *hash_move == movelist[i]) {
+                score += 128; // |= (1 << 7)
+            }
+        }
+
+        std::sort(movelist.begin(), movelist.end());
     }
 };
 

@@ -9,6 +9,14 @@
 #include <ostream>
 #include <cassert>
 
+static constexpr MoveScore MVVLVA[5][5] {
+    // p, r, n, b, q
+    {17,  8, 10,  9,  7}, // p
+    {28, 20, 24, 23, 13}, // r
+    {25, 14, 18, 16, 11}, // n
+    {26, 15, 22, 19, 12}, // b
+    {31, 27, 30, 29, 21}  // q
+};
 
 struct ChessMove {
     /// Member Variables
@@ -25,6 +33,9 @@ struct ChessMove {
     ChessMove(Square_t, Square_t, MoveFlag_t, PieceType_t, PieceType_t);
 
     bool operator==(const ChessMove& rhs) const;
+    inline bool operator<(const ChessMove& rhs) const {
+        return this->score < rhs.score;
+    }
 
     /// Getters
     PieceType_t promoted() noexcept;

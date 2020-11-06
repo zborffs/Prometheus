@@ -11,22 +11,22 @@
 struct ChessHash {
     /// Member Variables
     PositionKey key;
-    Score score;
+    Centipawns_t score;
     Square_t from_sq : 6;
     MoveFlag_t mf : 2;
     Square_t to_sq : 6;
     MoveFlag_t pf : 2;
-    Depth depth : 5;
+    Depth depth : 5; // puts upper limit on search depth as 31
     HashFlag hash_flag : 3;
-    Depth age;
+    Depth age; // upper limit here is 2^8-1 (255)
 
     /// Constructors
     ChessHash();
-    ChessHash(PositionKey, Score, Square_t, Square_t, MoveFlag_t, Depth, HashFlag, Depth);
+    ChessHash(PositionKey k, Centipawns_t s, Square_t fs, Square_t ts, MoveFlag_t moveflag, Depth d, HashFlag hashflag, Depth a);
 
     /// Getters
-    MoveFlag_t flag() noexcept;
-    MoveFlag_t flag() const noexcept;
+    MoveFlag_t m_flag() noexcept;
+    MoveFlag_t m_flag() const noexcept;
 
     /// Equivalence Operators
     bool operator==(const ChessHash&) noexcept;
@@ -36,9 +36,9 @@ struct ChessHash {
 
     /**
      * Prints ChessHash object
-     * @param os
-     * @param hash
-     * @return
+     * @param os   reference to whatever output stream (like log file or std::cout)
+     * @param hash the ChessHash object being returned
+     * @return     the same reference to the output stream
      */
     friend std::ostream& operator<<(std::ostream& os, const ChessHash& hash) {
         if (hash.from_sq == hash.to_sq) {
@@ -57,7 +57,7 @@ struct ChessHash {
         os << "  To Square: " << to_file << to_rank << std::endl;
         os << "  Move Flag: ";
 
-        switch (hash.flag()) {
+        switch (hash.m_flag()) {
             case QUIET_MOVE: os << "Quiet Move"; break;
             case DOUBLE_PUSH_PAWN: os << "Double Push Pawn"; break;
             case KING_CASTLE: os << "King Castle"; break;
@@ -83,8 +83,8 @@ struct ChessHash {
             case NO_INFO: os << "No Information"; break;
             case AVOID_NULL: os << "Avoid Null Move"; break;
             case EXACT: os << "Exact"; break;
-            case UPPER_BOUND: os << "Upper Bound"; break;
-            case LOWER_BOUND: os << "Lower Bound"; break;
+            case UPPER_BOUND: os << "Upper Bound"; break; // beta-cutoff
+            case LOWER_BOUND: os << "Lower Bound"; break; // alpha increase
             default: break;
         }
 
