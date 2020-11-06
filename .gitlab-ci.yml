@@ -49,7 +49,7 @@ build:
     - make EvalCoverage
     - make PerftCoverage
     - make SearchCoverage
-    - lcov --add-tracefile BitmaskCoverage.info --add-tracefile BoardCoverage.info --add-tracefile ChessClockCoverage.info --add-tracefile ChessMoveCoverage.info --add-tracefile StringManipCoverage.info --add-tracefile UCIOptionsCoverage.info --add-tracefile EvalCoverage.info --add-tracefile PerftCoverage.info --output-file CompleteCoverage.info
+    - lcov --add-tracefile BitmaskCoverage.info --add-tracefile BoardCoverage.info --add-tracefile ChessClockCoverage.info --add-tracefile ChessMoveCoverage.info --add-tracefile StringManipCoverage.info --add-tracefile UCIOptionsCoverage.info --add-tracefile EvalCoverage.info --add-tracefile PerftCoverage.info --add-tracefile SearchCoverage.info --output-file CompleteCoverage.info
     - lcov --remove CompleteCoverage.info '/usr/local/*' '/usr/include/*' -o CompleteCoverageFiltered.info
 
   # Extract everything in each cmake build directory
@@ -65,7 +65,7 @@ test:
   stage: test
   script:
     - ./cmake-build-release/test/BitmaskTestRunner
-    - ./cmake-build-release/test/BoardTestRunner
+    - ./cmake-build-release/test/BoardTestRunner data/eval-test/FullEvalTest.fen
     - ./cmake-build-release/test/ChessClockTestRunner
     - ./cmake-build-release/test/ChessHashTestRunner
     - ./cmake-build-release/test/ChessMoveTestRunner

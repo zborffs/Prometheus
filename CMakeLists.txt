@@ -77,7 +77,7 @@ if(BUILD_TESTS)
         append_coverage_compiler_flags()
 
         setup_target_for_coverage_lcov(NAME BitmaskCoverage EXECUTABLE BitmaskTestRunner BASE_DIRECTORY "${PROJECT_SOURCE_DIR}/src")
-        setup_target_for_coverage_lcov(NAME BoardCoverage EXECUTABLE BoardTestRunner BASE_DIRECTORY "${PROJECT_SOURCE_DIR}/src")
+        setup_target_for_coverage_lcov(NAME BoardCoverage EXECUTABLE BoardTestRunner BASE_DIRECTORY "${PROJECT_SOURCE_DIR}/src" EXECUTABLE_ARGS data/board-test/FullBoardTest.fen)
         setup_target_for_coverage_lcov(NAME ChessClockCoverage EXECUTABLE ChessClockTestRunner BASE_DIRECTORY "${PROJECT_SOURCE_DIR}/src")
         setup_target_for_coverage_lcov(NAME ChessMoveCoverage EXECUTABLE ChessMoveTestRunner BASE_DIRECTORY "${PROJECT_SOURCE_DIR}/src")
         setup_target_for_coverage_lcov(NAME StringManipCoverage EXECUTABLE StringManipTestRunner BASE_DIRECTORY "${PROJECT_SOURCE_DIR}/src")
