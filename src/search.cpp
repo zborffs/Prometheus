@@ -60,7 +60,7 @@ namespace internal {
         gen_all_moves(board, movelist);
 //        order_moves(movelist);
 
-        for (int i = 0; i < movelist.size(); i++) {
+        for (long unsigned int i = 0; i < movelist.size(); i++) {
             /// make the move, then determine if it's legal by playing it and seeing whether you put yourself in check
             board.make_move(movelist[i]);
             if (board.is_king_checked((!board.side_2_move()))) {
@@ -150,7 +150,7 @@ namespace internal {
         gen_all_moves(board, movelist);
 //        order_moves(movelist);
 
-        for (int i = 0; i < movelist.size(); i++) {
+        for (long unsigned int i = 0; i < movelist.size(); i++) {
             /// for each move, determine its legality by playing it and seeing whether you put yourself in check
             board.make_move(movelist[i]);
             if (board.is_king_checked(!board.side_2_move())) {
@@ -242,7 +242,7 @@ namespace internal {
         gen_all_caps(board, movelist);
 //        order_moves(movelist);
 
-        for (int i = 0; i < movelist.size(); i++) {
+        for (long unsigned int i = 0; i < movelist.size(); i++) {
             /// make the move and test that it's legal
             board.make_move(movelist[i]);
             if (board.is_king_checked(!board.side_2_move())) {
@@ -306,7 +306,7 @@ namespace internal {
         struct timeval tv{};
         tv.tv_sec = 0;
         tv.tv_usec = 0;
-        select(16, &readfds, 0, 0, &tv);
+        select(16, &readfds, nullptr, nullptr, &tv);
 
         bool ret = (FD_ISSET(fileno(stdin), &readfds));
         int bytes;
@@ -356,7 +356,7 @@ namespace internal {
     void order_moves(std::vector<ChessMove>& movelist, ChessMove* hash_move) {
         MoveScore score = 0;
 
-        for (int i = 0; i < movelist.size(); i++) {
+        for (long unsigned int i = 0; i < movelist.size(); i++) {
             score += movelist[i].score;
 
             if (hash_move != nullptr && *hash_move == movelist[i]) {
@@ -382,7 +382,7 @@ bool is_move_legal(Board& board, ChessMove& chessmove) {
     /// generate all moves
     gen_all_moves(board, movelist);
 
-    for (int i = 0; i < movelist.size(); i++) {
+    for (long unsigned int i = 0; i < movelist.size(); i++) { // NOLINT
         /// iterate through the moves and if a legal move equals the given move, return true
         board.make_move(movelist[i]);
         if(!board.is_king_checked(!board.side_2_move())) {

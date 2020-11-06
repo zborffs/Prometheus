@@ -7,7 +7,7 @@
 /**
  * generic constructor that sets all member variables to default values
  */
-ChessMove::ChessMove() : from_sq(A1), to_sq(A1), mf(NO_MOVE_FLAG), pf(NO_MOVE_FLAG), moved(NO_PIECE), captured(NO_PIECE), score(0) {
+ChessMove::ChessMove() : from_sq(A1), mf(NO_MOVE_FLAG), to_sq(A1), pf(NO_MOVE_FLAG), moved(NO_PIECE), captured(NO_PIECE), score(0) {
 
 }
 
@@ -20,7 +20,7 @@ ChessMove::ChessMove() : from_sq(A1), to_sq(A1), mf(NO_MOVE_FLAG), pf(NO_MOVE_FL
  * @param captured PieceType that was captured (if one was)
  */
 ChessMove::ChessMove(Square_t from_sq, Square_t to_sq, MoveFlag_t flag, PieceType_t moved, PieceType_t captured) :
-        from_sq(from_sq), to_sq(to_sq), mf(flag & 3), pf(flag >> 2), moved(moved), captured(captured), score(0) {
+        from_sq(from_sq), mf(flag & (MoveFlag_t)3), to_sq(to_sq), pf(flag >> (MoveFlag_t)2), moved(moved), captured(captured), score(0) {
 
     if (captured != NO_PIECE) {
         score = MVVLVA[captured / 2 - 1][moved / 2 - 1];
@@ -70,7 +70,8 @@ PieceType_t ChessMove::promoted() noexcept {
         return NO_PIECE;
     }
 
-    return 2 * (move_info & ~CAPTURE_MOVE) - 12 + (!(to_sq / 8));
+
+    return 2 * (move_info & ~CAPTURE_MOVE) - 12 + (!(to_sq / 8)); // NOLINT
 }
 
 /**
@@ -84,15 +85,15 @@ PieceType_t ChessMove::promoted() const noexcept {
         return NO_PIECE;
     }
 
-    return 2 * (move_info & ~CAPTURE_MOVE) - 12 + (!(to_sq / 8));
+    return 2 * (move_info & ~CAPTURE_MOVE) - 12 + (!(to_sq / 8)); // NOLINT
 }
 
 /**
  * getter method the MoveFlag from mf and pf member variables
  * @return the Moveflag of this ChessMove
  */
-MoveFlag_t ChessMove::flag() noexcept {
-    return mf | (pf << 2);
+MoveFlag_t ChessMove::flag() noexcept { // NOLINT
+    return mf | (pf << 2); // NOLINT
 }
 
 /**
@@ -100,7 +101,7 @@ MoveFlag_t ChessMove::flag() noexcept {
  * @return the Moveflag of this ChessMove
  */
 MoveFlag_t ChessMove::flag() const noexcept {
-    return mf | (pf << 2);
+    return mf | (pf << 2); // NOLINT
 }
 
 /**

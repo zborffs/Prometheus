@@ -41,19 +41,19 @@ void TranspositionTable::reset_tracking_variables() {
 #endif // NDEBUG
 
 ChessHash* TranspositionTable::find(const PositionKey key) {
-    int i = index(key);
-    TranspositionTable::Entry* entry = &table_[i];
+    int x = index(key);
+    TranspositionTable::Entry* entry = &table_[x];
 
 #ifndef NDEBUG
     ++num_hash_probes_;
 #endif // NDEBUG
 
-    for (int i = 0; i < HASHES_LENGTH; i++) {
-        if (entry->hashes[i].key == key) {
+    for (auto & hashe : entry->hashes) {
+        if (hashe.key == key) {
 #ifndef NDEBUG
             ++hash_hits_;
 #endif // NDEBUG
-            return &entry->hashes[i];
+            return &hashe;
         }
     }
 
@@ -66,41 +66,41 @@ ChessHash* TranspositionTable::find(const PositionKey key) {
  * @return
  */
 bool TranspositionTable::insert(const ChessHash& hash) {
-    int i = index(hash.key);
-    TranspositionTable::Entry* entry = &table_[i];
+    int x = index(hash.key);
+    TranspositionTable::Entry* entry = &table_[x];
 
-    for (int i = 0; i < HASHES_LENGTH; i++) {
+    for (auto & hashe : entry->hashes) {
         /// if the entry is not in the slot, then just put it in there
-        if (entry->hashes[i].key == 0) {
-            entry->hashes[i] = hash;
+        if (hashe.key == 0) {
+            hashe = hash;
 #ifndef NDEBUG
             ++num_entries_;
 #endif // NDEBUG
             return true;
-        } else if (entry->hashes[i] == hash) {
-            if (entry->hashes[i].hash_flag == hash.hash_flag) {
+        } else if (hashe == hash) {
+            if (hashe.hash_flag == hash.hash_flag) {
                 /// if the move in the table is on the PV, but it's root's ply was >= some age threshold, then replace it
-                int hash1_age = ((int)entry->hashes[i].age % 255) - entry->hashes[i].depth; // ply of root position
+                int hash1_age = ((int)hashe.age % 255) - hashe.depth; // ply of root position
                 int hash_age = ((int)hash.age % 255) - hash.depth; // ply of root position
-                if (hash_age - hash1_age >= AGE_DIFFERENCE_THRESHOLD || entry->hashes[i].depth < hash.depth) {
-                    entry->hashes[i] = hash;
+                if (hash_age - hash1_age >= AGE_DIFFERENCE_THRESHOLD || hashe.depth < hash.depth) {
+                    hashe = hash;
                     return true;
                 }
 
                 return false;
-            } else if (entry->hashes[i].hash_flag == HashFlag::EXACT && hash.hash_flag != HashFlag::EXACT) {
+            } else if (hashe.hash_flag == HashFlag::EXACT && hash.hash_flag != HashFlag::EXACT) {
                 /// if the move in the table is on the PV, but it's root's ply was >= some age threshold, then replace it
-                int hash1_age = ((int)entry->hashes[i].age % 255) - entry->hashes[i].depth; // ply of root position
+                int hash1_age = ((int)hashe.age % 255) - hashe.depth; // ply of root position
                 int hash_age = ((int)hash.age % 255) - hash.depth; // ply of root position
                 if (hash_age - hash1_age >= AGE_DIFFERENCE_THRESHOLD) {
-                    entry->hashes[i] = hash;
+                    hashe = hash;
                     return true;
                 }
 
                 return false;
-            } else if (entry->hashes[i].hash_flag != HashFlag::EXACT && hash.hash_flag == HashFlag::EXACT) {
+            } else if (hashe.hash_flag != HashFlag::EXACT && hash.hash_flag == HashFlag::EXACT) {
                 /// if the hash inside the table is not on the PV but the move being inserted is, then just replace it
-                entry->hashes[i] = hash;
+                hashe = hash;
                 return true;
             }
         }
