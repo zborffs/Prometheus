@@ -859,7 +859,7 @@ namespace internal {
         all_front_spans |= ((all_front_spans >> 1) & ~FILE_MASK[FILEH]) | ((all_front_spans << 1) & ~FILE_MASK[FILEA]);
         return board.piece_bb(B_PAWN) & ~all_front_spans;
     }
-};
+}
 
 
 /**

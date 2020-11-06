@@ -108,7 +108,7 @@ namespace internal {
     Bitboard black_hanging_pawns(const Board& board);
     Bitboard white_passed_pawns(const Board& board);
     Bitboard black_passed_pawns(const Board& board);
-};
+}
 
 Centipawns_t evaluate(const Board& board, EvaluationState& es, bool verbose = false);
 

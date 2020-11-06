@@ -621,7 +621,7 @@ namespace internal {
             }
         }
     }
-};
+}
 
 
 /**

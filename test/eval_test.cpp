@@ -51,8 +51,8 @@ TEST_F(EvaluationTester, MaterialSymmetry) {
 
             /// Set board again and evaluate
             board.set_board(split_fen.begin(), split_fen.end());
-            for (int i = 0; i < split_fen.size(); i++) {
-                std::cout << split_fen[i] << " ";
+            for (auto & i : split_fen) {
+                std::cout << i << " ";
             }
             std::cout <<  std::endl << board << std::endl;
             internal::def_stage(board, eval_state);
@@ -119,8 +119,8 @@ TEST_F(EvaluationTester, PawnSymmetry) {
 
             /// Set board again and evaluate
             board.set_board(split_fen.begin(), split_fen.end());
-            for (int i = 0; i < split_fen.size(); i++) {
-                std::cout << split_fen[i] << " ";
+            for (auto & i : split_fen) {
+                std::cout << i << " ";
             }
             std::cout <<  std::endl << board << std::endl;
             internal::def_stage(board, eval_state);
@@ -153,8 +153,8 @@ TEST_F(EvaluationTester, RookSymmetry) {
 
             /// Set board again and evaluate
             board.set_board(split_fen.begin(), split_fen.end());
-            for (int i = 0; i < split_fen.size(); i++) {
-                std::cout << split_fen[i] << " ";
+            for (auto & i : split_fen) {
+                std::cout << i << " ";
             }
             std::cout <<  std::endl << board << std::endl;
             internal::def_stage(board, eval_state);
@@ -187,8 +187,8 @@ TEST_F(EvaluationTester, KnightSymmetry) {
 
             /// Set board again and evaluate
             board.set_board(split_fen.begin(), split_fen.end());
-            for (int i = 0; i < split_fen.size(); i++) {
-                std::cout << split_fen[i] << " ";
+            for (auto & i : split_fen) {
+                std::cout << i << " ";
             }
             std::cout <<  std::endl << board << std::endl;
             internal::def_stage(board, eval_state);
@@ -221,8 +221,8 @@ TEST_F(EvaluationTester, BishopSymmetry) {
 
             /// Set board again and evaluate
             board.set_board(split_fen.begin(), split_fen.end());
-            for (int i = 0; i < split_fen.size(); i++) {
-                std::cout << split_fen[i] << " ";
+            for (auto & i : split_fen) {
+                std::cout << i << " ";
             }
             std::cout <<  std::endl << board << std::endl;
             internal::def_stage(board, eval_state);
@@ -255,8 +255,8 @@ TEST_F(EvaluationTester, QueenSymmetry) {
 
             /// Set board again and evaluate
             board.set_board(split_fen.begin(), split_fen.end());
-            for (int i = 0; i < split_fen.size(); i++) {
-                std::cout << split_fen[i] << " ";
+            for (auto & i : split_fen) {
+                std::cout << i << " ";
             }
             std::cout <<  std::endl << board << std::endl;
             internal::def_stage(board, eval_state);
@@ -289,8 +289,8 @@ TEST_F(EvaluationTester, KingSymmetry) {
 
             /// Set board again and evaluate
             board.set_board(split_fen.begin(), split_fen.end());
-            for (int i = 0; i < split_fen.size(); i++) {
-                std::cout << split_fen[i] << " ";
+            for (auto & i : split_fen) {
+                std::cout << i << " ";
             }
             std::cout <<  std::endl << board << std::endl;
             internal::def_stage(board, eval_state);

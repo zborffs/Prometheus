@@ -74,7 +74,6 @@ struct UCIOptions {
         }
 
         os << std::endl;
-
         os << std::boolalpha;
 
         os << "  Default Transposition Table Size: " << opt.default_tt_size << " [MB]" << std::endl;

@@ -48,7 +48,7 @@ namespace internal {
     void gen_king_cap(Board& board, std::vector<ChessMove>& movelist);
     void gen_king_quiet(Board& board, std::vector<ChessMove>& movelist);
     void gen_castle(Board& board, std::vector<ChessMove>& movelist);
-};
+}
 
 void gen_all_moves(Board& board, std::vector<ChessMove>& movelist);
 void gen_all_caps(Board& board, std::vector<ChessMove>& movelist);

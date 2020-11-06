@@ -20,7 +20,7 @@
 
 bool init_logger(const std::string& path) noexcept;
 
-int main(const int argc, char* argv[]) {
+int main([[maybe_unused]] const int argc, char* argv[]) {
     /// Initialize the logger variables, if it fails to initialize, then quit.
     if (!init_logger(std::string(argv[0]))) {
         return LOG_FAILURE;

@@ -366,7 +366,7 @@ namespace internal {
 
         std::sort(movelist.begin(), movelist.end());
     }
-};
+}
 
 /**
  * determines whether a given move in a certain position is legal or not

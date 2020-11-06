@@ -332,7 +332,7 @@ namespace internal {
 
         }
     }
-};
+}
 
 /**
  * enters the uci protocol loop, which processes user input and conforms to UCI protocol
