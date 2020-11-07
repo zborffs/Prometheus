@@ -2,7 +2,43 @@
 image: gcc
 
 # Build Stage: Compile and Link Libraries and Executables
-build:
+build release:
+  stage: build
+  timeout: 8 hours
+
+  # Download and Install make, cmake, python3, pip3, googletest, spdlog, and gcovr
+  before_script:
+    - apt -y update && apt -y install make cmake git python3 python3-pip build-essential
+    - mkdir -p /opt && cd /opt
+    - git clone https://github.com/google/googletest.git
+    - cd googletest
+    - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local .
+    - make -j
+    - make install
+    - cd /opt
+    - git clone https://github.com/gabime/spdlog.git
+    - cd spdlog
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make -j
+    - make install
+    - cd $CI_PROJECT_DIR
+
+  # Build Debug, Release, and Code Coverage versions of Source
+  script:
+    - mkdir -p cmake-build-release
+    - cd cmake-build-release
+    - cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" ..
+    - make -j
+
+  # Extract everything in each cmake build directory
+  artifacts:
+    paths:
+      - cmake-build-release/
+
+# Build Stage: Compile and Link Libraries and Executables
+build debug:
   stage: build
   timeout: 8 hours
 
@@ -31,15 +67,10 @@ build:
 
   # Build Debug, Release, and Code Coverage versions of Source
   script:
-    - mkdir -p cmake-build-release
-    - cd cmake-build-release
-    - cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" ..
-    - make -j
-    - cd ../
     - mkdir -p cmake-build-coverage
     - cd cmake-build-coverage
     - cmake -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON -G "CodeBlocks - Unix Makefiles" ..
-    - make -j2
+    - make -j
     - make BitmaskCoverage
     - make BoardCoverage
     - make ChessClockCoverage
@@ -52,11 +83,6 @@ build:
     - lcov --add-tracefile BitmaskCoverage.info --add-tracefile BoardCoverage.info --add-tracefile ChessClockCoverage.info --add-tracefile ChessMoveCoverage.info --add-tracefile StringManipCoverage.info --add-tracefile UCIOptionsCoverage.info --add-tracefile EvalCoverage.info --add-tracefile PerftCoverage.info --add-tracefile SearchCoverage.info --output-file CompleteCoverage.info
     - lcov --remove CompleteCoverage.info '/usr/local/*' '/usr/include/*' -o CompleteCoverageFiltered.info
 
-  # Extract everything in each cmake build directory
-  artifacts:
-    paths:
-      - cmake-build-release/
-      - cmake-build-coverage/
 
 # Run all test executables
 test:
