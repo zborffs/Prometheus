@@ -51,6 +51,13 @@ public:
 
     ~TranspositionTable();
 
+    inline void clear() {
+        std::memset(table_, 0, tt_size_ * sizeof(Entry));
+#ifndef NDEBUG
+        reset_tracking_variables();
+#endif // NDEBUG
+    }
+
 #ifndef NDEBUG
     double load_factor();
     int num_entries();
@@ -66,7 +73,7 @@ public:
     }
 
     ChessHash* find(PositionKey key);
-    bool insert(const ChessHash& hash);
+    bool insert(const ChessHash& inserted_hash);
 };
 
 

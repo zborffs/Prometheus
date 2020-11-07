@@ -26,7 +26,7 @@ ChessHash::ChessHash()
  */
 ChessHash::ChessHash(PositionKey k, Centipawns_t s, Square_t fs, Square_t ts, MoveFlag_t moveflag, Depth d, HashFlag hashflag, Depth a)
 : key(k), score(s), from_sq(fs), mf(moveflag & 3), to_sq(ts),  pf(moveflag >> 2), depth(d), hash_flag(hashflag), age(a) {
-
+    assert(d <= a);
 }
 
 /**
