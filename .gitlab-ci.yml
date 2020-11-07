@@ -39,7 +39,7 @@ build:
     - mkdir -p cmake-build-coverage
     - cd cmake-build-coverage
     - cmake -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON -G "CodeBlocks - Unix Makefiles" ..
-    - make -j
+    - make -j2
     - make BitmaskCoverage
     - make BoardCoverage
     - make ChessClockCoverage

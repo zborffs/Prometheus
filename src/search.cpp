@@ -58,7 +58,7 @@ namespace internal {
 
         /// generate all the moves
         gen_all_moves(board, movelist);
-//        order_moves(movelist);
+        order_moves(movelist);
 
         for (long unsigned int i = 0; i < movelist.size(); i++) {
             /// make the move, then determine if it's legal by playing it and seeing whether you put yourself in check
@@ -148,7 +148,7 @@ namespace internal {
 
         /// generate all the moves from this position
         gen_all_moves(board, movelist);
-//        order_moves(movelist);
+        order_moves(movelist);
 
         for (long unsigned int i = 0; i < movelist.size(); i++) {
             /// for each move, determine its legality by playing it and seeing whether you put yourself in check
@@ -240,7 +240,7 @@ namespace internal {
 
         /// only generate captures and promotions
         gen_all_caps(board, movelist);
-//        order_moves(movelist);
+        order_moves(movelist);
 
         for (long unsigned int i = 0; i < movelist.size(); i++) {
             /// make the move and test that it's legal
@@ -356,12 +356,16 @@ namespace internal {
     void order_moves(std::vector<ChessMove>& movelist, ChessMove* hash_move) {
         MoveScore score = 0;
 
-        for (long unsigned int i = 0; i < movelist.size(); i++) {
-            score += movelist[i].score;
+        for (auto & move : movelist) {
+            score += move.score;
 
-            if (hash_move != nullptr && *hash_move == movelist[i]) {
-                score += 128; // |= (1 << 7)
+            if (hash_move != nullptr) {
+                if (*hash_move == move) {
+                    score += 128; // |= (1 << 7)
+                }
             }
+
+            move.score = score;
         }
 
         std::sort(movelist.begin(), movelist.end());
@@ -427,6 +431,39 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
         /// Get a split from the clock and compute the time elapsed in milliseconds
         search_state.clock.stop();
         Milliseconds_t time_elapsed = search_state.clock.duration() / 1000000;
+#ifndef NDEBUG
+        std::string game_stage_str{};
+        switch (eval_state.stage) {
+            case OPENING:
+                game_stage_str = "opening";
+                break;
+            case MID_GAME:
+                game_stage_str = "middle";
+                break;
+            case EARLY_END_GAME:
+                game_stage_str = "early_end";
+                break;
+            case LATE_END_GAME:
+                game_stage_str = "late_end";
+                break;
+        }
+
+        std::string pos_type_str{};
+        switch (eval_state.pos_type) {
+            case CLOSED:
+                pos_type_str = "closed";
+                break;
+            case SEMI_CLOSED:
+                pos_type_str = "semi_closed";
+                break;
+            case SEMI_OPEN:
+                pos_type_str = "semi_open";
+                break;
+            case OPEN:
+                pos_type_str = "open";
+                break;
+        }
+#endif // NDEBUG
 
         /// print search information
         std::cout << "info score cp " << score << " time " << time_elapsed << " depth " << depth <<
@@ -436,6 +473,8 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
             " nps " << (double)(search_state.raw_nodes / (time_elapsed / 1000.)) <<
             " ordering " << search_state.ordering() <<
             " window_ratio " << search_state.window_ratio() <<
+            " position_type " << pos_type_str <<
+            " game_stage " << game_stage_str <<
 #endif // NDEBUG
             std::endl;
 
