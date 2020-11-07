@@ -46,6 +46,7 @@ public:
     , num_entries_(0), hash_hits_(0), num_hash_probes_(0), num_type_1_hash_misses_(0), num_type_2_hash_misses_(0)
 #endif // NDEBUG
     {
+        assert(tt_size_ > 0);
         table_ = new Entry[tt_size_];
     }
 
@@ -74,6 +75,20 @@ public:
 
     ChessHash* find(PositionKey key);
     bool insert(const ChessHash& inserted_hash);
+
+    friend std::ostream& operator<<(std::ostream& os, TranspositionTable& tt) {
+        os << "Transposition Table: " << std::endl;
+        os << "- tt_size: " << tt.tt_size_ << std::endl;
+#ifndef NDEBUG
+        os << "  num_entries: " << tt.num_entries_ << std::endl;
+        os << "  hash_hits: " << tt.hash_hits_ << std::endl;
+        os << "  num_hash_probes: " << tt.num_hash_probes_ << std::endl;
+        os << "  num_type_1_hash_misses: " << tt.num_type_1_hash_misses_ << std::endl;
+        os << "  num_type_2_hash_misses: " << tt.num_type_2_hash_misses_ << std::endl;
+#endif // NDEBUG
+
+        return os;
+    }
 };
 
 

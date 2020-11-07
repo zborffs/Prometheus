@@ -158,7 +158,7 @@ int main(int argc, char **argv) {
         s += splitvec[0];
     }
 
-    for (int i = 1; i < splitvec.size() - 1; i++) {
+    for (unsigned i = 1; i < splitvec.size() - 1; i++) {
         s += std::string("/" + splitvec[i]);
     }
     fen_path = std::string(s + "/../../" + argv[1]);

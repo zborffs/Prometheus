@@ -85,7 +85,7 @@ TEST_F(EvaluationTester, TempoSymmetry) {
 
             /// Set board again and evaluate
             board.set_board(split_fen.begin(), split_fen.end());
-            for (int i = 0; i < split_fen.size(); i++) {
+            for (unsigned i = 0; i < split_fen.size(); i++) {
                 std::cout << split_fen[i] << " ";
             }
             std::cout <<  std::endl << board << std::endl;
@@ -319,7 +319,7 @@ int main(int argc, char **argv) {
         s += splitvec[0];
     }
 
-    for (int i = 1; i < splitvec.size() - 1; i++) {
+    for (unsigned i = 1; i < splitvec.size() - 1; i++) {
         s += std::string("/" + splitvec[i]);
     }
     fen_path = std::string(s + "/../../" + argv[1]);

@@ -13,10 +13,12 @@
 #include "extern.hpp"
 #include "move_gen.hpp"
 #include "uci_options.hpp"
+#include "transposition_table.hpp"
 
 struct SearchState {
     ChessClock clock;
     Result result_flag;
+    TranspositionTable tt;
 
 #ifndef NDEBUG
     int leaf_nodes;
@@ -27,7 +29,7 @@ struct SearchState {
     int window_success_count;
 #endif // NDEBUG
 
-    SearchState();
+    explicit SearchState(int tt_size);
 
 #ifndef NDEBUG
     [[nodiscard]] inline double ordering() const {
@@ -40,7 +42,7 @@ struct SearchState {
 #endif // NDEBUG
     void reset();
 
-    friend std::ostream& operator<<(std::ostream& os, const SearchState& ss) {
+    friend std::ostream& operator<<(std::ostream& os, SearchState& ss) {
         std::string result_flag_str{};
 
         switch (ss.result_flag) {
@@ -53,7 +55,6 @@ struct SearchState {
 
         os << "SearchState:" << std::endl;
         os << "- result_flag: " << result_flag_str << std::endl;
-
 #ifndef NDEBUG
         os << "  leaf_nodes: " << ss.leaf_nodes << std::endl;
         os << "  raw_nodes: " << ss.raw_nodes << std::endl;
@@ -62,6 +63,7 @@ struct SearchState {
         os << "  window_widen_count: " << ss.window_widen_count << std::endl;
         os << "  window_success_count: " << ss.window_success_count << std::endl;
 #endif // NDEBUG
+        os << ss.tt << std::endl;
 
         return os;
     }

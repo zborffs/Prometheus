@@ -59,7 +59,7 @@ protected:
     ChessMove black_promo_queen_capture;
 
 protected:
-    virtual void SetUp() {
+    void SetUp() override {
         /// Initialize Quiet Moves
         white_quiet_pawn = ChessMove(A2, A3, QUIET_MOVE, W_PAWN, NO_PIECE);
         black_quiet_pawn = ChessMove(C7, C6, QUIET_MOVE, B_PAWN, NO_PIECE);

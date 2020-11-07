@@ -9,7 +9,6 @@
 #include "attack.hpp"
 
 class AttackTester : public ::testing::Test {
-protected:
 
 };
 

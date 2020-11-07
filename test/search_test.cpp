@@ -25,9 +25,21 @@ class SearchTester : public ::testing::Test {
 protected:
     Board board;
     ChessClock clock;
-    SearchState search_state;
+    SearchState* search_state;
     EvaluationState eval_state;
     UCIOptions options;
+
+protected:
+    void SetUp() override {
+        search_state = new SearchState(1);
+    }
+
+    void TearDown() override {
+        delete search_state;
+        search_state = nullptr;
+    }
+
+
 };
 
 TEST_F(SearchTester, Mate_In_2) {
@@ -46,7 +58,7 @@ TEST_F(SearchTester, Mate_In_2) {
             std::cout << fen_string << std::endl << board << std::endl;
             std::string expected_move_str = split(separated_fen[1], ' ')[0];
             clock.start();
-            ChessMove best_move = think(board, options, search_state, eval_state);
+            ChessMove best_move = think(board, options, *search_state, eval_state);
             clock.stop();
             d += clock.duration();
             std::string move_str = best_move.to_algebraic_notation();
@@ -82,7 +94,7 @@ int main(int argc, char **argv) {
         s += splitvec[0];
     }
 
-    for (int i = 1; i < splitvec.size() - 1; i++) {
+    for (unsigned i = 1; i < splitvec.size() - 1; i++) {
         s += std::string("/" + splitvec[i]);
     }
     mate_in_2_path = std::string(s + "/../../" + argv[1]);

@@ -7,7 +7,7 @@
 /**
  * SearchState constructor: sets all member variables to default values
  */
-SearchState::SearchState() : result_flag(Result::NO_RESULT)
+SearchState::SearchState(int tt_size) : result_flag(Result::NO_RESULT), tt(tt_size)
 #ifndef NDEBUG
 , leaf_nodes(0), raw_nodes(0), fail_high_count(0), fail_high_first_count(0), window_widen_count(0), window_success_count(0)
 #endif // NDEBUG

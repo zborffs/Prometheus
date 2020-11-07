@@ -6,9 +6,6 @@
 #include "chess_hash.hpp"
 
 class ChessHashTester : public ::testing::Test {
-protected:
-
-protected:
 
 };
 

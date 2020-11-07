@@ -17,7 +17,6 @@
 #include <spdlog/sinks/daily_file_sink.h>
 
 class TranspositionTableTester : public ::testing::Test {
-protected:
 
 };
 

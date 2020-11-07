@@ -29,7 +29,7 @@ int main([[maybe_unused]] const int argc, char* argv[]) {
     /// Instantiate all state objects
     Board board;
     UCIOptions options;
-    SearchState search_state;
+    SearchState search_state(1024);
     EvaluationState eval_state;
 
     /// Create loop variables
