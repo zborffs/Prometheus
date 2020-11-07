@@ -9,10 +9,6 @@ namespace internal {
      * identifies engine to stdout as specified by UCI protocol
      */
     void identify_engine() noexcept {
-#ifndef NDEBUG
-        // if in debug mode, log things, otherwise don't
-        spdlog::get(logger_name)->info(R"(Identifying Engine -> name: "{}", version: "{}", author: "{}")", engine_name, version, author);
-#endif // NDEBUG
         std::cout << "id name " << engine_name << " " << version << std::endl << "id author " << author << std::endl;
     }
 
@@ -20,10 +16,6 @@ namespace internal {
      * sends "uciok" to stdout as specified by UCI protocol
      */
     void send_uciok() noexcept {
-#ifndef NDEBUG
-        // if in debug mode, log things, otherwise don't
-        spdlog::get(logger_name)->info("Sending uciok -> \"uciok\"");
-#endif // NDEBUG
         std::cout << "uciok" << std::endl;
     }
 
@@ -31,10 +23,6 @@ namespace internal {
      * sends "readyok" as specified by UCI protocol
      */
     void send_readyok() noexcept {
-#ifndef NDEBUG
-        // if in debug mode, log things, otherwise don't
-        spdlog::get(logger_name)->info("Sending readyok -> \"readyok\"");
-#endif // NDEBUG
         std::cout << "readyok" << std::endl;
     }
 
@@ -45,11 +33,6 @@ namespace internal {
     void register_engine(const std::vector<std::string>& register_commands) {
         const std::string name{"Zach Bortoff"};
         const std::string code{"1123581321"}; // arbitrary number (just concatenation of Fib numbers)
-
-#ifndef NDEBUG
-        // if in debug mode, log things, otherwise don't
-        spdlog::get(logger_name)->info(R"(Registering Engine -> name: "{}", code: {})", name, code);
-#endif // NDEBUG
 
         /// In debug mode, assert that all incoming command conforms to protocol (i.e. this command will have 1 arg);
         /// if in release, log the error, but don't do anything about it (i.e. ignore it).
@@ -76,11 +59,6 @@ namespace internal {
      * @param position_command  the specifics of the command
      */
     void parse_pos(Board& board, const std::vector<std::string>& commands) {
-#ifndef NDEBUG
-        /// in debug mode, log everything, otherwise don't
-        spdlog::get(logger_name)->info("Parsing position -> ");
-#endif // NDEBUG
-
         /// determine the location of the "moves" command
         auto moves_itr = std::find(commands.begin(), commands.end(), "moves");
 
@@ -361,10 +339,6 @@ void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_s
         }
         commands = split(input);
         std::cin.clear();
-
-#ifndef NDEBUG
-        spdlog::get(logger_name)->info("User said \"{}\"", input);
-#endif // NDEBUG
 
         /// If we received "isready", execute send_readyok()
         if (commands[0] == "isready") {
