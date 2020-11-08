@@ -32,23 +32,23 @@ TEST_F(TranspositionTableTester, TwoEquivalent_BothExact) {
 #endif // NDEBUG
 
     ChessHash hash1(0x01, 123, A1, B2, QUIET_MOVE, 2, EXACT, 2);
-    ChessHash hash2(0x01, 234, A1, B2, QUIET_MOVE, 4, EXACT, 4);
+    ChessHash hash2(0x01, 234, A1, B2, QUIET_MOVE, 1, EXACT, 4);
     EXPECT_EQ(hash1, hash2);
 
     EXPECT_EQ(tt.insert(hash1), true);
     EXPECT_EQ(*tt.find(hash1.key), hash1);
 
-    // Because the origin insert is EXACT and hasn't expired, it shouldn't be replaced
+    // Because the origin insert is EXACT and hasn't expired and it has a smaller depth, it shouldn't be replaced
     EXPECT_EQ(tt.insert(hash2), false);
     EXPECT_EQ(*tt.find(hash1.key), hash1);
 
-    ChessHash hash3(0x01, 222, A1, B2, QUIET_MOVE, 3, EXACT, hash1.age + AGE_DIFFERENCE_THRESHOLD + 3);
+    ChessHash hash3(0x01, 222, A1, B2, QUIET_MOVE, 1, EXACT, hash1.age + AGE_DIFFERENCE_THRESHOLD + 1);
     EXPECT_EQ(tt.insert(hash3), true);
     EXPECT_EQ(*tt.find(hash3.key), hash3);
     tt.clear();
     EXPECT_EQ(tt.find(hash3.key), nullptr);
 
-    ChessHash hash4(0x01, 222, A1, B2, QUIET_MOVE, 3, EXACT, hash1.age + AGE_DIFFERENCE_THRESHOLD + 4);
+    ChessHash hash4(0x01, 222, A1, B2, QUIET_MOVE, 1, EXACT, hash1.age + AGE_DIFFERENCE_THRESHOLD + 2);
     EXPECT_EQ(tt.insert(hash1), true);
     EXPECT_EQ(*tt.find(hash1.key), hash1);
     EXPECT_EQ(tt.insert(hash4), true);
@@ -56,7 +56,7 @@ TEST_F(TranspositionTableTester, TwoEquivalent_BothExact) {
     tt.clear();
     EXPECT_EQ(tt.find(hash4.key), nullptr);
 
-    ChessHash hash5(0x01, 222, A1, B2, QUIET_MOVE, 4, EXACT, hash1.age - hash1.depth + AGE_DIFFERENCE_THRESHOLD + 2);
+    ChessHash hash5(0x01, 222, A1, B2, QUIET_MOVE, 1, EXACT, hash1.age - hash1.depth + AGE_DIFFERENCE_THRESHOLD);
     EXPECT_EQ(tt.insert(hash1), true);
     EXPECT_EQ(*tt.find(hash1.key), hash1);
     bool expect_false = tt.insert(hash5);
@@ -121,7 +121,7 @@ TEST_F(TranspositionTableTester, ExactIn_NotExactOut) {
 #endif // NDEBUG
 
     ChessHash hash1(0x01, 123, A1, B2, QUIET_MOVE, 2, EXACT, 2);
-    ChessHash hash2(0x01, 234, A1, B2, QUIET_MOVE, 4, HashFlag::LOWER_BOUND, 4);
+    ChessHash hash2(0x01, 234, A1, B2, QUIET_MOVE, 4, LOWER_BOUND, 4);
     EXPECT_EQ(hash1, hash2);
 
     EXPECT_EQ(tt.insert(hash1), true);
@@ -145,7 +145,7 @@ TEST_F(TranspositionTableTester, ExactIn_NotExactOut) {
     tt.clear();
     EXPECT_EQ(tt.find(hash4.key), nullptr);
 
-    ChessHash hash5(0x01, 222, A1, B2, QUIET_MOVE, 4, HashFlag::LOWER_BOUND, hash1.age - hash1.depth + AGE_DIFFERENCE_THRESHOLD + 2);
+    ChessHash hash5(0x01, 222, A1, B2, QUIET_MOVE, 4, HashFlag::LOWER_BOUND, hash1.age + AGE_DIFFERENCE_THRESHOLD - 1);
     EXPECT_EQ(tt.insert(hash1), true);
     EXPECT_EQ(*tt.find(hash1.key), hash1);
     bool expect_false = tt.insert(hash5);

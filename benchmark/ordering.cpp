@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
     std::string output_file_path;
     Board board;
     ChessClock chess_clock;
-    SearchState search_state;
+    SearchState search_state(16384);
     EvaluationState eval_state;
     UCIOptions options;
 
@@ -68,6 +68,7 @@ int main(int argc, char **argv) {
             std::string fen_string = separated_fen[0];
             board.set_board(fen_string);
             think(board, options, search_state, eval_state);
+            search_state.tt.clear();
         }
     } catch (const std::exception& e) {
         throw;

@@ -8,7 +8,7 @@ plotly()
 
 # Try to read the same data back
 hdf5FileName = "data/ParsedOrdering.hdf5"
-groupNames = ["NoOrdering", "MVVLVA"]
+groupNames = ["NoOrdering", "MVVLVA", "MVVLVA_TTinRoot"]
 readMode = "r"
 ordering = Vector{Vector{Float64}}(undef, length(groupNames))
 depth = Vector{Vector{Int64}}(undef, length(groupNames))
@@ -58,13 +58,14 @@ end
 # Overall Move Ordering Comparison
 histogram(ordering[1], bins=16, label="No Ordering", title="Move Ordering Scheme Comparisons", xlabel="Move Ordering (%)", ylabel="Frequency (# Occurrences)", palette=cgrad(ColorSchemes.berlin.colors; alpha=0.33))
 histogram!(ordering[2], bins=16, label="MVVLVA")
+histogram!(ordering[3], bins=16, label="MVVLVA_TTinRoot")
 overallMean = Vector{Float64}(undef, length(ordering))
 overallStd = Vector{Float64}(undef, length(ordering))
 overallMedian = Vector{Float64}(undef, length(ordering))
 for i in 1:length(ordering)
-	overallMean[i] = mean(ordering)
-	overallStd[i] = std(ordering)
-	overallMedian[i] = median(ordering)
+	overallMean[i] = mean(ordering[i])
+	overallStd[i] = std(ordering[i])
+	overallMedian[i] = median(ordering[i])
 end
 
 # Opening Move Ordering Comparison
@@ -83,6 +84,7 @@ for i in 1:length(openingOrdering)
 end
 histogram(openingOrdering[1], label="No Ordering", title="Opening Move Ordering Scheme Comparisons", xlabel="Move Ordering (%)", ylabel="Frequency (# Occurrences)", palette=cgrad(ColorSchemes.berlin.colors; alpha=0.33))
 histogram!(openingOrdering[2], label="MVVLVA")
+histogram!(openingOrdering[3], bins=16, label="MVVLVA_TTinRoot")
 
 # Middle Game
 middleIndices = union(findall(x->x == 2, gameStage[1]), findall(x->x == 2, gameStage[2]))
@@ -100,6 +102,7 @@ for i in 1:length(middleOrdering)
 end
 histogram(middleOrdering[1], bins=12, label="No Ordering", title="Mid-Game Move Ordering Scheme Comparisons", xlabel="Move Ordering (%)", ylabel="Frequency (# Occurrences)", palette=cgrad(ColorSchemes.berlin.colors; alpha=0.33))
 histogram!(middleOrdering[2], bins=12, label="MVVLVA")
+histogram!(middleOrdering[3], bins=12, label="MVVLVA_TTinRoot")
 
 # Early End Game
 earlyendIndices = union(findall(x->x == 3, gameStage[1]), findall(x->x == 3, gameStage[2]))
@@ -117,6 +120,7 @@ for i in 1:length(earlyendOrdering)
 end
 histogram(earlyendOrdering[1], bins=12, label="No Ordering", title="Early End-Game Move Ordering<br> Scheme Comparisons", xlabel="Move Ordering (%)", ylabel="Frequency (# Occurrences)", palette=cgrad(ColorSchemes.berlin.colors; alpha=0.33))
 histogram!(earlyendOrdering[2], bins=12, label="MVVLVA")
+histogram!(earlyendOrdering[3], bins=12, label="MVVLVA_TTinRoot")
 
 # Late End Game
 lateendIndices = union(findall(x->x == 4, gameStage[1]), findall(x->x == 4, gameStage[2]))
@@ -134,3 +138,44 @@ for i in 1:length(lateendOrdering)
 end
 histogram(lateendOrdering[1], bins=12, label="No Ordering", title="Late End-Game Move Ordering<br> Scheme Comparisons", xlabel="Move Ordering (%)", ylabel="Frequency (# Occurrences)", palette=cgrad(ColorSchemes.berlin.colors; alpha=0.33))
 histogram!(lateendOrdering[2], bins=12, label="MVVLVA")
+histogram!(lateendOrdering[3], bins=12, label="MVVLVA_TTinRoot")
+
+println("Overall:")
+println("- mean: ")
+println(overallMean)
+println("- std:")
+println(overallStd)
+println("- median:")
+println(overallMedian)
+
+println("Opening:")
+println("- mean: ")
+println(openingMean)
+println("- std:")
+println(openingStd)
+println("- median:")
+println(openingMedian)
+
+println("Midgame:")
+println("- mean: ")
+println(middleMean)
+println("- std:")
+println(middleStd)
+println("- median:")
+println(middleMedian)
+
+println("Early End:")
+println("- mean: ")
+println(earlyendMean)
+println("- std:")
+println(earlyendStd)
+println("- median:")
+println(earlyendMedian)
+
+println("Late End:")
+println("- mean: ")
+println(lateendMean)
+println("- std:")
+println(lateendStd)
+println("- median:")
+println(lateendMedian)

@@ -34,7 +34,7 @@ struct ChessMove {
 
     bool operator==(const ChessMove& rhs) const;
     inline bool operator<(const ChessMove& rhs) const {
-        return this->score < rhs.score;
+        return this->score > rhs.score;
     }
 
     /// Getters

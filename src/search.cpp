@@ -56,9 +56,27 @@ namespace internal {
         ChessMove best_move;
         Centipawns_t root_score = -INF;
 
+        /// Try to reconstruct the best move from hash table
+        ChessHash* root_hash = search_state.tt.find(board.key()); // attempt to find root position's hash in table for move ordering purposes only
+        ChessMove* hash_move = nullptr;
+        if (root_hash != nullptr) {
+            PieceType_t moved = board.piece_type(root_hash->from_sq);
+            PieceType_t captured = PieceType::NO_PIECE;
+            if (root_hash->m_flag() & CAPTURE_MOVE) {
+                if (root_hash->m_flag() == ENPASSANT) {
+                    captured = W_PAWN + !board.side_2_move();
+                } else {
+                    captured = board.piece_type(root_hash->to_sq);
+                }
+            }
+            hash_move = new ChessMove(root_hash->from_sq, root_hash->to_sq, root_hash->m_flag(), moved, captured);
+        }
+
         /// generate all the moves
         gen_all_moves(board, movelist);
-        order_moves(movelist);
+        order_moves(movelist, hash_move);
+        delete hash_move;
+        hash_move = nullptr;
 
         for (long unsigned int i = 0; i < movelist.size(); i++) {
             /// make the move, then determine if it's legal by playing it and seeing whether you put yourself in check
@@ -83,6 +101,9 @@ namespace internal {
             if (root_score > alpha || best_move == ChessMove()) {
                 alpha = root_score;
                 best_move = movelist[i];
+
+                ChessHash pv_hash(board.key(), root_score, best_move.from_sq, best_move.to_sq, best_move.flag(), depth, EXACT, board.current_ply());
+                search_state.tt.insert(pv_hash);
             }
         }
 
@@ -360,12 +381,14 @@ namespace internal {
             score += move.score;
 
             if (hash_move != nullptr) {
-                if (*hash_move == move) {
+                if (move == *hash_move) {
                     score += 128; // |= (1 << 7)
                 }
             }
 
+
             move.score = score;
+            score = 0;
         }
 
         std::sort(movelist.begin(), movelist.end());

@@ -26,7 +26,7 @@ ChessHash::ChessHash()
  */
 ChessHash::ChessHash(PositionKey k, Centipawns_t s, Square_t fs, Square_t ts, MoveFlag_t moveflag, Depth d, HashFlag hashflag, Depth a)
 : key(k), score(s), from_sq(fs), mf(moveflag & 3), to_sq(ts),  pf(moveflag >> 2), depth(d), hash_flag(hashflag), age(a) {
-    assert(d <= a);
+
 }
 
 /**
@@ -54,7 +54,7 @@ bool ChessHash::operator==(const ChessHash& hash) noexcept {
     /// I need to decide what I mean by equal, to do that, I need to use this function.
     /// Equal could mean having the exact same member variables
     /// OR equal could mean having all member variables equal except ones that would change depending on the search information (like score, depth, hash flag, and age)
-    return this->key == hash.key && this->from_sq == hash.from_sq && this->to_sq == hash.to_sq && this->m_flag() == hash.m_flag();
+    return this->key == hash.key;
 }
 
 /**
@@ -63,7 +63,7 @@ bool ChessHash::operator==(const ChessHash& hash) noexcept {
  * @return     whether the two ChessHash objects are from the same move and the same position
  */
 bool ChessHash::operator==(const ChessHash& hash) const noexcept {
-    return this->key == hash.key && this->from_sq == hash.from_sq && this->to_sq == hash.to_sq && this->m_flag() == hash.m_flag();
+    return this->key == hash.key;
 }
 
 /**

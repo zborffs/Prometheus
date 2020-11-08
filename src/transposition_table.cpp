@@ -93,14 +93,20 @@ bool TranspositionTable::insert(const ChessHash& inserted_hash) {
             return true;
         } else if (h == inserted_hash) {
             /// if the move in the table is on the PV, but it's root's ply was >= some age threshold, then replace it
-            Depth hash1_age = (h.age % 255) - h.depth; // ply of root position
-            Depth hash_age = (inserted_hash.age % 255) - inserted_hash.depth; // ply of root position
+            Depth hash1_age = (h.age % 255); // ply of root position
+            Depth hash_age = (inserted_hash.age % 255); // ply of root position
             if (hash_age - hash1_age >= AGE_DIFFERENCE_THRESHOLD) {
                 h = inserted_hash;
                 return true;
             }
 
-            if (h.hash_flag == EXACT) {
+            if (h.hash_flag == EXACT && inserted_hash.hash_flag == EXACT) {
+                if (inserted_hash.depth >= h.depth) {
+                    h = inserted_hash;
+                    return true;
+                }
+                return false;
+            } else if (h.hash_flag == EXACT && inserted_hash.hash_flag != EXACT) {
                 return false;
             } else if (inserted_hash.hash_flag == EXACT) { // we already know that h.hash_flag != EXACT at this point, so no need to include
                 /// if the inserted_hash inside the table is not on the PV but the move being inserted is, then just replace it

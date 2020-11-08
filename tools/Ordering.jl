@@ -4,7 +4,7 @@
 
 
 # Import Packages
-using Plots, Statistics, Distributions, StatsPlots, HDF5
+using Plots, Statistics, Distributions, StatsPlots, HDF5, ColorSchemes
 plotly()
 
 # Read raw data from file
@@ -91,12 +91,12 @@ openingIndices = findall(x->x == 1, gameStage)
 if length(openingIndices) != 0
 	println()
 	println("Opening: ")
-	println("N = ", length(midgameIndices))
-	gameStageOrdering = ordering[midgameIndices]
-	gameStageRawNodes = rawNodes[midgameIndices]
-	gameStageLeafNodes = leafNodes[midgameIndices]
-	gameStageDepth = depth[midgameIndices]
-	gameStageTime = time[midgameIndices]
+	println("N = ", length(openingIndices))
+	gameStageOrdering = ordering[openingIndices]
+	gameStageRawNodes = rawNodes[openingIndices]
+	gameStageLeafNodes = leafNodes[openingIndices]
+	gameStageDepth = depth[openingIndices]
+	gameStageTime = time[openingIndices]
 	println("--------- Ordering --------")
 	println("- mean   = ", mean(gameStageOrdering))
 	println("- median = ", median(gameStageOrdering))
@@ -109,7 +109,7 @@ if length(openingIndices) != 0
 	println("- cor    = ", cor(gameStageOrdering, gameStageDepth))
 	println("------ Ordering/Time ------")
 	println("- cor    = ", cor(gameStageOrdering, gameStageTime))
-	histogram(gameStageOrdering, title="Opening Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering%", ylabel="Frequency (# Occurrence)", legend=:none)
+	histogram(gameStageOrdering, title="Opening Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering%", ylabel="Frequency (# Occurrence)", legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
 end
 midgameIndices = findall(x->x == 2, gameStage)
 if length(midgameIndices) != 0
@@ -133,7 +133,7 @@ if length(midgameIndices) != 0
 	println("- cor    = ", cor(gameStageOrdering, gameStageDepth))
 	println("------ Ordering/Time ------")
 	println("- cor    = ", cor(gameStageOrdering, gameStageTime))
-	histogram(gameStageOrdering, title="Mid-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering%", ylabel="Frequency (# Occurrence)", legend=:none)
+	histogram(gameStageOrdering, title="Mid-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering%", ylabel="Frequency (# Occurrence)", legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
 end
 earlyEndIndices = findall(x->x == 3, gameStage)
 if length(earlyEndIndices) != 0
@@ -157,7 +157,7 @@ if length(earlyEndIndices) != 0
 	println("- cor    = ", cor(gameStageOrdering, gameStageDepth))
 	println("------ Ordering/Time ------")
 	println("- cor    = ", cor(gameStageOrdering, gameStageTime))
-	histogram(gameStageOrdering, title="Early End-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering%", ylabel="Frequency (# Occurrence)", legend=:none)
+	histogram(gameStageOrdering, title="Early End-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering%", ylabel="Frequency (# Occurrence)", legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
 end
 lateEndIndices = findall(x->x == 4, gameStage)
 if length(lateEndIndices) != 0
@@ -181,13 +181,13 @@ if length(lateEndIndices) != 0
 	println("- cor    = ", cor(gameStageOrdering, gameStageDepth))
 	println("------ Ordering/Time ------")
 	println("- cor    = ", cor(gameStageOrdering, gameStageTime))
-	histogram(gameStageOrdering, title="Late End-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering %", ylabel="Frequency (# Occurrence)", legend=:none)
+	histogram(gameStageOrdering, title="Late End-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering %", ylabel="Frequency (# Occurrence)", legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
 end
 
 # Save all vectors to hd5 file
 hdf5FileName = "data/ParsedOrdering.hdf5"
 mode = "r+"
-groupName = "NoOrdering"
+groupName = "MVVLVA_TTinRoot"
 println("Make sure to name \"groupName\" something unique for this build")
 
 h5open(hdf5FileName, mode) do file
