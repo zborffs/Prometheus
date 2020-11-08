@@ -11,6 +11,9 @@
 
 /// External Library Includes
 #include <gtest/gtest.h>
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/sinks/daily_file_sink.h>
 
 /// Standard Library Includes
 #include <iostream>

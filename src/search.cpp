@@ -71,14 +71,19 @@ namespace internal {
                     captured = board.piece_type(root_hash->to_sq);
                 }
             }
-            hash_move = new ChessMove(root_hash->from_sq, root_hash->to_sq, root_hash->m_flag(), moved, captured);
+
+            if (root_hash->from_sq != root_hash->to_sq) {
+                hash_move = new ChessMove(root_hash->from_sq, root_hash->to_sq, root_hash->m_flag(), moved, captured);
+            }
         }
 
         /// generate all the moves
         gen_all_moves(board, movelist);
         order_moves(movelist, hash_move);
-        delete hash_move;
-        hash_move = nullptr;
+        if (hash_move != nullptr) {
+            delete hash_move;
+            hash_move = nullptr;
+        }
 
         for (long unsigned int i = 0; i < movelist.size(); i++) {
             /// make the move, then determine if it's legal by playing it and seeing whether you put yourself in check
@@ -139,6 +144,14 @@ namespace internal {
             return std::tuple<ChessMove, Centipawns_t>(ChessMove(), ret_score);
         }
 
+        if (root_score == INF - 2) {
+            if (board.side_2_move() == WHITE) {
+                search_state.result_flag = BLACK_IS_MATED;
+            } else {
+                search_state.result_flag = WHITE_IS_MATED;
+            }
+        }
+
         return std::tuple<ChessMove, Centipawns_t>(best_move, alpha);
     }
 
@@ -169,6 +182,48 @@ namespace internal {
         Centipawns_t score = -INF;
         Depth num_extensions = 0;
 
+        /// Check the hash table for extra information
+        ChessHash* hash = search_state.tt.find(board.key());
+        HashFlag flag = NO_INFO;
+        Centipawns_t hash_score;
+        ChessMove* hash_move = nullptr;
+        if (hash != nullptr) {
+            flag = hash->hash_flag;
+            hash_score = hash->score;
+
+            /// this segment causes the SearchTest to fail
+//            if (std::abs(hash_score) > INF - 100) {
+//                if (score > 0) {
+//                    hash_score -= search_state.height;
+//                } else {
+//                    hash_score += search_state.height;
+//                }
+//            }
+
+            if (hash->depth >= (depth - NULL_MOVE_R) && (score < beta) && (flag == LOWER_BOUND)) {
+                do_null = false;
+                flag = AVOID_NULL;
+            }
+
+            if (hash->depth >= depth) {
+                switch (flag) {
+                    case LOWER_BOUND:
+                        if (hash_score <= alpha) {
+                            return alpha;
+                        }
+                        break;
+                    case UPPER_BOUND:
+                        if (hash_score >= beta) {
+                            return beta;
+                        }
+                        break;
+                    case EXACT: return hash_score;
+                }
+            }
+
+            score = hash_score;
+        }
+
         /// Check Extensions
         if (board.is_king_checked(board.side_2_move())) {
             if (depth < MAX_DEPTH) { // for stability reasons, we can never exceed MAX_DEPTH
@@ -186,9 +241,31 @@ namespace internal {
         std::vector<ChessMove> movelist;
         movelist.reserve(128); // performance
 
+        if (hash != nullptr) {
+            PieceType_t moved = board.piece_type(hash->from_sq);
+            PieceType_t captured = PieceType::NO_PIECE;
+            if (hash->m_flag() & CAPTURE_MOVE) {
+                if (hash->m_flag() == ENPASSANT) {
+                    captured = W_PAWN + !board.side_2_move();
+                } else {
+                    captured = board.piece_type(hash->to_sq);
+                }
+            }
+
+            /// if we fail low (alpha cutoff) then we will store a dummy move in the hashtable causing moved==captured
+            /// if this is the case, don't create a ChessMove pointer just keep going.
+            if (hash->from_sq != hash->to_sq) {
+                hash_move = new ChessMove(hash->from_sq, hash->to_sq, hash->m_flag(), moved, captured);
+            }
+        }
+
         /// generate all the moves from this position
         gen_all_moves(board, movelist);
-        order_moves(movelist);
+        order_moves(movelist, hash_move);
+        if (hash_move != nullptr) {
+            delete hash_move;
+            hash_move = nullptr;
+        }
 
         for (long unsigned int i = 0; i < movelist.size(); i++) {
             /// for each move, determine its legality by playing it and seeing whether you put yourself in check
@@ -225,6 +302,9 @@ namespace internal {
                     }
                     ++search_state.fail_high_count;
 #endif // NDEBUG
+
+                    ChessHash upper_bnd_hash(board.key(), beta, movelist[i].from_sq, movelist[i].to_sq, movelist[i].flag(), depth, UPPER_BOUND, board.current_ply()); // could store beta, or could store score
+                    search_state.tt.insert(upper_bnd_hash);
                     return beta;
                 }
 
@@ -237,17 +317,19 @@ namespace internal {
         if (movelist.empty()) {
             /// checkmate if the king is checked
             if (board.is_king_checked(board.side_2_move())) {
-                if (board.side_2_move() == WHITE) {
-                    search_state.result_flag = WHITE_IS_MATED;
-                    alpha = -INF + search_state.height; // this makes sure closer mates are prioritized
-                } else {
-                    search_state.result_flag = BLACK_IS_MATED;
-                    alpha = -INF + search_state.height; // this makes sure closer mates are prioritized
-                }
+                alpha = -INF + search_state.height; // this makes sure closer mates are prioritized
             } else {
-                search_state.result_flag = STALEMATE;
                 alpha = 0;
             }
+        }
+
+        if (alpha > init_alpha) {
+            ChessHash exact_hash(board.key(), alpha, best_move.from_sq, best_move.to_sq, best_move.flag(), depth, EXACT, board.current_ply());
+            search_state.tt.insert(exact_hash);
+        } else {
+            /// store a dummy in the transposition table if we fail low
+            ChessHash lower_bnd_hash(board.key(), alpha, A1, A1, NO_MOVE_FLAG, depth, LOWER_BOUND, board.current_ply());
+            search_state.tt.insert(lower_bnd_hash);
         }
 
         return alpha;

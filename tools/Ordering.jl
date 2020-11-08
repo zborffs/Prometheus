@@ -86,7 +86,7 @@ println("------ Ordering/Depth -----")
 println("- cor    = ", cor(ordering, depth))
 println("------ Ordering/Time ------")
 println("- cor    = ", cor(ordering, time))
-histogram(ordering)
+histogram(ordering, title="Overall Ordering % Histogram", xlabel="Ordering %", ylabel="Frequency (# Occurrences)", palette=cgrad(ColorSchemes.berlin.colors))
 openingIndices = findall(x->x == 1, gameStage)
 if length(openingIndices) != 0
 	println()
@@ -187,7 +187,7 @@ end
 # Save all vectors to hd5 file
 hdf5FileName = "data/ParsedOrdering.hdf5"
 mode = "r+"
-groupName = "MVVLVA_TTinRoot"
+groupName = "MVVLVA_TTinRootAndSearch"
 println("Make sure to name \"groupName\" something unique for this build")
 
 h5open(hdf5FileName, mode) do file
