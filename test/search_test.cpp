@@ -38,8 +38,6 @@ protected:
         delete search_state;
         search_state = nullptr;
     }
-
-
 };
 
 TEST_F(SearchTester, Mate_In_2) {

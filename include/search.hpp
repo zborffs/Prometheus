@@ -19,6 +19,8 @@ struct SearchState {
     ChessClock clock;
     Result result_flag;
     TranspositionTable tt;
+    bool time_exit;
+    Depth height; // ply
 
 #ifndef NDEBUG
     int leaf_nodes;
@@ -55,6 +57,8 @@ struct SearchState {
 
         os << "SearchState:" << std::endl;
         os << "- result_flag: " << result_flag_str << std::endl;
+        os << "  time_exit: " << ss.time_exit << std::endl;
+        os << "  height: " << ss.height << std::endl;
 #ifndef NDEBUG
         os << "  leaf_nodes: " << ss.leaf_nodes << std::endl;
         os << "  raw_nodes: " << ss.raw_nodes << std::endl;

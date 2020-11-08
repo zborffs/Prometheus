@@ -38,7 +38,6 @@ class Board {
     CastleRights_t castle_perm_;
     Color_t side_2_move_;
     Depth current_ply_;
-    Depth num_ply_;
     ChessMove move_; // move that was just made to achieve the current position
     std::string best_move_;
 
@@ -79,8 +78,6 @@ public:
     Color_t side_2_move() const noexcept;
     Depth current_ply() noexcept;
     Depth current_ply() const noexcept;
-    Depth num_ply() noexcept;
-    Depth num_ply() const noexcept;
     Square_t king_location(const Color_t color) noexcept;
     Square_t king_location(const Color_t color) const noexcept;
     PieceType_t piece_type(const Square_t sq) noexcept;

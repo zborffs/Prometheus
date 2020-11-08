@@ -9,7 +9,7 @@
 /**
  * default constructor sets all member variables to nominal values
  */
-Board::Board() : key_(0), piece_bb_({{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}), occupied_bb_(0), empty_bb_(0), capturable_({{0, 0}}), fif_move_counter_(0), ep_sq_(A1), castle_perm_(FULL), side_2_move_(WHITE), current_ply_(0), num_ply_(0) {
+Board::Board() : key_(0), piece_bb_({{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}), occupied_bb_(0), empty_bb_(0), capturable_({{0, 0}}), fif_move_counter_(0), ep_sq_(A1), castle_perm_(FULL), side_2_move_(WHITE), current_ply_(0) {
     set_board();
     init_all_keys();
 }
@@ -18,7 +18,7 @@ Board::Board() : key_(0), piece_bb_({{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}
  * constructor with input being the starting position FEN string
  * @param fen
  */
-Board::Board(const std::string& fen) : key_(0), piece_bb_({{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}), occupied_bb_(0), empty_bb_(0), capturable_({{0, 0}}), fif_move_counter_(0), ep_sq_(A1), castle_perm_(FULL), side_2_move_(WHITE), current_ply_(0), num_ply_(0) {
+Board::Board(const std::string& fen) : key_(0), piece_bb_({{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}), occupied_bb_(0), empty_bb_(0), capturable_({{0, 0}}), fif_move_counter_(0), ep_sq_(A1), castle_perm_(FULL), side_2_move_(WHITE), current_ply_(0) {
     set_board(fen);
     init_all_keys();
 }
@@ -28,7 +28,7 @@ Board::Board(const std::string& fen) : key_(0), piece_bb_({{0, 0, 0, 0, 0, 0, 0,
  * @param file_name   path to file containing FENs
  * @param line_number line of desired FEN
  */
-Board::Board(const std::string& file_name, const int line_number) : key_(0), piece_bb_({{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}), occupied_bb_(0), empty_bb_(0), capturable_({{0, 0}}), fif_move_counter_(0), ep_sq_(A1), castle_perm_(FULL), side_2_move_(WHITE), current_ply_(0), num_ply_(0) {
+Board::Board(const std::string& file_name, const int line_number) : key_(0), piece_bb_({{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}), occupied_bb_(0), empty_bb_(0), capturable_({{0, 0}}), fif_move_counter_(0), ep_sq_(A1), castle_perm_(FULL), side_2_move_(WHITE), current_ply_(0) {
     std::string fen;
     try {
         fen = read_fen_from_file(file_name, line_number);
@@ -257,22 +257,6 @@ Depth Board::current_ply() noexcept {
  */
 Depth Board::current_ply() const noexcept {
     return current_ply_;
-}
-
-/**
- * getter for the max number of plies we've searched
- * @return number of plies
- */
-Depth Board::num_ply() noexcept {
-    return num_ply_;
-}
-
-/**
- * getter for the max number of plies we've searched
- * @return number of plies
- */
-Depth Board::num_ply() const noexcept {
-    return num_ply_;
 }
 
 /**
@@ -569,7 +553,6 @@ void Board::store_current_state(const ChessMove& new_move) noexcept {
     key_ ^= CASTLE_PERMISSION_KEYS[castle_perm_];
 
     /// increment the ply and the ply number
-    ++num_ply_;
     ++current_ply_;
 }
 
@@ -622,7 +605,6 @@ ChessMove Board::restore_last_state() noexcept {
     swap_sides();
 
     /// decrement the number of plies and the current ply
-    --num_ply_;
     --current_ply_;
 
     /// if the en passant square is set, then unmask the key
@@ -870,7 +852,6 @@ void Board::clear() noexcept {
     side_2_move_ = WHITE;
     key_ = 0;
     current_ply_ = 0;
-    num_ply_ = 0;
     while (!move_history_.empty()) {
         move_history_.pop();
     }
@@ -1244,7 +1225,7 @@ void Board::def_fif_move_count(const std::string& fmc) {
  * @param cp current ply portion of the fen string
  */
 void Board::def_curr_ply(const std::string& cp) {
-    num_ply_ = current_ply_ = (Depth)std::stoi(cp);
+    current_ply_ = (Depth)std::stoi(cp);
 }
 
 /**

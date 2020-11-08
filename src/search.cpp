@@ -7,7 +7,7 @@
 /**
  * SearchState constructor: sets all member variables to default values
  */
-SearchState::SearchState(int tt_size) : result_flag(Result::NO_RESULT), tt(tt_size)
+SearchState::SearchState(int tt_size) : result_flag(Result::NO_RESULT), tt(tt_size), time_exit(false), height(0)
 #ifndef NDEBUG
 , leaf_nodes(0), raw_nodes(0), fail_high_count(0), fail_high_first_count(0), window_widen_count(0), window_success_count(0)
 #endif // NDEBUG
@@ -20,6 +20,8 @@ SearchState::SearchState(int tt_size) : result_flag(Result::NO_RESULT), tt(tt_si
  */
 void SearchState::reset() {
     result_flag = Result::NO_RESULT;
+    time_exit = false;
+    height = 0;
 #ifndef NDEBUG
     leaf_nodes = 0;
     raw_nodes = 0;
@@ -87,6 +89,7 @@ namespace internal {
                 --i;
                 continue;
             }
+            ++search_state.height;
 
             /// in debug mode, it's useful to count raw nodes, so do so
 #ifndef NDEBUG
@@ -96,6 +99,13 @@ namespace internal {
             /// Search the current position using negamax and null-move pruning
             root_score = -search(board, options, search_state, eval_state, depth - 1, -beta, -alpha, true);
             board.unmake_move();
+            --search_state.height;
+
+
+            /// if we have run out of time, just return the best move so far
+            if (search_state.time_exit) {
+                return std::tuple<ChessMove, Centipawns_t>(best_move, alpha);
+            }
 
             /// if the root score exceeds the current best move score or there's not best yet, then update those fields
             if (root_score > alpha || best_move == ChessMove()) {
@@ -145,24 +155,33 @@ namespace internal {
      * @return             the score of the best position in centipawns
      */
     Centipawns_t search(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta, bool do_null) {
+        /// if we've run out of time, then quit. By returning alpha, we don't give any new information
+        if (internal::check_stop_search(depth, options, search_state)) {
+            return 0;
+        }
+
         /// if the current position is a draw, return 0 immediately
         if (board.is_draw()) {
             return 0;
         }
 
+        Centipawns_t init_alpha = alpha;
+        Centipawns_t score = -INF;
+        Depth num_extensions = 0;
+
+        /// Check Extensions
+        if (board.is_king_checked(board.side_2_move())) {
+            if (depth < MAX_DEPTH) { // for stability reasons, we can never exceed MAX_DEPTH
+                ++num_extensions;
+            }
+        } // else {} // do null move pruning
+
         /// if this is the last depth we want to search to, then perform the quiescence search
-        if ((int)depth == 0) {
+        if (depth + num_extensions == 0) {
             return q_search(board, options, search_state, eval_state, MAX_DEPTH, alpha, beta);
         }
 
-        /// if we've run out of time, then quit. By returning alpha, we don't give any new information
-        if (internal::check_stop_search(depth, options, search_state)) {
-            return alpha;
-        }
-
         /// initialize local variables
-        Centipawns_t init_alpha = alpha;
-        Centipawns_t score = -INF;
         ChessMove best_move;
         std::vector<ChessMove> movelist;
         movelist.reserve(128); // performance
@@ -180,14 +199,21 @@ namespace internal {
                 --i;
                 continue;
             }
+            ++search_state.height;
 
 #ifndef NDEBUG
             search_state.raw_nodes++;
 #endif // NDEBUG
 
             /// recursively call this function, decrementing the depth and flipping the scores
-            score = -search(board, options, search_state, eval_state, depth - 1, -beta, -alpha, true);
+            score = -search(board, options, search_state, eval_state, depth - 1 + num_extensions, -beta, -alpha, true);
             board.unmake_move();
+            --search_state.height;
+
+            /// if we've run out of time, then quit. By returning alpha, we don't give any new information
+            if (internal::check_stop_search(depth, options, search_state)) {
+                return 0;
+            }
 
             /// if the score exceeds alpha (the best score found so far), then update the alpha value
             if (score > alpha) {
@@ -201,6 +227,7 @@ namespace internal {
 #endif // NDEBUG
                     return beta;
                 }
+
                 alpha = score;
                 best_move = movelist[i];
             }
@@ -212,12 +239,10 @@ namespace internal {
             if (board.is_king_checked(board.side_2_move())) {
                 if (board.side_2_move() == WHITE) {
                     search_state.result_flag = WHITE_IS_MATED;
-                    // ***** MAY NEED TO BE CHANGED TO 'INF' not '-INF'
-                    alpha = -INF + board.current_ply(); // this makes sure closer mates are prioritized
+                    alpha = -INF + search_state.height; // this makes sure closer mates are prioritized
                 } else {
                     search_state.result_flag = BLACK_IS_MATED;
-                    // ***** MAY NEED TO BE CHANGED TO '-INF' not 'INF'
-                    alpha = -INF + board.current_ply(); // this makes sure closer mates are prioritized
+                    alpha = -INF + search_state.height; // this makes sure closer mates are prioritized
                 }
             } else {
                 search_state.result_flag = STALEMATE;
@@ -272,6 +297,7 @@ namespace internal {
                 --i;
                 continue;
             }
+            ++search_state.height;
 
 #ifndef NDEBUG
             search_state.raw_nodes++;
@@ -280,6 +306,7 @@ namespace internal {
             /// recursively search and return to the original position
             score = -q_search(board, options, search_state, eval_state, depth - 1, -beta, -alpha);
             board.unmake_move();
+            --search_state.height;
 
             /// update the score if it's better than alpha, and return immediately if it's better than beta
             if (score > alpha) {
@@ -316,6 +343,7 @@ namespace internal {
     bool check_stop_search(unsigned depth, UCIOptions& options, SearchState& search_state) {
         /// If the depth we've reached exceeds the max depth, then stop the search
         if (depth > MAX_DEPTH) {
+            search_state.time_exit = true;
             return true;
         }
 
@@ -344,6 +372,7 @@ namespace internal {
             if (strlen(input)> 0) {
                 if (!strncmp(input, "stop", 4)) {
                     options.infinite = false;
+                    search_state.time_exit = true;
                     return true;
                 }
             }
@@ -357,17 +386,21 @@ namespace internal {
 
         /// If it's sudden death, and we've run outta time, then stop the search
         if (options.sudden_death && search_state.clock.has_exceeded_time()) {
+            search_state.time_exit = true;
             return true;
         }
 
         /// If we're supposed to search to a specific depth, and we've reached that depth, then stop the search
         if (options.search_to_depth_x == (int)depth) {
+            search_state.time_exit = true;
             return true;
         }
 
         /// If the amount of time that's transpired exceeds the amount of time for the search, then stop
         if (options.move_time != -1) {
-            return (int) (search_state.clock.duration() / 1000) >= options.move_time;
+            bool should_exit = (int) (search_state.clock.duration() / 1000) >= options.move_time;
+            search_state.time_exit = should_exit;
+            return should_exit;
         }
 
         return false;
@@ -446,7 +479,7 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
 
     /// Starting at a depth of 1, perform a depth first search
     for (unsigned depth = 1; depth < MAX_DEPTH; depth++, alpha = -INF, beta = INF) {
-        /// think and extract the best move and the corresponding scre
+        /// think and extract the best move and the corresponding score
         std::tuple<ChessMove, Centipawns_t> tup = internal::search_root(board, options, search_state, eval_state, depth, alpha, beta);
         best_move = std::get<0>(tup);
         score = std::get<1>(tup);
