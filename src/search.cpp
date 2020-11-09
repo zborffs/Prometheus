@@ -192,13 +192,13 @@ namespace internal {
             hash_score = hash->score;
 
             /// this segment causes the SearchTest to fail
-//            if (std::abs(hash_score) > INF - 100) {
-//                if (score > 0) {
-//                    hash_score -= search_state.height;
-//                } else {
-//                    hash_score += search_state.height;
-//                }
-//            }
+            if (std::abs(hash_score) > INF - 100) {
+                if (hash_score > 0) {
+                    hash_score -= search_state.height;
+                } else {
+                    hash_score += search_state.height;
+                }
+            }
 
             if (hash->depth >= (depth - NULL_MOVE_R) && (score < beta) && (flag == LOWER_BOUND)) {
                 do_null = false;
@@ -304,6 +304,13 @@ namespace internal {
 #endif // NDEBUG
 
                     ChessHash upper_bnd_hash(board.key(), beta, movelist[i].from_sq, movelist[i].to_sq, movelist[i].flag(), depth, UPPER_BOUND, board.current_ply()); // could store beta, or could store score
+                    if (std::abs(beta) > INF - 100) {
+                        if (beta > 0) {
+                            upper_bnd_hash.score += search_state.height;
+                        } else {
+                            upper_bnd_hash.score -= search_state.height;
+                        }
+                    }
                     search_state.tt.insert(upper_bnd_hash);
                     return beta;
                 }
@@ -325,10 +332,24 @@ namespace internal {
 
         if (alpha > init_alpha) {
             ChessHash exact_hash(board.key(), alpha, best_move.from_sq, best_move.to_sq, best_move.flag(), depth, EXACT, board.current_ply());
+            if (std::abs(alpha) > INF - 100) {
+                if (beta > 0) {
+                    exact_hash.score += search_state.height;
+                } else {
+                    exact_hash.score -= search_state.height;
+                }
+            }
             search_state.tt.insert(exact_hash);
         } else {
             /// store a dummy in the transposition table if we fail low
             ChessHash lower_bnd_hash(board.key(), alpha, A1, A1, NO_MOVE_FLAG, depth, LOWER_BOUND, board.current_ply());
+            if (std::abs(alpha) > INF - 100) {
+                if (beta > 0) {
+                    lower_bnd_hash.score += search_state.height;
+                } else {
+                    lower_bnd_hash.score -= search_state.height;
+                }
+            }
             search_state.tt.insert(lower_bnd_hash);
         }
 
@@ -603,8 +624,47 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
         }
 #endif // NDEBUG
 
+        /// Move through the principal variation by making the next EXACT move in the hash table
+        std::string pv_string{best_move.to_string()};
+        ChessMove next_pv_move = best_move;
+        int move_counter = 0;
+        for (unsigned i = 0; i < depth - 1; i++) {
+            board.make_move(next_pv_move);
+            ++move_counter;
+            ChessHash* next_move_hash = search_state.tt.find(board.key());
+
+            if (next_move_hash != nullptr) {
+                if (next_move_hash->hash_flag == EXACT) {
+                    PieceType_t moved = board.piece_type(next_move_hash->from_sq);
+                    PieceType_t captured = PieceType::NO_PIECE;
+                    if (next_move_hash->m_flag() & CAPTURE_MOVE) {
+                        if (next_move_hash->m_flag() == ENPASSANT) {
+                            captured = W_PAWN + !board.side_2_move();
+                        } else {
+                            captured = board.piece_type(next_move_hash->to_sq);
+                        }
+                    }
+
+                    /// this can happen for reasons that are totally reasonable that I can't remember the specifics of
+                    if (next_move_hash->from_sq != next_move_hash->to_sq) {
+                        next_pv_move = ChessMove(next_move_hash->from_sq, next_move_hash->to_sq, next_move_hash->m_flag(), moved, captured);
+                        pv_string += " " + next_pv_move.to_string();
+                    }
+                } else {
+                    break; // could happen if something has overwritten something else (shouldn't happen)
+                }
+            } else {
+                break; // could happen if something is overwritten by accident or if there is a mate before
+            }
+        }
+
+        /// back out of the principal variation
+        for (int i = 0; i < move_counter; i++) {
+            board.unmake_move();
+        }
+
         /// print search information
-        std::cout << "info score cp " << score << " time " << time_elapsed << " depth " << depth <<
+        std::cout << "info score cp " << score << " time " << time_elapsed << " depth " << depth << " pv " << pv_string <<
 #ifndef NDEBUG
             " raw_nodes " << search_state.raw_nodes <<
             " leaf_nodes " << search_state.leaf_nodes <<

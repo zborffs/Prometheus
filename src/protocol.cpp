@@ -77,7 +77,7 @@ namespace internal {
             /// If the command is invalid or the move is illegal, then don't process it
             if(!move.has_value() || !is_move_legal(board, move.value())) {
 #ifndef NDEBUG
-                spdlog::get(logger_name)->info("User provided illegal move or invalid command: {}", *itr);
+                spdlog::get(logger_name)->error("User provided illegal move or invalid command: {}", *itr);
 #endif // NDEBUG
 
                 /// Otherwise, make the move

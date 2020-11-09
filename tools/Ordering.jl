@@ -10,17 +10,6 @@ plotly()
 # Read raw data from file
 lines = readlines("data/ordering_output.txt")
 
-# Determine which indices are associated with numbers of interest
-protoLine = split(lines[1])
-orderingIndex = findfirst(x-> x == "ordering", protoLine) + 1
-depthIndex = findfirst(x-> x == "depth", protoLine) + 1
-rawNodesIndex = findfirst(x->x == "raw_nodes", protoLine) + 1
-leafNodesIndex = findfirst(x->x == "leaf_nodes", protoLine) + 1
-npsIndex = findfirst(x->x == "nps", protoLine) + 1
-posTypeIndex = findfirst(x-> x == "position_type", protoLine) + 1
-gameStageIndex = findfirst(x-> x == "game_stage", protoLine) + 1
-timeIndex = findfirst(x->x=="time", protoLine) + 1
-
 # Create a vector for each number of interest and fill with parsed data
 ordering = Vector{Float64}(undef, 0)
 depth = Vector{Int64}(undef, 0)
@@ -33,8 +22,27 @@ time = Vector{Int64}(undef, 0)
 
 for l in lines
 	line = split(l)
+	orderingIndex = findfirst(x-> x == "ordering", line) + 1
+	depthIndex = findfirst(x-> x == "depth", line) + 1
+	rawNodesIndex = findfirst(x->x == "raw_nodes", line) + 1
+	leafNodesIndex = findfirst(x->x == "leaf_nodes", line) + 1
+	npsIndex = findfirst(x->x == "nps", line) + 1
+	posTypeIndex = findfirst(x-> x == "position_type", line) + 1
+	gameStageIndex = findfirst(x-> x == "game_stage", line) + 1
+	timeIndex = findfirst(x->x=="time", line) + 1
 	if line[orderingIndex] != "nan"
-		push!(ordering, parse(Float64, line[orderingIndex]))
+		if line[orderingIndex] == "0"
+			push!(ordering, 0.0)
+		else
+			try
+				push!(ordering, parse(Float64, line[orderingIndex]))
+			catch
+				println("=-=-=-=-=-=-=-=-=-=-=")
+				println(line)
+				println(line[orderingIndex])
+				throw()
+			end
+		end
 		push!(depth, parse(Int64, line[depthIndex]))
 		push!(rawNodes, parse(Int64, line[rawNodesIndex]))
 		push!(leafNodes, parse(Int64, line[leafNodesIndex]))
@@ -86,7 +94,9 @@ println("------ Ordering/Depth -----")
 println("- cor    = ", cor(ordering, depth))
 println("------ Ordering/Time ------")
 println("- cor    = ", cor(ordering, time))
-histogram(ordering, title="Overall Ordering % Histogram", xlabel="Ordering %", ylabel="Frequency (# Occurrences)", palette=cgrad(ColorSchemes.berlin.colors))
+histogram(ordering, title="Overall Ordering % Histogram", xlabel="Ordering %",
+	ylabel="Frequency (# Occurrences)",
+	palette=cgrad(ColorSchemes.berlin.colors))
 openingIndices = findall(x->x == 1, gameStage)
 if length(openingIndices) != 0
 	println()
@@ -109,7 +119,10 @@ if length(openingIndices) != 0
 	println("- cor    = ", cor(gameStageOrdering, gameStageDepth))
 	println("------ Ordering/Time ------")
 	println("- cor    = ", cor(gameStageOrdering, gameStageTime))
-	histogram(gameStageOrdering, title="Opening Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering%", ylabel="Frequency (# Occurrence)", legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
+	histogram(gameStageOrdering,
+		title="Opening Move Ordering Histogram for \"BasicTestsSmall\" Dataset",
+		xlabel="Ordering%", ylabel="Frequency (# Occurrence)",
+		legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
 end
 midgameIndices = findall(x->x == 2, gameStage)
 if length(midgameIndices) != 0
@@ -133,7 +146,10 @@ if length(midgameIndices) != 0
 	println("- cor    = ", cor(gameStageOrdering, gameStageDepth))
 	println("------ Ordering/Time ------")
 	println("- cor    = ", cor(gameStageOrdering, gameStageTime))
-	histogram(gameStageOrdering, title="Mid-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering%", ylabel="Frequency (# Occurrence)", legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
+	histogram(gameStageOrdering,
+		title="Mid-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset",
+		xlabel="Ordering%", ylabel="Frequency (# Occurrence)",
+		legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
 end
 earlyEndIndices = findall(x->x == 3, gameStage)
 if length(earlyEndIndices) != 0
@@ -157,7 +173,10 @@ if length(earlyEndIndices) != 0
 	println("- cor    = ", cor(gameStageOrdering, gameStageDepth))
 	println("------ Ordering/Time ------")
 	println("- cor    = ", cor(gameStageOrdering, gameStageTime))
-	histogram(gameStageOrdering, title="Early End-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering%", ylabel="Frequency (# Occurrence)", legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
+	histogram(gameStageOrdering,
+		title="Early End-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset",
+		xlabel="Ordering%", ylabel="Frequency (# Occurrence)",
+		legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
 end
 lateEndIndices = findall(x->x == 4, gameStage)
 if length(lateEndIndices) != 0
@@ -181,7 +200,9 @@ if length(lateEndIndices) != 0
 	println("- cor    = ", cor(gameStageOrdering, gameStageDepth))
 	println("------ Ordering/Time ------")
 	println("- cor    = ", cor(gameStageOrdering, gameStageTime))
-	histogram(gameStageOrdering, title="Late End-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset", xlabel="Ordering %", ylabel="Frequency (# Occurrence)", legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
+	histogram(gameStageOrdering, title="Late End-Game Move Ordering Histogram for \"BasicTestsSmall\" Dataset",
+		xlabel="Ordering %", ylabel="Frequency (# Occurrence)",
+		legend=:none, palette=cgrad(ColorSchemes.berlin.colors))
 end
 
 # Save all vectors to hd5 file

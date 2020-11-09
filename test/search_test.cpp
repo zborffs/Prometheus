@@ -50,7 +50,6 @@ TEST_F(SearchTester, Mate_In_2) {
     try {
         auto fens = read_all_fen_from_file(mate_in_2_path);
         double d{0.0};
-        uint64_t total_nodes{0};
 
         for (auto & fen : fens) {
             auto separated_fen = split(fen, ';');
@@ -70,9 +69,7 @@ TEST_F(SearchTester, Mate_In_2) {
         }
 
         double seconds = d / 1000000000;
-        double nps = total_nodes / seconds;
-        std::cout << "Nodes " << total_nodes << " in " << seconds << " seconds" << std::endl;
-        std::cout << "Nodes Per Second: " << nps << std::endl;
+        std::cout << " Success! It took " << seconds << " seconds" << std::endl;
     } catch (const std::exception& e) {
         throw;
     }
@@ -83,6 +80,10 @@ TEST_F(SearchTester, Mate_In_2) {
 bool init_logger(const std::string& path) noexcept;
 
 int main(int argc, char **argv) {
+    if (!init_logger(argv[0])) {
+        return LOG_FAILURE;
+    }
+
     testing::InitGoogleTest(&argc, argv);
 
     /// Get path to the "mate-in-2.puz" file from executable directory and command line arguments
@@ -120,7 +121,7 @@ bool init_logger(const std::string& path) noexcept {
 #else
         std::string base(path.substr(0, path.find_last_of("/")));
 #endif // WINDOWS
-        std::string path_to_log(base + "/../../logs/Prometheus-TranspositionTableTest.log");
+        std::string path_to_log(base + "/../../logs/Prometheus-SearchTest.log");
 
         auto logger = spdlog::daily_logger_st(logger_name, path_to_log, 4, 59);
         logger->set_level(spdlog::level::debug);

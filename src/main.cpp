@@ -39,17 +39,14 @@ int main([[maybe_unused]] const int argc, char* argv[]) {
     /// While the user hasn't quit the program, process the user input for "uci" command
     while (!quit) {
         getline(std::cin, input);
-        spdlog::get(logger_name)->info("User said \"{}\"", input);
 
         /// If we get "uci" command, then log it and enter uci protocol function
         if (input == "uci") {
-            spdlog::get(logger_name)->info("Starting UCI Protocol...");
             start_uci_protocol(board, options, search_state, eval_state);
             quit = true;
 
             /// If we get "quit" command, just quit
         } else if (input == "quit") {
-            spdlog::get(logger_name)->info("Quitting...");
             quit = true;
         }
     }
