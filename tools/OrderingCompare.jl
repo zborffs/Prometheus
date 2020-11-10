@@ -9,7 +9,8 @@ plotly()
 # Try to read the same data back
 hdf5FileName = "data/ParsedOrdering.hdf5"
 groupNames = ["NoOrdering", "MVVLVA", "MVVLVA_TTinRoot",
-	"MVVLVA_TTinRootAndSearch", "MVVLVA_TTinRootAndSearch_Killer", "MVVLVA_TTinRootAndSearch_Killer_History"]
+	"MVVLVA_TTinRootAndSearch", "MVVLVA_TTinRootAndSearch_Killer",
+	"MVVLVA_TTinRootAndSearch_Killer_History", "MVVLVA_TTinRootAndSearch_Killer_History_NullMove"]
 readMode = "r"
 ordering = Vector{Vector{Float64}}(undef, length(groupNames))
 depth = Vector{Vector{Int64}}(undef, length(groupNames))
@@ -56,7 +57,7 @@ end
 
 # Overall Move Ordering Comparison
 boxplot(ordering, legend=:none,
-	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer" "MVVLVA_TTinRootAndSearch_Killer_History"],
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer" "MVVLVA_TTinRootAndSearch_Killer_History" "MVVLVA_TTinRootAndSearch_Killer_History_NullMove"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8))
 
 overallMean = Vector{Float64}(undef, length(ordering))
@@ -77,13 +78,8 @@ for i in 1:length(rawNodes)
 	overallMedianNodes[i] = median(rawNodes[i])
 end
 boxplot(rawNodes, legend=:none, title="Raw Nodes Comparison",
-	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer" "MVVLVA_TTinRootAndSearch_Killer_History"],
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer" "MVVLVA_TTinRootAndSearch_Killer_History" "MVVLVA_TTinRootAndSearch_Killer_History_NullMove"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8))
-
-overallMedianNPS = Vector{Float64}(undef, length(ordering))
-for i in 1:length(nps)
-	overallMedianNPS[i] = median(nps[i])
-end
 
 # Opening Move Ordering Comparison
 openingIndices = union(findall(x->x == 1, gameStage[1]), findall(x->x == 1, gameStage[2]))
@@ -100,7 +96,7 @@ for i in 1:length(openingOrdering)
 	openingMedian[i] = median(openingOrdering[i])
 end
 boxplot(openingOrdering,
-	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer"],
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer" "MVVLVA_TTinRootAndSearch_Killer_History" "MVVLVA_TTinRootAndSearch_Killer_History_NullMove"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8), legend=:none)
 
 # Middle Game
@@ -118,7 +114,7 @@ for i in 1:length(middleOrdering)
 	middleMedian[i] = median(middleOrdering[i])
 end
 boxplot(middleOrdering,
-	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer"],
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer" "MVVLVA_TTinRootAndSearch_Killer_History" "MVVLVA_TTinRootAndSearch_Killer_History_NullMove"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8), legend=:none)
 
 # Early End Game
@@ -136,7 +132,7 @@ for i in 1:length(earlyendOrdering)
 	earlyendMedian[i] = median(earlyendOrdering[i])
 end
 boxplot(earlyendOrdering,
-	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer"],
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer" "MVVLVA_TTinRootAndSearch_Killer_History" "MVVLVA_TTinRootAndSearch_Killer_History_NullMove"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8), legend=:none)
 
 # Late End Game
@@ -154,16 +150,24 @@ for i in 1:length(lateendOrdering)
 	lateendMedian[i] = median(lateendOrdering[i])
 end
 boxplot(lateendOrdering,
-	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer"],
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer" "MVVLVA_TTinRootAndSearch_Killer_History" "MVVLVA_TTinRootAndSearch_Killer_History_NullMove"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8), legend=:none)
 
-println("Overall:")
+println("Overall Ordering:")
 println("- mean: ")
 println(overallMean)
 println("- std:")
 println(overallStd)
 println("- median:")
 println(overallMedian)
+
+println("Overall Nodes:")
+println("- mean: ")
+println(overallMeanNodes)
+println("- std:")
+println(overallStdNodes)
+println("- median:")
+println(overallMedianNodes)
 
 println("Opening:")
 println("- mean: ")

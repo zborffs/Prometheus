@@ -291,9 +291,7 @@ const Centipawns_t HALF_ISOLATED_PAWN = -5;
 const Centipawns_t WINDOW_SIZE[3] = {
         150, 550, 1100
 };
-const Depth NULL_MOVE_R = 7;
-const double NULL_MOVE_ADAPTIVITY = 0.5;
-const Depth NULL_MOVE_ADAPTIVITY_DEPTH = 7;
+const Depth NULL_MOVE_R = 3;
 const Depth FUTILITY_DEPTH = 2;
 const Centipawns_t FUTILITY_THRESHOLD_DEPTH_1 = 500;
 const Centipawns_t FUTILITY_THRESHOLD_DEPTH_2 = 600;

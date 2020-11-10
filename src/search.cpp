@@ -229,7 +229,23 @@ namespace internal {
             if (depth < MAX_DEPTH) { // for stability reasons, we can never exceed MAX_DEPTH
                 ++num_extensions;
             }
-        } // else {} // do null move pruning
+        } else if (do_null) {  // do null move pruning
+            internal::def_stage(board, eval_state);
+            if (!(eval_state.stage & 2) && depth > NULL_MOVE_R) {
+                board.make_null_move();
+                Centipawns_t null_move_score = -search(board, options, search_state, eval_state, depth - NULL_MOVE_R - 1, -beta, -beta + 1, false);
+                board.unmake_move();
+
+                if (null_move_score >= beta) {
+                    return beta;
+                }
+
+                if (null_move_score < -INF + 100) {
+                    ++num_extensions;
+                }
+
+            }
+        }
 
         /// if this is the last depth we want to search to, then perform the quiescence search
         if (depth + num_extensions == 0) {
