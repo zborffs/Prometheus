@@ -25,6 +25,7 @@ struct SearchState {
     bool time_exit;
     Depth height; // ply
     std::array<std::pair<ChessMove, ChessMove>, 64> killer_move; // * 4 is for good measure
+    std::array<std::array<Centipawns_t, 65>, 14> history_heuristic; // 13 being the max value a PieceType can be and 64 being the number of squares
 
 #ifndef NDEBUG
     int leaf_nodes;

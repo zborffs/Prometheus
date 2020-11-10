@@ -7,7 +7,7 @@
 /**
  * SearchState constructor: sets all member variables to default values
  */
-SearchState::SearchState(int tt_size) : result_flag(Result::NO_RESULT), tt(tt_size), time_exit(false), height(0), killer_move({})
+SearchState::SearchState(int tt_size) : result_flag(Result::NO_RESULT), tt(tt_size), time_exit(false), height(0), killer_move({}), history_heuristic({{}})
 #ifndef NDEBUG
 , leaf_nodes(0), raw_nodes(0), fail_high_count(0), fail_high_first_count(0), window_widen_count(0), window_success_count(0)
 #endif // NDEBUG
@@ -22,6 +22,8 @@ void SearchState::reset() {
     result_flag = Result::NO_RESULT;
     time_exit = false;
     height = 0;
+    killer_move = {};
+    history_heuristic = {{}};
 #ifndef NDEBUG
     leaf_nodes = 0;
     raw_nodes = 0;
@@ -130,11 +132,9 @@ namespace internal {
             if (board.is_king_checked(board.side_2_move())) {
                 if (board.side_2_move() == WHITE) {
                     search_state.result_flag = WHITE_IS_MATED;
-                    // ***** MAY NEED TO BE CHANGED TO 'INF' not '-INF'
                     ret_score = -INF;
                 } else {
                     search_state.result_flag = BLACK_IS_MATED;
-                    // ***** MAY NEED TO BE CHANGED TO 'INF' not '-INF'
                     ret_score = -INF;
                 }
             } else {
@@ -318,6 +318,10 @@ namespace internal {
                     }
                     search_state.tt.insert(upper_bnd_hash);
                     return beta;
+                }
+
+                if (!(movelist[i].flag() & CAPTURE_MOVE)) {
+                    search_state.history_heuristic[movelist[i].moved][movelist[i].to_sq] += (Centipawns_t )depth;
                 }
 
                 alpha = score;
@@ -531,8 +535,9 @@ namespace internal {
                 score += 32; // |= (1 << 5)
             } else if (move == search_state.killer_move[search_state.height].second) {
                 score += 16; // |= (1 << 4)
+            } else {
+                score += std::min(search_state.history_heuristic[move.moved][move.to_sq], 15); // take the minimum between that score and 15 to make sure no overlap with killer
             }
-
 
             move.score = score;
             score = 0;

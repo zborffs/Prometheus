@@ -9,7 +9,7 @@ plotly()
 # Try to read the same data back
 hdf5FileName = "data/ParsedOrdering.hdf5"
 groupNames = ["NoOrdering", "MVVLVA", "MVVLVA_TTinRoot",
-	"MVVLVA_TTinRootAndSearch", "MVVLVA_TTinRootAndSearch_Killer"]
+	"MVVLVA_TTinRootAndSearch", "MVVLVA_TTinRootAndSearch_Killer", "MVVLVA_TTinRootAndSearch_Killer_History"]
 readMode = "r"
 ordering = Vector{Vector{Float64}}(undef, length(groupNames))
 depth = Vector{Vector{Int64}}(undef, length(groupNames))
@@ -56,7 +56,7 @@ end
 
 # Overall Move Ordering Comparison
 boxplot(ordering, legend=:none,
-	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer"],
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer" "MVVLVA_TTinRootAndSearch_Killer_History"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8))
 
 overallMean = Vector{Float64}(undef, length(ordering))
@@ -66,6 +66,23 @@ for i in 1:length(ordering)
 	overallMean[i] = mean(ordering[i])
 	overallStd[i] = std(ordering[i])
 	overallMedian[i] = median(ordering[i])
+end
+
+overallMeanNodes = Vector{Float64}(undef, length(ordering))
+overallStdNodes = Vector{Float64}(undef, length(ordering))
+overallMedianNodes = Vector{Float64}(undef, length(ordering))
+for i in 1:length(rawNodes)
+	overallMeanNodes[i] = mean(rawNodes[i])
+	overallStdNodes[i] = std(rawNodes[i])
+	overallMedianNodes[i] = median(rawNodes[i])
+end
+boxplot(rawNodes, legend=:none, title="Raw Nodes Comparison",
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer" "MVVLVA_TTinRootAndSearch_Killer_History"],
+	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8))
+
+overallMedianNPS = Vector{Float64}(undef, length(ordering))
+for i in 1:length(nps)
+	overallMedianNPS[i] = median(nps[i])
 end
 
 # Opening Move Ordering Comparison

@@ -208,7 +208,7 @@ end
 # Save all vectors to hd5 file
 hdf5FileName = "data/ParsedOrdering.hdf5"
 mode = "r+"
-groupName = "MVVLVA_TTinRootAndSearch_Killer"
+groupName = "MVVLVA_TTinRootAndSearch_Killer_History"
 println("Make sure to name \"groupName\" something unique for this build")
 
 h5open(hdf5FileName, mode) do file

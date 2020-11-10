@@ -27,9 +27,6 @@ ChessMove::ChessMove(Square_t from_sq, Square_t to_sq, MoveFlag_t flag, PieceTyp
     }
 
     /// Make sure that both the moved and captured PieceTypes are valid PieceTypes (0 and 1 are W_PIECES and B_PIECES)
-//    if (from_sq == to_sq) {
-//        printf("ruh ro");
-//    }
     assert(from_sq != to_sq);
     assert(captured != W_KING && captured != B_KING);
 #ifndef NDEBUG
