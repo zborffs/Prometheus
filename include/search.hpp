@@ -15,12 +15,16 @@
 #include "uci_options.hpp"
 #include "transposition_table.hpp"
 
+#include <array>
+#include <utility>
+
 struct SearchState {
     ChessClock clock;
     Result result_flag;
     TranspositionTable tt;
     bool time_exit;
     Depth height; // ply
+    std::array<std::pair<ChessMove, ChessMove>, 64> killer_move; // * 4 is for good measure
 
 #ifndef NDEBUG
     int leaf_nodes;
@@ -78,7 +82,7 @@ namespace internal {
     Centipawns_t search(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta, bool do_null);
     Centipawns_t q_search(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta);
     bool check_stop_search(unsigned depth, UCIOptions& options, SearchState& search_state);
-    void order_moves(std::vector<ChessMove>& movelist, ChessMove* hash_move = nullptr);
+    void order_moves(std::vector<ChessMove>& movelist, SearchState& search_state, ChessMove* hash_move = nullptr);
 }
 
 bool is_move_legal(Board& board, ChessMove& move);

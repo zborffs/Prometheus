@@ -9,7 +9,7 @@ plotly()
 # Try to read the same data back
 hdf5FileName = "data/ParsedOrdering.hdf5"
 groupNames = ["NoOrdering", "MVVLVA", "MVVLVA_TTinRoot",
-	"MVVLVA_TTinRootAndSearch"]
+	"MVVLVA_TTinRootAndSearch", "MVVLVA_TTinRootAndSearch_Killer"]
 readMode = "r"
 ordering = Vector{Vector{Float64}}(undef, length(groupNames))
 depth = Vector{Vector{Int64}}(undef, length(groupNames))
@@ -55,9 +55,10 @@ for i in 1:length(ordering)
 end
 
 # Overall Move Ordering Comparison
-histogram(ordering, layout=4, legend=:none,
-	title=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT"],
+boxplot(ordering, legend=:none,
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8))
+
 overallMean = Vector{Float64}(undef, length(ordering))
 overallStd = Vector{Float64}(undef, length(ordering))
 overallMedian = Vector{Float64}(undef, length(ordering))
@@ -81,8 +82,8 @@ for i in 1:length(openingOrdering)
 	openingStd[i] = std(openingOrdering[i])
 	openingMedian[i] = median(openingOrdering[i])
 end
-histogram(openingOrdering, layout=4,
-	title=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT"],
+boxplot(openingOrdering,
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8), legend=:none)
 
 # Middle Game
@@ -99,8 +100,8 @@ for i in 1:length(middleOrdering)
 	middleStd[i] = std(middleOrdering[i])
 	middleMedian[i] = median(middleOrdering[i])
 end
-histogram(middleOrdering, layout=4,
-	title=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT"],
+boxplot(middleOrdering,
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8), legend=:none)
 
 # Early End Game
@@ -117,8 +118,8 @@ for i in 1:length(earlyendOrdering)
 	earlyendStd[i] = std(earlyendOrdering[i])
 	earlyendMedian[i] = median(earlyendOrdering[i])
 end
-histogram(earlyendOrdering, layout=4,
-	title=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT"],
+boxplot(earlyendOrdering,
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8), legend=:none)
 
 # Late End Game
@@ -135,8 +136,8 @@ for i in 1:length(lateendOrdering)
 	lateendStd[i] = std(lateendOrdering[i])
 	lateendMedian[i] = median(lateendOrdering[i])
 end
-histogram(lateendOrdering, layout=4,
-	title=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT"],
+boxplot(lateendOrdering,
+	label=["No Ordering" "MVV-LVA" "MVV-LVA & TT in Root" "MVV-LVA & TT" "MVV-LVA, TT, & Killer"],
 	palette=cgrad(ColorSchemes.berlin.colors; alpha=0.8), legend=:none)
 
 println("Overall:")

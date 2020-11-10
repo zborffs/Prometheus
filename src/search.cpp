@@ -7,7 +7,7 @@
 /**
  * SearchState constructor: sets all member variables to default values
  */
-SearchState::SearchState(int tt_size) : result_flag(Result::NO_RESULT), tt(tt_size), time_exit(false), height(0)
+SearchState::SearchState(int tt_size) : result_flag(Result::NO_RESULT), tt(tt_size), time_exit(false), height(0), killer_move({})
 #ifndef NDEBUG
 , leaf_nodes(0), raw_nodes(0), fail_high_count(0), fail_high_first_count(0), window_widen_count(0), window_success_count(0)
 #endif // NDEBUG
@@ -79,7 +79,7 @@ namespace internal {
 
         /// generate all the moves
         gen_all_moves(board, movelist);
-        order_moves(movelist, hash_move);
+        order_moves(movelist, search_state, hash_move);
         if (hash_move != nullptr) {
             delete hash_move;
             hash_move = nullptr;
@@ -261,7 +261,7 @@ namespace internal {
 
         /// generate all the moves from this position
         gen_all_moves(board, movelist);
-        order_moves(movelist, hash_move);
+        order_moves(movelist, search_state, hash_move);
         if (hash_move != nullptr) {
             delete hash_move;
             hash_move = nullptr;
@@ -302,6 +302,11 @@ namespace internal {
                     }
                     ++search_state.fail_high_count;
 #endif // NDEBUG
+
+                    if (!(movelist[i].flag() & CAPTURE_MOVE)) {
+                        search_state.killer_move[search_state.height].second = search_state.killer_move[search_state.height].first;
+                        search_state.killer_move[search_state.height].first = movelist[i];
+                    }
 
                     ChessHash upper_bnd_hash(board.key(), beta, movelist[i].from_sq, movelist[i].to_sq, movelist[i].flag(), depth, UPPER_BOUND, board.current_ply()); // could store beta, or could store score
                     if (std::abs(beta) > INF - 100) {
@@ -389,7 +394,7 @@ namespace internal {
 
         /// only generate captures and promotions
         gen_all_caps(board, movelist);
-        order_moves(movelist);
+        order_moves(movelist, search_state);
 
         for (long unsigned int i = 0; i < movelist.size(); i++) {
             /// make the move and test that it's legal
@@ -510,7 +515,7 @@ namespace internal {
 
     }
 
-    void order_moves(std::vector<ChessMove>& movelist, ChessMove* hash_move) {
+    void order_moves(std::vector<ChessMove>& movelist, SearchState& search_state, ChessMove* hash_move) {
         MoveScore score = 0;
 
         for (auto & move : movelist) {
@@ -520,6 +525,12 @@ namespace internal {
                 if (move == *hash_move) {
                     score += 128; // |= (1 << 7)
                 }
+            }
+
+            if (move == search_state.killer_move[search_state.height].first) {
+                score += 32; // |= (1 << 5)
+            } else if (move == search_state.killer_move[search_state.height].second) {
+                score += 16; // |= (1 << 4)
             }
 
 
