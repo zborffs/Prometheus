@@ -1,6 +1,5 @@
-# This script reads the raw engine output from some test suite, performs
-# statistical analysis on the output, and returns some plots
-# More specifically, this script
+# This script reads the raw engine output from some test suite, performs basic
+# statistical analysis, and returns outputs data to HDF5 file
 
 
 # Import Packages
@@ -69,6 +68,7 @@ for l in lines
 	end
 end
 
+# Print the data to the screen for the user
 println("N (Number of Samples) = ", length(ordering))
 println("-------- Game Stage --------")
 println("- From Openings       = ", count(x->x==1, gameStage))

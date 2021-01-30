@@ -1,5 +1,6 @@
 # This script reads an hdf5 file with parsed data created by "Ordering.jl" and
-# compares it.
+# compares the different techniques with respect to the ordering percentage and
+# the number of nodes searched in total and by game stage
 
 
 # Import Packages
