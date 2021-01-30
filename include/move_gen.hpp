@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2019-11-28.
-//
-
-#ifndef PROMETHEUS_MOVE_GEN_HPP
-#define PROMETHEUS_MOVE_GEN_HPP
+#ifndef CLOAK_MOVE_GEN_HPP
+#define CLOAK_MOVE_GEN_HPP
 
 /// STL Includes
 #include <algorithm>
@@ -53,4 +49,4 @@ namespace internal {
 void gen_all_moves(Board& board, std::vector<ChessMove>& movelist);
 void gen_all_caps(Board& board, std::vector<ChessMove>& movelist);
 
-#endif //PROMETHEUS_MOVE_GEN_HPP
+#endif // CLOAK_MOVE_GEN_HPP

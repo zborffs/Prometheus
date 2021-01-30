@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2019-11-16.
-//
-
-#ifndef PROMETHEUS_BITMASK_HPP
-#define PROMETHEUS_BITMASK_HPP
+#ifndef CLOAK_BITMASK_HPP
+#define CLOAK_BITMASK_HPP
 
 /// STL Includes
 #include <cstdint>
@@ -73,4 +69,4 @@ Bitboard flip_flop(Bitboard bb);
 Bitboard mirror(Bitboard bb);
 Centipawns_t dot_product(Bitboard bb, const Centipawns_t* weights);
 
-#endif //PROMETHEUS_BITMASK_HPP
+#endif // CLOAK_BITMASK_HPP

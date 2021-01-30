@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2020-07-05.
-//
-
 /// Project Includes
 #include "globals.hpp"
 #include "eval.hpp"

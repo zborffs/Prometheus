@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2019-11-23.
-//
-
-#ifndef PROMETHEUS_MAGIC_HPP
-#define PROMETHEUS_MAGIC_HPP
+#ifndef CLOAK_MAGIC_HPP
+#define CLOAK_MAGIC_HPP
 
 #include "defines.hpp"
 #include "extern.hpp"
@@ -47,4 +43,4 @@ void init_sliding_attacks();
 #endif // __GNUC__
 #endif // USE_SSE
 
-#endif //PROMETHEUS_MAGIC_HPP
+#endif // CLOAK_MAGIC_HPP

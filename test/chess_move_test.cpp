@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2020-06-03.
-//
-
 #include <gtest/gtest.h>
 #include "chess_move.hpp"
 

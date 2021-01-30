@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2020-02-07.
-//
-
-#ifndef PROMETHEUS_TRANSPOSITIONTABLE_HPP
-#define PROMETHEUS_TRANSPOSITIONTABLE_HPP
+#ifndef CLOAK_TRANSPOSITION_TABLE_HPP
+#define CLOAK_TRANSPOSITION_TABLE_HPP
 
 /// External Library Includes
 #include <spdlog/spdlog.h>
@@ -92,4 +88,4 @@ public:
 };
 
 
-#endif //PROMETHEUS_TRANSPOSITIONTABLE_HPP
+#endif // CLOAK_TRANSPOSITION_TABLE_HPP

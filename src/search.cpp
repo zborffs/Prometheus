@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2020-06-16.
-//
-
 #include "search.hpp"
 
 /**

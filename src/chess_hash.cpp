@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2019-10-06.
-//
-
 #include "defines.hpp"
 #include "chess_hash.hpp"
 

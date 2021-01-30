@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2020-02-07.
-//
-
 #include "chess_clock.hpp"
 
 #if defined(__APPLE__) && defined(__MACH__)

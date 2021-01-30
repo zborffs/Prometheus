@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2020-02-07.
-//
-
-#ifndef PROMETHEUS_CHESS_CLOCK_HPP
-#define PROMETHEUS_CHESS_CLOCK_HPP
+#ifndef CLOAK_CHESS_CLOCK_HPP
+#define CLOAK_CHESS_CLOCK_HPP
 
 /// Standard Library Includes
 #include <ios>
@@ -79,4 +75,4 @@ public:
     }
 };
 
-#endif //PROMETHEUS_CHESS_CLOCK_HPP
+#endif // CLOAK_CHESS_CLOCK_HPP

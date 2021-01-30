@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2019-10-06.
-//
-
 #include "chess_move.hpp"
 
 /**

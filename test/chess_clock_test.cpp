@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2020-05-11.
-//
-
 /// Internal Includes
 #include "defines.hpp"
 #include "globals.hpp"

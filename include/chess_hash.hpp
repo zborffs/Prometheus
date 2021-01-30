@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2019-10-06.
-//
-
-#ifndef PROMETHEUS_CHESS_HASH_HPP
-#define PROMETHEUS_CHESS_HASH_HPP
+#ifndef CLOAK_CHESS_HASH_HPP
+#define CLOAK_CHESS_HASH_HPP
 
 #include "defines.hpp"
 #include <ostream>
@@ -95,4 +91,4 @@ struct ChessHash {
     }
 };
 
-#endif //PROMETHEUS_CHESS_HASH_HPP
+#endif // CLOAK_CHESS_HASH_HPP

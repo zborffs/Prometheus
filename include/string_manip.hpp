@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2019-11-03.
-//
-
-#ifndef PROMETHEUS_STRING_MANIP_HPP
-#define PROMETHEUS_STRING_MANIP_HPP
+#ifndef CLOAK_STRING_MANIP_HPP
+#define CLOAK_STRING_MANIP_HPP
 
 #include <vector>
 #include <string>
@@ -16,4 +12,4 @@ std::string read_fen_from_file(const std::string& file_name, int line_num);
 std::vector<std::string> read_all_fen_from_file(const std::string& file_name);
 std::string swap_lower_upper_case(const std::string& str);
 
-#endif //PROMETHEUS_STRING_MANIP_HPP
+#endif // CLOAK_STRING_MANIP_HPP

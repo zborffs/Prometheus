@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2020-02-07.
-//
-
-#ifndef PROMETHEUS_EVALUATOR_FUNCS_HPP
-#define PROMETHEUS_EVALUATOR_FUNCS_HPP
+#ifndef CLOAK_EVAL_HPP
+#define CLOAK_EVAL_HPP
 
 /// STL includes
 #include <numeric>
@@ -112,4 +108,4 @@ namespace internal {
 
 Centipawns_t evaluate(const Board& board, EvaluationState& es, bool verbose = false);
 
-#endif //PROMETHEUS_EVALUATOR_FUNCS_HPP
+#endif // CLOAK_EVAL_HPP

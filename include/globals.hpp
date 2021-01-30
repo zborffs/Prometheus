@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2019-11-03.
-//
-
-#ifndef PROMETHEUS_GLOBALS_HPP
-#define PROMETHEUS_GLOBALS_HPP
+#ifndef CLOAK_GLOBALS_HPP
+#define CLOAK_GLOBALS_HPP
 
 #include "defines.hpp"
 #include "extern.hpp"
@@ -310,4 +306,4 @@ const Depth LATE_MOVE_REDUCTION_DISCOUNT_NUMBER = 6;
 const double LATE_MOVE_REDUCTION_DISCOUNT_PERCENTAGE = 0.25;
 const int AGE_DIFFERENCE_THRESHOLD = 16;
 
-#endif //PROMETHEUS_GLOBALS_HPP
+#endif // CLOAK_GLOBALS_HPP

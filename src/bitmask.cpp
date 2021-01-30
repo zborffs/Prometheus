@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2019-11-16.
-//
-
 #include "bitmask.hpp"
 
 /**

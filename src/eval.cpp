@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2020-02-07.
-//
-
 #include <attack.hpp>
 #include "bitmask.hpp"
 #include "eval.hpp"

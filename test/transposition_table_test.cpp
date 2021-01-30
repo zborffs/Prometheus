@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2019-11-25.
-//
-
 /// Project Includes
 #include "defines.hpp"
 #include "globals.hpp"

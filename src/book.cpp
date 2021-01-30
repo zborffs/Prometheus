@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2020-07-03.
-//
-
 #include "book.hpp"
 
 void insert(const std::vector<ChessMove> moves) {

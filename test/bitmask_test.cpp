@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2019-11-16.
-//
-
 #include "defines.hpp"
 #include "globals.hpp"
 #include <gtest/gtest.h>

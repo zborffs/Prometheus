@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2020-06-03.
-//
-
-#ifndef PROMETHEUS_BOARD_HPP
-#define PROMETHEUS_BOARD_HPP
+#ifndef CLOAK_BOARD_HPP
+#define CLOAK_BOARD_HPP
 
 /// STL Includes
 #include <algorithm>
@@ -272,4 +268,4 @@ protected:
     void init_all_keys();
 };
 
-#endif //PROMETHEUS_BOARD_HPP
+#endif // CLOAK_BOARD_HPP

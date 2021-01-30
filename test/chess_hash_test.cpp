@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2019-10-31.
-//
-
 #include <gtest/gtest.h>
 #include "chess_hash.hpp"
 

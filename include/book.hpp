@@ -1,8 +1,4 @@
-//
-// Created by Zach Bortoff on 2020-07-03.
-//
-
-#ifndef CHESSBOTEMBEDDED_BOOK_HPP
+#ifndef CLOAK_BOOK_HPP
 #define CHESSBOTEMBEDDED_BOOK_HPP
 
 #include "defines.hpp"
@@ -41,4 +37,4 @@ public:
     void update_current_node(const ChessMove& move);
 };
 
-#endif //CHESSBOTEMBEDDED_BOOK_HPP
+#endif // CLOAK_BOOK_HPP

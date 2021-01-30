@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2020-06-16.
-//
-
-#ifndef PROMETHEUS_SEARCH_FUNCS_HPP
-#define PROMETHEUS_SEARCH_FUNCS_HPP
+#ifndef CLOAK_SEARCH_HPP
+#define CLOAK_SEARCH_HPP
 
 #include "board.hpp"
 #include "chess_clock.hpp"
@@ -90,4 +86,4 @@ bool is_move_legal(Board& board, ChessMove& move);
 ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state);
 void perft(Board& board, Depth depth, int& leaf_nodes);
 
-#endif //PROMETHEUS_SEARCH_FUNCS_HPP
+#endif // CLOAK_SEARCH_HPP

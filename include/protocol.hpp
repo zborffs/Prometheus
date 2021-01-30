@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2020-06-03.
-//
-
-#ifndef PROMETHEUS_PROTOCOL_FUNCS_HPP
-#define PROMETHEUS_PROTOCOL_FUNCS_HPP
+#ifndef CLOAK_PROTOCOL_HPP
+#define CLOAK_PROTOCOL_HPP
 
 /// Standard Library Includes
 #include <iostream>
@@ -35,4 +31,4 @@ namespace internal {
 
 void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state);
 
-#endif //PROMETHEUS_PROTOCOL_FUNCS_HPP
+#endif // CLOAK_PROTOCOL_HPP

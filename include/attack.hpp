@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2020-06-03.
-//
-
-#ifndef PROMETHEUS_ATTACK_HPP
-#define PROMETHEUS_ATTACK_HPP
+#ifndef CLOAK_ATTACK_HPP
+#define CLOAK_ATTACK_HPP
 
 #include "bitmask.hpp"
 #include "defines.hpp"
@@ -31,4 +27,4 @@ Bitboard queen_moves(Square_t sq, Bitboard occupied);
 Bitboard knight_moves(Bitboard knights);
 Bitboard king_moves(Bitboard king);
 
-#endif //PROMETHEUS_ATTACK_HPP
+#endif // CLOAK_ATTACK_HPP

@@ -1,9 +1,5 @@
-//
-// Created by Zach Bortoff on 2019-10-06.
-//
-
-#ifndef PROMETHEUS_DEFINES_HPP
-#define PROMETHEUS_DEFINES_HPP
+#ifndef CLOAK_DEFINES_HPP
+#define CLOAK_DEFINES_HPP
 
 #include <cstdint>
 
@@ -156,4 +152,4 @@ enum MoveHistoryIndex {
     FIF_MOVE_COUNT = 4
 };
 
-#endif //PROMETHEUS_DEFINES_HPP
+#endif // CLOAK_DEFINES_HPP

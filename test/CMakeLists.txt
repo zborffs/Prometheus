@@ -1,4 +1,3 @@
-add_executable(AttackTestRunner attack_test.cpp)
 add_executable(BitmaskTestRunner bitmask_test.cpp)
 add_executable(BoardTestRunner board_test.cpp)
 add_executable(ChessClockTestRunner chess_clock_test.cpp)
@@ -12,7 +11,6 @@ add_executable(SearchTestRunner search_test.cpp)
 add_executable(TranspositionTableTestRunner transposition_table_test.cpp)
 
 if (CODE_COVERAGE MATCHES ON)
-    target_link_libraries(AttackTestRunner --coverage)
     target_link_libraries(BitmaskTestRunner --coverage)
     target_link_libraries(BoardTestRunner --coverage)
     target_link_libraries(ChessClockTestRunner --coverage)
@@ -26,7 +24,6 @@ if (CODE_COVERAGE MATCHES ON)
     target_link_libraries(TranspositionTableTestRunner --coverage)
 endif()
 
-target_link_libraries(AttackTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
 target_link_libraries(BitmaskTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
 target_link_libraries(BoardTestRunner Prometheus-lib ${GTEST_LIBRARIES}  Threads::Threads)
 target_link_libraries(ChessClockTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
@@ -39,7 +36,6 @@ target_link_libraries(EvalTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::
 target_link_libraries(SearchTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
 target_link_libraries(TranspositionTableTestRunner Prometheus-lib ${GTEST_LIBRARIES} Threads::Threads)
 
-add_test(AttackTest AttackTestRunner)
 add_test(BitmaskTest BitmaskTestRunner)
 add_test(BoardTest BoardTestRunner)
 add_test(ChessClockTest ChessClockTestRunner)

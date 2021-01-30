@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2019-11-28.
-//
-
 #include "move_gen.hpp"
 
 namespace internal {

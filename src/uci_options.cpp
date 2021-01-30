@@ -1,7 +1,3 @@
-//
-// Created by Zach Bortoff on 2019-11-03.
-//
-
 #include "uci_options.hpp"
 
 void UCIOptions::reset_game_state_vars() noexcept {
