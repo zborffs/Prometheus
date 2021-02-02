@@ -12,20 +12,27 @@
 /// Global variables
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
-#include <spdlog/sinks/daily_file_sink.h>
+#include <spdlog/sinks/basic_file_sink.h>
 
 #define LOG_FAILURE -1 // flesh out all the quit flags later
 
 bool init_logger(const std::string& path) noexcept;
 
 int main(int argc, char **argv) {
+    std::string path(argv[0]);
+#ifdef WINDOWS
+    std::string base(path.substr(0, path.find_last_of("\\")));
+#else
+    std::string base(path.substr(0, path.find_last_of('/')));
+#endif // WINDOWS
+
     /// Initialize the logger variables, if it fails to initialize, then quit.
-    if (!init_logger(std::string(argv[0]))) {
+    std::string logfile_path(base + "/../../logs/BratkoBenchmark.log");
+    if (!init_logger(logfile_path)) {
         return LOG_FAILURE;
     }
 
     /// Create local variables at the top
-    std::string exec_path;
     std::string bratko_fen_path;
     std::string output_file_path;
     Board board;
@@ -35,9 +42,9 @@ int main(int argc, char **argv) {
     UCIOptions options;
 
     /// Get path to the input file, "Bratko-Kopec.fen", and output file, "tools/data/bratko.txt", from executable directory and command line arguments
-    exec_path = std::string(argv[0]);
-    bool first_is_slash = exec_path[0] == '/';
-    auto splitvec = split(exec_path, '/');
+    path = std::string(argv[0]);
+    bool first_is_slash = path[0] == '/';
+    auto splitvec = split(path, '/');
 
     std::string s{""};
     assert(!splitvec.empty());
@@ -89,33 +96,34 @@ int main(int argc, char **argv) {
     chess_clock.stop();
 
     std::cout.rdbuf(coutbuf); //reset to standard output again
-
-    std::cout << "Data Acquisition Successful! Program took " << (chess_clock.duration() / 1000000.) << " [ms]" << std::endl;
-
+    spdlog::get(logger_name)->info("Data Acquisition Successful! Program took {} seconds", (chess_clock.duration() / 1e9));
     return 0;
 }
 
 /**
- * initializes the logger; assumes that the folder containing the executable is in the same directory as the folder
- * storing the log text files.
- * @param path the path to the executable of this program
- * @return     boolean representing the success of the function
+ * initializes the logger
+ * @param logfile_path path to the logfile
+ * @return             whether the function successfully setup the logger
  */
-bool init_logger(const std::string& path) noexcept {
+bool init_logger(const std::string& logfile_path) noexcept {
     try {
-#ifdef WINDOWS
-        std::string base(path.substr(0, arg.find_last_of("\\")));
-#else
-        std::string base(path.substr(0, path.find_last_of("/")));
-#endif // WINDOWS
-        std::string path_to_log(base + "/../../logs/Prometheus-OrderingBenchmark.log");
+        /// Setup the console sink
+        auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+        console_sink->set_level(spdlog::level::warn);
+        console_sink->set_pattern("[%D %H:%M:%S] [%^%l%$] [Thread %t] [File:Line %@] [Function: %!] %v");
+        console_sink->set_color_mode(spdlog::color_mode::always);
 
-        auto logger = spdlog::daily_logger_st(logger_name, path_to_log, 4, 59);
-        logger->set_level(spdlog::level::debug);
+        /// setup the file sink
+        auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logfile_path, true);
+        file_sink->set_level(spdlog::level::trace);
 
+        /// setup the logger using both sinks
+        spdlog::logger logger(logger_name, {console_sink, file_sink});
+        logger.set_level(spdlog::level::debug);
+        spdlog::set_default_logger(std::make_shared<spdlog::logger>(logger_name, spdlog::sinks_init_list({console_sink, file_sink})));
     } catch (const spdlog::spdlog_ex& ex) {
-        std::cout << "Log initialization failed: " << ex.what() << std::endl;
-        return false;
+        std::cout << "Logger initialization failed: " << ex.what() << std::endl;
+        return false; // if we fail to initialize the logger, return false
     }
 
     return true;

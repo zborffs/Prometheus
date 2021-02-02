@@ -8,6 +8,9 @@
 #include "chess_clock.hpp"
 #include "cereal/archives/binary.hpp"
 #include <fstream>
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/sinks/basic_file_sink.h>
 
 /**
  * generate a ChessMove given a string in algebraic notation
@@ -100,19 +103,25 @@ public:
 bool init_logger(const std::string& path) noexcept;
 
 int main(int argc, char** argv) {
+    std::string path(argv[0]);
+#ifdef WINDOWS
+    std::string base(path.substr(0, path.find_last_of("\\")));
+#else
+    std::string base(path.substr(0, path.find_last_of('/')));
+#endif // WINDOWS
+
     /// Initialize the logger variables, if it fails to initialize, then quit.
-    if (!init_logger(std::string(argv[0]))) {
+    std::string logfile_path(base + "/../../logs/BookMaker.log");
+    if (!init_logger(logfile_path)) {
         return LOG_FAILURE;
     }
-
-    std::string exec_path; // path to this executable (used for path info)
     std::string protobook_path; // path from project home directory to protobook file
     std::string output_path; // path to final opening book binary
 
     /// determine the path to the executable and the project home directory
-    exec_path = std::string(argv[0]);
-    bool first_is_slash = exec_path[0] == '/';
-    auto splitvec = split(exec_path, '/');
+    path = std::string(argv[0]);
+    bool first_is_slash = path[0] == '/';
+    auto splitvec = split(path, '/');
 
     std::string s{""};
     assert(!splitvec.empty());
@@ -147,7 +156,7 @@ int main(int argc, char** argv) {
     clock.start();
     for (auto & line : lines) {
         auto opening = split(line, ':'); // break the line into two parts separated by ':'
-        std::cout << opening[0] << std::endl; // print the first part for the user, so they may know what the opening is
+        spdlog::get(logger_name)->info(opening[0]);
         std::vector<std::string> moves = split(opening[1]); // further split the moves into substrings by ' '
         for (int i = 0; i < moves.size(); i++) {
             // find the ChessMove associated with the string in 'moves' vector at position i
@@ -156,7 +165,7 @@ int main(int argc, char** argv) {
             // if the move is legal, then go on processing it, otherwise break from this loop and go to the next opening
             if (move.has_value()) {
                 // print the moves string representation to the screen
-                std::cout << move->to_string() << ", ";
+                spdlog::get(logger_name)->info(move->to_string());
 
                 if (proto_book[current].key != board.key()) {
                     // if the current BookNode's index doesn't correspond to the board's key, then we must add the
@@ -214,14 +223,13 @@ int main(int argc, char** argv) {
         // reset the board to the 'startpos' and the index to the 'startpos' index
         board.set_board();
         current = 0;
-        std::cout << std::endl << std::endl;
     }
     clock.stop();
 
-    print_protobook(proto_book);
+//    print_protobook(proto_book);
     double d = clock.duration();
     double acc = d;
-    std::cout << "Finished parsing proto book! It took " << d / 1e9 << " seconds." << std::endl;
+    spdlog::get(logger_name)->info("Finished parsing proto book! It took {} seconds", d / 1e9);
 
     std::stringstream ss;
 //    std::ofstream output_book_fstream("tools/data/OpeningBook.cereal", std::ios::binary);
@@ -234,7 +242,7 @@ int main(int argc, char** argv) {
     clock.stop();
     d = clock.duration();
     acc += d;
-    std::cout << "Finished testing the serialization of opening book! It took " << d / 1e9 << " seconds" << std::endl;
+    spdlog::get(logger_name)->info("Finished testing the serialization of the opening book! It took {} seconds", d / 1e9);
 
     std::vector<BookNode> proto_book_ar;
     clock.start();
@@ -247,7 +255,7 @@ int main(int argc, char** argv) {
     clock.stop();
     d = clock.duration();
     acc += d;
-    std::cout << "Finished testing the deserialization of opening book! It took " << d / 1e9 << " seconds" << std::endl;
+    spdlog::get(logger_name)->info("Finished testing the deserialization of the opening book! It took {} seconds", d / 1e9);
 
 
 //    print_protobook(proto_book_ar);
@@ -265,32 +273,35 @@ int main(int argc, char** argv) {
     }
     clock.stop();
     acc += clock.duration();
-    std::cout << "Created Opening Book! It took " << acc / 1e9 << " seconds" << std::endl;
+    spdlog::get(logger_name)->info("Created Opening Book! It took {} seconds", acc / 1e9);
 
     return 0;
 }
 
 /**
- * initializes the logger; assumes that the folder containing the executable is in the same directory as the folder
- * storing the log text files.
- * @param path the path to the executable of this program
- * @return     boolean representing the success of the function
+ * initializes the logger
+ * @param logfile_path path to the logfile
+ * @return             whether the function successfully setup the logger
  */
-bool init_logger(const std::string& path) noexcept {
+bool init_logger(const std::string& logfile_path) noexcept {
     try {
-#ifdef WINDOWS
-        std::string base(path.substr(0, arg.find_last_of("\\")));
-#else
-        std::string base(path.substr(0, path.find_last_of("/")));
-#endif // WINDOWS
-        std::string path_to_log(base + "/../../logs/Cloak-Book.log");
+        /// Setup the console sink
+        auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+        console_sink->set_level(spdlog::level::warn);
+        console_sink->set_pattern("[%D %H:%M:%S] [%^%l%$] [Thread %t] [File:Line %@] [Function: %!] %v");
+        console_sink->set_color_mode(spdlog::color_mode::always);
 
-        auto logger = spdlog::daily_logger_st(logger_name, path_to_log, 4, 59);
-        logger->set_level(spdlog::level::debug);
+        /// setup the file sink
+        auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logfile_path, true);
+        file_sink->set_level(spdlog::level::trace);
 
+        /// setup the logger using both sinks
+        spdlog::logger logger(logger_name, {console_sink, file_sink});
+        logger.set_level(spdlog::level::debug);
+        spdlog::set_default_logger(std::make_shared<spdlog::logger>(logger_name, spdlog::sinks_init_list({console_sink, file_sink})));
     } catch (const spdlog::spdlog_ex& ex) {
-        std::cout << "Log initialization failed: " << ex.what() << std::endl;
-        return false;
+        std::cout << "Logger initialization failed: " << ex.what() << std::endl;
+        return false; // if we fail to initialize the logger, return false
     }
 
     return true;
