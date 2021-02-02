@@ -7,7 +7,7 @@ using Plots, Statistics, Distributions, StatsPlots, HDF5, ColorSchemes
 plotly()
 
 # Read raw data from file
-lines = readlines("data/ordering_output.txt")
+lines = readlines("../data/ordering_output.txt")
 
 # Create a vector for each number of interest and fill with parsed data
 ordering = Vector{Float64}(undef, 0)

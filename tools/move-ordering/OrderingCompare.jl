@@ -8,7 +8,7 @@ using Plots, Statistics, Distributions, StatsPlots, HDF5, ColorSchemes
 plotly()
 
 # Try to read the same data back
-hdf5FileName = "data/ParsedOrdering.hdf5"
+hdf5FileName = "../data/ParsedOrdering.hdf5"
 groupNames = ["NoOrdering", "MVVLVA", "MVVLVA_TTinRoot",
 	"MVVLVA_TTinRootAndSearch", "MVVLVA_TTinRootAndSearch_Killer",
 	"MVVLVA_TTinRootAndSearch_Killer_History", "MVVLVA_TTinRootAndSearch_Killer_History_NullMove"]
