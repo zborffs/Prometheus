@@ -8,7 +8,7 @@
 #include "board.hpp"
 #include <shared_mutex>
 
-const std::string logger_name("The Ledger");
+const std::string logger_name("Logger");
 const std::string engine_name("Cloak");
 const std::string version("0.2");
 const std::string author("Zach Bortoff");
@@ -578,8 +578,8 @@ const PositionKey EN_PASSANT_KEYS[17] {
 const Centipawns_t PAWN_BASE_VAL   = 100;
 const Centipawns_t BISHOP_BASE_VAL = 330;
 const Centipawns_t KNIGHT_BASE_VAL = 310;
-const Centipawns_t ROOK_BASE_VAL = 500;
-const Centipawns_t QUEEN_BASE_VAL = 910;
+const Centipawns_t ROOK_BASE_VAL   = 500;
+const Centipawns_t QUEEN_BASE_VAL  = 910;
 
 const Centipawns_t TEMPO = 5;
 
@@ -601,16 +601,17 @@ const double PAWN_STRENGTH[4] = {
 const double CONNECTIVITY[5] = {
         9.1, 5.0, 3.3, 3.1, 1.0
 };
+
 const Centipawns_t KNIGHT_MOBILITY = 4;
 const Centipawns_t KNIGHT_OUTPOST_BONUS = 5;
 const Centipawns_t KNIGHT_PST[64] = {
         -5, -2, -2, -2, -2, -2, -2, -5,
-        -2, 0, 0, 0, 0, 0, 0, -2,
-        -2, 0, 1, 2, 2, 1, 0, -2,
-        -2, 0, 2, 4, 4, 2, 0, -2,
-        -2, 0, 2, 4, 4, 2, 0, -2,
-        -2, 0, 1, 2, 2, 1, 0, -2,
-        -2, 0, 0, 0, 0, 0, 0, -2,
+        -2,  0,  0,  0,  0,  0,  0, -2,
+        -2,  0,  1,  2,  2,  1,  0, -2,
+        -2,  0,  2,  4,  4,  2,  0, -2,
+        -2,  0,  2,  4,  4,  2,  0, -2,
+        -2,  0,  1,  2,  2,  1,  0, -2,
+        -2,  0,  0,  0,  0,  0,  0, -2,
         -5, -2, -2, -2, -2, -2, -2, -5
 };
 
@@ -699,7 +700,7 @@ const Centipawns_t PAWN_PST[64] = {
 };
 
 const Centipawns_t PASSED_PAWN[8] = {
-        0, 0, 0, 12, 25, 50, 100, 0
+    0, 0, 0, 12, 25, 50, 100, 0
 };
 
 const Centipawns_t PAWN_UNOPPOSED_PAWN = 5;
@@ -714,13 +715,13 @@ const Centipawns_t PAWN_AS_HEAD_OF_CHAIN = -2;
 const Centipawns_t PAWN_ATTACKING_ENEMY_CAMP = 20;
 const Centipawns_t PAWN_HANGING = -15;
 const Centipawns_t PAWN_ISLAND[4] = {
-        0, -1, -2, -3
+    0, -1, -2, -3
 };
 const Centipawns_t HALF_ISOLATED_PAWN = -5;
 
 /// Search Parameters
 const Centipawns_t WINDOW_SIZE[3] = {
-        150, 550, 1100
+    150, 550, 1100
 };
 const Depth NULL_MOVE_R = 3;
 const Depth FUTILITY_DEPTH = 2;

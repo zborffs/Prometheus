@@ -4,6 +4,7 @@
 #include "defines.hpp"
 #include <ostream>
 #include <cassert>
+#include <cereal/cereal.hpp>
 
 static constexpr MoveScore MVVLVA[5][5] {
     // p, r, n, b, q
@@ -130,6 +131,32 @@ struct ChessMove {
             }
             return os << ptm_char << to_file << to_rank;
         }
+    }
+
+    template<class Archive>
+    void save(Archive& archive) const {
+        Square_t fs = from_sq;
+        Square_t ts = to_sq;
+        MoveFlag_t move_flag = flag();
+        PieceType_t pmoved = moved;
+        PieceType_t pcaptured = captured;
+        archive(fs, ts, move_flag, pmoved, pcaptured, score); // serialize things by passing them to the archive
+    }
+
+    template<class Archive>
+    void load(Archive& archive) {
+        Square_t fs;
+        Square_t ts;
+        MoveFlag_t move_flag;
+        PieceType_t pmoved;
+        PieceType_t pcaptured;
+        archive(fs, ts, move_flag, pmoved, pcaptured, score); // serialize things by passing them to the archive
+        from_sq = fs;
+        mf = (move_flag & (MoveFlag_t)3);
+        to_sq = ts;
+        pf = move_flag >> (MoveFlag_t)2;
+        moved = pmoved;
+        captured = pcaptured;
     }
 };
 

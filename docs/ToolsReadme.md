@@ -41,3 +41,58 @@ What kind of information do I want?
   I do test suite analysis
 - But i'll save the move-ordering scripts for now, because they work and are
   good references
+
+Tournaments - Regression + Tuning Data Generation
+-------------------------------------------------
+- Julia script wraps c-chess-cli and dispatches tournament requests
+- c-chess-cli returns with file for tuning and file with outcome (potentially with fens)
+- Julia script reads the outcome file and performs statistical analysis (ranking etc.) on the engines supplemented with
+  a priori data about the elos of each engine (if that's important)
+- Julia prints beautiful graph + table of results for user to inspect and share
+
+Tuning
+------
+- tune_runner.cpp performs texel (or something) tuning
+
+Opening Book
+------------
+### Client Interface
+
+- actual book data is deserialized from some file somewhere
+- client asks the book for all the moves from a given position
+- client gets the moves, applies some function for selecting which of the moves to do, and tells the engine which of
+  the BookEdges he selected
+- book looks at index of BookEdge in current BookNodes array corresponding to the move that the user has said he
+  sekected, then looks at the index associated with that move (which is stored in the BookEdge), and pushes that
+  BookNode onto a stack
+- the player undoes the book move, the stack gets popped
+  - the stack must be initialized with the starting position
+- if the player starts from a position when the initial position is not the 'startpos', then it must do a search
+  - until I think of a better strategy that'll just be a brute force search
+
+### Book Maker
+
+- make the first node the board.key() from the starting position and set both the games played and games won to zero
+  and the book edges to null
+- parse the protobook
+  - convert the algebraic notation to a ChessMove
+  - add the ChessMove object to the current node's list, setting the index to 0, i.e. the startpos
+  - if the vector of parsed algebraic notations is over, then go to the next line, otherwise make the move and repeat
+
+### Book Learning Approaches
+
+
+1. Back Propogation
+  1. play a game, storing the book moves made in the stack
+  2. once the game is over, white has either one (1.0), lost (-1.0), or tied (0)
+  3. We pop the last book move made from the stack, and update its value (running mean etc.) with the new outcome
+  4. continually pop the stack, updating each value by a similar mechanism until the root is reached
+
+2. Alpha Beta
+  1. play a game, storing the book moves made in the stack
+  2. once the game is over, white has either one (1.0), lost (-1.0), or tied (0)
+  3. We pop the last book move made from the stack, and update its value (running mean etc.) with the new outcome
+  4. We perform an alpha-beta search on the tree, and negamax the values of the leafs up to the root, now modified
+     by the new leaf node value
+
+3.)
