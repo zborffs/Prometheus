@@ -80,7 +80,7 @@ namespace internal {
     Centipawns_t q_search(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta);
     bool check_stop_search(unsigned depth, UCIOptions& options, SearchState& search_state);
     void order_moves(std::vector<ChessMove>& movelist, SearchState& search_state, ChessMove* hash_move = nullptr);
-}
+};
 
 bool is_move_legal(Board& board, ChessMove& move);
 ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state);

@@ -88,6 +88,8 @@ public:
     bool is_draw() const noexcept;
     bool is_king_checked(Color_t color) noexcept;
     bool is_king_checked(Color_t color) const noexcept;
+    std::string best_move() noexcept;
+    std::string best_move() const noexcept;
 
     /// Setters
     void store_current_state(const ChessMove& new_move) noexcept;
@@ -265,7 +267,6 @@ protected:
 
     /// Initialization functions.
     void init_pos_keys() noexcept;
-    void init_all_keys();
 };
 
 #endif // CLOAK_BOARD_HPP

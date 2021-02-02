@@ -29,6 +29,11 @@ if(CODE_COVERAGE)
     message(STATUS "Enabling Code Coverage")
 endif()
 
+if (USE_SSE)
+    add_compile_definitions( JETSON_BUILD )
+    message("-- Compiling using SSE")
+endif()
+
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wshadow -pedantic") # -Werror
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O3") # -O3
@@ -47,6 +52,7 @@ set(CLOAK_LIB_SRCS
     src/chess_hash.cpp
     src/chess_move.cpp
     src/eval.cpp
+    src/magic.cpp
     src/move_gen.cpp
     src/protocol.cpp
     src/search.cpp
@@ -68,6 +74,7 @@ install(TARGETS Cloak-lib ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIM
 # If we want to build a test, then build them
 if(BUILD_TESTS)
     add_subdirectory(test)
+    add_subdirectory(tools)
     add_subdirectory(benchmark)
 
     # If we want to do code coverage, then do it

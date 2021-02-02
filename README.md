@@ -24,13 +24,3 @@ To run in terminal:
 if the program immediately terminates, something went wrong. Try adding a logs/ directory in the project home directory. 
 Otherwise, you'll be prompted with an empty terminal. Type "uci" for UCI mode. 
 
-
-Tools
------
-The 'tools/' directory contains:
-1. a script whose lines are meant to be copied into a docker container simulating the Gitlab Linux environment for 
-   testing purposes.
-2. two Julia scripts for processing Move Ordering data as well as the data processed by those scripts
-    a. Ordering.jl transforms raw game outputs into .hdf5 and displays some plots and computes some summary statistics
-       as sanity checks (not great code but it works).
-    b. OrderingCompare.jl does a comparison between the different ordering techniques (not great code but it works).

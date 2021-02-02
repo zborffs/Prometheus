@@ -18,10 +18,10 @@ extern const Centipawns_t INF;
 
 extern const uint8_t CASTLE_CHECK[64];
 
-extern PositionKey POSITION_KEYS[12][64];
-extern PositionKey SIDE_2_MOVE_KEYS[2];
-extern PositionKey CASTLE_PERMISSION_KEYS[16];
-extern PositionKey EN_PASSANT_KEYS[17];
+extern const PositionKey POSITION_KEYS[12][64];
+extern const PositionKey SIDE_2_MOVE_KEYS[2];
+extern const PositionKey CASTLE_PERMISSION_KEYS[16];
+extern const PositionKey EN_PASSANT_KEYS[17];
 
 extern const Bitboard ANTI_DIAGONAL_MASK[15];
 extern const Bitboard DIAGONAL_MASK[15];

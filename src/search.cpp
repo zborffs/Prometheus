@@ -1,7 +1,7 @@
 #include "search.hpp"
 
 /**
- * SearchState constructor: sets all member variables to default values
+ * sets all member variables to nominal values
  */
 SearchState::SearchState(int tt_size) : result_flag(Result::NO_RESULT), tt(tt_size), time_exit(false), height(0), killer_move({}), history_heuristic({{}})
 #ifndef NDEBUG
@@ -12,7 +12,7 @@ SearchState::SearchState(int tt_size) : result_flag(Result::NO_RESULT), tt(tt_si
 }
 
 /**
- * resets all SearchState member variables to default values
+ * resets all SearchState member variables to nominal values
  */
 void SearchState::reset() {
     result_flag = Result::NO_RESULT;
@@ -71,7 +71,7 @@ namespace internal {
             }
 
             if (root_hash->from_sq != root_hash->to_sq) {
-                hash_move = new ChessMove(root_hash->from_sq, root_hash->to_sq, root_hash->m_flag(), moved, captured);
+                hash_move = new ChessMove(root_hash->from_sq, root_hash->to_sq, root_hash->m_flag(), moved, captured); // 'new' key word. WATCH OUT!
             }
         }
 
@@ -79,7 +79,7 @@ namespace internal {
         gen_all_moves(board, movelist);
         order_moves(movelist, search_state, hash_move);
         if (hash_move != nullptr) {
-            delete hash_move;
+            delete hash_move; // nice deletion, mate!
             hash_move = nullptr;
         }
 
@@ -196,11 +196,13 @@ namespace internal {
                 }
             }
 
+            /// forget why these are the conditions
             if (hash->depth >= (depth - NULL_MOVE_R) && (score < beta) && (flag == LOWER_BOUND)) {
                 do_null = false;
                 flag = AVOID_NULL;
             }
 
+            /// if the hashed move went deeper than we currently are in the search, then it should be adhered to
             if (hash->depth >= depth) {
                 switch (flag) {
                     case LOWER_BOUND:
@@ -232,14 +234,15 @@ namespace internal {
                 Centipawns_t null_move_score = -search(board, options, search_state, eval_state, depth - NULL_MOVE_R - 1, -beta, -beta + 1, false);
                 board.unmake_move();
 
+                /// if I have a remarkable position despite the null move, just return current upper bound
                 if (null_move_score >= beta) {
                     return beta;
                 }
 
+                /// if I die when I null-move, then something is amiss. let's look into this position a bit more
                 if (null_move_score < -INF + 100) {
                     ++num_extensions;
                 }
-
             }
         }
 
@@ -279,7 +282,7 @@ namespace internal {
             hash_move = nullptr;
         }
 
-        for (long unsigned int i = 0; i < movelist.size(); i++) {
+        for (std::size_t i = 0; i < movelist.size(); ++i) {
             /// for each move, determine its legality by playing it and seeing whether you put yourself in check
             board.make_move(movelist[i]);
             if (board.is_king_checked(!board.side_2_move())) {
@@ -301,7 +304,7 @@ namespace internal {
 
             /// if we've run out of time, then quit. By returning alpha, we don't give any new information
             if (internal::check_stop_search(depth, options, search_state)) {
-                return 0;
+                return 0; // return alpha?
             }
 
             /// if the score exceeds alpha (the best score found so far), then update the alpha value
@@ -315,6 +318,7 @@ namespace internal {
                     ++search_state.fail_high_count;
 #endif // NDEBUG
 
+                    /// if it's not a capture move, be sure to add the move to the search_killers structure
                     if (!(movelist[i].flag() & CAPTURE_MOVE)) {
                         search_state.killer_move[search_state.height].second = search_state.killer_move[search_state.height].first;
                         search_state.killer_move[search_state.height].first = movelist[i];
@@ -362,7 +366,7 @@ namespace internal {
             }
             search_state.tt.insert(exact_hash);
         } else {
-            /// store a dummy in the transposition table if we fail low
+            /// store a dummy in the transposition table if we fail low ------ WHY?
             ChessHash lower_bnd_hash(board.key(), alpha, A1, A1, NO_MOVE_FLAG, depth, LOWER_BOUND, board.current_ply());
             if (std::abs(alpha) > INF - 100) {
                 if (beta > 0) {

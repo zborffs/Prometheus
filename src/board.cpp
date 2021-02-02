@@ -7,7 +7,6 @@
  */
 Board::Board() : key_(0), piece_bb_({{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}), occupied_bb_(0), empty_bb_(0), capturable_({{0, 0}}), fif_move_counter_(0), ep_sq_(A1), castle_perm_(FULL), side_2_move_(WHITE), current_ply_(0) {
     set_board();
-    init_all_keys();
 }
 
 /**
@@ -16,7 +15,6 @@ Board::Board() : key_(0), piece_bb_({{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}
  */
 Board::Board(const std::string& fen) : key_(0), piece_bb_({{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}), occupied_bb_(0), empty_bb_(0), capturable_({{0, 0}}), fif_move_counter_(0), ep_sq_(A1), castle_perm_(FULL), side_2_move_(WHITE), current_ply_(0) {
     set_board(fen);
-    init_all_keys();
 }
 
 /**
@@ -32,34 +30,6 @@ Board::Board(const std::string& file_name, const int line_number) : key_(0), pie
         throw std::logic_error(e.what());
     }
     set_board(fen);
-    init_all_keys();
-}
-
-/**
- * initializes all keys to a random number
- */
-void Board::init_all_keys() {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<uint64_t> dis(0);
-
-    for (int i = 0 ; i < 12 ; i++) {
-        for (int j = 0 ; j < 64 ; j++) {
-            POSITION_KEYS[i][j] = dis(gen);
-        }
-    }
-
-    for (int i = 0 ; i < 2 ; i++) {
-        SIDE_2_MOVE_KEYS[i] = dis(gen);
-    }
-
-    for (int i = 0 ; i < 16 ; i++) {
-        CASTLE_PERMISSION_KEYS[i] = dis(gen);
-    }
-
-    for (int i = 0 ; i < 17 ; i++) {
-        EN_PASSANT_KEYS[i] = dis(gen);
-    }
 }
 
 /**
@@ -1006,7 +976,6 @@ void Board::parse_fen(std::vector<std::string>::const_iterator first, std::vecto
             if (size > 4) {
                 auto itr = std::find(first, last, "bm");
                 if (itr != last) {
-                    /// ADD CONDITIONS SO THIS IS ONLY INCLUDED WHEN RUNNING TESTS.
                     best_move_ = *(itr + 1); // bm is next string
                     best_move_.erase(best_move_.end() - 1); // remove ';'
                 }
@@ -1250,4 +1219,12 @@ void Board::init_pos_keys() noexcept {
     key_ ^= SIDE_2_MOVE_KEYS[side_2_move_];
     key_ ^= CASTLE_PERMISSION_KEYS[castle_perm_];
     key_ ^= EN_PASSANT_KEYS[ep_sq_];
+}
+
+std::string Board::best_move() noexcept {
+    return best_move_;
+}
+
+std::string Board::best_move() const noexcept {
+    return best_move_;
 }
