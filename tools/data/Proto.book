@@ -19,10 +19,10 @@ OldIndian:d4 Nf6 c4 d6
 CzechBenoni:d4 Nf6 c4 c5 d5 e5 Nc3 d6
 BenkoGambit:d4 Nf6 c4 c5 d5 b5
 ModernBenoni6Nf3:d4 Nf6 c4 c5 d5 e6 Nc3 exd5 cxd5 d6 Nf3
-ModernBenoni6e4:d4 Nf6 c4 c5 d5 e6 Nc3 exd5 cxd5 d6 e6
+ModernBenoni6e4:d4 Nf6 c4 c5 d5 e6 Nc3 exd5 cxd5 d6 e4
 DutchLeningrad:d4 f5 c4 Nf6 g3 g6 Bg2 Bg7 Nf3 O-O O-O
 DutchClassical:d4 f5 c3 Nf6 g3 e6 Bg2
-Dutch3Nc3:d4 f5 c3 Nf3 Nc3
+Dutch3Nc3:d4 f5 c4 Nf6 Nc3
 DutchOther:d4 f5 Nc3
 DutchOther-1:d4 f5 Bg5
 DutchOther-2:d4 f5 e4
@@ -33,7 +33,7 @@ GrunfeldOther-1:d4 Nf6 c4 g6 Nc3 d5 Bg5
 GrunfeldOther-2:d4 Nf6 c4 g6 Nc3 d5 e3
 GrunfeldOther-3:d4 Nf6 c4 g6 Nc3 d5 Qb3
 Bogo4Bd2:d4 Nf6 c4 e6 Nf3 Bb4+ Bd2
-Bogo4Nbd2:d4 Nf6 c4 e6 Nf3 Bb4+ Nbd2
+Bogo4Nbd2:d4 Nf6 c4 e6 Nf3 Bb4+
 QID4a3:d4 Nf6 c4 e6 Nf3 b6 a3
 QID4Nc3:d4 Nf6 c4 e6 Nf3 b6 Nc3
 QID4e3:d4 Nf6 c4 e6 Nf3 b6 e3
@@ -56,7 +56,7 @@ NimzoCIOther:d4 Nf6 c4 e6 Nc3 Bb4 Qc2 Nc6
 NimzoCIOther:d4 Nf6 c4 e6 Nc3 Bb4 Qc2 b6
 NimzoCIOther:d4 Nf6 c4 e6 Nc3 Bb4 Qc2 d6
 NimzoRub4O-O:d4 Nf6 c4 e6 Nc3 Bb4 e3 O-O
-NimzoRub4c5:d4 Nf6 c4 e6 Bc3 Bb4 e3 c5
+NimzoRub4c5:d4 Nf6 c4 e6 Nc3 Bb4 e3 c5
 NimzoRubOther:d4 Nf6 c4 e6 Nc3 Bb4 e3 b6
 NimzoRubOther:d4 Nf6 c4 e6 Nc3 Bb4 e3 d5
 NimzoRubOther:d4 Nf6 c4 e6 Nc3 Bb4 e3 Nc6
@@ -66,18 +66,18 @@ KIDFianchetto:c4 Nf6 d4 g6 g3 Bg7 Bg2 d6 Nf3 O-O
 KID4pawns:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 f4
 KIDSaemisch:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 f3
 KIDClassical:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 O-O Nc6
-KIDOther7:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 Be3 dxe5 Bg5
-KIDOther7-2:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 O-O
-KIDOther7-2:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 Nbd7
-KIDOther7-2:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 Na6
-KIDOther7-2:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 exd4
-KIDOther7-2:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 c6
-KIDOther7-2:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 Nh5
-KIDOther7-2:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 Qe8
+KIDOther7-1:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 Be3
+KIDOther7-2:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 dxe5
+KIDOther7-3:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 Bg5
+KIDOther7-6:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 O-O Na6
+KIDOther7-7:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 O-O exd4
+KIDOther7-8:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 O-O c6
+KIDOther7-9:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 O-O Nh5
+KIDOther7-10:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 O-O Qe8
 KIDPetrosian:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5 d5
-KIDOther5:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 Bg4 Nbd7
-KIDOther5:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 Bg4 c6
-KIDOther5:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 Bg4 c5
+KIDOther5:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 Bg4
+KIDOther5:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 c6
+KIDOther5:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 c5
 KIDOther6:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O h3
 KIDOther6:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be3
 KIDOther6:d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Bg5
@@ -94,7 +94,8 @@ SlavExchange:d4 d5 c4 c6 Nf3 Nf6 cxd5 cxd5 Nc3
 Slav4a6:d4 d5 c4 c6 Nf3 Nf6 Nc3 a6
 SlavOther5:d4 d5 c4 c6 Nf3 Nf6 Nc3 dxc4 e4
 SlavOther5:d4 d5 c4 c6 Nf3 Nf6 Nc3 dxc4 e3
-SlavOther5:d4 d5 c4 c6 Nf3 Nf6 Nc3 dxc4 Ne5g3
+SlavOther5:d4 d5 c4 c6 Nf3 Nf6 Nc3 dxc4 Ne5
+SlavOther5:d4 d5 c4 c6 Nf3 Nf6 Nc3 dxc4 g3
 SlavOther5:d4 d5 c4 c6 Nf3 Nf6 Nc3 dxc4 a4 Bg4
 SlavOther5:d4 d5 c4 c6 Nf3 Nf6 Nc3 dxc4 a4 Na6
 SlavOther5:d4 d5 c4 c6 Nf3 Nf6 Nc3 dxc4 a4 e6
@@ -113,16 +114,17 @@ QGDOther34:d4 d5 c4 e6 Nf3 c5
 QGDOther34-1:d4 d5 c4 e6 Nc3 c6 e4
 QGDOther34-2:d4 d5 c4 e6 Nc3 c6 Nf3 dxc4
 QGDOther34-3:d4 d5 c4 e6 Nc3 c6 cxd5 exd5
-QGDOther34-4:d4 d5 c4 e6 Nc3 Nf6 Nf3 Nbd7 Bb4
+QGDOther34-4:d4 d5 c4 e6 Nc3 Nf6 Nf3 Bb4
 QGDTarrasch:d4 d5 c4 e6 Nc3 c5
 QGDExchange:d4 d5 c4 e6 Nc3 Nf6 cxd5
 QGD5Bf4:d4 d5 c4 e6 Nc3 Nf6 Nf3 Be7 Bf4
-SemiTarre3-Nc6:d4 d5 c3 e6 Nc3 Nf6 Nf3 c5 cxd5
+SemiTarre3-Nc6:d4 d5 c4 e6 Nc3 Nf6 Nf3 c5 e3 Nc6
+SemiTarremain:d4 d5 c4 e6 Nc3 Nf6 Nf3 c5 cxd5
 SemiSlavOther5:d4 d5 c4 e6 Nf3 Nf6 Nc3 c6 Qb3
 SemiSlavOther5:d4 d5 c4 e6 Nf3 Nf6 Nc3 c6 Bf4
 SemiSlavBotvinnik:d4 d5 c4 e6 Nf3 Nf6 Nc3 c6 Bg5
 SemiSlavMeran:d4 d5 c4 e6 Nc3 Nf6 Nf3 c6 e3
-QGDOrthoOther4:d4 d5 c4 e6 Nc3 Nf6 Bg5 Nbd7
+QGDOrthoOther4:d4 d5 c4 e6 Nc3 Nf6 Bg5
 QGDOrthoOther4:d4 d5 c4 e6 Nc3 Nf6 Bg5 c5
 QGDOrthoOther4:d4 d5 c4 e6 Nc3 Nf6 Bg5 Bb4
 QGDOrthoMain:d4 d5 c4 e6 Nc3 Nf6 Bg5 Be7
@@ -132,7 +134,11 @@ Scand3Qd6:e4 d5 exd5 Qxd5 Nc3 Qd6
 Scand3Qd8:e4 d5 exd5 Qxd5 Nc3 Qd8
 Scand2Qxd5-3Qa5:e4 d5 exd5 Qxd5 Nc3 Qa5
 Scand2Nf6-3d4:e4 d5 exd5 Nf6 d4
-Scand2Nf6Other:e4 d5 exd5 Nf6 c4 Bb5+ Nc3 Nf3 Bc4
+Scand2Nf6Other:e4 d5 exd5 Nf6 c4
+Scand2Nf6Other:e4 d5 exd5 Nf6 Bb5+
+Scand2Nf6Other:e4 d5 exd5 Nf6 Nc3
+Scand2Nf6Other:e4 d5 exd5 Nf6 Nf3
+Scand2Nf6Other:e4 d5 exd5 Nf6 Bc4
 Alekhine2Nc3-d5:e4 Nf6 Nc3 d5
 AlekhineOther3:e4 Nf6 e5 Nd5 c4
 AlekhineOther3:e4 Nf6 e5 Nd5 Nc3
@@ -156,14 +162,14 @@ ModernOther3:e4 g6 d4 Bg7 Bc4
 PircOtherWhite3:e4 d6 d4 Nf6 Bd3
 PircOtherWhite3:e4 d6 d4 Nf6 f3
 PircOtherWhite3:e4 d6 d4 Nf6 Nd2
-PircOtherBlack3:e4 d6 Nf6 Nc3 c6
-PircOtherBlack3:e4 d6 Nf6 Nc3 e5
-PircOtherBlack3:e4 d6 Nf6 Nc3 Nbd7
+PircOtherBlack3:e4 d6 d4 Nf6 Nc3 c6
+PircOtherBlack3:e4 d6 d4 Nf6 Nc3 e5
 PircAustrian:e4 d6 d4 Nf6 Nc3 g6 f3
-PircOtherWhite4:e4 d6 d4 Nf6 Nc3 g6 Be3 Bg5
-PircOtherWhite4:e4 d6 d4 Nf6 Nc3 g6 Be3 f3
-PircOtherWhite4:e4 d6 d4 Nf6 Nc3 g6 Be3 g3
-PircOtherWhite4:e4 d6 d4 Nf6 Nc3 g6 Be3 Be2
+PircOtherWhite4:e4 d6 d4 Nf6 Nc3 g6 Be3
+PircOtherWhite4:e4 d6 d4 Nf6 Nc3 g6 Bg5
+PircOtherWhite4:e4 d6 d4 Nf6 Nc3 g6 f3
+PircOtherWhite4:e4 d6 d4 Nf6 Nc3 g6 g3
+PircOtherWhite4:e4 d6 d4 Nf6 Nc3 g6 Be2
 PircClassical:e4 d6 d4 Nf6 Nc3 g5 Nf3
 Caro-Kann2c4:e4 c6 c4
 Caro-Kann2Knight:e4 c6 Nc3 d5 Nf3
@@ -175,13 +181,14 @@ Caro-KannClassic:e4 c6 d4 d5 Nc3 dxe4 Nxe4 Bf5
 FrenchKIA:e4 e6 d3
 FrenchOther2:e4 e6 Nf3
 FrenchOther2:e4 e6 Qe2
-FrenchOther2:e4 e6 Kc3
+FrenchOther2:e4 e6 Nc3
 FrenchOther2:e4 e6 b3
 FrenchOther2:e4 e6 c4
 FrenchExchange:e4 e6 d4 d5 exd5
 FrenchAdvance:e4 e6 d4 d5 e5 c5 c3
-FrTarraschOther3:e4 e6 d4 d5 Nd2 Nc6 Be7
-FrTarraschOther3:e4 e6 d4 d5 Nd2 Nc6 a6
+FrTarraschOther3:e4 e6 d4 d5 Nd2 Nc6
+FrTarraschOther3:e4 e6 d4 d5 Nd2 Be7
+FrTarraschOther3:e4 e6 d4 d5 Nd2 a6
 FrTarrasch3c5:e4 e6 d4 d5 Nd2 c5
 FrTarrasch3Nf6:e4 e6 d4 d5 Nd2 Nf6
 FrenchRubinstein:e4 e6 d4 d5 Nc3 dxe4 Nxe4
@@ -219,30 +226,31 @@ SicilianAlapin2d5:e4 c5 c3 d5
 Sicilian2Nc3-e6:e4 c5 Nc3 e6
 Sicilian2Nc3-dy:e4 c5 Nc3 d6
 SicilianGrandPrix:e4 c5 Nc3 Nc6 f4
-SicilianClaosedOther3:e4 c5 Nc3 Nc6 Nf3
-SicilianClaosedOther3:e4 c5 Nc3 Nc6 Nge2
-SicilianClaosedOther3:e4 c5 Nc3 Nc6 Bb5
+SicilianClosedOther3:e4 c5 Nc3 Nc6 Nf3
+SicilianClosedOther3:e4 c5 Nc3 Nc6 Bb5
 SicilianClosedMain:e4 c5 Nc3 Nc6 g3
 Sicilian2Nf3Other2:e4 c5 Nf3 g6
 Sicilian2Nf3Other2:e4 c5 Nf3 a6
 Sicilian2Nf3Other2:e4 c5 Nf3 Nf6
 SiciilianRossolimo:e4 c5 Nf3 Nc6 Bb5
-Sic2Nc6-4Qc7-4Qb6:e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 Qc7 Qb6
+Sic2Nc6-4Qc7-4Qb6:e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 Qc7
+Sic2Nc6-4Qc7-4Qb6:e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 Qb6
 SicilianLowenthal:e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 e5
 Silician2Nc7Other5:e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 Nf6 Nc3 g6
 Silician2Nc7Other5:e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 Nf6 Nc3 a6
 Silician2Nc7Other5:e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 Nf6 Nc3 Qb6
 SicilianAccelDragon:e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 g6
-SicilianSveshnikov:e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 Nf6 Nc3 e5 Ndb5 d6
+SicilianSveshnikov:e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 Nf6 Nc3 e5
 SicilianKanOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 a6 Be2
 SicilianKanOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 a6 Be3
 SicilianKanOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 a6 g3
 SicilianKan5c4:e4 c5 Nf3 e6 d4 cxd4 Nxd4 a6 Nc3
-SicilianKan5Bd3:e4 c5 Nf3 e6 d4 cxd4 Nxd4 a6 Nd3
-SicilianTaimanovOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6 Be3 Nxc6
-SicilianTaimanovOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6 Be3 c4
-SicilianTaimanovOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6 Be3 Be2
-SicilianTaimanovOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6 Be3 g3
+SicilianKan5Bd3:e4 c5 Nf3 e6 d4 cxd4 Nxd4 a6 Bd3
+SicilianTaimanovOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6 Be3
+SicilianTaimanovOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6 Nxc6
+SicilianTaimanovOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6 c4
+SicilianTaimanovOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6 Be2
+SicilianTaimanovOther5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6 g3
 SicilianTaimanov5Nb5:e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6 Nb5
 SicilianTaimanovMain:e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6 Nc3
 SicilianMoscow:e4 c5 Nf3 d6 Bb5+
@@ -254,13 +262,13 @@ SicilianDragonOther6:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Bg5
 SicDragon6Be2-6Bc4:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Be2
 SicDragon6Be2-6Bc4:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Bc4
 SicilianDragonYugoslav:e4 c5 Nf3 d6 d4 cxd4 Nxd4 f6 Nc3 g6 Be3 Bg7 f3
-SicilianClassicalOther6:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf7 Nc3 Nc6 Be2
-SicilianClassicalOther6:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf7 Nc3 Nc6 Be3
-SicilianClassicalOther6:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf7 Nc3 Nc6 f3
-SicilianClassicalOther6:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf7 Nc3 Nc6 g3
-SicilianClassicalOther6:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf7 Nc3 Nc6 f4
+SicilianClassicalOther6:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 Nc6 Be2
+SicilianClassicalOther6:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 Nc6 Be3
+SicilianClassicalOther6:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 Nc6 f3
+SicilianClassicalOther6:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 Nc6 g3
+SicilianClassicalOther6:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 Nc6 f4
 SicilianClassicalSozin:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 Nc6 Bc4
-SicilianRichter-Rauzer:e4 c5 Bf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 Nc6 Bg5
+SicilianRichter-Rauzer:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 Nc6 Bg5
 SicilianScheveningen:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 e6
 SilicianNajdorf6a4:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 a6 a4
 SicilianNajdorfg3:e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 a6 g3
@@ -281,7 +289,7 @@ PetroffOther3:e4 e5 Nf3 Nf6 Nc3
 PetroffOther3:e4 e5 Nf3 Nf6 d4
 PetroffOther3:e4 e5 Nf3 Nf6 d3
 PetroffOther3:e4 e5 Nf3 Nf6 Bc4
-PetroffMain:e3 e5 Nf3 Nf6 Nxe5 d6 Nf3 Nxe4
+PetroffMain:e4 e5 Nf3 Nf6 Nxe5 d6 Nf3 Nxe4
 Ponziani:e4 e5 Nf3 Nc6 c3
 ThreeKnights:e4 e5 Nf3 Nc6 Nc3 Bc5
 ThreeKnights:e4 e5 Nf3 Nc6 Nc3 g6
@@ -303,7 +311,6 @@ GiuocoPiano:e4 e5 Nf3 Nc6 Bc4 Bc5
 RuyLopezOther3:e4 e5 Nf3 Nc6 Bb5 d6
 RuyLopezOther3:e4 e5 Nf3 Nc6 Bb5 Nd4
 RuyLopezOther3:e4 e5 Nf3 Nc6 Bb5 g6
-RuyLopezOther3:e4 e5 Nf3 Nc6 Bb5 Nge7
 RuyLopezClassical:e4 e5 Nf3 Nc6 Bb5 Bc5
 RuyLopezSchliemann:e4 e5 Nf3 Nc6 Bb5 f5
 RuyLopezBerlin:e4 e5 Nf3 Nc6 Bb5 Nf6
@@ -313,9 +320,9 @@ RuyLopezOther5:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 d3
 RuyLopezOther5:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 d4
 RuyLopezOther5:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 Qe2
 RuyLopezOpen:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Nxe4
-RuyMoeller-SteinDef:e4 e5 Nf3 Nc6 Bb5 a6 Ba3 Nf6 O-O Bc5
-RuyMoeller-SteinDef:e4 e5 Nf3 Nc6 Bb5 a6 Ba3 Nf6 O-O d6
-RuyLopezArchangelsk:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Bf6 O-O b5 Bb3 Bb7
+RuyMoeller-SteinDef:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Bc5
+RuyMoeller-SteinDef:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O d6
+RuyLopezArchangelsk:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O b5 Bb3 Bb7
 RuyLopezOther6:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Bxc6
 RuyLopezOther6:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Qe2
 RuyLopezOther6:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 d4
@@ -334,7 +341,7 @@ RoyLopezAntiMarshall:e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h
 English1b6:c4 b6
 English1f5:c4 f5
 English1c6:c4 c6
-English1g6 c4 g6
+English1g6:c4 g6
 EnglishSymDoubleFianchetto:c4 c5 Nf3 Nf6 g3 b6 Bg2 Bb7 O-O g6
 EnglishSymHedgehog:c4 c5 Nf3 Nf6 g3 b6 Bg2 Bb7 O-O e6
 EnglishSym3d4:c4 c5 Nf3 Nf6 d4
