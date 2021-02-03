@@ -10,9 +10,11 @@
 #include "move_gen.hpp"
 #include "uci_options.hpp"
 #include "transposition_table.hpp"
+#include "book.hpp"
 
 #include <array>
 #include <utility>
+#include <random>
 
 struct SearchState {
     ChessClock clock;
@@ -80,10 +82,11 @@ namespace internal {
     Centipawns_t q_search(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta);
     bool check_stop_search(unsigned depth, UCIOptions& options, SearchState& search_state);
     void order_moves(std::vector<ChessMove>& movelist, SearchState& search_state, ChessMove* hash_move = nullptr);
+    std::size_t choose_book_move(const std::vector<BookEdge> book_moves);
 };
 
 bool is_move_legal(Board& board, ChessMove& move);
-ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state);
+ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, Book& book);
 void perft(Board& board, Depth depth, int& leaf_nodes);
 
 #endif // CLOAK_SEARCH_HPP

@@ -139,7 +139,7 @@ int main(int argc, char** argv) {
     output_path = std::string(s + "/../../" + argv[2]);
 
     /// read the protobook's lines and pass them into lines member variable
-    std::vector<std::string> lines = ProtoBookParser::read(protobook_path, 1, 367);
+    std::vector<std::string> lines = ProtoBookParser::read(protobook_path, 1, 400);
 
     Board board; // used for keys and updating state
     ChessClock clock; // used to time duration of creating book
@@ -265,7 +265,7 @@ int main(int argc, char** argv) {
 //    }
 
     clock.start();
-    std::ofstream output_book_fstream(output_path);
+    std::ofstream output_book_fstream(output_path, std::ios::binary);
     {
         cereal::BinaryOutputArchive oarchive(output_book_fstream);
         Book book(proto_book);

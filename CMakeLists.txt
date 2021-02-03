@@ -59,6 +59,7 @@ set(CLOAK_LIB_SRCS
     src/string_manip.cpp
     src/uci_options.cpp
     src/transposition_table.cpp
+    src/book.cpp
 )
 
 # Create library, link external libraries against it

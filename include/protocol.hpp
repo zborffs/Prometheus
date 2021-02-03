@@ -11,6 +11,7 @@
 
 /// Project Includes
 #include "board.hpp"
+#include "book.hpp"
 #include "chess_move.hpp"
 #include "defines.hpp"
 #include "eval.hpp"
@@ -29,6 +30,6 @@ namespace internal {
     void set_options(UCIOptions& options, const std::vector<std::string>& commands);
 }
 
-void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state);
+void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, Book& book);
 
 #endif // CLOAK_PROTOCOL_HPP

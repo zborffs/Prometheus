@@ -64,6 +64,25 @@ public:
     inline std::vector<BookNode> protobook() {
         return nodes_;
     }
+    std::vector<BookEdge> edges(PositionKey key);
+    void make_move(int index);
+    void unmake_move();
+    inline PositionKey top() const {
+        return former_nodes_.top().key;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, Book& book) {
+        std::vector<BookNode> stack(book.former_nodes_.size());
+        for (std::size_t i = 0; i < book.former_nodes_.size(); ++i) {
+            os << book.former_nodes_.top().key << " -> ";
+            stack[i] = book.former_nodes_.top();
+            book.former_nodes_.pop();
+        }
+        for (auto & node : stack) {
+            book.former_nodes_.push(node);
+        }
+        return os;
+    }
 };
 
 #endif // CLOAK_BOOK_HPP

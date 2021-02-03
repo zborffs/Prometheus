@@ -315,7 +315,7 @@ namespace internal {
  * @param search_state instance of SearchState struct: contains search specific data
  * @param eval_state   instance of EvaluationState struct: contains evaluation specific data
  */
-void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state) {
+void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, Book& book) {
     /// Send boilerplate UCI stuff
     internal::identify_engine();
     options.send_options();
@@ -336,67 +336,61 @@ void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_s
         commands = split(input);
         std::cin.clear();
 
-        /// If we received "isready", execute send_readyok()
         if (commands[0] == "isready") {
+            // If we received "isready", execute send_readyok()
             internal::send_readyok();
-
-            /// if we received "position", start the parse_pos function
         } else if (commands[0] == "position") {
+            // if we received "position", start the parse_pos function
             internal::parse_pos(board, commands);
-
-            /// If we received "ucinewgame" then reset the board
         } else if (commands[0] == "ucinewgame") {
+            // If we received "ucinewgame" then reset the board
             board.set_board();
-
-            /// If we received "go" command, then parse the go command, then start search
         } else if (commands[0] == "go") {
+            // If we received "go" command, then parse the go command, then start search
             internal::parse_go(options, commands);
-            ChessMove best_move = think(board, options, search_state, eval_state);
-            std::cout << best_move << std::endl;
-
-            /// If we received "uci" command send back boilerplate "uci" stuff
+            ChessMove best_move = think(board, options, search_state, eval_state, book);
+            std::cout << best_move.to_string() << std::endl;
         } else if (commands[0] == "uci") {
+            // If we received "uci" command send back boilerplate "uci" stuff
             internal::identify_engine();
             internal::send_uciok();
-
-            /// If we received "quit" command, then quit
         } else if (commands[0] == "quit") {
+            // If we received "quit" command, then quit
             quit = true;
-
-            /// If we received setoption command, then set corresponding option
         } else if (commands[0] == "setoption") {
+            // If we received setoption command, then set corresponding option
             internal::set_options(options, commands);
-
-            /// If we received "register" command, then register the engine
         } else if (commands[0] == "register") {
+            // If we received "register" command, then register the engine
             internal::register_engine(commands);
-
-            /// If we received "ponderhit" command, unset the ponder flag
         } else if (commands[0] == "ponderhit") {
+            // If we received "ponderhit" command, unset the ponder flag
             // the enemy has played what the user expected, so continue searching but leave ponder mode.
             options.ponder = false;
-
-            /// DEBUG COMMAND (NOT UCI COMMAND): print the board object
         } else if (commands[0] == "board") {
+            // debug command (NOT UCI COMMAND): print the board object
             std::cout << board << std::endl;
-
-            /// DEBUG COMMAND (NOT UCI COMMAND): print the UCIOptions object
         } else if (commands[0] == "ucioptions") {
+            // debug command (NOT UCI COMMAND): print the UCIOptions object
             std::cout << options << std::endl;
-
-            /// DEBUG COMMAND (NOT UCI COMMAND): undo the last move
         } else if (commands[0] == "undo") {
+            // debug command (NOT UCI COMMAND): undo the last move
             board.unmake_move();
-
-            /// DEBUG COMMMAND (NOT UCI COMMAND): print the EvaluationState object
+            if (board.key() == book.top()) {
+                book.unmake_move();
+            }
         } else if (commands[0] == "evalstate") {
+            // debug command (NOT UCI COMMAND): print the EvaluationState object
             std::cout << eval_state << std::endl;
-
-            /// DEBUG COMMMAND (NOT UCI COMMAND): print the evaluation of current position
         } else if (commands[0] == "eval") {
+            // debug command (NOT UCI COMMAND): print the evaluation of current position
             std::cout << "Evaluation: " << evaluate(board, eval_state) << std::endl;
         } else if (commands[0] == "searchstate") {
+            // debug command (NOT UCI COMMAND): print the search state
             std::cout << search_state << std::endl;
+        } else if (commands[0] == "book") {
+            // debug command (NOT UCI COMMAND): print the book's stack
+            std::cout << book << std::endl;
         } else {
             // do nothing
         }

@@ -561,7 +561,15 @@ namespace internal {
 
         std::sort(movelist.begin(), movelist.end());
     }
-}
+
+    std::size_t choose_book_move(const std::vector<BookEdge> book_moves) {
+        // for now we don't look at the moves themselves. later on we will
+        unsigned seed = std::chrono::steady_clock::now().time_since_epoch().count();
+        std::default_random_engine gen(seed);
+        std::uniform_int_distribution<std::size_t> distribution(0, book_moves.size() - 1);
+        return distribution(gen);
+    }
+};
 
 /**
  * determines whether a given move in a certain position is legal or not
@@ -600,7 +608,7 @@ bool is_move_legal(Board& board, ChessMove& chessmove) {
  * @param eval_state   instance of EvaluationState object containing evaluation data
  * @return             the best ChessMove from the current position
  */
-ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state) {
+ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, Book& book) {
     ChessMove best_move;
     Centipawns_t score{0};
     search_state.reset();
@@ -608,6 +616,14 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
 //    Centipawns_t lower_window_index{0};
     Centipawns_t alpha{-INF};
     Centipawns_t beta{INF};
+
+    // try to play a book move
+    std::vector<BookEdge> book_moves = book.edges(board.key());
+    if (!book_moves.empty()) {
+        std::size_t index = internal::choose_book_move(book_moves);
+        book.make_move(index);
+        return book_moves[index].move;
+    }
 
     search_state.clock.alloc_time(options, board.side_2_move());
     search_state.clock.start();

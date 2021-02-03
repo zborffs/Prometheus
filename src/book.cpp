@@ -1,25 +1,28 @@
 #include "book.hpp"
 
-void insert(const std::vector<ChessMove> moves) {
 
-}
+std::vector<BookEdge> Book::edges(PositionKey key) {
+    if (!former_nodes_.empty()) {
+        if (former_nodes_.top().key == key) {
+            return former_nodes_.top().edges;
+        }
+    }
 
-void create_book(const std::string& file_name) {
+    for (int i = 0; i < nodes_.size(); ++i) {
+        if (nodes_[i].key == key) {
+            former_nodes_.push(nodes_[i]);
+            return nodes_[i].edges;
+        }
+    }
 
-}
-
-BookNode lookup(Bitboard mykey) {
-    return BookNode();
-}
-
-std::vector<ChessMove> edges(const BookNode& node) {
     return {};
 }
 
-std::vector<ChessMove> edges() {
-    return {};
+void Book::make_move(int index) {
+    auto node_index = former_nodes_.top().edges[index].child_node;
+    former_nodes_.push(nodes_[node_index]);
 }
 
-void update_current_node(const ChessMove& move) {
-
+void Book::unmake_move() {
+    former_nodes_.pop();
 }
