@@ -16,8 +16,6 @@ extern uint64_t rook_masks[64];
 extern uint64_t rook_masks2[64];
 extern uint64_t bishop_masks[64];
 extern uint64_t bishop_masks2[64];
-// extern uint16 bishop_table[5248];
-// extern uint16 rook_table[102400];
 
 void init_bmi2_fancy(uint16_t table[], uint16_t* attacks[], uint64_t masks[], uint64_t masks2[], bool is_rook);
 

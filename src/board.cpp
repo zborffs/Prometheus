@@ -977,7 +977,9 @@ void Board::parse_fen(std::vector<std::string>::const_iterator first, std::vecto
                 auto itr = std::find(first, last, "bm");
                 if (itr != last) {
                     best_move_ = *(itr + 1); // bm is next string
-                    best_move_.erase(best_move_.end() - 1); // remove ';'
+                    if (best_move_[best_move_.size() - 1] == '+') {
+                        best_move_ = std::string(best_move_.begin(), best_move_.end() - 1);
+                    }
                 }
 
                 itr = std::min(itr, std::find(first, last, "id"));

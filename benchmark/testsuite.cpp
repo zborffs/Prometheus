@@ -13,8 +13,9 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/basic_file_sink.h>
+#include <cereal/archives/binary.hpp>
 
-#define LOG_FAILURE -1 // flesh out all the quit flags later
+#define LOG_FAILURE (-1) // flesh out all the quit flags later
 
 bool init_logger(const std::string& path) noexcept;
 
@@ -27,7 +28,8 @@ int main(int argc, char **argv) {
 #endif // WINDOWS
 
     /// Initialize the logger variables, if it fails to initialize, then quit.
-    std::string logfile_path(base + "/../../logs/BratkoBenchmark.log");
+    std::string logfile_path(base + "/../../logs/TestSuiteBenchmark.log");
+    std::string bookpath(base + "/../../data/CloakOpening.book");
     if (!init_logger(logfile_path)) {
         return LOG_FAILURE;
     }
@@ -37,9 +39,17 @@ int main(int argc, char **argv) {
     std::string output_file_path;
     Board board;
     ChessClock chess_clock;
-    SearchState search_state(16384); // arbitrary
+    SearchState search_state(65536); // arbitrary
     EvaluationState eval_state;
     UCIOptions options;
+    Book book;
+
+    /// initialize book
+    {
+        std::ifstream f(bookpath, std::ios::binary);
+        cereal::BinaryInputArchive iarchive(f); // Create an input archive
+        iarchive(book); // Read the data from the archive
+    }
 
     /// Get path to the input file, "Bratko-Kopec.fen", and output file, "tools/data/bratko.txt", from executable directory and command line arguments
     path = std::string(argv[0]);
@@ -81,12 +91,15 @@ int main(int argc, char **argv) {
             std::string fen_string = separated_fen[0];
             board.set_board(fen_string);
             std::string expected_move_str = board.best_move();
-            ChessMove best_move = think(board, options, search_state, eval_state);
+            ChessMove best_move = think(board, options, search_state, eval_state, book);
             std::string move_str = best_move.to_algebraic_notation();
+
             if (move_str == expected_move_str) {
                 std::cout << "passed" << std::endl;
+                spdlog::get(logger_name)->info("PASSED! Move {}, == Best Move {}", move_str, expected_move_str);
             } else {
                 std::cout << "failed" << std::endl;
+                spdlog::get(logger_name)->info("FAILED! Cloak Move {} != Best Move {}", move_str, expected_move_str);
             }
             search_state.tt.clear();
         }
@@ -109,7 +122,7 @@ bool init_logger(const std::string& logfile_path) noexcept {
     try {
         /// Setup the console sink
         auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-        console_sink->set_level(spdlog::level::warn);
+        console_sink->set_level(spdlog::level::trace);
         console_sink->set_pattern("[%D %H:%M:%S] [%^%l%$] [Thread %t] [File:Line %@] [Function: %!] %v");
         console_sink->set_color_mode(spdlog::color_mode::always);
 

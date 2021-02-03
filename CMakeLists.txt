@@ -30,12 +30,13 @@ if(CODE_COVERAGE)
 endif()
 
 if (USE_SSE)
-    add_compile_definitions( JETSON_BUILD )
+    add_compile_definitions(USE_SSE)
+    add_compile_definitions(__BMI2__)
     message("-- Compiling using SSE")
 endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wshadow -pedantic") # -Werror
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wshadow -pedantic -march=native") # -Werror
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O3") # -O3
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")

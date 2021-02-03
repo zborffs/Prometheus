@@ -9,7 +9,6 @@
 /// Third Party Includes
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
-#include <spdlog/sinks/daily_file_sink.h>
 #include <cereal/archives/binary.hpp>
 #include <spdlog/sinks/basic_file_sink.h>
 
@@ -18,6 +17,7 @@
 #include "protocol.hpp"
 #include "search.hpp"
 #include "book.hpp"
+#include "magic.hpp"
 
 #define LOG_FAILURE (-1) // flesh out all the quit flags later
 

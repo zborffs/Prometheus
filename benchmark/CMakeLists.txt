@@ -2,8 +2,8 @@
 
 # Create the executable
 add_executable(OrderingBenchmarkRunner ordering.cpp)
-add_executable(BratkoRunner bratko.cpp)
+add_executable(TestSuiteRunner testsuite.cpp)
 
 # Link the libraries
 target_link_libraries(OrderingBenchmarkRunner Cloak-lib Threads::Threads)
-target_link_libraries(BratkoRunner Cloak-lib Threads::Threads)
+target_link_libraries(TestSuiteRunner Cloak-lib Threads::Threads)

@@ -8,7 +8,9 @@ SearchState::SearchState(int tt_size) : result_flag(Result::NO_RESULT), tt(tt_si
 , leaf_nodes(0), raw_nodes(0), fail_high_count(0), fail_high_first_count(0), window_widen_count(0), window_success_count(0)
 #endif // NDEBUG
 {
-
+#ifdef USE_SSE
+    init_sliding_attacks();
+#endif // NDEBUG
 }
 
 /**

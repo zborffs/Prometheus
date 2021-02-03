@@ -1,4 +1,0 @@
-- time distribution that it takes to get to certain depth: broken down potentially into game phase
-- information about different test suites (success rate / speed / whatever)
-- ELO / GLICKO2 against a bunch of different engines (1-2 bad ones to start)
-- USE_SSE vs. Not USE_SSE perft

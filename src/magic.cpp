@@ -12,6 +12,8 @@ uint16_t* rook_attacks[64];
 uint16_t* bishop_attacks[64];
 static uint16_t bishop_table[5248];
 static uint16_t rook_table[102400];
+//uint16_t bishop_table[5248];
+//uint16_t rook_table[102400];
 
 void init_bmi2_fancy(uint16_t table[], uint16_t* attacks[], uint64_t masks[], uint64_t masks2[], bool is_rook) {
 	uint64_t edges;
@@ -24,18 +26,18 @@ void init_bmi2_fancy(uint16_t table[], uint16_t* attacks[], uint64_t masks[], ui
 				((FILE_MASK[FILEA] | FILE_MASK[FILEH]) & ~FILE_MASK[s % 8]);
 
 		if(is_rook) {
-			// masks2[s] = horzvert_mask(s, C64(1) << s);
+//			 masks2[s] = horzvert_mask(s, C64(1) << s);
 			masks2[s] = horzvert_mask(s, 0);
 			// draw_bitboard(masks2[s]);
 		} else {
-			// masks2[s] = diag_mask(s, C64(1) << s);
+//			 masks2[s] = diag_mask(s, C64(1) << s);
 			masks2[s] = diag_mask(s, 0);
 			// draw_bitboard(masks2[s]);
 		}
 
 		masks[s] = masks2[s] & ~edges;
 
-		// b = C64(1) << s;
+//		 b = C64(1) << s;
 		b = 0;
 		do {
 			if(is_rook) {
