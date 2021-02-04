@@ -16,10 +16,11 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 
 /// Project Includes
-#include "bitmask.hpp"
-#include "chess_move.hpp"
 #include "defines.hpp"
 #include "extern.hpp"
+#include "bitmask.hpp"
+#include "attack.hpp"
+#include "chess_move.hpp"
 #include "string_manip.hpp"
 
 class Board {
@@ -84,6 +85,8 @@ public:
     PositionKey last_key() const noexcept;
     bool is_sq_attacked(const Square_t sq, const Color_t attacking_color) noexcept;
     bool is_sq_attacked(const Square_t sq, const Color_t attacking_color) const noexcept;
+    Bitboard sq_attacked_by(const Square_t sq, Bitboard occ) noexcept;
+    Bitboard sq_attacked_by(const Square_t sq, Bitboard occ) const noexcept;
     bool is_draw() noexcept;
     bool is_draw() const noexcept;
     bool is_king_checked(Color_t color) noexcept;
@@ -111,6 +114,9 @@ public:
     void unmake_move() noexcept;
     void make_null_move() noexcept;
     void unmake_null_move() noexcept;
+
+    Bitboard get_least_valuable_piece(Bitboard attadef, Color_t bySide, PieceType_t& piece);
+    Centipawns_t see(Square_t to_sq, PieceType_t target_piece, Square_t from_sq, PieceType_t a_piece);
 
     /**
      * prints the board variables

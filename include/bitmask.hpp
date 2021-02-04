@@ -1,4 +1,4 @@
-#ifndef CLOAK_BITMASK_HPP
+ #ifndef CLOAK_BITMASK_HPP
 #define CLOAK_BITMASK_HPP
 
 /// STL Includes
@@ -68,5 +68,6 @@ Bitboard diag_mask(Square_t sq, Bitboard occupied);
 Bitboard flip_flop(Bitboard bb);
 Bitboard mirror(Bitboard bb);
 Centipawns_t dot_product(Bitboard bb, const Centipawns_t* weights);
+Bitboard in_between(Square_t sq1, Square_t sq2);
 
 #endif // CLOAK_BITMASK_HPP

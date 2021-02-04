@@ -1,5 +1,3 @@
-#include <attack.hpp>
-#include "bitmask.hpp"
 #include "eval.hpp"
 
 namespace internal {

@@ -143,3 +143,40 @@ Bitboard king_moves(Bitboard king_bb) {
     Square_t sq = bitscan_forward(king_bb);
     return KING_ATTACK_ARRAY[sq];
 }
+
+/**
+ *
+ * @param rook_sq
+ * @param occupied
+ * @param blockers
+ * @return
+ */
+Bitboard xray_rook_moves(Square_t rook_sq, Bitboard occupied, Bitboard blockers) {
+    Bitboard attacks = rook_moves(rook_sq, occupied);
+    blockers &= attacks;
+    return attacks ^ rook_moves(rook_sq, occupied ^ blockers);
+}
+
+/**
+ *
+ * @param bishop_sq
+ * @param occupied
+ * @param blockers
+ * @return
+ */
+Bitboard xray_bishop_moves(Square_t bishop_sq, Bitboard occupied, Bitboard blockers) {
+    Bitboard attacks = bishop_moves(bishop_sq, occupied);
+    blockers &= attacks;
+    return attacks ^ bishop_moves(bishop_sq, occupied ^ blockers);
+}
+
+/**
+ *
+ * @param queen_sq
+ * @param occupied
+ * @param blockers
+ * @return
+ */
+Bitboard xray_queen_moves(Square_t queen_sq, Bitboard occupied, Bitboard blockers) {
+    return xray_bishop_moves(queen_sq, occupied, blockers) | xray_rook_moves(queen_sq, occupied, blockers);
+}

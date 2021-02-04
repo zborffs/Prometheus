@@ -564,7 +564,7 @@ namespace internal {
         std::sort(movelist.begin(), movelist.end());
     }
 
-    std::size_t choose_book_move(const std::vector<BookEdge> book_moves) {
+    std::size_t choose_book_move(const std::vector<BookEdge>& book_moves) {
         // for now we don't look at the moves themselves. later on we will
         unsigned seed = std::chrono::steady_clock::now().time_since_epoch().count();
         std::default_random_engine gen(seed);
@@ -762,4 +762,3 @@ void perft(Board& board, Depth depth, int& leaf_nodes) {
         board.unmake_move();
     }
 }
-

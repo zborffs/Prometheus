@@ -17,7 +17,6 @@
 #include "protocol.hpp"
 #include "search.hpp"
 #include "book.hpp"
-#include "magic.hpp"
 
 #define LOG_FAILURE (-1) // flesh out all the quit flags later
 

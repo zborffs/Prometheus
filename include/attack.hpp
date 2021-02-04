@@ -26,5 +26,8 @@ Bitboard rook_moves(Square_t sq, Bitboard occupied);
 Bitboard queen_moves(Square_t sq, Bitboard occupied);
 Bitboard knight_moves(Bitboard knights);
 Bitboard king_moves(Bitboard king);
+Bitboard xray_rook_moves(Square_t rook_sq, Bitboard occupied, Bitboard blockers);
+Bitboard xray_bishop_moves(Square_t bishop_sq, Bitboard occupied, Bitboard blockers);
+Bitboard xray_queen_moves(Square_t queen_sq, Bitboard occupied, Bitboard blockers);
 
 #endif // CLOAK_ATTACK_HPP

@@ -576,10 +576,10 @@ const PositionKey EN_PASSANT_KEYS[17] {
 
 /// Evaluation Parameters
 const Centipawns_t PAWN_BASE_VAL   = 100;
-const Centipawns_t BISHOP_BASE_VAL = 330;
-const Centipawns_t KNIGHT_BASE_VAL = 310;
+const Centipawns_t BISHOP_BASE_VAL = 325; // 330
+const Centipawns_t KNIGHT_BASE_VAL = 325; // 310
 const Centipawns_t ROOK_BASE_VAL   = 500;
-const Centipawns_t QUEEN_BASE_VAL  = 910;
+const Centipawns_t QUEEN_BASE_VAL  = 1000; // 910
 
 const Centipawns_t TEMPO = 5;
 

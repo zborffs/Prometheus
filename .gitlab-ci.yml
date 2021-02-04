@@ -79,8 +79,7 @@ build debug:
     - make UCIOptionsCoverage
     - make EvalCoverage
     - make PerftCoverage
-    - make SearchCoverage
-    - lcov --add-tracefile BitmaskCoverage.info --add-tracefile BoardCoverage.info --add-tracefile ChessClockCoverage.info --add-tracefile ChessMoveCoverage.info --add-tracefile StringManipCoverage.info --add-tracefile UCIOptionsCoverage.info --add-tracefile EvalCoverage.info --add-tracefile PerftCoverage.info --add-tracefile SearchCoverage.info --output-file CompleteCoverage.info
+    - lcov --add-tracefile BitmaskCoverage.info --add-tracefile BoardCoverage.info --add-tracefile ChessClockCoverage.info --add-tracefile ChessMoveCoverage.info --add-tracefile StringManipCoverage.info --add-tracefile UCIOptionsCoverage.info --add-tracefile EvalCoverage.info --add-tracefile PerftCoverage.info --output-file CompleteCoverage.info
     - lcov --remove CompleteCoverage.info '/usr/local/*' '/usr/include/*' -o CompleteCoverageFiltered.info
 
 
@@ -99,4 +98,3 @@ test:
     - ./cmake-build-release/test/StringManipTestRunner
     - ./cmake-build-release/test/UCIOptionsTestRunner
     - ./cmake-build-release/test/PerftTestRunner data/perft/positions.perft
-    - ./cmake-build-release/test/SearchTestRunner data/puzzles/mate-in-2.puz

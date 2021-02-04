@@ -408,6 +408,52 @@ bool Board::is_sq_attacked(const Square_t sq, const Color_t attacking_color) con
 }
 
 /**
+ *
+ * @param sq
+ * @param occ
+ * @return
+ */
+Bitboard Board::sq_attacked_by(const Square_t sq, Bitboard occ) noexcept {
+    Bitboard knights, kings, rook_queens, bishop_queens;
+    knights        = (piece_bb_[W_KNIGHT] | piece_bb_[B_KNIGHT]) & occ;
+    kings          = (piece_bb_[W_KING] | piece_bb_[B_KING]) & occ;
+    rook_queens    =
+    bishop_queens  = (piece_bb_[W_QUEEN]  | piece_bb_[B_QUEEN]) & occ;
+    rook_queens   |= (piece_bb_[W_ROOK]   | piece_bb_[B_ROOK]) & occ;
+    bishop_queens |= (piece_bb_[W_BISHOP] | piece_bb_[B_BISHOP]) & occ;
+
+    return (diag_mask(sq, occ) & bishop_queens) |
+        (horzvert_mask(sq, occ) & rook_queens)  |
+        (KNIGHT_ATTACK_ARRAY[sq] & knights) |
+        (KING_ATTACK_ARRAY[sq] & kings) |
+        (piece_bb_[W_PAWN] & (((C64(1) << (sq - 9)) & ~(RANK_MASK[RANK8] | FILE_MASK[FILEH])) | ((C64(1) << (sq - 7)) & ~(RANK_MASK[RANK8] | FILE_MASK[FILEA])))) |
+        (piece_bb_[B_PAWN] & (((C64(1) << (sq + 9)) & ~(RANK_MASK[RANK1] | FILE_MASK[FILEA])) | ((C64(1) << (sq + 7)) & ~(RANK_MASK[RANK1] | FILE_MASK[FILEH]))));
+}
+
+/**
+ *
+ * @param sq
+ * @param occ
+ * @return
+ */
+Bitboard Board::sq_attacked_by(const Square_t sq, Bitboard occ) const noexcept {
+    Bitboard knights, kings, rook_queens, bishop_queens;
+    knights        = piece_bb_[W_KNIGHT] | piece_bb_[B_KNIGHT];
+    kings          = piece_bb_[W_KING] | piece_bb_[B_KING];
+    rook_queens    =
+    bishop_queens  = piece_bb_[W_QUEEN]  | piece_bb_[B_QUEEN];
+    rook_queens   |= piece_bb_[W_ROOK]   | piece_bb_[B_ROOK];
+    bishop_queens |= piece_bb_[W_BISHOP] | piece_bb_[B_BISHOP];
+
+    return (diag_mask(sq, occ) & bishop_queens) |
+           (horzvert_mask(sq, occ) & rook_queens)  |
+           (KNIGHT_ATTACK_ARRAY[sq] & knights) |
+           (KING_ATTACK_ARRAY[sq] & kings) |
+           (piece_bb_[W_PAWN] & (((C64(1) << (sq - 9)) & ~(RANK_MASK[RANK8] | FILE_MASK[FILEH])) | ((C64(1) << (sq - 7)) & ~(RANK_MASK[RANK8] | FILE_MASK[FILEA])))) |
+           (piece_bb_[B_PAWN] & (((C64(1) << (sq + 9)) & ~(RANK_MASK[RANK1] | FILE_MASK[FILEA])) | ((C64(1) << (sq + 7)) & ~(RANK_MASK[RANK1] | FILE_MASK[FILEH]))));
+}
+
+/**
  * determines whether the position is a draw by 50 move rule, by 3-Fold Repetition, or Insufficient Material (NOT
  * STALEMATE)
  * @return true means it's a draw, false means it's NOT a draw
@@ -945,6 +991,107 @@ void Board::make_null_move() noexcept {
  */
 void Board::unmake_null_move() noexcept {
     restore_last_state();
+}
+
+Bitboard Board::get_least_valuable_piece(Bitboard attadef, Color_t by_side, PieceType_t& piece) {
+    piece = W_PAWN + by_side;
+    Bitboard subset = attadef & piece_bb_[piece];
+    if (subset) {
+        return subset & -subset;
+    }
+
+    piece = W_KNIGHT + by_side;
+    subset = attadef & piece_bb_[piece];
+    if (subset) {
+        return subset & -subset;
+    }
+
+    piece = W_BISHOP + by_side;
+    subset = attadef & piece_bb_[piece];
+    if (subset) {
+        return subset & -subset;
+    }
+
+    piece = W_ROOK + by_side;
+    subset = attadef & piece_bb_[piece];
+    if (subset) {
+        return subset & -subset;
+    }
+
+    piece = W_QUEEN + by_side;
+    subset = attadef & piece_bb_[piece];
+    if (subset) {
+        return subset & -subset;
+    }
+
+    piece = W_KING + by_side;
+    subset = attadef & piece_bb_[piece];
+    if (subset) {
+        return subset & -subset;
+    }
+    piece = NO_PIECE;
+
+    return 0; // empty set
+}
+
+/**
+ *
+ * @param to_sq        the square being traded on
+ * @param target_piece the piece on the to_sq
+ * @param from_sq
+ * @param a_piece
+ * @return
+ */
+Centipawns_t Board::see(Square_t to_sq, PieceType_t target_piece, Square_t from_sq, PieceType_t a_piece) {
+    std::array<Centipawns_t, 5> value{{PAWN_BASE_VAL, ROOK_BASE_VAL, KNIGHT_BASE_VAL, BISHOP_BASE_VAL, QUEEN_BASE_VAL}}; // can't add INF
+
+    int gain[32], d = 0;
+    // if we take with any of the following piece types, then something behind it "may" then attack the square on the
+    // next move
+    Bitboard may_xray = piece_bb_[W_PAWN] | piece_bb_[B_PAWN] | piece_bb_[W_BISHOP] | piece_bb_[B_BISHOP] | piece_bb_[W_ROOK] | piece_bb_[B_ROOK] | piece_bb_[W_QUEEN] | piece_bb_[B_QUEEN]; // pawns | bishops | rooks | queen;
+    Bitboard from_set = C64(1) << from_sq;
+    Bitboard occ     = occupied_bb_;
+    // get a bitboard of all the attackers of the square
+    Bitboard attadef = sq_attacked_by(to_sq, occupied_bb_);
+//    std::cout << "Original Attadef " << std::endl;
+//    std::cout << draw_bitboard(attadef) << std::endl;
+//    std::cout << "OG From Set" << std::endl;
+//    std::cout << draw_bitboard(from_set) << std::endl;
+    gain[d]     = value[(target_piece - 2) / 2]; // the value of the piece
+
+    do {
+        d++; // next depth and side
+        gain[d]  = value[(a_piece - 2) / 2] - gain[d - 1]; // attacking piece
+        // either side can stop trading pieces off at any point if they're up in material
+        if (std::max(-gain[d-1], gain[d]) < 0) break;
+        // take the from_sq piece off the attack bitboard and off the occupied bitboard. i.e. pretend it's not there
+        attadef ^= from_set;
+        occ     ^= from_set;
+
+        // if the piece we just attacked with was one of the may_xray piece types, then determine if and what xray piece
+        // was behind it
+        if (from_set & may_xray) {
+//            std::cout << "Before" << std::endl;
+//            std::cout << draw_bitboard(attadef) << std::endl;
+            attadef = sq_attacked_by(to_sq, occ);
+//            std::cout << "After" << std::endl;
+//            std::cout << draw_bitboard(attadef) << std::endl;
+//            attadef |= considerXrays(occ, ..);
+        }
+
+        // from the set of pieces still in the attadef set, find the least valuable one
+        from_set  = get_least_valuable_piece(attadef, d & 1, a_piece);
+//        std::cout << "From Set" << std::endl;
+//        std::cout << draw_bitboard(from_set) << std::endl;
+//        std::cout << (int)from_set << std::endl;
+    } while(from_set);
+
+    while (--d) {
+        gain[d-1] = -std::max(-gain[d-1], gain[d]);
+//        std::cout << "gain[" << d << "] = " << gain[d] << std::endl;
+    }
+
+    return gain[0];
 }
 
 /**

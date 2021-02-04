@@ -8,6 +8,8 @@
 /// Project includes
 #include "defines.hpp"
 #include "board.hpp"
+#include <attack.hpp>
+#include "bitmask.hpp"
 
 
 const Bitboard QUEEN_SIDE = FILE_MASK[FILEA] | FILE_MASK[FILEB] | FILE_MASK[FILEC] | FILE_MASK[FILED];

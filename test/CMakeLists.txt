@@ -8,7 +8,6 @@ add_executable(StringManipTestRunner string_manip_test.cpp)
 add_executable(UCIOptionsTestRunner ucis_options_test.cpp)
 add_executable(PerftTestRunner perft_test.cpp)
 add_executable(EvalTestRunner eval_test.cpp)
-add_executable(SearchTestRunner search_test.cpp)
 add_executable(TranspositionTableTestRunner transposition_table_test.cpp)
 
 if (CODE_COVERAGE MATCHES ON)
@@ -22,7 +21,6 @@ if (CODE_COVERAGE MATCHES ON)
     target_link_libraries(UCIOptionsTestRunner --coverage)
     target_link_libraries(PerftTestRunner --coverage)
     target_link_libraries(EvalTestRunner --coverage)
-    target_link_libraries(SearchTestRunner --coverage)
     target_link_libraries(TranspositionTableTestRunner --coverage)
 endif()
 
@@ -36,7 +34,6 @@ target_link_libraries(StringManipTestRunner Cloak-lib ${GTEST_LIBRARIES} Threads
 target_link_libraries(UCIOptionsTestRunner Cloak-lib ${GTEST_LIBRARIES} Threads::Threads)
 target_link_libraries(PerftTestRunner Cloak-lib ${GTEST_LIBRARIES} Threads::Threads)
 target_link_libraries(EvalTestRunner Cloak-lib ${GTEST_LIBRARIES} Threads::Threads)
-target_link_libraries(SearchTestRunner Cloak-lib ${GTEST_LIBRARIES} Threads::Threads)
 target_link_libraries(TranspositionTableTestRunner Cloak-lib ${GTEST_LIBRARIES} Threads::Threads)
 
 add_test(BitmaskTest BitmaskTestRunner)

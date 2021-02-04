@@ -137,6 +137,30 @@ TEST_F(BoardTester, IsKingChecked) {
     EXPECT_EQ(board.is_king_checked(BLACK), false);
 }
 
+TEST_F(BoardTester, see) {
+    board.set_board("1k1r4/1pp4p/p7/4p3/8/P5P1/1PP4P/2K1R3 w - - ");
+    std::cout << board << std::endl;
+
+    Centipawns_t g = board.see(E5, B_PAWN, E1, W_ROOK);
+    std::cout << g << std::endl;
+    EXPECT_EQ(g, 100);
+
+    board.set_board("1k1r3q/1ppn3p/p4b2/4p3/8/P2N2P1/1PP1R1BP/2K1Q3 w - -");
+    std::cout << board << std::endl;
+    g = board.see(E5, B_PAWN, D3, W_KNIGHT);
+    EXPECT_EQ(g, -225); // will fail with changes to Piece values
+
+    board.set_board("k7/8/5n2/3p4/8/2N2B2/8/K7 w - -");
+    std::cout << board << std::endl;
+    g = board.see(D5, B_PAWN, C3, W_KNIGHT);
+    EXPECT_EQ(g, 100); // will fail with changes to Piece values
+
+    board.set_board("2K5/8/8/3pRrRr/8/8/8/2k5 w - -");
+    std::cout << board << std::endl;
+    g = board.see(D5, B_PAWN, E5, W_ROOK);
+    EXPECT_EQ(g, -400); // will fail with changes to Piece values
+}
+
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
