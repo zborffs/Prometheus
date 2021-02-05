@@ -5,8 +5,8 @@ TABLE_HEADER = ["Statistic", "N", "Mean", "Min", "25 Percentile", "Median", "75 
 function summaryData(name, data)
 	n = length(data)
 	μ, σ = mean_and_std(data)
-	min, q1, med, q3, max = StatsBase.nquantile(data, 4)
-	skewness = StatsBase.skewness(data)
-	kurtosis = StatsBase.kurtosis(data)
-	return [name n μ min q1 med q3 max σ skewness kurtosis]
+	minim, q1, med, q3, maxim = StatsBase.nquantile(data, 4)
+	sk = skewness(data)
+	ku = kurtosis(data)
+	return [name n μ minim q1 med q3 maxim σ sk ku]
 end

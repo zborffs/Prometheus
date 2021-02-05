@@ -1,49 +1,44 @@
-include("src/CloakTools.jl")
+include("CloakTools.jl/CloakTools.jl")
+using StatsBase, Plots, PrettyTables, StatsPlots
+plotly()
 
+testSuiteData = CloakTools.test_suite_data("Bratko-Kopec", "data/kaufman.txt")
 
-#
-# # this script opens bartko.txt, a file containing the engine's output for the
-# # Bartko-Kopec test suite, and analyzes the output
-#
-# using Plots, Statistics, Distributions, StatsPlots, ColorSchemes, PrettyTables, StatsBase
-# plotly()
-#
-# headers = ["Statistic", "N", "Mean", "Min", "25 Percentile", "Median", "75 Percentile", "Max", "Standard Deviation", "Skewness", "Kurtosis"]
-#
-# overallOrdering = summaryData(engData.ordering)
-# # overallDepth = summaryData(engData.depth)
-# # overallDepth = summaryData(engData.rawNodes)
-# # overallDepth = summaryData(engData.leafNodes)
-# # overallDepth = summaryData(engData.nps)
-# # overallDepth = summaryData(engData.posType)
-#
-# function printTestSuite(testSuiteData, engData)
-# 	clearconsole()
-# 	n = testSuiteData.num_games
-# 	k = testSuiteData.num_passed
-#
-# 	title = string("Test Suite: ", testSuiteData.name)
-# 	thickLine = repeat('=', length(title))
-# 	line = repeat('-', length(title))
-# 	headers = ["Statistic" "N" "Mean" "Min" "25 Percentile" "Median" "75 Percentile" "Max" "Standard Deviation" "Skewness" "Kurtosis"]
-# 	overallOrdering = summaryData(engData.ordering, "Overall Ordering")
-# 	overallTime = summaryData(engData.time, "Overall Time")
-#
-# 	# concat data for printing
-# 	data = vcat(overallOrdering, overallTime)
-#
-# 	println(title)
-# 	println(thickLine)
-#
-# 	pretty_table(data, headers)
-# end
-#
-# # Read raw data from file
-#
-#
-# engData, testSuiteData = set_data("Bratko-Kopec", lines)
-#
-# printTestSuite(testSuiteData, engData)
-#
-# # Print the data to the screen for the user
-# println("N (Number of Games) = $(testSuiteData.num_games)")
+positionData = testSuiteData.positionData
+
+ordering = Vector{Float64}(undef, 0)
+depth = Vector{Float64}(undef, 0)
+rawNodes = Vector{Float64}(undef, 0)
+leafNodes = Vector{Float64}(undef, 0)
+nps = Vector{Float64}(undef, 0)
+posType = Vector{Float64}(undef, 0)
+gameStage = Vector{Float64}(undef, 0)
+passed = 0
+
+for i in range(1, length=length(positionData))
+    append!(ordering, positionData[i].ordering)
+    append!(depth, positionData[i].depth)
+    append!(rawNodes, positionData[i].rawNodes)
+    append!(leafNodes, positionData[i].leafNodes)
+    append!(nps, positionData[i].nps)
+    append!(posType, positionData[i].posType)
+    append!(gameStage, positionData[i].gameStage)
+    if positionData[i].testStatus == CloakTools.Passed
+        passed += 1
+    end
+end
+
+sumDataOrdering = CloakTools.summaryData("Bratko-Kopec Ordering", ordering)
+sumDataRawNodes = CloakTools.summaryData("Bratko-Kopec Raw Nodes", rawNodes)
+sumDataLeafNodes = CloakTools.summaryData("Bratko-Kopec Leaf Nodes", leafNodes)
+sumDataNPS = CloakTools.summaryData("Bratko-Kopec NPS", nps)
+sumData = vcat(sumDataOrdering, sumDataRawNodes, sumDataLeafNodes, sumDataNPS)
+pretty_table(sumData, CloakTools.TABLE_HEADER)
+
+histogram(ordering)
+histogram(rawNodes)
+histogram(leafNodes)
+histogram(nps)
+histogram(posType)
+histogram(gameStage)
+boxplot(ordering)
