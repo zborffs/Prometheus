@@ -413,12 +413,12 @@ namespace internal {
         }
 
         /// Delta pruning -- don't delta prune in late end game
-//        if (eval_state.stage != LATE_END_GAME) {
-//            Centipawns_t delta = QUEEN_BASE_VAL;
-//            if (standing_pat < alpha - delta) {
-//                return alpha;
-//            }
-//        }
+        if (eval_state.stage != LATE_END_GAME) {
+            Centipawns_t delta = QUEEN_BASE_VAL;
+            if (standing_pat < alpha - delta) {
+                return alpha;
+            }
+        }
 
 
         if (standing_pat > alpha) {
