@@ -55,7 +55,7 @@ List of Desired Features
     * [ ] SEX Algorithm
   - Pruning
     * [ ] AEL Pruning
-      * [ ] Adaptive Null Move Pruning
+      * [X] Adaptive Null Move Pruning
       * [ ] Extended Futility Pruning
       * [ ] Limited Razoring
     * [ ] Delta Pruning
@@ -66,8 +66,9 @@ List of Desired Features
     * [ ] Late Move Reductions
     * [ ] Razoring
 - Move Ordering
+  - Goal >0.9 every move
   * [x] MVV-LVA
-  * [ ] SEE
+  * [X] SEE
   * [x] Killer Heuristic
   * [x] History Heuristic
   * [ ] Countermove Heuristic

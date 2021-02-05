@@ -76,8 +76,8 @@ namespace internal {
         } else {
             ret = BISHOP_PERC[es.pos_type] * BISHOP_BASE_VAL * (pop_count(board.piece_bb(W_BISHOP)) - pop_count(board.piece_bb(B_BISHOP))) +
                   KNIGHT_PERC[es.pos_type] * KNIGHT_BASE_VAL * (pop_count(board.piece_bb(W_KNIGHT)) - pop_count(board.piece_bb(B_KNIGHT))) +
-                  QUEEN_PERC[es.pos_type] * QUEEN_BASE_VAL * (pop_count(board.piece_bb(W_QUEEN)) - pop_count(board.piece_bb(B_QUEEN))) +
-                  ROOK_PERC[es.pos_type] * ROOK_BASE_VAL * (pop_count(board.piece_bb(W_ROOK)) - pop_count(board.piece_bb(B_ROOK)));
+                  QUEEN_PERC[es.pos_type]  * QUEEN_BASE_VAL  * (pop_count(board.piece_bb(W_QUEEN))  - pop_count(board.piece_bb(B_QUEEN))) +
+                  ROOK_PERC[es.pos_type]   * ROOK_BASE_VAL   * (pop_count(board.piece_bb(W_ROOK))   - pop_count(board.piece_bb(B_ROOK)));
 
             ret += (PAWN_STRENGTH[es.stage] * PAWN_BASE_VAL * (pop_count(board.piece_bb(W_PAWN)) - pop_count(board.piece_bb((B_PAWN)))));
 
@@ -117,7 +117,7 @@ namespace internal {
                                 pop_count(push_pawn2 & board.capturable(BLACK)) +
                                 pop_count(push_pawn3 & board.capturable(BLACK)) +
                                 pop_count(push_pawn2 & CENTER) +
-                                pop_count(push_pawn3 & CENTER));
+                                pop_count(push_pawn3 & CENTER)); // try subtracting black pop count and MUL once
 
         /// Defending + Connectivity (Take Right)
         push_pawn2 &= board.capturable(WHITE);

@@ -1,150 +1,150 @@
-info score cp 265 time 0 depth 1 pv e4c5 raw_nodes 263 leaf_nodes 138 nps inf ordering 0.728571 window_ratio nan position_type semi_closed game_stage opening
-info score cp 306 time 6 depth 2 pv e4f6 g8h8 raw_nodes 3197 leaf_nodes 1334 nps 532833 ordering 0.873252 window_ratio nan position_type semi_closed game_stage opening
-info score cp 256 time 299 depth 3 pv d3b1 d8e8 b4c5 raw_nodes 163963 leaf_nodes 80366 nps 548371 ordering 0.606841 window_ratio nan position_type semi_closed game_stage middle
-info score cp 309 time 1022 depth 4 pv e4f6 g8h8 d1h5 h7h6 raw_nodes 577398 leaf_nodes 272692 nps 564969 ordering 0.685516 window_ratio nan position_type semi_closed game_stage middle
-info score cp 1112 time 1796 depth 5 pv e4f6 g8h8 d1h5 h7h6 h5h6 raw_nodes 1025981 leaf_nodes 474025 nps 571259 ordering 0.687085 window_ratio nan position_type semi_closed game_stage opening
+info score cp 265 time 0 depth 1 pv e4c5 raw_nodes 260 leaf_nodes 130 nps inf ordering 0.77027 window_ratio nan position_type semi_closed game_stage opening
+info score cp 306 time 5 depth 2 pv e4f6 g8h8 raw_nodes 2725 leaf_nodes 1103 nps 545000 ordering 0.888664 window_ratio nan position_type semi_closed game_stage opening
+info score cp 256 time 260 depth 3 pv d3b1 d8e8 b4c5 raw_nodes 152571 leaf_nodes 73395 nps 586812 ordering 0.566807 window_ratio nan position_type semi_closed game_stage middle
+info score cp 309 time 914 depth 4 pv d1h5 h7h6 e4f6 g8h8 raw_nodes 524989 leaf_nodes 243312 nps 574386 ordering 0.676207 window_ratio nan position_type semi_closed game_stage middle
+info score cp 1207 time 1354 depth 5 pv e4f6 g8h8 d1h5 h7h6 h5h6 raw_nodes 754834 leaf_nodes 349345 nps 557484 ordering 0.715398 window_ratio nan position_type semi_closed game_stage opening
 passed
-info score cp 432 time 0 depth 1 pv a5d2 raw_nodes 58 leaf_nodes 44 nps inf ordering 1 window_ratio nan position_type semi_closed game_stage middle
-info score cp 308 time 5 depth 2 pv a5d2 e2c1 raw_nodes 3174 leaf_nodes 1100 nps 634800 ordering 0.721893 window_ratio nan position_type semi_closed game_stage middle
-info score cp 259 time 33 depth 3 pv f5d4 d2d3 d4b3 raw_nodes 13357 leaf_nodes 6195 nps 404758 ordering 0.808847 window_ratio nan position_type semi_closed game_stage middle
-info score cp 406 time 261 depth 4 pv a5d2 d4d5 d2c2 b3c2 raw_nodes 119315 leaf_nodes 45007 nps 457146 ordering 0.763751 window_ratio nan position_type semi_closed game_stage middle
-info score cp 433 time 1045 depth 5 pv d7d4 d2d4 a5e1 g1h2 f5d6 raw_nodes 455470 leaf_nodes 166981 nps 435856 ordering 0.772677 window_ratio nan position_type semi_closed game_stage middle
+info score cp 527 time 0 depth 1 pv a5d2 raw_nodes 58 leaf_nodes 44 nps inf ordering 1 window_ratio nan position_type semi_closed game_stage middle
+info score cp 403 time 3 depth 2 pv a5d2 e2c1 raw_nodes 2015 leaf_nodes 735 nps 671667 ordering 0.761589 window_ratio nan position_type semi_closed game_stage middle
+info score cp 259 time 26 depth 3 pv f5d4 d2d3 d4b3 raw_nodes 10971 leaf_nodes 5461 nps 421962 ordering 0.793067 window_ratio nan position_type semi_closed game_stage middle
+info score cp 501 time 231 depth 4 pv a5d2 d4d5 d2c2 b3c2 raw_nodes 127806 leaf_nodes 46866 nps 553273 ordering 0.755034 window_ratio nan position_type semi_closed game_stage middle
+info score cp 433 time 1260 depth 5 pv d7d4 d2d4 a5e1 g1h2 f5d6 raw_nodes 602986 leaf_nodes 247474 nps 478560 ordering 0.752439 window_ratio nan position_type semi_closed game_stage middle
 failed
-info score cp 176 time 0 depth 1 pv e1g1 raw_nodes 139 leaf_nodes 53 nps inf ordering 0.764706 window_ratio nan position_type semi_closed game_stage middle
-info score cp 317 time 4 depth 2 pv e1e8 d6f8 raw_nodes 1879 leaf_nodes 524 nps 469750 ordering 0.795122 window_ratio nan position_type semi_closed game_stage middle
-info score cp 830 time 20 depth 3 pv f2f7 g8h8 f7f8 raw_nodes 7660 leaf_nodes 2809 nps 383000 ordering 0.838738 window_ratio nan position_type semi_closed game_stage middle
-info score cp 83 time 382 depth 4 pv f2d4 d6d5 d4c5 d5b3 raw_nodes 163679 leaf_nodes 42214 nps 428479 ordering 0.812632 window_ratio nan position_type semi_closed game_stage early_end
-info score cp -32 time 2073 depth 5 pv f2f5 d6d1 e1d1 d8d1 c2d1 raw_nodes 974043 leaf_nodes 255858 nps 469871 ordering 0.781615 window_ratio nan position_type semi_closed game_stage late_end
+info score cp 197 time 0 depth 1 pv e1g1 raw_nodes 211 leaf_nodes 74 nps inf ordering 0.775862 window_ratio nan position_type semi_closed game_stage middle
+info score cp 390 time 3 depth 2 pv e1e8 d6f8 raw_nodes 1757 leaf_nodes 694 nps 585667 ordering 0.779835 window_ratio nan position_type semi_closed game_stage middle
+info score cp 930 time 23 depth 3 pv f2f7 g8h8 f7f8 raw_nodes 10729 leaf_nodes 3940 nps 466478 ordering 0.793646 window_ratio nan position_type semi_closed game_stage middle
+info score cp -39 time 477 depth 4 pv f2f7 g8f7 e1f1 d6f6 raw_nodes 243689 leaf_nodes 67304 nps 510878 ordering 0.793743 window_ratio nan position_type semi_closed game_stage early_end
+info score cp -53 time 3429 depth 5 pv f2f5 d6d1 e1d1 d8d1 c2d1 raw_nodes 1976705 leaf_nodes 589730 nps 576467 ordering 0.751518 window_ratio nan position_type semi_closed game_stage early_end
 failed
-info score cp 141 time 7 depth 1 pv d2h6 raw_nodes 5104 leaf_nodes 2690 nps 729143 ordering 0.480649 window_ratio nan position_type closed game_stage opening
-info score cp -176 time 12 depth 2 pv d2h6 f6e5 raw_nodes 7659 leaf_nodes 3420 nps 638250 ordering 0.663835 window_ratio nan position_type semi_closed game_stage middle
-info score cp -70 time 632 depth 3 pv d2f4 e6d4 e4e5 raw_nodes 422994 leaf_nodes 204555 nps 669294 ordering 0.592148 window_ratio nan position_type semi_closed game_stage middle
-info score cp 22 time 1149 depth 4 pv d2h6 e6g7 h6h7 g8f8 raw_nodes 717895 leaf_nodes 323967 nps 624800 ordering 0.674651 window_ratio nan position_type semi_closed game_stage middle
-info score cp -84 time 57717 depth 5 pv d2f4 d7e5 g2g3 e6c5 e2c3 raw_nodes 40040129 leaf_nodes 20474041 nps 693732 ordering 0.585535 window_ratio nan position_type semi_closed game_stage middle
+info score cp 141 time 7 depth 1 pv d2h6 raw_nodes 5350 leaf_nodes 2912 nps 764286 ordering 0.460085 window_ratio nan position_type closed game_stage opening
+info score cp -176 time 12 depth 2 pv d2h6 f6e5 raw_nodes 8922 leaf_nodes 4177 nps 743500 ordering 0.65515 window_ratio nan position_type semi_closed game_stage middle
+info score cp -72 time 590 depth 3 pv d2f4 e6g7 e1c1 raw_nodes 412163 leaf_nodes 196924 nps 698581 ordering 0.59576 window_ratio nan position_type semi_closed game_stage middle
+info score cp 1 time 960 depth 4 pv d2h6 e6g7 h6h7 g8f8 raw_nodes 628878 leaf_nodes 279244 nps 655081 ordering 0.689994 window_ratio nan position_type closed game_stage middle
+info score cp -94 time 38492 depth 5 pv d2f4 d7e5 g2g3 e6g5 f2c5 raw_nodes 26450523 leaf_nodes 12355958 nps 687169 ordering 0.62159 window_ratio nan position_type semi_closed game_stage middle
 failed
-info score cp 1070 time 0 depth 1 pv g5g2 raw_nodes 66 leaf_nodes 55 nps inf ordering 1 window_ratio nan position_type semi_closed game_stage middle
-info score cp 849 time 5 depth 2 pv d4f3 g1f1 raw_nodes 1808 leaf_nodes 767 nps 361600 ordering 0.829374 window_ratio nan position_type semi_open game_stage middle
-info score cp 1074 time 33 depth 3 pv g5g2 b7g2 c8g8 raw_nodes 9803 leaf_nodes 5866 nps 297061 ordering 0.769279 window_ratio nan position_type semi_open game_stage middle
-info score cp 1074 time 186 depth 4 pv d4f3 g1h1 g5g2 h1g2 raw_nodes 46822 leaf_nodes 32479 nps 251731 ordering 0.717135 window_ratio nan position_type semi_open game_stage early_end
-info score cp 645 time 714 depth 5 pv d4c2 g2g3 c2e1 f2f4 g5d8 raw_nodes 187540 leaf_nodes 122751 nps 262661 ordering 0.679629 window_ratio nan position_type semi_closed game_stage middle
-failed
-info score cp 54 time 0 depth 1 pv a3e3 raw_nodes 37 leaf_nodes 34 nps inf ordering 1 window_ratio nan position_type semi_closed game_stage early_end
-info score cp 120 time 3 depth 2 pv a3d3 f4h2 raw_nodes 1587 leaf_nodes 651 nps 529000 ordering 0.75 window_ratio nan position_type semi_closed game_stage early_end
-info score cp 69 time 18 depth 3 pv a8e8 b2c2 e8e3 raw_nodes 7281 leaf_nodes 3515 nps 404500 ordering 0.77407 window_ratio nan position_type semi_closed game_stage early_end
-info score cp 124 time 134 depth 4 pv a3c3 b2b1 a8a2 g1h2 raw_nodes 64229 leaf_nodes 26138 nps 479321 ordering 0.701877 window_ratio nan position_type semi_closed game_stage early_end
-info score cp 73 time 750 depth 5 pv a8e8 b2b5 a3d3 g1h2 e8e3 raw_nodes 291851 leaf_nodes 122611 nps 389135 ordering 0.757419 window_ratio nan position_type semi_closed game_stage early_end
-failed
-info score cp 133 time 0 depth 1 pv c7c4 raw_nodes 88 leaf_nodes 52 nps inf ordering 0.958333 window_ratio nan position_type closed game_stage opening
-info score cp 220 time 18 depth 2 pv c7c4 b2f6 raw_nodes 12340 leaf_nodes 7441 nps 685556 ordering 0.466384 window_ratio nan position_type semi_closed game_stage opening
-info score cp 167 time 76 depth 3 pv d6d5 e2e3 c7c4 raw_nodes 43454 leaf_nodes 21234 nps 571763 ordering 0.828185 window_ratio nan position_type closed game_stage opening
-info score cp 238 time 11144 depth 4 pv c7c4 e4e5 c4e4 d3c4 raw_nodes 7684680 leaf_nodes 4708733 nps 689580 ordering 0.458945 window_ratio nan position_type semi_closed game_stage opening
-info score cp 132 time 17558 depth 5 pv e6e5 e2e3 d7b8 d3c2 c7c4 raw_nodes 11665965 leaf_nodes 6610344 nps 664424 ordering 0.593196 window_ratio nan position_type closed game_stage opening
-failed
-info score cp 188 time 0 depth 1 pv e1c1 raw_nodes 59 leaf_nodes 43 nps inf ordering 0.5 window_ratio nan position_type semi_open game_stage middle
-info score cp 1267 time 4 depth 2 pv e1g3 h2g3 raw_nodes 2092 leaf_nodes 632 nps 523000 ordering 0.780451 window_ratio nan position_type semi_open game_stage early_end
-info score cp 1117 time 26 depth 3 pv e1h1 h2g3 h1h3 raw_nodes 7321 leaf_nodes 3584 nps 281577 ordering 0.743622 window_ratio nan position_type semi_open game_stage early_end
-info score cp 248 time 206 depth 4 pv f8c8 c1e3 e1a1 e3b6 raw_nodes 60027 leaf_nodes 25593 nps 291393 ordering 0.733401 window_ratio nan position_type semi_open game_stage middle
-info score cp 259 time 1030 depth 5 pv b6c4 c1g5 e1a1 e6c4 a1b2 raw_nodes 272124 leaf_nodes 126217 nps 264198 ordering 0.746894 window_ratio nan position_type semi_open game_stage middle
-failed
-info score cp -190 time 1 depth 1 pv d2e3 raw_nodes 1087 leaf_nodes 446 nps 1.087e+06 ordering 0.608824 window_ratio nan position_type semi_closed game_stage middle
-info score cp -438 time 6 depth 2 pv e1d1 c4c1 raw_nodes 3004 leaf_nodes 1275 nps 500667 ordering 0.699158 window_ratio nan position_type semi_closed game_stage middle
-info score cp -262 time 100 depth 3 pv f3h5 e8g8 d2e3 raw_nodes 53236 leaf_nodes 18654 nps 532360 ordering 0.700447 window_ratio nan position_type semi_closed game_stage middle
-info score cp -456 time 375 depth 4 pv e1d1 c4f1 d1c2 f1a1 raw_nodes 153141 leaf_nodes 62866 nps 408376 ordering 0.715373 window_ratio nan position_type semi_closed game_stage middle
-info score cp -266 time 3620 depth 5 pv a1c1 c7e6 d2e3 c4a4 e1g1 raw_nodes 1646798 leaf_nodes 604031 nps 454917 ordering 0.724079 window_ratio nan position_type semi_closed game_stage middle
-failed
-info score cp 121 time 0 depth 1 pv d5c3 raw_nodes 94 leaf_nodes 53 nps inf ordering 0.73913 window_ratio nan position_type semi_closed game_stage middle
-info score cp 120 time 19 depth 2 pv e6e5 d4f3 raw_nodes 13727 leaf_nodes 4941 nps 722474 ordering 0.607238 window_ratio nan position_type semi_closed game_stage middle
-info score cp 383 time 43 depth 3 pv c7f4 e2d2 f4d4 raw_nodes 20652 leaf_nodes 8712 nps 480279 ordering 0.645549 window_ratio nan position_type semi_closed game_stage middle
-info score cp 463 time 272 depth 4 pv c7c4 a1b1 c4a2 b1c2 raw_nodes 150714 leaf_nodes 54536 nps 554096 ordering 0.686586 window_ratio nan position_type semi_closed game_stage middle
-info score cp 194 time 1050 depth 5 pv d5f6 d4b3 d8d1 e2d1 c7c3 raw_nodes 413556 leaf_nodes 163237 nps 393863 ordering 0.746517 window_ratio nan position_type semi_closed game_stage middle
-failed
-info score cp 378 time 0 depth 1 pv b3b4 raw_nodes 63 leaf_nodes 31 nps inf ordering 0.769231 window_ratio nan position_type semi_open game_stage middle
-info score cp 1031 time 2 depth 2 pv d7h7 f8h7 raw_nodes 1149 leaf_nodes 384 nps 574500 ordering 0.882212 window_ratio nan position_type semi_open game_stage early_end
-info score cp 2168 time 9 depth 3 pv d7h7 f8h7 c7g7 raw_nodes 2564 leaf_nodes 1462 nps 284889 ordering 0.897569 window_ratio nan position_type semi_open game_stage early_end
-info score cp 2125 time 34 depth 4 pv d7h7 f8h7 c7g7 h8g7 raw_nodes 8794 leaf_nodes 5035 nps 258647 ordering 0.944539 window_ratio nan position_type semi_open game_stage early_end
-info score cp 1827 time 69 depth 5 pv d7h7 f8h7 c7h7 h8h7 b3b4 raw_nodes 18312 leaf_nodes 8776 nps 265391 ordering 0.910882 window_ratio nan position_type semi_open game_stage middle
-failed
-info score cp 341 time 0 depth 1 pv e7e1 raw_nodes 57 leaf_nodes 46 nps inf ordering 0.5 window_ratio nan position_type semi_open game_stage middle
-info score cp 282 time 3 depth 2 pv e7c5 g3g4 raw_nodes 873 leaf_nodes 522 nps 291000 ordering 0.515152 window_ratio nan position_type semi_open game_stage middle
-info score cp 100 time 29 depth 3 pv c6f6 d4d8 f6f8 raw_nodes 6823 leaf_nodes 3571 nps 235276 ordering 0.776224 window_ratio nan position_type semi_open game_stage early_end
-info score cp 330 time 147 depth 4 pv c6c1 d4f2 c1d1 g1g2 raw_nodes 38297 leaf_nodes 16692 nps 260524 ordering 0.799102 window_ratio nan position_type semi_open game_stage early_end
-info score cp 191 time 770 depth 5 pv c6c2 d4e5 e7e5 d1d8 g8f7 raw_nodes 222317 leaf_nodes 75940 nps 288723 ordering 0.814763 window_ratio nan position_type semi_open game_stage middle
-failed
-info score cp -81 time 0 depth 1 pv h2h4 raw_nodes 48 leaf_nodes 26 nps inf ordering 1 window_ratio nan position_type open game_stage early_end
-info score cp 80 time 1 depth 2 pv f1f2 g8f7 raw_nodes 398 leaf_nodes 261 nps 398000 ordering 0.895833 window_ratio nan position_type open game_stage early_end
-info score cp -75 time 22 depth 3 pv d3f5 g8h8 h2h4 raw_nodes 6036 leaf_nodes 3269 nps 274364 ordering 0.741744 window_ratio nan position_type open game_stage early_end
-info score cp 62 time 131 depth 4 pv f1f2 b8b3 h2h4 b3c3 raw_nodes 37498 leaf_nodes 20423 nps 286244 ordering 0.783809 window_ratio nan position_type open game_stage early_end
-info score cp -96 time 1088 depth 5 pv c3e4 g8h8 e4g5 b8f8 g5h3 raw_nodes 323848 leaf_nodes 148050 nps 297654 ordering 0.754582 window_ratio nan position_type open game_stage early_end
-failed
-info score cp -61 time 0 depth 1 pv d3d1 raw_nodes 75 leaf_nodes 56 nps inf ordering 0.888889 window_ratio nan position_type semi_closed game_stage middle
-info score cp 40 time 3 depth 2 pv g2g1 a5a2 raw_nodes 1081 leaf_nodes 578 nps 360333 ordering 0.90583 window_ratio nan position_type semi_open game_stage middle
-info score cp -98 time 100 depth 3 pv h6c1 b8d8 d3e3 raw_nodes 46687 leaf_nodes 15198 nps 466870 ordering 0.783709 window_ratio nan position_type semi_closed game_stage middle
-info score cp -25 time 452 depth 4 pv d3f3 a5e5 g2h1 e5g3 raw_nodes 187886 leaf_nodes 58738 nps 415677 ordering 0.832691 window_ratio nan position_type semi_open game_stage middle
-info score cp -133 time 9545 depth 5 pv f1g1 e8e1 g3g4 a5d5 d3f3 raw_nodes 5141111 leaf_nodes 1442797 nps 538618 ordering 0.758484 window_ratio nan position_type semi_open game_stage early_end
-failed
-info score cp 908 time 0 depth 1 pv h6g7 raw_nodes 93 leaf_nodes 54 nps inf ordering 0.9375 window_ratio nan position_type semi_closed game_stage middle
-info score cp 1065 time 2 depth 2 pv h6g7 h8g7 raw_nodes 1346 leaf_nodes 573 nps 673000 ordering 0.778824 window_ratio nan position_type semi_closed game_stage middle
-info score cp 1020 time 26 depth 3 pv h6g7 h8g7 g3h5 raw_nodes 8790 leaf_nodes 4004 nps 338077 ordering 0.897581 window_ratio nan position_type semi_closed game_stage middle
-info score cp 808 time 375 depth 4 pv d3f5 d8h4 h6h4 e6f5 raw_nodes 184800 leaf_nodes 55771 nps 492800 ordering 0.776403 window_ratio nan position_type semi_open game_stage early_end
-info score cp 829 time 624 depth 5 pv d3f5 d8h4 h6h4 e6f5 h4f6 raw_nodes 290861 leaf_nodes 76356 nps 466123 ordering 0.813405 window_ratio nan position_type semi_closed game_stage middle
+info score cp 1158 time 0 depth 1 pv g5g2 raw_nodes 64 leaf_nodes 55 nps inf ordering 1 window_ratio nan position_type semi_closed game_stage middle
+info score cp 944 time 2 depth 2 pv d4f3 g1f1 raw_nodes 1012 leaf_nodes 592 nps 506000 ordering 0.846591 window_ratio nan position_type semi_open game_stage middle
+info score cp 1163 time 25 depth 3 pv g5g2 g1g2 c8g8 raw_nodes 7915 leaf_nodes 5484 nps 316600 ordering 0.788187 window_ratio nan position_type semi_open game_stage middle
+info score cp 1164 time 185 depth 4 pv d4e2 g1f1 g5g3 c1a1 raw_nodes 53020 leaf_nodes 38932 nps 286595 ordering 0.679055 window_ratio nan position_type semi_closed game_stage middle
+info score cp 532 time 578 depth 5 pv g5c1 c3d1 c1d2 e1f1 d2f2 raw_nodes 167630 leaf_nodes 119482 nps 290017 ordering 0.64273 window_ratio nan position_type semi_open game_stage middle
 passed
+info score cp 75 time 0 depth 1 pv a3e3 raw_nodes 41 leaf_nodes 33 nps inf ordering 0.5 window_ratio nan position_type semi_closed game_stage early_end
+info score cp 99 time 3 depth 2 pv a3d3 f4h2 raw_nodes 1979 leaf_nodes 849 nps 659667 ordering 0.72296 window_ratio nan position_type semi_closed game_stage early_end
+info score cp 70 time 19 depth 3 pv a8e8 b2b5 a3e3 raw_nodes 9608 leaf_nodes 4765 nps 505684 ordering 0.710793 window_ratio nan position_type semi_closed game_stage early_end
+info score cp 117 time 127 depth 4 pv a3c3 g1h2 g7g5 b2b5 raw_nodes 71795 leaf_nodes 29686 nps 565315 ordering 0.695529 window_ratio nan position_type semi_closed game_stage early_end
+info score cp 93 time 733 depth 5 pv a8e8 b2b5 d7f6 c1d1 a3e3 raw_nodes 335257 leaf_nodes 142749 nps 457377 ordering 0.747606 window_ratio nan position_type semi_closed game_stage early_end
+failed
+info score cp 133 time 0 depth 1 pv c7c4 raw_nodes 146 leaf_nodes 77 nps inf ordering 0.96 window_ratio nan position_type closed game_stage opening
+info score cp 238 time 119 depth 2 pv c7c4 b2f6 raw_nodes 85553 leaf_nodes 53311 nps 718933 ordering 0.438217 window_ratio nan position_type closed game_stage opening
+info score cp 167 time 207 depth 3 pv d6d5 e2e3 c7c4 raw_nodes 133573 leaf_nodes 77283 nps 645280 ordering 0.614863 window_ratio nan position_type closed game_stage opening
+info score cp 244 time 7540 depth 4 pv c7c4 e4e5 c4d5 e5f6 raw_nodes 5067106 leaf_nodes 2992202 nps 672030 ordering 0.493316 window_ratio nan position_type closed game_stage opening
+info score cp 132 time 13605 depth 5 pv e6e5 e2e3 d7b8 d3c2 c7c4 raw_nodes 8883750 leaf_nodes 4885096 nps 652977 ordering 0.624595 window_ratio nan position_type closed game_stage opening
+failed
+info score cp 264 time 0 depth 1 pv e1g1 raw_nodes 66 leaf_nodes 43 nps inf ordering 0.75 window_ratio nan position_type semi_open game_stage middle
+info score cp 1350 time 2 depth 2 pv e1g3 h2g3 raw_nodes 783 leaf_nodes 317 nps 391500 ordering 0.746032 window_ratio nan position_type semi_open game_stage middle
+info score cp 1200 time 17 depth 3 pv e1h1 h2g3 h1h3 raw_nodes 5353 leaf_nodes 3010 nps 314882 ordering 0.722034 window_ratio nan position_type semi_open game_stage middle
+info score cp 254 time 152 depth 4 pv f8c8 c1e3 e1a1 e3b6 raw_nodes 50109 leaf_nodes 21528 nps 329664 ordering 0.741198 window_ratio nan position_type semi_open game_stage middle
+info score cp 265 time 971 depth 5 pv b6c4 c1g5 e1a1 e6c4 a1b2 raw_nodes 297252 leaf_nodes 133175 nps 306130 ordering 0.768523 window_ratio nan position_type semi_open game_stage middle
+failed
+info score cp -206 time 1 depth 1 pv d2e3 raw_nodes 1457 leaf_nodes 590 nps 1.457e+06 ordering 0.6082 window_ratio nan position_type semi_closed game_stage early_end
+info score cp -509 time 5 depth 2 pv d2e2 c4c3 raw_nodes 3149 leaf_nodes 1320 nps 629800 ordering 0.65367 window_ratio nan position_type semi_closed game_stage middle
+info score cp -278 time 72 depth 3 pv f3h5 e8g8 d2e3 raw_nodes 41428 leaf_nodes 14892 nps 575389 ordering 0.680039 window_ratio nan position_type semi_closed game_stage middle
+info score cp -491 time 326 depth 4 pv e1d1 c4f1 d2e1 f1d3 raw_nodes 152777 leaf_nodes 62062 nps 468641 ordering 0.692062 window_ratio nan position_type semi_closed game_stage middle
+info score cp -290 time 3414 depth 5 pv a1c1 c7e6 d2e3 e6d4 c1d1 raw_nodes 1755280 leaf_nodes 653717 nps 514142 ordering 0.713313 window_ratio nan position_type semi_closed game_stage early_end
+failed
+info score cp 121 time 0 depth 1 pv d5c3 raw_nodes 81 leaf_nodes 49 nps inf ordering 0.722222 window_ratio nan position_type semi_closed game_stage middle
+info score cp 120 time 17 depth 2 pv e6e5 d4f3 raw_nodes 13609 leaf_nodes 5111 nps 800529 ordering 0.602663 window_ratio nan position_type semi_closed game_stage middle
+info score cp 399 time 35 depth 3 pv c7f4 e2d2 f4d4 raw_nodes 19770 leaf_nodes 8534 nps 564857 ordering 0.644529 window_ratio nan position_type semi_closed game_stage middle
+info score cp 543 time 441 depth 4 pv c7c4 a1b1 c4d3 e2c2 raw_nodes 278124 leaf_nodes 98108 nps 630667 ordering 0.683496 window_ratio nan position_type semi_closed game_stage middle
+info score cp 296 time 1296 depth 5 pv c7a5 e2e4 d5c3 b2c3 a5c3 raw_nodes 621107 leaf_nodes 240114 nps 479249 ordering 0.747903 window_ratio nan position_type semi_closed game_stage middle
+failed
+info score cp 393 time 0 depth 1 pv b3b4 raw_nodes 77 leaf_nodes 34 nps inf ordering 0.777778 window_ratio nan position_type semi_open game_stage middle
+info score cp 1045 time 2 depth 2 pv d7h7 f8h7 raw_nodes 1043 leaf_nodes 340 nps 521500 ordering 0.910811 window_ratio nan position_type semi_open game_stage middle
+info score cp 2287 time 11 depth 3 pv d7h7 f8h7 c7g7 raw_nodes 4451 leaf_nodes 1780 nps 404636 ordering 0.891304 window_ratio nan position_type semi_open game_stage middle
+info score cp 2244 time 32 depth 4 pv d7h7 f8h7 c7g7 h8g7 raw_nodes 10597 leaf_nodes 5292 nps 331156 ordering 0.929886 window_ratio nan position_type semi_open game_stage middle
+info score cp 1931 time 66 depth 5 pv d7h7 f8h7 c7h7 h8h7 b3b4 raw_nodes 23159 leaf_nodes 9809 nps 350894 ordering 0.902955 window_ratio nan position_type semi_open game_stage middle
+failed
+info score cp 320 time 0 depth 1 pv e7e1 raw_nodes 57 leaf_nodes 46 nps inf ordering 0.5 window_ratio nan position_type semi_open game_stage middle
+info score cp 261 time 2 depth 2 pv e7c5 g3g4 raw_nodes 751 leaf_nodes 427 nps 375500 ordering 0.707071 window_ratio nan position_type semi_open game_stage middle
+info score cp 225 time 21 depth 3 pv c6f6 d4d8 f6f8 raw_nodes 6387 leaf_nodes 3369 nps 304143 ordering 0.764553 window_ratio nan position_type semi_open game_stage middle
+info score cp 319 time 106 depth 4 pv c6c1 g1g2 e7e2 g2h3 raw_nodes 34190 leaf_nodes 14159 nps 322547 ordering 0.832783 window_ratio nan position_type semi_open game_stage middle
+info score cp 217 time 641 depth 5 pv c6c2 d4d8 e7d8 d1d8 g8f7 raw_nodes 203013 leaf_nodes 78793 nps 316713 ordering 0.822144 window_ratio nan position_type semi_open game_stage early_end
+failed
+info score cp -75 time 0 depth 1 pv h2h4 raw_nodes 37 leaf_nodes 27 nps inf ordering 1 window_ratio nan position_type open game_stage early_end
+info score cp 74 time 1 depth 2 pv f1f2 g8f7 raw_nodes 389 leaf_nodes 266 nps 389000 ordering 0.886364 window_ratio nan position_type open game_stage early_end
+info score cp -69 time 20 depth 3 pv d3f5 g8h8 h2h4 raw_nodes 7102 leaf_nodes 3626 nps 355100 ordering 0.736015 window_ratio nan position_type open game_stage early_end
+info score cp 61 time 123 depth 4 pv c3e2 b8b4 e2g3 h5g3 raw_nodes 40289 leaf_nodes 21117 nps 327553 ordering 0.787962 window_ratio nan position_type open game_stage early_end
+info score cp -90 time 911 depth 5 pv c3e4 g8h8 e4g5 b8f8 g5h3 raw_nodes 318041 leaf_nodes 144672 nps 349112 ordering 0.759621 window_ratio nan position_type open game_stage early_end
+failed
+info score cp -61 time 0 depth 1 pv d3d1 raw_nodes 82 leaf_nodes 58 nps inf ordering 0.727273 window_ratio nan position_type semi_closed game_stage middle
+info score cp 40 time 3 depth 2 pv g2g1 a5a2 raw_nodes 1114 leaf_nodes 590 nps 371333 ordering 0.888412 window_ratio nan position_type semi_open game_stage middle
+info score cp -98 time 98 depth 3 pv h6c1 b8d8 d3e3 raw_nodes 52409 leaf_nodes 17265 nps 534786 ordering 0.775935 window_ratio nan position_type semi_open game_stage early_end
+info score cp -25 time 496 depth 4 pv d3f3 a5e5 g2h1 e5g3 raw_nodes 214705 leaf_nodes 74715 nps 432873 ordering 0.834138 window_ratio nan position_type semi_open game_stage early_end
+info score cp -135 time 9688 depth 5 pv h2h4 b8b3 d3d7 b3g3 g2h1 raw_nodes 5635924 leaf_nodes 1711700 nps 581743 ordering 0.751961 window_ratio nan position_type semi_open game_stage middle
+failed
+info score cp 1003 time 0 depth 1 pv h6g7 raw_nodes 307 leaf_nodes 142 nps inf ordering 0.494737 window_ratio nan position_type semi_closed game_stage middle
+info score cp 1160 time 2 depth 2 pv h6g7 h8g7 raw_nodes 1414 leaf_nodes 567 nps 707000 ordering 0.806818 window_ratio nan position_type semi_closed game_stage middle
+info score cp 1115 time 21 depth 3 pv h6g7 h8g7 g3h5 raw_nodes 8636 leaf_nodes 3850 nps 411238 ordering 0.902592 window_ratio nan position_type semi_closed game_stage middle
+info score cp 908 time 350 depth 4 pv d3f5 d8h4 h6h4 e6f5 raw_nodes 182128 leaf_nodes 54338 nps 520366 ordering 0.803663 window_ratio nan position_type semi_closed game_stage middle
+info score cp 182 time 1033 depth 5 pv h6g7 h8g7 g3h5 g7g8 a1c1 raw_nodes 551476 leaf_nodes 119163 nps 533859 ordering 0.817025 window_ratio nan position_type semi_open game_stage middle
+failed
 info score cp -184 time 0 depth 1 pv d2c1 raw_nodes 12 leaf_nodes 9 nps inf ordering nan window_ratio nan position_type semi_closed game_stage late_end
-info score cp 195 time 0 depth 2 pv d2e3 e7e5 raw_nodes 110 leaf_nodes 81 nps inf ordering 0.666667 window_ratio nan position_type semi_closed game_stage late_end
-info score cp -179 time 3 depth 3 pv e4e5 g3h2 d2c1 raw_nodes 486 leaf_nodes 338 nps 162000 ordering 0.172414 window_ratio nan position_type semi_closed game_stage late_end
-info score cp 161 time 10 depth 4 pv d2e3 g3g4 b3b4 c5b4 raw_nodes 1967 leaf_nodes 1228 nps 196700 ordering 0.586207 window_ratio nan position_type semi_closed game_stage late_end
-info score cp -185 time 27 depth 5 pv b3b4 g3g2 d2c1 g2h1 e4e5 raw_nodes 6216 leaf_nodes 3630 nps 230222 ordering 0.472074 window_ratio nan position_type semi_open game_stage late_end
-passed
-info score cp -63 time 0 depth 1 pv d3h3 raw_nodes 611 leaf_nodes 350 nps inf ordering 0.459596 window_ratio nan position_type closed game_stage middle
-info score cp 98 time 1 depth 2 pv g5f6 d8f6 raw_nodes 1091 leaf_nodes 597 nps 1.091e+06 ordering 0.670659 window_ratio nan position_type semi_closed game_stage middle
-info score cp -73 time 484 depth 3 pv d3h3 g7h6 h3d7 raw_nodes 332752 leaf_nodes 179379 nps 687504 ordering 0.529615 window_ratio nan position_type semi_closed game_stage middle
-info score cp 47 time 680 depth 4 pv b2b3 c6c5 g5f6 d8f6 raw_nodes 435302 leaf_nodes 220080 nps 640150 ordering 0.62312 window_ratio nan position_type semi_closed game_stage middle
-info score cp -71 time 60469 depth 5 pv d3h3 f6h5 c3d5 f7f5 g5f4 raw_nodes 43191496 leaf_nodes 22161897 nps 714275 ordering 0.582235 window_ratio nan position_type semi_closed game_stage middle
+info score cp 195 time 0 depth 2 pv d2e3 e7e5 raw_nodes 119 leaf_nodes 87 nps inf ordering 0.333333 window_ratio nan position_type semi_closed game_stage late_end
+info score cp -179 time 1 depth 3 pv e4e5 g3h2 d2c1 raw_nodes 477 leaf_nodes 328 nps 477000 ordering 0.548387 window_ratio nan position_type semi_closed game_stage late_end
+info score cp 161 time 9 depth 4 pv d2e3 g3g4 b3b4 c5b4 raw_nodes 2251 leaf_nodes 1441 nps 250111 ordering 0.566667 window_ratio nan position_type semi_closed game_stage late_end
+info score cp -185 time 22 depth 5 pv d2c1 g3g2 e4e5 g2h1 b3b4 raw_nodes 5794 leaf_nodes 3529 nps 263364 ordering 0.601246 window_ratio nan position_type semi_closed game_stage late_end
 failed
-info score cp 106 time 0 depth 1 pv a8a6 raw_nodes 496 leaf_nodes 166 nps inf ordering 0.780899 window_ratio nan position_type semi_closed game_stage middle
-info score cp 243 time 15 depth 2 pv a8a7 f1f2 raw_nodes 10065 leaf_nodes 4232 nps 671000 ordering 0.589917 window_ratio nan position_type semi_closed game_stage middle
-info score cp 228 time 51 depth 3 pv a8a1 d7e7 a1a7 raw_nodes 27997 leaf_nodes 11231 nps 548961 ordering 0.679346 window_ratio nan position_type semi_closed game_stage middle
-info score cp 350 time 494 depth 4 pv a8a7 f1f2 a7f2 g1h2 raw_nodes 288543 leaf_nodes 110441 nps 584095 ordering 0.649167 window_ratio nan position_type semi_closed game_stage middle
-info score cp 260 time 1508 depth 5 pv a8a7 g1h2 a7f2 d7g4 e7g5 raw_nodes 879207 leaf_nodes 334108 nps 583029 ordering 0.656812 window_ratio nan position_type semi_closed game_stage middle
+info score cp -48 time 1 depth 1 pv d3h3 raw_nodes 1155 leaf_nodes 716 nps 1.155e+06 ordering 0.421652 window_ratio nan position_type closed game_stage opening
+info score cp 121 time 3 depth 2 pv g5f6 d8f6 raw_nodes 1736 leaf_nodes 1034 nps 578667 ordering 0.588469 window_ratio nan position_type semi_closed game_stage middle
+info score cp -58 time 502 depth 3 pv d3h3 g7h6 h3d7 raw_nodes 355308 leaf_nodes 197915 nps 707785 ordering 0.495824 window_ratio nan position_type semi_closed game_stage middle
+info score cp 70 time 755 depth 4 pv b2b3 c6c5 g5f6 d8f6 raw_nodes 488962 leaf_nodes 253601 nps 647632 ordering 0.626427 window_ratio nan position_type semi_closed game_stage early_end
+info score cp -59 time 41316 depth 5 pv d3h3 f6h5 c3d5 g7h6 g5d2 raw_nodes 30304276 leaf_nodes 16295173 nps 733476 ordering 0.532933 window_ratio nan position_type semi_closed game_stage middle
 failed
-info score cp 121 time 2 depth 1 pv e7d5 raw_nodes 1491 leaf_nodes 630 nps 745500 ordering 0.640068 window_ratio nan position_type semi_closed game_stage middle
-info score cp 308 time 14 depth 2 pv b2f6 f8f6 raw_nodes 9041 leaf_nodes 3171 nps 645786 ordering 0.759244 window_ratio nan position_type semi_open game_stage early_end
-info score cp 190 time 95 depth 3 pv e7g6 h8g7 g6f8 raw_nodes 58371 leaf_nodes 19496 nps 614432 ordering 0.786274 window_ratio nan position_type semi_open game_stage early_end
-info score cp 335 time 788 depth 4 pv a4c6 a8c8 b2f6 d7f6 raw_nodes 467451 leaf_nodes 164551 nps 593212 ordering 0.758579 window_ratio nan position_type semi_closed game_stage middle
-info score cp 126 time 3632 depth 5 pv a4c6 h8g7 b2c3 d8b8 f2f4 raw_nodes 2230561 leaf_nodes 783544 nps 614141 ordering 0.733071 window_ratio nan position_type semi_closed game_stage middle
+info score cp 106 time 0 depth 1 pv a8a6 raw_nodes 354 leaf_nodes 124 nps inf ordering 0.763636 window_ratio nan position_type semi_closed game_stage middle
+info score cp 348 time 13 depth 2 pv a8a7 f1f2 raw_nodes 9244 leaf_nodes 3912 nps 711077 ordering 0.597892 window_ratio nan position_type semi_closed game_stage middle
+info score cp 223 time 44 depth 3 pv a8a1 d7e7 a1a7 raw_nodes 25090 leaf_nodes 10571 nps 570227 ordering 0.678867 window_ratio nan position_type semi_closed game_stage middle
+info score cp 456 time 296 depth 4 pv a8a7 f1f2 a7f2 g1f2 raw_nodes 166944 leaf_nodes 64552 nps 564000 ordering 0.706012 window_ratio nan position_type semi_open game_stage middle
+info score cp 294 time 1022 depth 5 pv a8a7 g1h2 a7f2 d7g4 f2f1 raw_nodes 603365 leaf_nodes 223844 nps 590377 ordering 0.70778 window_ratio nan position_type semi_closed game_stage middle
 failed
-info score cp 78 time 0 depth 1 pv f4f5 raw_nodes 14 leaf_nodes 7 nps inf ordering nan window_ratio nan position_type semi_closed game_stage late_end
-info score cp -55 time 0 depth 2 pv h1g2 b6c5 raw_nodes 151 leaf_nodes 75 nps inf ordering 0.8 window_ratio nan position_type semi_closed game_stage late_end
-info score cp 31 time 3 depth 3 pv h1g1 b6a5 f4f5 raw_nodes 894 leaf_nodes 334 nps 298000 ordering 0.605405 window_ratio nan position_type semi_closed game_stage late_end
-info score cp -64 time 10 depth 4 pv h1g1 b6c5 g1f2 f7f5 raw_nodes 2484 leaf_nodes 1205 nps 248400 ordering 0.715935 window_ratio nan position_type semi_closed game_stage late_end
-info score cp 4 time 78 depth 5 pv h3g4 b6a5 g4f5 f7f6 f5g4 raw_nodes 21630 leaf_nodes 7244 nps 277308 ordering 0.619552 window_ratio nan position_type semi_closed game_stage late_end
-passed
-info score cp 562 time 0 depth 1 pv c4b3 raw_nodes 19 leaf_nodes 9 nps inf ordering 0 window_ratio nan position_type open game_stage late_end
-info score cp 127 time 0 depth 2 pv g2d5 b5a3 raw_nodes 257 leaf_nodes 39 nps inf ordering 0.690476 window_ratio nan position_type open game_stage late_end
-info score cp 529 time 4 depth 3 pv c4d3 c7b8 d3c2 raw_nodes 1038 leaf_nodes 325 nps 259500 ordering 0.732 window_ratio nan position_type open game_stage late_end
-info score cp -120 time 26 depth 4 pv c4c5 b5d4 c5c4 c7d6 raw_nodes 5845 leaf_nodes 2602 nps 224808 ordering 0.697472 window_ratio nan position_type open game_stage late_end
-info score cp 309 time 75 depth 5 pv c4d3 e6e5 g2h3 e5e4 d3c4 raw_nodes 16483 leaf_nodes 5399 nps 219773 ordering 0.707765 window_ratio nan position_type open game_stage late_end
+info score cp 104 time 1 depth 1 pv e7d5 raw_nodes 1280 leaf_nodes 540 nps 1.28e+06 ordering 0.705305 window_ratio nan position_type semi_closed game_stage middle
+info score cp 293 time 10 depth 2 pv b2f6 f8f6 raw_nodes 7130 leaf_nodes 2404 nps 713000 ordering 0.818931 window_ratio nan position_type semi_closed game_stage middle
+info score cp 190 time 91 depth 3 pv e7g6 h8g7 g6f8 raw_nodes 56344 leaf_nodes 20742 nps 619165 ordering 0.76813 window_ratio nan position_type semi_closed game_stage middle
+info score cp 313 time 834 depth 4 pv a4c6 a8c8 b2f6 d7f6 raw_nodes 516799 leaf_nodes 185998 nps 619663 ordering 0.799591 window_ratio nan position_type semi_closed game_stage early_end
+info score cp 168 time 2597 depth 5 pv e7g6 h8g7 g6f8 d7f8 h2f1 raw_nodes 1593093 leaf_nodes 576041 nps 613436 ordering 0.765729 window_ratio nan position_type semi_closed game_stage middle
+failed
+info score cp 78 time 0 depth 1 pv f4f5 raw_nodes 12 leaf_nodes 8 nps inf ordering nan window_ratio nan position_type semi_closed game_stage late_end
+info score cp -55 time 0 depth 2 pv h1g2 b6c5 raw_nodes 149 leaf_nodes 76 nps inf ordering 0.8 window_ratio nan position_type semi_closed game_stage late_end
+info score cp 31 time 2 depth 3 pv h1g1 b6a5 f4f5 raw_nodes 906 leaf_nodes 313 nps 453000 ordering 0.788018 window_ratio nan position_type semi_closed game_stage late_end
+info score cp -64 time 9 depth 4 pv h1g1 b6c5 g1f2 f7f5 raw_nodes 2858 leaf_nodes 1338 nps 317556 ordering 0.770053 window_ratio nan position_type semi_closed game_stage late_end
+info score cp 10 time 56 depth 5 pv h3f5 b6a5 f5g6 f7f6 a3a4 raw_nodes 17473 leaf_nodes 5585 nps 312018 ordering 0.736471 window_ratio nan position_type semi_closed game_stage late_end
+failed
+info score cp 575 time 0 depth 1 pv c4b3 raw_nodes 17 leaf_nodes 8 nps inf ordering 1 window_ratio nan position_type open game_stage late_end
+info score cp 146 time 0 depth 2 pv g2d5 b5a3 raw_nodes 258 leaf_nodes 56 nps inf ordering 0.772152 window_ratio nan position_type open game_stage late_end
+info score cp 542 time 3 depth 3 pv c4d3 c7b8 d3c2 raw_nodes 986 leaf_nodes 326 nps 328667 ordering 0.770833 window_ratio nan position_type open game_stage late_end
+info score cp -135 time 22 depth 4 pv c4c5 b5d4 g2d5 f5f4 raw_nodes 5774 leaf_nodes 2961 nps 262455 ordering 0.699593 window_ratio nan position_type open game_stage late_end
+info score cp 309 time 67 depth 5 pv c4d3 e6e5 g2h3 e5e4 d3c4 raw_nodes 17311 leaf_nodes 6726 nps 258373 ordering 0.706101 window_ratio nan position_type open game_stage late_end
 failed
 info score cp 158 time 0 depth 1 pv h7h8 raw_nodes 12 leaf_nodes 9 nps inf ordering nan window_ratio nan position_type open game_stage late_end
 info score cp -156 time 0 depth 2 pv h7g6 b5c4 raw_nodes 116 leaf_nodes 62 nps inf ordering 0.875 window_ratio nan position_type open game_stage late_end
-info score cp 141 time 3 depth 3 pv h7g7 d8c7 b8a7 raw_nodes 743 leaf_nodes 459 nps 247667 ordering 0.731707 window_ratio nan position_type open game_stage late_end
-info score cp -58 time 9 depth 4 pv b8a7 d8g5 a7b6 b5c4 raw_nodes 2123 leaf_nodes 1010 nps 235889 ordering 0.805263 window_ratio nan position_type open game_stage late_end
-info score cp 128 time 53 depth 5 pv b8e5 d8f6 e5d6 b5a6 d6f8 raw_nodes 11595 leaf_nodes 4877 nps 218774 ordering 0.720367 window_ratio nan position_type open game_stage late_end
+info score cp 141 time 2 depth 3 pv h7g7 d8c7 b8a7 raw_nodes 736 leaf_nodes 457 nps 368000 ordering 0.817073 window_ratio nan position_type open game_stage late_end
+info score cp -58 time 8 depth 4 pv b8a7 d8g5 a7b6 b5c4 raw_nodes 2332 leaf_nodes 1100 nps 291500 ordering 0.831019 window_ratio nan position_type open game_stage late_end
+info score cp 128 time 48 depth 5 pv b8e5 d8f6 e5d6 b5a6 d6f8 raw_nodes 12519 leaf_nodes 5284 nps 260812 ordering 0.785553 window_ratio nan position_type open game_stage late_end
 failed
-info score cp 127 time 0 depth 1 pv c6d4 raw_nodes 64 leaf_nodes 46 nps inf ordering 1 window_ratio nan position_type closed game_stage opening
-info score cp 63 time 17 depth 2 pv e7h4 d1a4 raw_nodes 9875 leaf_nodes 5148 nps 580882 ordering 0.523859 window_ratio nan position_type semi_closed game_stage middle
-info score cp 117 time 42 depth 3 pv g7g6 d1c2 c6d4 raw_nodes 19680 leaf_nodes 10387 nps 468571 ordering 0.677466 window_ratio nan position_type closed game_stage opening
-info score cp 59 time 1039 depth 4 pv g8h8 d2b3 a5a4 b3c5 raw_nodes 625884 leaf_nodes 335985 nps 602391 ordering 0.568301 window_ratio nan position_type semi_open game_stage middle
-info score cp 51 time 6059 depth 5 pv d8c7 b2b4 g7g6 b4a5 c6d4 raw_nodes 3573251 leaf_nodes 1872871 nps 589743 ordering 0.610854 window_ratio nan position_type semi_closed game_stage opening
+info score cp 122 time 0 depth 1 pv c6d4 raw_nodes 78 leaf_nodes 52 nps inf ordering 1 window_ratio nan position_type closed game_stage opening
+info score cp 63 time 14 depth 2 pv e7h4 d1a4 raw_nodes 9903 leaf_nodes 5340 nps 707357 ordering 0.518966 window_ratio nan position_type semi_closed game_stage opening
+info score cp 117 time 44 depth 3 pv g7g6 d1c2 c6d4 raw_nodes 22482 leaf_nodes 11602 nps 510955 ordering 0.700947 window_ratio nan position_type closed game_stage opening
+info score cp 59 time 1354 depth 4 pv g8h8 d2b3 a5a4 b3c5 raw_nodes 883168 leaf_nodes 489305 nps 652266 ordering 0.501912 window_ratio nan position_type closed game_stage opening
+info score cp 47 time 4031 depth 5 pv d8c7 e3g5 c6d4 d3h7 g8h8 raw_nodes 2352306 leaf_nodes 1199159 nps 583554 ordering 0.666263 window_ratio nan position_type semi_closed game_stage opening
 failed
-info score cp -52 time 0 depth 1 pv b2b3 raw_nodes 21 leaf_nodes 19 nps inf ordering nan window_ratio nan position_type semi_closed game_stage late_end
-info score cp 66 time 0 depth 2 pv e4c6 d7c6 raw_nodes 111 leaf_nodes 66 nps inf ordering 0.944444 window_ratio nan position_type semi_closed game_stage late_end
-info score cp -55 time 8 depth 3 pv e3e2 g7g6 b2b3 raw_nodes 1665 leaf_nodes 1160 nps 208125 ordering 0.573864 window_ratio nan position_type semi_closed game_stage late_end
-info score cp 64 time 39 depth 4 pv e4c6 d7c6 f3f4 e7e6 raw_nodes 9191 leaf_nodes 5044 nps 235667 ordering 0.761041 window_ratio nan position_type semi_closed game_stage late_end
-info score cp -63 time 319 depth 5 pv e3e2 g7g5 b2b3 c6e5 c3c4 raw_nodes 73939 leaf_nodes 39314 nps 231784 ordering 0.722143 window_ratio nan position_type semi_closed game_stage late_end
+info score cp -31 time 0 depth 1 pv b2b3 raw_nodes 20 leaf_nodes 19 nps inf ordering nan window_ratio nan position_type semi_closed game_stage late_end
+info score cp 66 time 0 depth 2 pv e4c6 d7c6 raw_nodes 179 leaf_nodes 127 nps inf ordering 0.866667 window_ratio nan position_type semi_closed game_stage late_end
+info score cp -54 time 6 depth 3 pv b2b3 c6d4 f3f4 raw_nodes 1835 leaf_nodes 1130 nps 305833 ordering 0.835821 window_ratio nan position_type semi_closed game_stage late_end
+info score cp 64 time 33 depth 4 pv e4c6 d7c6 f3f4 e7e6 raw_nodes 9566 leaf_nodes 5396 nps 289879 ordering 0.867602 window_ratio nan position_type semi_closed game_stage late_end
+info score cp -52 time 192 depth 5 pv e3e2 c6e5 e4f5 e7f8 h2h4 raw_nodes 66198 leaf_nodes 27540 nps 344781 ordering 0.808221 window_ratio nan position_type semi_open game_stage late_end
 failed
-info score cp -163 time 0 depth 1 pv e2f1 raw_nodes 14 leaf_nodes 9 nps inf ordering nan window_ratio nan position_type semi_open game_stage late_end
-info score cp 221 time 0 depth 2 pv e3e4 d6d5 raw_nodes 95 leaf_nodes 64 nps inf ordering 1 window_ratio nan position_type semi_open game_stage late_end
-info score cp -181 time 3 depth 3 pv b5a4 e7f8 e2f1 raw_nodes 883 leaf_nodes 656 nps 294333 ordering 0.584906 window_ratio nan position_type semi_open game_stage late_end
-info score cp 192 time 12 depth 4 pv f3f4 d6d5 d3d4 e7d6 raw_nodes 3024 leaf_nodes 1842 nps 252000 ordering 0.850467 window_ratio nan position_type semi_open game_stage late_end
-info score cp -181 time 70 depth 5 pv e2f1 e7f8 f1g1 f8g8 g1h1 raw_nodes 15719 leaf_nodes 10716 nps 224557 ordering 0.586893 window_ratio nan position_type semi_open game_stage late_end
+info score cp -142 time 0 depth 1 pv e2f1 raw_nodes 13 leaf_nodes 9 nps inf ordering nan window_ratio nan position_type semi_open game_stage late_end
+info score cp 200 time 0 depth 2 pv e3e4 d6d5 raw_nodes 88 leaf_nodes 58 nps inf ordering 1 window_ratio nan position_type semi_open game_stage late_end
+info score cp -160 time 3 depth 3 pv b5a4 e7f8 e2f1 raw_nodes 857 leaf_nodes 635 nps 285667 ordering 0.618182 window_ratio nan position_type semi_open game_stage late_end
+info score cp 171 time 11 depth 4 pv f3f4 d6d5 d3d4 e7d6 raw_nodes 3015 leaf_nodes 1847 nps 274091 ordering 0.843091 window_ratio nan position_type semi_open game_stage late_end
+info score cp -160 time 50 depth 5 pv e2f1 e7f8 f1g1 f8g8 g1h1 raw_nodes 12310 leaf_nodes 8294 nps 246200 ordering 0.655172 window_ratio nan position_type semi_open game_stage late_end
 failed

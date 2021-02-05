@@ -993,6 +993,14 @@ void Board::unmake_null_move() noexcept {
     restore_last_state();
 }
 
+/**
+ * computes the least valuable piece subset of attadef set, updating the piece type (must be done by hand because
+ * native piece order is screwed up)
+ * @param attadef set of pieces still attacking some given square from see
+ * @param by_side color of moving side
+ * @param piece   piece type to be update
+ * @return        bitboard of least valuable pieces that are attacking some square
+ */
 Bitboard Board::get_least_valuable_piece(Bitboard attadef, Color_t by_side, PieceType_t& piece) {
     piece = W_PAWN + by_side;
     Bitboard subset = attadef & piece_bb_[piece];
@@ -1035,60 +1043,51 @@ Bitboard Board::get_least_valuable_piece(Bitboard attadef, Color_t by_side, Piec
 }
 
 /**
- *
+ * computes the static exchange evaluation
  * @param to_sq        the square being traded on
  * @param target_piece the piece on the to_sq
- * @param from_sq
- * @param a_piece
- * @return
+ * @param from_sq      the square being attacked from initially
+ * @param a_piece      the piece initially attacking
+ * @return             the swapoff material gain / loss (gain denotes winning capture, 0 denotes trade, loss denotes
+ *                     losing capture)
  */
 Centipawns_t Board::see(Square_t to_sq, PieceType_t target_piece, Square_t from_sq, PieceType_t a_piece) {
-    std::array<Centipawns_t, 5> value{{PAWN_BASE_VAL, ROOK_BASE_VAL, KNIGHT_BASE_VAL, BISHOP_BASE_VAL, QUEEN_BASE_VAL}}; // can't add INF
+    std::array<Centipawns_t, 32> gain{};
+    Centipawns_t d = 0;
+    std::array<Centipawns_t, 6> value{{PAWN_BASE_VAL, ROOK_BASE_VAL, KNIGHT_BASE_VAL, BISHOP_BASE_VAL, QUEEN_BASE_VAL, INF}}; // can't add INF
 
-    int gain[32], d = 0;
     // if we take with any of the following piece types, then something behind it "may" then attack the square on the
     // next move
-    Bitboard may_xray = piece_bb_[W_PAWN] | piece_bb_[B_PAWN] | piece_bb_[W_BISHOP] | piece_bb_[B_BISHOP] | piece_bb_[W_ROOK] | piece_bb_[B_ROOK] | piece_bb_[W_QUEEN] | piece_bb_[B_QUEEN]; // pawns | bishops | rooks | queen;
+    Bitboard may_xray =
+            piece_bb_[W_PAWN] | piece_bb_[B_PAWN] | piece_bb_[W_BISHOP] | piece_bb_[B_BISHOP] | piece_bb_[W_ROOK] |
+            piece_bb_[B_ROOK] | piece_bb_[W_QUEEN] | piece_bb_[B_QUEEN]; // pawns | bishops | rooks | queen;
     Bitboard from_set = C64(1) << from_sq;
-    Bitboard occ     = occupied_bb_;
+    Bitboard occ = occupied_bb_;
     // get a bitboard of all the attackers of the square
     Bitboard attadef = sq_attacked_by(to_sq, occupied_bb_);
-//    std::cout << "Original Attadef " << std::endl;
-//    std::cout << draw_bitboard(attadef) << std::endl;
-//    std::cout << "OG From Set" << std::endl;
-//    std::cout << draw_bitboard(from_set) << std::endl;
-    gain[d]     = value[(target_piece - 2) / 2]; // the value of the piece
+    gain[d] = value[(target_piece - 2) / 2]; // the value of the piece
 
     do {
         d++; // next depth and side
-        gain[d]  = value[(a_piece - 2) / 2] - gain[d - 1]; // attacking piece
+        gain[d] = value[(a_piece - 2) / 2] - gain[d - 1]; // attacking piece
         // either side can stop trading pieces off at any point if they're up in material
-        if (std::max(-gain[d-1], gain[d]) < 0) break;
+        if (std::max(-gain[d - 1], gain[d]) < 0) break;
         // take the from_sq piece off the attack bitboard and off the occupied bitboard. i.e. pretend it's not there
         attadef ^= from_set;
-        occ     ^= from_set;
+        occ ^= from_set;
 
         // if the piece we just attacked with was one of the may_xray piece types, then determine if and what xray piece
         // was behind it
         if (from_set & may_xray) {
-//            std::cout << "Before" << std::endl;
-//            std::cout << draw_bitboard(attadef) << std::endl;
             attadef = sq_attacked_by(to_sq, occ);
-//            std::cout << "After" << std::endl;
-//            std::cout << draw_bitboard(attadef) << std::endl;
-//            attadef |= considerXrays(occ, ..);
         }
 
         // from the set of pieces still in the attadef set, find the least valuable one
-        from_set  = get_least_valuable_piece(attadef, d & 1, a_piece);
-//        std::cout << "From Set" << std::endl;
-//        std::cout << draw_bitboard(from_set) << std::endl;
-//        std::cout << (int)from_set << std::endl;
-    } while(from_set);
+        from_set = get_least_valuable_piece(attadef, d & 1, a_piece);
+    } while (from_set);
 
     while (--d) {
-        gain[d-1] = -std::max(-gain[d-1], gain[d]);
-//        std::cout << "gain[" << d << "] = " << gain[d] << std::endl;
+        gain[d - 1] = -std::max(-gain[d - 1], gain[d]);
     }
 
     return gain[0];

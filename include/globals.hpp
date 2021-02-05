@@ -624,26 +624,26 @@ const Centipawns_t ROOK_SUPPORTING_PASSED_PAWNS = 20;
 const Centipawns_t CONNECTED_ROOK_BONUS = 10;
 const Centipawns_t ROOK_PST[64] = {
         -4, -2, 0, 2, 2, 0, -2, -4,
-        -2, 0, 0, 2, 2, 0, 0, -2,
-        0, 0, 1, 2, 2, 1, 0, 0,
-        2, 2, 2, 3, 3, 2, 0, 2,
-        2, 2, 2, 3, 3, 2, 0, 2,
-        0, 0, 1, 2, 2, 1, 0, 0,
-        -2, 0, 0, 0, 0, 0, 0, -2,
+        -2,  0, 0, 2, 2, 0,  0, -2,
+         0,  0, 1, 2, 2, 1,  0,  0,
+         2,  2, 2, 3, 3, 2,  0,  2,
+         2,  2, 2, 3, 3, 2,  0,  2,
+         0,  0, 1, 2, 2, 1,  0,  0,
+        -2,  0, 0, 0, 0, 0,  0, -2,
         -4, -2, 0, 2, 2, 0, -2, -4
 };
 const Centipawns_t ROOK_ON_SEVENTH = 9;
 
 const Centipawns_t OM_BISHOP_MOBILITY = 5;
 const Centipawns_t BISHOP_PST[64] = {
-        -2,-1,-1,-1,-1,-1,-1,-2,
-        -1,5,0,0,0,0,5,-1,
-        -1,2,5,2,2,5,2,-1,
-        -1,  1,  1, 1, 1, 1, 1,-1,
-        -1,  0, 1, 1, 1, 1,  0,-1,
-        -1, 1, 1, 1, 1, 1, 1,-1,
-        -1,  1,  0,  0,  0,  0,  1,-1,
-        -2,-1,-4,-1,-1,-4,-1,-2
+        -2, -1, -1, -1, -1, -1, -1, -2,
+        -1,  5,  0,  0,  0,  0,  5, -1,
+        -1,  2,  5,  2,  2,  5,  2, -1,
+        -1,  1,  1,  1,  1,  1,  1, -1,
+        -1,  0,  1,  1,  1,  1,  0, -1,
+        -1,  1,  1,  1,  1,  1,  1, -1,
+        -1,  1,  0,  0,  0,  0,  1, -1,
+        -2, -1, -4, -1, -1, -4, -1, -2
 };
 const Centipawns_t BISHOP_PAIR_BONUS = 10;
 const Centipawns_t BISHOP_ON_LONG_DIAGONAL = 7;
@@ -700,7 +700,8 @@ const Centipawns_t PAWN_PST[64] = {
 };
 
 const Centipawns_t PASSED_PAWN[8] = {
-    0, 0, 0, 12, 25, 50, 100, 0
+    //0, 0, 0, 12, 25, 50, 100, 0 // make these weights MUCH bigger
+    0, 0, 0, 12, 25, 200, 1000, 0
 };
 
 const Centipawns_t PAWN_UNOPPOSED_PAWN = 5;
@@ -723,7 +724,7 @@ const Centipawns_t HALF_ISOLATED_PAWN = -5;
 const Centipawns_t WINDOW_SIZE[3] = {
     150, 550, 1100
 };
-const Depth NULL_MOVE_R = 3;
+const Depth NULL_MOVE_R = 2; // 3
 const Depth FUTILITY_DEPTH = 2;
 const Centipawns_t FUTILITY_THRESHOLD_DEPTH_1 = 500;
 const Centipawns_t FUTILITY_THRESHOLD_DEPTH_2 = 600;
