@@ -87,6 +87,7 @@ namespace internal {
 
         for (long unsigned int i = 0; i < movelist.size(); i++) {
             /// make the move, then determine if it's legal by playing it and seeing whether you put yourself in check
+            // 46
             board.make_move(movelist[i]);
             if (board.is_king_checked((!board.side_2_move()))) {
                 movelist.erase(movelist.begin() + i);
@@ -109,7 +110,7 @@ namespace internal {
 
             /// if we have run out of time, just return the best move so far
             if (search_state.time_exit) {
-                return std::tuple<ChessMove, Centipawns_t>(best_move, alpha);
+                return std::tuple<ChessMove, Centipawns_t>(best_move, alpha); // hence return 0?
             }
 
             /// if the root score exceeds the current best move score or there's not best yet, then update those fields
@@ -199,23 +200,24 @@ namespace internal {
                 }
             }
 
-
-
             /// forget why these are the conditions
-            if (hash->depth >= (depth - R) && (score < beta) && (flag == LOWER_BOUND)) {
+//            if (hash->depth >= (depth - R) && (score < beta) && (flag == LOWER_BOUND)) {
+            if (hash->depth >= (depth - R) && (score < beta) && (flag == UPPER_BOUND)) {
                 do_null = false;
                 flag = AVOID_NULL;
             }
 
             /// if the hashed move went deeper than we currently are in the search, then it should be adhered to
-            if (hash->depth >= depth) {
+            if (hash->depth >= depth) { // i don't understand this condition
                 switch (flag) {
-                    case LOWER_BOUND:
+//                    case LOWER_BOUND:
+                    case UPPER_BOUND:
                         if (hash_score <= alpha) {
                             return alpha;
                         }
                         break;
-                    case UPPER_BOUND:
+//                    case UPPER_BOUND:
+                    case LOWER_BOUND:
                         if (hash_score >= beta) {
                             return beta;
                         }
@@ -415,6 +417,10 @@ namespace internal {
         /// Delta pruning -- don't delta prune in late end game
         if (eval_state.stage != LATE_END_GAME) {
             Centipawns_t delta = QUEEN_BASE_VAL;
+//            if ((((board.piece_bb(W_PAWN) & RANK_MASK[RANK7]) << 8) & ~board.piece_bb(B_PIECES)) || (((board.piece_bb(B_PAWN) & RANK_MASK[RANK2]) >> 8) & ~board.piece_bb(W_PIECES))) {
+//                delta += 100; // idk some value
+//            }
+
             if (standing_pat < alpha - delta) {
                 return alpha;
             }
@@ -561,25 +567,25 @@ namespace internal {
 
             if (hash_move != nullptr) {
                 if (move == *hash_move) {
-                    score |= (1 << 31);// 128; // |= (1 << 7) (4294967295)
+                    score |= (1 << 31); // 128; // |= (1 << 7) (4294967295)
                 }
-            }
-
-            if (move.flag() == CAPTURE_MOVE) { // maybe exclude promotions later
-                auto see = board.see(move.to_sq, move.captured, move.from_sq, move.moved);
-                if (see > 0) {
-                    score += see + 100000; // put 100000 in globals
-                } else {
-                    score = 0;
-                }
-            }
-
-            if (move == search_state.killer_move[search_state.height].first) {
-                score += 90000; // put 90000 in globals
-            } else if (move == search_state.killer_move[search_state.height].second) {
-                score += 80000; // put 80000 in globals
             } else {
-                score += search_state.history_heuristic[move.moved][move.to_sq];
+                if (move.flag() == CAPTURE_MOVE) { // maybe exclude promotions later
+                    auto see = board.see(move.to_sq, move.captured, move.from_sq, move.moved);
+                    if (see > 0) {
+                        score += see + 100000; // put 100000 in globals
+                    } else {
+                        score = 0;
+                    }
+                } else {
+                    if (move == search_state.killer_move[search_state.height].first) {
+                        score += 90000; // put 90000 in globals
+                    } else if (move == search_state.killer_move[search_state.height].second) {
+                        score += 80000; // put 80000 in globals
+                    } else {
+                        score += search_state.history_heuristic[move.moved][move.to_sq];
+                    }
+                }
             }
 
             move.score = score;
@@ -607,21 +613,13 @@ namespace internal {
             if (see > 0) {
                 score += see + 100000; // put 100000 in globals
             } else {
+                /// don't consider losing captures in qsearch
                 movelist.erase(movelist.begin() + i);
                 --i;
                 continue;
             }
 
-
-            if (move == search_state.killer_move[search_state.height].first) {
-                score += 90000; // put 90000 in globals
-            } else if (move == search_state.killer_move[search_state.height].second) {
-                score += 80000; // put 80000 in globals
-            } else {
-                score += search_state.history_heuristic[move.moved][move.to_sq];
-            }
-
-            move.score = score;
+            movelist[i].score = score;
             score = 0;
         }
 

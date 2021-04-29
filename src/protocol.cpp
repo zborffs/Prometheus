@@ -384,7 +384,7 @@ void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_s
             std::cout << eval_state << std::endl;
         } else if (commands[0] == "eval") {
             // debug command (NOT UCI COMMAND): print the evaluation of current position
-            std::cout << "Evaluation: " << evaluate(board, eval_state) << std::endl;
+            std::cout << "Evaluation: " << evaluate(board, eval_state, true) << std::endl;
         } else if (commands[0] == "searchstate") {
             // debug command (NOT UCI COMMAND): print the search state
             std::cout << search_state << std::endl;

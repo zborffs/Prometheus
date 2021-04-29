@@ -68,8 +68,6 @@ extern const Centipawns_t BISHOP_ON_OPEN_LONG_DIAGONAL;
 extern const Centipawns_t QUEEN_MOBILITY;
 extern const Centipawns_t QUEEN_PST[64];
 
-extern const Centipawns_t QUEEN_OPENING_QUICK_PENALTY;
-
 extern const Centipawns_t OM_KING_MOBILITY;
 extern const Centipawns_t E_KING_MOBILITY;
 extern const Centipawns_t M_KING_PST[64];
@@ -80,6 +78,7 @@ extern const Centipawns_t PAWN_MOBILITY;
 extern const Centipawns_t PAWN_PST[64];
 extern const Centipawns_t PASSED_PAWN[8];
 
+extern const Centipawns_t PAWN_ATTACK_CENTER;
 extern const Centipawns_t PAWN_UNOPPOSED_PAWN;
 extern const Centipawns_t PAWN_BACKWARD;
 extern const Centipawns_t PAWN_BLOCKING;
@@ -93,6 +92,10 @@ extern const Centipawns_t PAWN_ATTACKING_ENEMY_CAMP;
 extern const Centipawns_t PAWN_HANGING;
 extern const Centipawns_t PAWN_ISLAND[4];
 extern const Centipawns_t HALF_ISOLATED_PAWN;
+
+/// development
+extern const Centipawns_t Q_B4_2_MINORS;
+extern const Centipawns_t OVERALL_DEV_BONUS;
 
 /// Search Parameters
 extern const Centipawns_t WINDOW_SIZE[3];

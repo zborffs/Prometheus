@@ -8,10 +8,10 @@ std::vector<BookEdge> Book::edges(PositionKey key) {
         }
     }
 
-    for (int i = 0; i < nodes_.size(); ++i) {
-        if (nodes_[i].key == key) {
-            former_nodes_.push(nodes_[i]);
-            return nodes_[i].edges;
+    for (auto & node : nodes_) {
+        if (node.key == key) {
+            former_nodes_.push(node);
+            return node.edges;
         }
     }
 

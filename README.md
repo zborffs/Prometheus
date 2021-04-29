@@ -15,11 +15,11 @@ pushd Cloak/build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make -j
 ```
-At this point, you ought to have the Delta-lib.a static library and the Delta executable built for your host.
+At this point, you ought to have the Cloak-lib.a static library and the Cloak executable built for your host.
 
 To run in terminal:
 ```shell
-./cloak
+./Cloak
 ```
 if the program immediately terminates, something went wrong. Try adding a logs/ directory in the project home directory. 
 Otherwise, you'll be prompted with an empty terminal. Type "uci" for UCI mode. 

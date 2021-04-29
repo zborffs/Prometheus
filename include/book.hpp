@@ -39,7 +39,7 @@ struct BookNode {
 
     friend std::ostream& operator<<(std::ostream& os, const BookNode& node) {
         os << "[" << node.key << "]:";
-        for (int i = 0; i < node.edges.size(); ++i) {
+        for (unsigned i = 0; i < node.edges.size(); ++i) {
             os << node.edges[i] << " ";
         }
         return os;

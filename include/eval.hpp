@@ -10,6 +10,58 @@
 #include "board.hpp"
 #include <attack.hpp>
 #include "bitmask.hpp"
+#include <utility>
+
+class EvalPrettyPrinter {
+    std::vector<std::pair<std::string, Centipawns_t> > eval_params_;
+    unsigned long max_str_size_{0};
+    Centipawns_t max_score_{0};
+
+public:
+    void add(const std::string& eval_name, Centipawns_t score) {
+        auto search = std::find_if(eval_params_.begin(), eval_params_.end(), [&](const std::pair<std::string, Centipawns_t>& p) {
+            return p.first == eval_name;
+        });
+        if (search != eval_params_.end()) {
+            search->second = score;
+        } else {
+            eval_params_.emplace_back(eval_name, score);
+        }
+
+        if (std::abs(score) > max_score_) {
+            max_score_ = score;
+        }
+
+        if (eval_name.size() > max_str_size_) {
+            max_str_size_ = eval_name.size();
+        }
+    }
+    friend std::ostream& operator<<(std::ostream& os, const EvalPrettyPrinter& pretty_print) {
+        os.setf(std::ios::showpos);
+        const std::string param_header("Param Name");
+        const std::string val_header("Value");
+        const unsigned long max_score_size = pretty_print.max_score_ == 0 ? val_header.size() : std::max((unsigned long)std::floor(std::log10(pretty_print.max_score_)) + 2, val_header.size()); // add 1 for mapping 0->1 and 1 for adding sign
+        const unsigned long max_str_size = pretty_print.max_str_size_ == 0 ? param_header.size() : std::max(param_header.size(), pretty_print.max_str_size_);
+
+
+        std::string param_buf(max_str_size - param_header.size(), ' ');
+        std::string val_buf(max_score_size - val_header.size(), ' ');
+        os << "| " << param_header << param_buf << " | " << val_buf << val_header << " |" << std::endl;
+        param_buf = std::string(max_str_size, '-');
+        val_buf = std::string(max_score_size, '-');
+        os << "+-" << param_buf << "-+-" << val_buf << "-+" << std::endl;
+
+        for (const std::pair<std::string, Centipawns_t>& elem : pretty_print.eval_params_) {
+            param_buf = std::string(max_str_size - elem.first.size(), ' ');
+            const unsigned long score_length = (elem.second == 0) ? 2 : std::floor(std::log10(std::abs(elem.second))) + 2;
+            val_buf = std::string(max_score_size - score_length, ' ');
+            os << "| " << elem.first << param_buf << " | " << val_buf << elem.second << " |" << std::endl;
+        }
+
+        os.unsetf(std::ios::showpos);
+        return os;
+    }
+};
 
 
 const Bitboard QUEEN_SIDE = FILE_MASK[FILEA] | FILE_MASK[FILEB] | FILE_MASK[FILEC] | FILE_MASK[FILED];
@@ -20,6 +72,9 @@ const Bitboard CENTER = (FILE_MASK[FILED] | FILE_MASK[FILEE]) & (RANK_MASK[RANK4
 struct EvaluationState {
     GameStage stage : 2;
     PositionType pos_type : 6;
+#ifndef NDEBUG
+    EvalPrettyPrinter printer;
+#endif // NDEBUG
 
     /**
      * default constructor sets member variables to what they would be at the beginning of a game
@@ -51,13 +106,15 @@ struct EvaluationState {
             case OPEN: os << "Open" << std::endl; break;
         }
 
+#ifndef NDEBUG
+        os << es.printer << std::endl;
+#endif // NDEBUG
+
         return os << std::noshowpoint << std::noshowpos;
     }
 };
 
 namespace internal {
-    void print_verbose(const std::string& param_name, Centipawns_t val);
-
     void def_stage(const Board& board, EvaluationState& es);
     void def_pos_type(const Board& board, EvaluationState& es);
 

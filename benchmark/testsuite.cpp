@@ -19,7 +19,7 @@
 
 bool init_logger(const std::string& path) noexcept;
 
-int main(int argc, char **argv) {
+int main([[maybe_unused]] int argc, char** argv) {
     std::string path(argv[0]);
 #ifdef WINDOWS
     std::string base(path.substr(0, path.find_last_of("\\")));
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
     std::string output_file_path;
     Board board;
     ChessClock chess_clock;
-    SearchState search_state(65536); // arbitrary
+    SearchState search_state(262144); // arbitrary
     EvaluationState eval_state;
     UCIOptions options;
     Book book;
@@ -65,7 +65,7 @@ int main(int argc, char **argv) {
         s += splitvec[0];
     }
 
-    for (int i = 1; i < splitvec.size() - 1; i++) {
+    for (unsigned i = 1; i < splitvec.size() - 1; i++) {
         s += std::string("/" + splitvec[i]);
     }
     bratko_fen_path = std::string(s + "/../../" + argv[1]);
@@ -81,9 +81,12 @@ int main(int argc, char **argv) {
     options.infinite = true; // at some point change this to max depth = ~6
 
     chess_clock.start();
+    int passed{0};
+    int num_fens{0};
     try {
         /// read all the FENs from the input file
         auto fens = read_all_fen_from_file(bratko_fen_path);
+        num_fens = fens.size();
 
         /// Think for each position (inside of "think" it will cout some useful information)
         for (auto & fen : fens) {
@@ -96,10 +99,11 @@ int main(int argc, char **argv) {
 
             if (move_str == expected_move_str) {
                 std::cout << "passed" << std::endl;
-                spdlog::get(logger_name)->info("PASSED! Move {}, == Best Move {}", move_str, expected_move_str);
+                passed++;
+                spdlog::get(logger_name)->info("[{}/{}] - Passed {} == {}", passed, num_fens, move_str, expected_move_str);
             } else {
                 std::cout << "failed" << std::endl;
-                spdlog::get(logger_name)->info("FAILED! Cloak Move {} != Best Move {}", move_str, expected_move_str);
+                spdlog::get(logger_name)->info("[{}/{}] - Failed {} !=  {}", passed, num_fens, move_str, expected_move_str);
             }
             search_state.tt.clear();
         }
@@ -109,7 +113,7 @@ int main(int argc, char **argv) {
     chess_clock.stop();
 
     std::cout.rdbuf(coutbuf); //reset to standard output again
-    spdlog::get(logger_name)->info("Data Acquisition Successful! Program took {} seconds", (chess_clock.duration() / 1e9));
+    spdlog::get(logger_name)->info("Data Acquisition Successful! {}% Accurate. Program took {} seconds", (double)passed / num_fens * 100.0, (chess_clock.duration() / 1e9));
     return 0;
 }
 
