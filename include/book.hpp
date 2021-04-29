@@ -6,6 +6,7 @@
 #include "chess_move.hpp"
 #include <cereal/types/vector.hpp>
 #include <iostream>
+#include <utility>
 
 
 struct BookEdge {
@@ -23,10 +24,10 @@ struct BookEdge {
 };
 
 struct BookNode {
-    PositionKey key;
+    PositionKey key{};
     std::vector<BookEdge> edges;
-    int games_played;
-    int games_won;
+    int games_played{};
+    int games_won{};
 
     bool operator==(const BookNode& node) const {
         return node.key == key;
@@ -39,8 +40,8 @@ struct BookNode {
 
     friend std::ostream& operator<<(std::ostream& os, const BookNode& node) {
         os << "[" << node.key << "]:";
-        for (unsigned i = 0; i < node.edges.size(); ++i) {
-            os << node.edges[i] << " ";
+        for (auto edge : node.edges) {
+            os << edge << " ";
         }
         return os;
     }
@@ -58,8 +59,8 @@ class Book {
     }
 
 public:
-    Book() {}
-    Book(const std::vector<BookNode>& nodes) : nodes_(nodes) {}
+    Book() = default;
+    Book(std::vector<BookNode> nodes) : nodes_(std::move(nodes)) {}
 
     inline std::vector<BookNode> protobook() {
         return nodes_;
@@ -67,7 +68,7 @@ public:
     std::vector<BookEdge> edges(PositionKey key);
     void make_move(int index);
     void unmake_move();
-    inline PositionKey top() const {
+    [[nodiscard]] inline PositionKey top() const {
         return former_nodes_.top().key;
     }
 
