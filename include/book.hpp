@@ -12,22 +12,25 @@
 struct BookEdge {
     ChessMove move;
     std::size_t child_node; // index of the next BookNode
+    double q_value;
 
     template<class Archive>
     void serialize(Archive& archive) {
-        archive(move, child_node); // serialize things by passing them to the archive
+        archive(move, child_node, q_value); // serialize things by passing them to the archive
     }
 
     friend std::ostream& operator<<(std::ostream& os, const BookEdge& edge) {
-        return os << "[" << edge.move.to_string() << ", " << edge.child_node << "]";
+        return os << "[" << edge.move.to_string() << ", " << edge.child_node << ", " << edge.q_value << "]";
     }
 };
 
 struct BookNode {
     PositionKey key{};
     std::vector<BookEdge> edges;
-    int games_played{};
-    int games_won{};
+    int games_lost{}; // as white
+    int games_won{}; // as white
+    int games_drawn{}; // as white (doesn't matter)
+    // double score
 
     bool operator==(const BookNode& node) const {
         return node.key == key;
@@ -35,11 +38,11 @@ struct BookNode {
 
     template<class Archive>
     void serialize(Archive & archive) {
-        archive(key, edges, games_played, games_won); // serialize things by passing them to the archive
+        archive(key, edges, games_won, games_lost, games_drawn); // serialize things by passing them to the archive
     }
 
     friend std::ostream& operator<<(std::ostream& os, const BookNode& node) {
-        os << "[" << node.key << "]:";
+        os << "[" << node.key << " (w: " << node.games_won << ", l: " << node.games_lost << ", d: " << node.games_drawn  << ")]:";
         for (auto edge : node.edges) {
             os << edge << " ";
         }
@@ -65,11 +68,20 @@ public:
     inline std::vector<BookNode> protobook() {
         return nodes_;
     }
+    [[nodiscard]] inline BookNode current_node() const {
+        return former_nodes_.top();
+    }
+    [[nodiscard]] inline unsigned num_nodes() const {
+        return nodes_.size();
+    }
     std::vector<BookEdge> edges(PositionKey key);
     void make_move(int index);
     void unmake_move();
     [[nodiscard]] inline PositionKey top() const {
         return former_nodes_.top().key;
+    }
+    void update_q_value(unsigned index, double new_q) {
+        former_nodes_.top().edges[index].q_value = new_q;
     }
 
     friend std::ostream& operator<<(std::ostream& os, Book& book) {
