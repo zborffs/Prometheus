@@ -39,8 +39,10 @@ int main(int argc, char** argv) {
 //    std::cout << k.dof << std::endl << std::endl;
 //    std::cout << k.crit_val << std::endl << std::endl;
 //    std::cout << k.alpha << std::endl << std::endl;
-    std::cout << k << std::endl;
+    std::cout << k << std::endl << std::endl;
 
+    auto k2 = zaamath::f_test(vector, vector2, 0.01, zaamath::Tail::BOTH);
+    std::cout << k2 << std::endl;
 
     return 0;
 }
