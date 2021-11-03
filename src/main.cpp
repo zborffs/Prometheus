@@ -32,8 +32,8 @@ int main([[maybe_unused]] const int argc, char* argv[]) {
 #endif // WINDOWS
 
     /// Initialize the logger variables, if it fails to initialize, then quit.
-    std::string logpath(base + "/../logs/Cloak.log");
-    std::string bookpath(base + "/../data/CloakOpening.book");
+    std::string logpath(base + "/../logs/Prometheus.log");
+    std::string bookpath(base + "/../data/PrometheusOpening.book");
     if (!init_logger(logpath)) {
         return LOG_FAILURE;
     }

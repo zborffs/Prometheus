@@ -1,0 +1,9 @@
+#ifndef PROMETHEUS_OPTIMIZATION_HPP
+#define PROMETHEUS_OPTIMIZATION_HPP
+
+namespace zaamath {
+
+
+};
+
+#endif //PROMETHEUS_OPTIMIZATION_HPP

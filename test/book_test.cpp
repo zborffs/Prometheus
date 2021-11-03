@@ -18,6 +18,7 @@ protected:
         std::ifstream f(bookpath, std::ios::binary);
         cereal::BinaryInputArchive iarchive(f); // Create an input archive
         iarchive(book); // Read the data from the archive
+        std::cout << "Hello World " << std::endl;
     }
 
 };

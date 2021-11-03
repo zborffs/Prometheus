@@ -65,7 +65,7 @@ int main([[maybe_unused]] int argc, char **argv) {
     }
     basic_tester_path = std::string(s + "/../../" + argv[1]);
     output_file_path = std::string(s + "/../../" + argv[2]);
-    book_path = std::string(s + "/../../data/CloakOpening.book");
+    book_path = std::string(s + "/../../data/PrometheusOpening.book");
 
     /// redirect std::cout to the output file
     std::ofstream output(output_file_path);

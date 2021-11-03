@@ -1,3 +1,5 @@
+#include <sys/select.h>
+#include <libc.h>
 #include "search.hpp"
 
 /**

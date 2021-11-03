@@ -29,7 +29,7 @@ int main([[maybe_unused]] int argc, char** argv) {
 
     /// Initialize the logger variables, if it fails to initialize, then quit.
     std::string logfile_path(base + "/../../logs/TestSuiteBenchmark.log");
-    std::string bookpath(base + "/../../data/CloakOpening.book");
+    std::string bookpath(base + "/../../data/PrometheusOpening.book");
     if (!init_logger(logfile_path)) {
         return LOG_FAILURE;
     }

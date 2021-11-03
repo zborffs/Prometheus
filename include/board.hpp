@@ -1,5 +1,5 @@
-#ifndef CLOAK_BOARD_HPP
-#define CLOAK_BOARD_HPP
+#ifndef PROMETHEUS_BOARD_HPP
+#define PROMETHEUS_BOARD_HPP
 
 /// STL Includes
 #include <algorithm>
@@ -275,4 +275,4 @@ protected:
     void init_pos_keys() noexcept;
 };
 
-#endif // CLOAK_BOARD_HPP
+#endif // PROMETHEUS_BOARD_HPP

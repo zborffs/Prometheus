@@ -148,8 +148,9 @@ int main(int argc, char** argv) {
     BookNode root; // the root node corresponding to the startpos
     int current = 0; // keeps track of the current index of BookNode
     root.key = board.key();
-    root.games_played = 0;
+    root.games_lost = 0;
     root.games_won = 0;
+    root.games_drawn = 0;
     root.edges = {};
     proto_book.push_back(root);
 
@@ -173,8 +174,9 @@ int main(int argc, char** argv) {
                     // just added to the current book node)'s index so that it points to the newly created BookNode
                     BookNode node;
                     node.key = board.key();
-                    node.games_played = 0;
+                    node.games_lost = 0;
                     node.games_won = 0;
+                    node.games_drawn = 0;
                     node.edges = {};
                     proto_book.push_back(node);
                     proto_book[current].edges[proto_book[current].edges.size() - 1].child_node = proto_book.size() - 1;

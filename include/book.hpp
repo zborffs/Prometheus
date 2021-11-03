@@ -37,7 +37,7 @@ struct BookNode {
     }
 
     template<class Archive>
-    void serialize(Archive & archive) {
+    void serialize(Archive& archive) {
         archive(key, edges, games_won, games_lost, games_drawn); // serialize things by passing them to the archive
     }
 

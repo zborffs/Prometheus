@@ -28,7 +28,7 @@ namespace internal {
      */
     void register_engine(const std::vector<std::string>& register_commands) {
         const std::string name{"Zach Bortoff"};
-        const std::string code{"1123581321"}; // arbitrary number (just concatenation of Fib numbers)
+        const std::string code{"5772156649015"}; // truncated Euler–Mascheroni constant
 
         /// In debug mode, assert that all incoming command conforms to protocol (i.e. this command will have 1 arg);
         /// if in release, log the error, but don't do anything about it (i.e. ignore it).
