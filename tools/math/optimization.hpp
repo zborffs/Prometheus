@@ -7,28 +7,30 @@
 namespace zaamath {
 
     template <int RealRowIndexType, int IntegerRowIndexType>
-    class Parameters {
+    class EngineParameters {
     protected:
         Eigen::Matrix<double, RealRowIndexType, 1> real_params_;
         Eigen::Matrix<int, IntegerRowIndexType, 1> int_params_;
+        // EvalutionParameters -> enable us to change the values that the engine uses
+        // SearchParameters -> enable us to change the values that the engine uses
 
     public:
-        virtual ~Parameters() = default;
-        virtual void update(Eigen::Matrix<double, RealRowIndexType, 1>& real_params, Eigen::Matrix<int, IntegerRowIndexType, 1>& int_params) = 0;
+        virtual ~EngineParameters() = default;
+        virtual void update(Eigen::Matrix<double, RealRowIndexType, 1>& real_params, Eigen::Matrix<int, IntegerRowIndexType, 1>& int_params) {
+            real_params_ = real_params;
+            int_params_ = int_params;
+
+            // update actual evaluation parameters used by the engine given new EigenMatrices
+
+            // update actual search parameters used by the engine given new EigenMatrices
+        }
+
         Eigen::Matrix<double, RealRowIndexType, 1> real() {
             return real_params_;
         }
 
         Eigen::Matrix<int, IntegerRowIndexType, 1> integer() {
             return int_params_;
-        }
-    };
-
-    class StudyProblemParameters : public Parameters<2, 0> {
-
-    public:
-        void update(Eigen::Matrix<double, 2, 1>& real_params, Eigen::Matrix<int, 0, 1>& int_params) override {
-            real_params_ = real_params; // we know a priori that integer matrix size is 0
         }
     };
 
@@ -54,7 +56,8 @@ namespace zaamath {
             }
 
             if (iterations >= f_x_tol_interval_) {
-                if ((zaamath::range(f_x_prev).cwiseAbs().array() < f_x_tol_).all()) {
+                Eigen::Matrix<double, Eigen::Dynamic, 1> last_n_items = f_x_prev(Eigen::lastN(f_x_tol_interval_));
+                if ((zaamath::range(last_n_items).cwiseAbs().array() < f_x_tol_).all()) {
                     return true;
                 }
             }
@@ -69,9 +72,8 @@ namespace zaamath {
         }
 
     public:
-
         template <int RealRowIndexType, int IntegerRowIndexType>
-        void optimize(Parameters<RealRowIndexType, IntegerRowIndexType>& initial_params) {
+        void optimize(EngineParameters<RealRowIndexType, IntegerRowIndexType>& initial_params) {
 
             // initialize to zero
             Eigen::Matrix<double, RealRowIndexType, 1> mt_real = Eigen::Matrix<double, RealRowIndexType, 1>::Zero();
@@ -84,13 +86,16 @@ namespace zaamath {
             Eigen::Matrix<int, IntegerRowIndexType, 1> vthat_int = Eigen::Matrix<int, IntegerRowIndexType, 1>::Zero();
 
             // Grab the last 'f_x_tol_interval' results
-            Eigen::Matrix<double, Eigen::Dynamic, 1> f_x_prev = Eigen::Matrix<double, Eigen::Dynamic, 1>::Zero(f_x_tol_interval_);
+            Eigen::Matrix<double, Eigen::Dynamic, 1> f_x_prev; // don't initialize to any size yet
 
             // Grab the last 'x_tol_interval' inputs
             Eigen::Matrix<double, Eigen::Dynamic, RealRowIndexType> x_prev_real = Eigen::Matrix<double, Eigen::Dynamic, RealRowIndexType>::Zero(x_tol_interval_, RealRowIndexType);
             Eigen::Matrix<int, Eigen::Dynamic, IntegerRowIndexType> x_prev_int = Eigen::Matrix<int, Eigen::Dynamic, IntegerRowIndexType>::Zero(x_tol_interval_, IntegerRowIndexType);
             x_prev_real.row(0) = initial_params.real();
             x_prev_int.row(0) = initial_params.integer();
+
+            // Grab the time
+            Eigen::Matrix<double, Eigen::Dynamic, 1> times;
 
             // track number of iterations
             int iterations{0};
@@ -103,8 +108,9 @@ namespace zaamath {
 
             // Grab the stopwatch
             StopWatch stop_watch;
-            stop_watch.start();
+
             while (!reached_termination(f_x_prev, x_prev_real, x_prev_int, iterations)) {
+                stop_watch.start();
                 // User-defined Jacobian
 
                 // update mt_real
@@ -124,26 +130,30 @@ namespace zaamath {
                 // CHANGE THIS LINE ONCE WE HAVE ACCESS TO THE UPDATED THETA
 //                initial_params.update(initial_params.real(), initial_params.integer());
 
+                stop_watch.stop();
+                times.conservativeResize(times.rows()+1, Eigen::NoChange);
+                times(times.rows()-1) = stop_watch.duration() * 1e-3;
+
+                f_x_prev.conservativeResize(f_x_prev.rows()+1, Eigen::NoChange);
+                f_x_prev(f_x_prev.rows()-1) = iterations; // fake!
 
                 if (show_trace_) {
                     if (iterations == 0) {
-                        stop_watch.stop();
                         std::cout << "| Iteration |    Time    |" <<  std::endl;
                         std::cout << "+-----------+------------+" << std::endl;
                         std::cout << "|";
                         std::cout << std::setw(header_widths[0]) << (iterations+1) << " ";
                         std::cout << "|";
-                        std::cout << std::setw(header_widths[1]) << std::setprecision(4) << stop_watch.duration() * 1e-3 << " [us] ";
+                        double duration = times(0);
+                        std::cout << std::setw(header_widths[1]) << std::setprecision(4) << duration << " [us] ";
                         std::cout << "|" << std::endl;
-                        stop_watch.start();
                     } else if ((iterations + 1) % show_trace_every_ == 0) {
-                        stop_watch.stop();
                         std::cout << "|";
                         std::cout << std::setw(header_widths[0]) << (iterations+1) << " ";
                         std::cout << "|";
-                        std::cout << std::setw(header_widths[1]) << std::setprecision(4) << stop_watch.duration() * 1e-3 << " [us] ";
+                        double duration = times.middleRows(iterations+1-show_trace_every_+1, show_trace_every_-1).sum();
+                        std::cout << std::setw(header_widths[1]) << std::setprecision(4) << duration << " [us] ";
                         std::cout << "|" << std::endl;
-                        stop_watch.start();
                     }
                 }
                 ++iterations;

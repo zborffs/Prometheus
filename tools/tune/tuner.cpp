@@ -127,8 +127,8 @@ int main(int argc, char** argv) {
     Eigen::Matrix<double, 0, 1> test = Eigen::Matrix<double, 0, 1>::Zero();
 
     zaamath::Adam adam;
-    zaamath::StudyProblemParameters study_params;
-    adam.optimize(study_params);
+    zaamath::EngineParameters<10,10> engine_params;
+    adam.optimize(engine_params);
 
 
     return 0;
