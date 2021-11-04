@@ -48,6 +48,11 @@ namespace zaamath {
         return var.array().sqrt();
     }
 
+    template <class T, int RowIndexType, int ColIndexType>
+    Eigen::Matrix<T, 1, ColIndexType> range(const Eigen::Matrix<T, RowIndexType, ColIndexType>& data) {
+        return data.colwise().maxCoeff() - data.colwise().minCoeff();
+    }
+
 };
 
 #endif //PROMETHEUS_SUMMARY_STATISTICS_HPP

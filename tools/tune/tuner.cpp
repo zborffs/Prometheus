@@ -42,11 +42,29 @@ int main(int argc, char** argv) {
     auto k2 = zaamath::f_test(vector, vector2, 0.01, zaamath::Tail::BOTH);
     std::cout << k2 << std::endl;
 
+    auto vector_range = zaamath::range(vector);
+    std::cout << "Range: " << vector_range << std::endl;
+
 
     Eigen::Matrix<double, 15, 1> hours_studying;
     hours_studying << 9.0, 4.9, 1.6, 1.9, 7.9, 2.0, 11.5, 3.9, 1.1, 1.6, 5.1, 8.2, 7.3, 10.4, 11.2;
     Eigen::Matrix<double, 15, 1> exam_grad;
     exam_grad << 88.0, 72.3, 66.5, 65.1, 79.5, 60.8, 94.3, 66.7, 65.4, 63.8, 68.4, 82.5, 75.9, 87.8, 85.2;
+
+    // input
+    // output
+    // model (maps input to expected output)
+    // - model parameters
+
+    // ------
+    // error function (maps expected output and actual output to number)
+    // error function jacobian (probably requires model jacobian via chain rule) (maps model, input, and output to model parameter type)
+
+    // objective function, objective function jacobian, meta-parameters for algorithm
+    // objective function:
+
+
+
 
 
     Eigen::Matrix<double,2,1> theta0; theta0 << 50, 1;
@@ -96,15 +114,21 @@ int main(int argc, char** argv) {
         std::cout << "Error: " << J(theta, hours_studying, exam_grad) << std::endl;
     }
 
-    matplot::plot(hours_studying, exam_grad, "o");
-    matplot::hold(matplot::on);
-    Eigen::Matrix<double, 100, 1> myX = Eigen::Matrix<double, 100, 1>::LinSpaced(hours_studying.minCoeff(), hours_studying.maxCoeff());
-    Eigen::Matrix<double, 100, 2> myX_augmented = Eigen::Matrix<double, 100, 2>::Ones();
-    myX_augmented.col(1) = myX;
-    Eigen::Matrix<double, 100, 1> myY = myX_augmented * theta;
-    matplot::plot(myX, myY);
-    matplot::hold(matplot::off);
-    matplot::show();
+//    matplot::plot(hours_studying, exam_grad, "o");
+//    matplot::hold(matplot::on);
+//    Eigen::Matrix<double, 100, 1> myX = Eigen::Matrix<double, 100, 1>::LinSpaced(hours_studying.minCoeff(), hours_studying.maxCoeff());
+//    Eigen::Matrix<double, 100, 2> myX_augmented = Eigen::Matrix<double, 100, 2>::Ones();
+//    myX_augmented.col(1) = myX;
+//    Eigen::Matrix<double, 100, 1> myY = myX_augmented * theta;
+//    matplot::plot(myX, myY);
+//    matplot::hold(matplot::off);
+//    matplot::show();
+
+    Eigen::Matrix<double, 0, 1> test = Eigen::Matrix<double, 0, 1>::Zero();
+
+    zaamath::Adam adam;
+    zaamath::StudyProblemParameters study_params;
+    adam.optimize(study_params);
 
 
     return 0;
