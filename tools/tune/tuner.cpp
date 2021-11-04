@@ -2,6 +2,7 @@
 #include <matplot/matplot.h>
 #include "../math/math.hpp"
 
+
 int main(int argc, char** argv) {
     std::cout << "Hello World!" << std::endl;
 
@@ -124,11 +125,52 @@ int main(int argc, char** argv) {
 //    matplot::hold(matplot::off);
 //    matplot::show();
 
-    Eigen::Matrix<double, 0, 1> test = Eigen::Matrix<double, 0, 1>::Zero();
-
     zaamath::Adam adam;
-    zaamath::EngineParameters<10,10> engine_params;
-    adam.optimize(engine_params);
+    const int NUM_PARAMS = 2;
+    Eigen::Matrix<double, NUM_PARAMS, 1> init({50, 1.0});
+    zaamath::EngineParameters<NUM_PARAMS> engine_params(init);
+    std::function<double(zaamath::EngineParameters<NUM_PARAMS>&)> obj_func = [&](zaamath::EngineParameters<NUM_PARAMS>& p) {
+        Eigen::Matrix<double, 15, 2> x_augmented = Eigen::Matrix<double, 15, 2>::Ones();
+        x_augmented.col(1) = hours_studying;
+        return 1.0/2.0 * (x_augmented * p.eigen_params() - exam_grad).squaredNorm();
+    };
+
+    std::function<Eigen::Matrix<double, NUM_PARAMS, 1>(zaamath::EngineParameters<NUM_PARAMS>&, int)> jacobian = [&](zaamath::EngineParameters<NUM_PARAMS>& p, int i) {
+        assert(hours_studying.rows() == exam_grad.rows());
+        int index = i % hours_studying.rows();
+        double f_theta = p.eigen_params()(0) + p.eigen_params()(1) * hours_studying(index);
+        double h{0.1};
+        double di_f_theta0 = ((p.eigen_params()(1) * hours_studying(index) + p.eigen_params()(0) + h) - (p.eigen_params()(1) * hours_studying(index) + p.eigen_params()(0))) / h;
+        double di_f_theta1 = (((p.eigen_params()(1) + h) * hours_studying(index) + p.eigen_params()(0)) - (p.eigen_params()(1) * hours_studying(index) + p.eigen_params()(0))) / h;
+
+        Eigen::Matrix<double, NUM_PARAMS, 1> ret;
+
+        ret(0) = (f_theta - exam_grad(index)) * di_f_theta0; // finite diff approx
+        ret(1) = (f_theta - exam_grad(index)) * di_f_theta1; // finite diff approx
+//        ret(0) = f_theta - y;
+//        ret(1) = (f_theta - y) * x;
+        return ret;
+    };
+
+    adam.optimize(engine_params, obj_func, jacobian);
+    std::cout << "Best Parameters: " << engine_params.eigen_params().transpose() << std::endl;
+    std::cout << "Score: " << obj_func(engine_params) << std::endl;
+
+    matplot::plot(hours_studying, exam_grad, "o");
+    matplot::hold(matplot::on);
+    Eigen::Matrix<double, 100, 1> myX = Eigen::Matrix<double, 100, 1>::LinSpaced(hours_studying.minCoeff(), hours_studying.maxCoeff());
+    Eigen::Matrix<double, 100, 2> myX_augmented = Eigen::Matrix<double, 100, 2>::Ones();
+    myX_augmented.col(1) = myX;
+    Eigen::Matrix<double, 100, 1> myY = myX_augmented * engine_params.eigen_params();
+    matplot::plot(myX, myY);
+    matplot::hold(matplot::off);
+    matplot::show();
+
+//    matplot::plot(adam.times());
+    matplot::hist(adam.times());
+    matplot::show();
+    matplot::plot(adam.f_x_prev());
+    matplot::show();
 
 
     return 0;
