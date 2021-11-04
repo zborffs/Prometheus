@@ -2,8 +2,6 @@
 #include <matplot/matplot.h>
 #include "../math/math.hpp"
 
-
-
 int main(int argc, char** argv) {
     std::cout << "Hello World!" << std::endl;
 
@@ -43,6 +41,64 @@ int main(int argc, char** argv) {
 
     auto k2 = zaamath::f_test(vector, vector2, 0.01, zaamath::Tail::BOTH);
     std::cout << k2 << std::endl;
+
+
+    Eigen::Matrix<double, 15, 1> hours_studying;
+    hours_studying << 9.0, 4.9, 1.6, 1.9, 7.9, 2.0, 11.5, 3.9, 1.1, 1.6, 5.1, 8.2, 7.3, 10.4, 11.2;
+    Eigen::Matrix<double, 15, 1> exam_grad;
+    exam_grad << 88.0, 72.3, 66.5, 65.1, 79.5, 60.8, 94.3, 66.7, 65.4, 63.8, 68.4, 82.5, 75.9, 87.8, 85.2;
+
+
+    Eigen::Matrix<double,2,1> theta0; theta0 << 50, 1;
+    std::function<double(Eigen::Matrix<double,2,1>&, Eigen::Matrix<double, 15, 1>&, Eigen::Matrix<double, 15, 1>&)> J = [&](Eigen::Matrix<double,2,1>& theta, Eigen::Matrix<double, 15, 1>& x, Eigen::Matrix<double, 15, 1>& y) {
+        Eigen::Matrix<double, 15, 2> x_augmented = Eigen::Matrix<double, 15, 2>::Ones();
+        x_augmented.col(1) = x;
+        return 1/2 * (x_augmented * theta - y).squaredNorm();
+    };
+
+    J(theta0, hours_studying, exam_grad);
+
+    std::function<Eigen::Matrix<double, 2, 1>(Eigen::Matrix<double,2,1>&, double, double)> grad_J = [&](Eigen::Matrix<double,2,1>& theta, double x, double y) {
+        double f_theta = theta(0) + theta(1) * x;
+        Eigen::Matrix<double, 2, 1> ret;
+        ret(0) = f_theta - y;
+        ret(1) = (f_theta - y) * x;
+        return ret;
+    };
+
+    Eigen::Matrix<double, 2, 1> my_grad_J = grad_J(theta0, hours_studying(0), exam_grad(0));
+    Eigen::Matrix<double, 2, 1> theta = theta0;
+    Eigen::Matrix<double, 2, 1> mt = Eigen::Matrix<double, 2, 1>::Zero();
+    Eigen::Matrix<double, 2, 1> vt = Eigen::Matrix<double, 2, 1>::Zero();
+    Eigen::Matrix<double, 2, 1> mt_hat = Eigen::Matrix<double, 2, 1>::Zero();
+    Eigen::Matrix<double, 2, 1> vt_hat = Eigen::Matrix<double, 2, 1>::Zero();
+    double beta1 = 0.9;
+    double beta2 = 0.999;
+    double alpha = 0.1;
+    double eps = 1e-8;
+    for (int i = 1; i < 10000; ++i) {
+        my_grad_J = grad_J(theta, hours_studying((i-1)%15), exam_grad((i-1)%15));
+        mt = beta1 * mt + (1-beta1) * my_grad_J;
+        vt = beta2 * vt + (1-beta2) * my_grad_J.array().square().matrix();
+
+        mt_hat = mt * 1 / (1 + std::pow(beta1, i));
+        vt_hat = vt * 1 / (1 + std::pow(beta2, i));
+
+        theta = theta - (alpha * mt_hat.array() * (vt_hat.array().sqrt() + eps).inverse()).matrix();
+        std::cout << "theta: " << theta.transpose() << std::endl;
+        std::cout << "Error: " << J(theta, hours_studying, exam_grad) << std::endl;
+    }
+
+    matplot::plot(hours_studying, exam_grad, "o");
+    matplot::hold(matplot::on);
+    Eigen::Matrix<double, 100, 1> myX = Eigen::Matrix<double, 100, 1>::LinSpaced(hours_studying.minCoeff(), hours_studying.maxCoeff());
+    Eigen::Matrix<double, 100, 2> myX_augmented = Eigen::Matrix<double, 100, 2>::Ones();
+    myX_augmented.col(1) = myX;
+    Eigen::Matrix<double, 100, 1> myY = myX_augmented * theta;
+    matplot::plot(myX, myY);
+    matplot::hold(matplot::off);
+    matplot::show();
+
 
     return 0;
 }
