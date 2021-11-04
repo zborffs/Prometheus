@@ -34,14 +34,14 @@ namespace zaamath {
     class Adam {
     private:
         bool show_trace_{true};
-        int show_trace_every_{5};
+        int show_trace_every_{15};
         int f_x_tol_interval_{20};
         double f_x_tol_{1e-10};
         int x_tol_interval_{20};
         double x_tol_{1e-12};
         int max_iterations_{10000};
-        double alpha_{0.001}; // learning rate / step size
-        std::size_t batch_size{1}; // not sure how to implement
+        double alpha_{0.01}; // learning rate / step size
+        std::size_t batch_size_{1}; // not sure how to implement
         double beta1_{0.9};
         double beta2_{0.999};
         double epsilon_{1e-8};
@@ -111,6 +111,11 @@ namespace zaamath {
             while (!reached_termination(f_x_prev_, x_prev, iterations)) {
                 stop_watch.start();
                 Eigen::Matrix<double, RowIndexType, 1> grad = jacobian(initial_params, iterations);
+                int batch{1};
+                do {
+                    grad += jacobian(initial_params, iterations + batch);
+                    ++batch;
+                } while(batch < batch_size_);
 
                 // update mt and vt
                 mt = beta1_ * mt + (1 - beta1_) * grad;

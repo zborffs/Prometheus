@@ -52,79 +52,6 @@ int main(int argc, char** argv) {
     Eigen::Matrix<double, 15, 1> exam_grad;
     exam_grad << 88.0, 72.3, 66.5, 65.1, 79.5, 60.8, 94.3, 66.7, 65.4, 63.8, 68.4, 82.5, 75.9, 87.8, 85.2;
 
-    // input
-    // output
-    // model (maps input to expected output)
-    // - model parameters
-
-    // ------
-    // error function (maps expected output and actual output to number)
-    // error function jacobian (probably requires model jacobian via chain rule) (maps model, input, and output to model parameter type)
-
-    // objective function, objective function jacobian, meta-parameters for algorithm
-    // objective function:
-
-
-
-
-
-    Eigen::Matrix<double,2,1> theta0; theta0 << 50, 1;
-    std::function<double(Eigen::Matrix<double,2,1>&, Eigen::Matrix<double, 15, 1>&, Eigen::Matrix<double, 15, 1>&)> J = [&](Eigen::Matrix<double,2,1>& theta, Eigen::Matrix<double, 15, 1>& x, Eigen::Matrix<double, 15, 1>& y) {
-        Eigen::Matrix<double, 15, 2> x_augmented = Eigen::Matrix<double, 15, 2>::Ones();
-        x_augmented.col(1) = x;
-        return 1/2 * (x_augmented * theta - y).squaredNorm();
-    };
-
-
-
-    std::function<Eigen::Matrix<double, 2, 1>(Eigen::Matrix<double,2,1>&, double, double)> grad_J = [&](Eigen::Matrix<double,2,1>& theta, double x, double y) {
-        double f_theta = theta(0) + theta(1) * x;
-        double h{0.1};
-        double di_f_theta0 = ((theta(1) * x + theta(0) + h) - (theta(1) * x + theta(0))) / h;
-        double di_f_theta1 = (((theta(1) + h) * x + theta(0)) - (theta(1) * x + theta(0))) / h;
-
-        Eigen::Matrix<double, 2, 1> ret;
-
-        ret(0) = (f_theta - y) * di_f_theta0; // finite diff approx
-        ret(1) = (f_theta - y) * di_f_theta1; // finite diff approx
-//        ret(0) = f_theta - y;
-//        ret(1) = (f_theta - y) * x;
-        return ret;
-    };
-
-    Eigen::Matrix<double, 2, 1> my_grad_J = grad_J(theta0, hours_studying(0), exam_grad(0));
-    Eigen::Matrix<double, 2, 1> theta = theta0;
-    Eigen::Matrix<double, 2, 1> mt = Eigen::Matrix<double, 2, 1>::Zero();
-    Eigen::Matrix<double, 2, 1> vt = Eigen::Matrix<double, 2, 1>::Zero();
-    Eigen::Matrix<double, 2, 1> mt_hat = Eigen::Matrix<double, 2, 1>::Zero();
-    Eigen::Matrix<double, 2, 1> vt_hat = Eigen::Matrix<double, 2, 1>::Zero();
-    double beta1 = 0.9;
-    double beta2 = 0.999;
-    double alpha = 0.1;
-    double eps = 1e-8;
-    for (int i = 1; i < 10000; ++i) {
-        my_grad_J = grad_J(theta, hours_studying((i-1)%15), exam_grad((i-1)%15));
-        mt = beta1 * mt + (1-beta1) * my_grad_J;
-        vt = beta2 * vt + (1-beta2) * my_grad_J.array().square().matrix();
-
-        mt_hat = mt * 1 / (1 + std::pow(beta1, i));
-        vt_hat = vt * 1 / (1 + std::pow(beta2, i));
-
-        theta = theta - (alpha * mt_hat.array() * (vt_hat.array().sqrt() + eps).inverse()).matrix();
-        std::cout << "theta: " << theta.transpose() << std::endl;
-        std::cout << "Error: " << J(theta, hours_studying, exam_grad) << std::endl;
-    }
-
-//    matplot::plot(hours_studying, exam_grad, "o");
-//    matplot::hold(matplot::on);
-//    Eigen::Matrix<double, 100, 1> myX = Eigen::Matrix<double, 100, 1>::LinSpaced(hours_studying.minCoeff(), hours_studying.maxCoeff());
-//    Eigen::Matrix<double, 100, 2> myX_augmented = Eigen::Matrix<double, 100, 2>::Ones();
-//    myX_augmented.col(1) = myX;
-//    Eigen::Matrix<double, 100, 1> myY = myX_augmented * theta;
-//    matplot::plot(myX, myY);
-//    matplot::hold(matplot::off);
-//    matplot::show();
-
     zaamath::Adam adam;
     const int NUM_PARAMS = 2;
     Eigen::Matrix<double, NUM_PARAMS, 1> init({50, 1.0});
@@ -155,22 +82,23 @@ int main(int argc, char** argv) {
     adam.optimize(engine_params, obj_func, jacobian);
     std::cout << "Best Parameters: " << engine_params.eigen_params().transpose() << std::endl;
     std::cout << "Score: " << obj_func(engine_params) << std::endl;
+    std::cout << "Sample Mean of Time: " << zaamath::sample_mean(adam.times()) << std::endl;
 
-    matplot::plot(hours_studying, exam_grad, "o");
-    matplot::hold(matplot::on);
-    Eigen::Matrix<double, 100, 1> myX = Eigen::Matrix<double, 100, 1>::LinSpaced(hours_studying.minCoeff(), hours_studying.maxCoeff());
-    Eigen::Matrix<double, 100, 2> myX_augmented = Eigen::Matrix<double, 100, 2>::Ones();
-    myX_augmented.col(1) = myX;
-    Eigen::Matrix<double, 100, 1> myY = myX_augmented * engine_params.eigen_params();
-    matplot::plot(myX, myY);
-    matplot::hold(matplot::off);
-    matplot::show();
+//    matplot::plot(hours_studying, exam_grad, "o");
+//    matplot::hold(matplot::on);
+//    Eigen::Matrix<double, 100, 1> myX = Eigen::Matrix<double, 100, 1>::LinSpaced(hours_studying.minCoeff(), hours_studying.maxCoeff());
+//    Eigen::Matrix<double, 100, 2> myX_augmented = Eigen::Matrix<double, 100, 2>::Ones();
+//    myX_augmented.col(1) = myX;
+//    Eigen::Matrix<double, 100, 1> myY = myX_augmented * engine_params.eigen_params();
+//    matplot::plot(myX, myY);
+//    matplot::hold(matplot::off);
+//    matplot::show();
 
 //    matplot::plot(adam.times());
-    matplot::hist(adam.times());
-    matplot::show();
-    matplot::plot(adam.f_x_prev());
-    matplot::show();
+//    matplot::hist(adam.times());
+//    matplot::show();
+//    matplot::plot(adam.f_x_prev());
+//    matplot::show();
 
 
     return 0;
