@@ -3,7 +3,7 @@
 
 #include <Eigen/Dense>
 
-// zach's attempt at stats
+// zach's-attempt-at-math
 namespace zaamath {
     /**
      * computes the sample mean of a given dataset represented by a matrix whose columns represent different populations

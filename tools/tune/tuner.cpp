@@ -4,20 +4,6 @@
 
 
 int main(int argc, char** argv) {
-    std::cout << "Hello World!" << std::endl;
-
-//    using namespace matplot;
-//    std::vector<double> x = linspace(0, 2 * pi);
-//    std::vector<double> y = transform(x, [](auto x) { return sin(x); });
-//
-//    plot(x, y, "-o");
-//    hold(on);
-//    plot(x, transform(y, [](auto y) { return -y; }), "--xr");
-//    plot(x, transform(x, [](auto x) { return x / pi - 1.; }), "-:gs");
-//    plot({1.0, 0.7, 0.4, 0.0, -0.4, -0.7, -1}, "k");
-//
-//    show();
-
     Eigen::Matrix<double, 10, 1> vector; vector << 1,2,3,4,5,6,7,8,9,10;
     std::cout << vector << std::endl;
 
@@ -66,7 +52,7 @@ int main(int argc, char** argv) {
         assert(hours_studying.rows() == exam_grad.rows());
         int index = i % hours_studying.rows();
         double f_theta = p.eigen_params()(0) + p.eigen_params()(1) * hours_studying(index);
-        double h{0.1};
+        double h{0.01};
         double di_f_theta0 = ((p.eigen_params()(1) * hours_studying(index) + p.eigen_params()(0) + h) - (p.eigen_params()(1) * hours_studying(index) + p.eigen_params()(0))) / h;
         double di_f_theta1 = (((p.eigen_params()(1) + h) * hours_studying(index) + p.eigen_params()(0)) - (p.eigen_params()(1) * hours_studying(index) + p.eigen_params()(0))) / h;
 
@@ -99,7 +85,5 @@ int main(int argc, char** argv) {
 //    matplot::show();
 //    matplot::plot(adam.f_x_prev());
 //    matplot::show();
-
-
     return 0;
 }

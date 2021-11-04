@@ -48,8 +48,6 @@ namespace zaamath {
         Eigen::Matrix<double, Eigen::Dynamic, 1> f_x_prev_; // don't initialize to any size yet
         Eigen::Matrix<double, Eigen::Dynamic, 1> times_;
 
-
-
         template <int RealRowIndexType>
         bool reached_termination(Eigen::Matrix<double, Eigen::Dynamic, 1>& f_x_prev, Eigen::Matrix<double, Eigen::Dynamic, RealRowIndexType>& x_prev, int iterations) {
             if (iterations >= max_iterations_) {
@@ -111,11 +109,11 @@ namespace zaamath {
             while (!reached_termination(f_x_prev_, x_prev, iterations)) {
                 stop_watch.start();
                 Eigen::Matrix<double, RowIndexType, 1> grad = jacobian(initial_params, iterations);
-                int batch{1};
-                do {
+                std::size_t batch{1};
+                while (batch < batch_size_) {
                     grad += jacobian(initial_params, iterations + batch);
                     ++batch;
-                } while(batch < batch_size_);
+                }
 
                 // update mt and vt
                 mt = beta1_ * mt + (1 - beta1_) * grad;
