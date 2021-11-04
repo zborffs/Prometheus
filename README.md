@@ -1,5 +1,6 @@
-Cloak
-=====
+Prometheus
+==========
+
 This is a chess engine written in C++.
 
 How to Use
