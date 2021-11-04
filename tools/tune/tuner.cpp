@@ -56,13 +56,20 @@ int main(int argc, char** argv) {
         return 1/2 * (x_augmented * theta - y).squaredNorm();
     };
 
-    J(theta0, hours_studying, exam_grad);
+
 
     std::function<Eigen::Matrix<double, 2, 1>(Eigen::Matrix<double,2,1>&, double, double)> grad_J = [&](Eigen::Matrix<double,2,1>& theta, double x, double y) {
         double f_theta = theta(0) + theta(1) * x;
+        double h{0.1};
+        double di_f_theta0 = ((theta(1) * x + theta(0) + h) - (theta(1) * x + theta(0))) / h;
+        double di_f_theta1 = (((theta(1) + h) * x + theta(0)) - (theta(1) * x + theta(0))) / h;
+
         Eigen::Matrix<double, 2, 1> ret;
-        ret(0) = f_theta - y;
-        ret(1) = (f_theta - y) * x;
+
+        ret(0) = (f_theta - y) * di_f_theta0; // finite diff approx
+        ret(1) = (f_theta - y) * di_f_theta1; // finite diff approx
+//        ret(0) = f_theta - y;
+//        ret(1) = (f_theta - y) * x;
         return ret;
     };
 
