@@ -815,13 +815,11 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
                         pv_string += " " + next_pv_move.to_string();
                     }
                 } else {
-                    std::cout << "[!]";
-                    spdlog::error("Not Exact");
+                    spdlog::error("Next Move Hash in PV is not EXACT, i = {}", i);
                     break; // could happen if something has overwritten something else (shouldn't happen)
                 }
             } else {
-                std::cout << "nullptr";
-                spdlog::error("");
+                spdlog::error("Next Move Hash in PV has been overwritten, i = {}", i);
                 break; // could happen if something is overwritten by accident or if there is a mate before
             }
         }
