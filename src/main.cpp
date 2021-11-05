@@ -78,8 +78,8 @@ bool init_logger(const std::string& logpath) noexcept {
     try {
         /// Setup the console sink
         auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-        console_sink->set_level(spdlog::level::warn);
-        console_sink->set_pattern("[%D %H:%M:%S] [%^%l%$] [Thread %t] [File:Line %@] [Function: %!] %v");
+        console_sink->set_level(spdlog::level::trace);
+        console_sink->set_pattern("[%D %H:%M:%S] [%^%l%$] [Thread %t] [File: %s] [Function: %!] [Line: %#] %v");
         console_sink->set_color_mode(spdlog::color_mode::always);
 
         /// setup the file sink

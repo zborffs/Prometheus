@@ -64,8 +64,6 @@ namespace internal {
         ChessHash* root_hash = search_state.tt.find(board.key()); // attempt to find root position's hash in table for move ordering purposes only
         ChessMove* hash_move = nullptr;
         if (root_hash != nullptr) {
-            assert(root_hash->hash_flag == EXACT);
-
             PieceType_t moved = board.piece_type(root_hash->from_sq);
             PieceType_t captured = PieceType::NO_PIECE;
             if (root_hash->m_flag() & CAPTURE_MOVE) {
@@ -763,6 +761,13 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
             // an answer, because we were stopped short of the search
             if (best_move == ChessMove()) {
                 // no answer case: just return and don't print anything, just grab the previous depth's answer if it exists
+                // - NOTE: this happens if we haven't even finished searching the next additional depth given the previous
+                //         search's PV before we get a timeout or something, so we bubble up immediately with alpha values,
+                //         corresponding to INF, which when they get to the search_root function never override best_move = ChessMove()
+                //         since alpha hasn't been improved. The best way to fix this is just to improve searching, I think, so that we
+                //         compute the PV really quickly, so this doesn't happen at move like 5/6 but at move like 20/21, where that's
+                //         less significant
+
                 ChessHash* prev_best_move = search_state.tt.find(board.key());
                 if (prev_best_move != nullptr) {
                     assert(prev_best_move->hash_flag == EXACT);
@@ -780,15 +785,21 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
                     best_move =  ChessMove(prev_best_move->from_sq, prev_best_move->to_sq, prev_best_move->m_flag(), moved, captured);
                     return best_move;
                 } else {
+                    // in this case, we ran out of time searching the first PV at the first depth. this shouldn't happen unless you do something like
+                    // "go movetime 1" or something
                     spdlog::error("Previous Depth's Answer Doesn't exist");
                     return ChessMove();
                 }
             }
         } else {
-            // draw / mate / stalemate
+            // we reach this point if the search_root function found a mate or draw, meaning we are currently in a mate
+            // or draw position. So we shouldn't output any info, we should just return nothing
             return ChessMove();
         }
 
+        // we reach this point if, it's an active position (game hasn't ended due to mate/draw/stalemate) and if we
+        // finished searching at least the previous search's PV up to the current depth if not finished the whole search
+        // for this depth. In this case, just output the complete response!
         std::string pv_string{best_move.to_string()};
         ChessMove next_pv_move = best_move;
         int move_counter = 0;
@@ -815,12 +826,18 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
                         pv_string += " " + next_pv_move.to_string();
                     }
                 } else {
-                    spdlog::error("Next Move Hash in PV is not EXACT, i = {}", i);
+                    // we reach this space if the position pointed to by the PV up until this point isn't EXACT, but it
+                    // is the right board (maybe check to see if the depth is equal to the depth of the search to see if
+                    // the thing in the table was put there by this search and not the previous search)
+                    ASSERT(depth - i == next_move_hash->depth, "Next move hash in PV is not EXACT and the depths don't match, but it's right position"); // if this is triggered
+                    SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "Next Move Hash in PV is not EXACT, i = {}", i);
                     break; // could happen if something has overwritten something else (shouldn't happen)
                 }
             } else {
-                spdlog::error("Next Move Hash in PV has been overwritten, i = {}", i);
-                break; // could happen if something is overwritten by accident or if there is a mate before
+                // we reach this space if the position pointed to by the PV doesn't correspond with the current position,
+                // This happens when there is a Zobrist hash collision
+                SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "Zobrist Hash Collision: Next Move Hash in PV has been overwritten, i = {}", i);
+                break;
             }
         }
 

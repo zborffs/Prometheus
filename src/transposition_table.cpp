@@ -73,8 +73,9 @@ bool TranspositionTable::insert(const ChessHash& inserted_hash) {
 #endif // NDEBUG
         table_[x] = inserted_hash;
     } else {
-        if (table_[x].hash_flag != EXACT || (table_[x].hash_flag == EXACT && table_[x].depth < inserted_hash.depth && inserted_hash.hash_flag == EXACT)) {
+        if (table_[x].hash_flag != EXACT || (table_[x].hash_flag == EXACT && inserted_hash.hash_flag == EXACT)) { // this fixes the overwrite problem of previous hashes, b
             table_[x] = inserted_hash;
+
 #ifndef NDEBUG
             ++num_overwrites_;
 #endif // NDEBUG

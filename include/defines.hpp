@@ -1,5 +1,5 @@
-#ifndef CLOAK_DEFINES_HPP
-#define CLOAK_DEFINES_HPP
+#ifndef PROMTHEUS_DEFINES_HPP
+#define PROMTHEUS_DEFINES_HPP
 
 #include <cstdint>
 
@@ -166,4 +166,4 @@ enum MoveHistoryIndex {
 #   define ASSERT(condition, message) do { } while (false)
 #endif
 
-#endif // CLOAK_DEFINES_HPP
+#endif // PROMTHEUS_DEFINES_HPP

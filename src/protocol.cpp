@@ -34,7 +34,7 @@ namespace internal {
         /// if in release, log the error, but don't do anything about it (i.e. ignore it).
         assert(register_commands.size() == 2);
         if (register_commands.size() != 2) {
-            spdlog::get(logger_name)->error("void register_engine(...) - Incorrect number of arguments. Got {}, wanted {}", register_commands.size(), 2);
+            SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "void register_engine(...) - Incorrect number of arguments. Got {}, wanted {}", register_commands.size(), 2);
             return;
         }
 
@@ -45,7 +45,7 @@ namespace internal {
         } else if(register_commands[1] == "later") {
             std::cout << "register name " << name << "code " << code << std::endl;
         } else {
-            spdlog::get(logger_name)->error("void register_engine(...) - Invalid Argument(s). \"{}\"",  register_commands[1]);
+            SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "void register_engine(...) - Invalid Argument(s). \"{}\"",  register_commands[1]);
         }
     }
 
@@ -73,7 +73,7 @@ namespace internal {
             /// If the command is invalid or the move is illegal, then don't process it
             if(!move.has_value() || !is_move_legal(board, move.value())) {
 #ifndef NDEBUG
-                spdlog::get(logger_name)->error("User provided illegal move or invalid command: {}", *itr);
+                SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "User provided illegal move or invalid command: {}", *itr);
 #endif // NDEBUG
 
                 /// Otherwise, make the move
@@ -177,7 +177,7 @@ namespace internal {
 
         /// All moves must have a length: 3 < length < 6
         if (move.size() < 4 || move.size() > 5) {
-            spdlog::get(logger_name)->error("std::optional<ChessMove> parse_move(...) - Argument error move.size() invalid: {}", move.size());
+            SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "std::optional<ChessMove> parse_move(...) - Argument error move.size() invalid: {}", move.size());
             return std::nullopt;
         } else {
             /// Transform input "from square" string into Square_t primitive
@@ -186,7 +186,7 @@ namespace internal {
             from_sq = file + 8 * rank; // multiplication will be optimized into << 3
             assert(from_sq >= A1 && from_sq <= H8); // in debug-mode, assert to crash program
             if (from_sq < A1 || from_sq > H8) {     // in release-mode, catch return a dummy ChessMove obj and log it.
-                spdlog::get(logger_name)->error("std::optional<ChessMove> parse_move(...) - Argument error from_sq out of bounds: {}", from_sq);
+                SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "std::optional<ChessMove> parse_move(...) - Argument error from_sq out of bounds: {}", from_sq);
                 return std::nullopt;
             }
 
@@ -197,7 +197,7 @@ namespace internal {
 
             assert(to_sq >= A1 && to_sq <= H8); // in debug-mode, assert to crash program
             if (to_sq < A1 || to_sq > H8) {     // in release-mode, catch return a dummy ChessMove obj and log it.
-                spdlog::get(logger_name)->error("std::optional<ChessMove> parse_move(...) - Argument error to_sq out of bounds: {}", from_sq);
+                SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "std::optional<ChessMove> parse_move(...) - Argument error to_sq out of bounds: {}", from_sq);
                 return std::nullopt;
             }
 
@@ -206,7 +206,7 @@ namespace internal {
 
             assert(ptm != PieceType::NO_PIECE); // in debug-mode, assert to crash program
             if (ptm == PieceType::NO_PIECE) {   // in release-mode, catch return a dummy ChessMove obj and log it.
-                spdlog::get(logger_name)->error("std::optional<ChessMove> parse_move(...) - Argument error piece @ from_sq is NO_PIECE.");
+                SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "std::optional<ChessMove> parse_move(...) - Argument error piece @ from_sq is NO_PIECE.");
                 return std::nullopt;
             }
 
@@ -214,7 +214,7 @@ namespace internal {
             ptc = board.piece_type(to_sq);
             assert(ptc == PieceType::NO_PIECE || ptc % 2 != ptm % 2); // make sure there are no captures, or the piece colors aren't the
             if (ptc != PieceType::NO_PIECE && ptc % 2 == ptm % 2) { /// make sure captured piece is not the same color as moved piece
-                spdlog::get(logger_name)->error("std::optional<ChessMove> parse_move(...) - Argument error ptc is same color as ptm.");
+                SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "std::optional<ChessMove> parse_move(...) - Argument error ptc is same color as ptm.");
                 return std::nullopt;
             }
 
@@ -232,9 +232,9 @@ namespace internal {
 
                 /// If it was a castle, then set the castle flag
             } else if (ptm == PieceType::W_KING || ptm == PieceType::B_KING) {
-                if ((from_sq == A5 && to_sq == A7) || (from_sq == H5 && to_sq == H7)) {
+                if ((from_sq == E1 && to_sq == G1) || (from_sq == E8 && to_sq == G8)) {
                     flags = KING_CASTLE;
-                } else if ((from_sq == A5 && to_sq == A3) || (from_sq == H5 && to_sq == H3)) {
+                } else if ((from_sq == E1 && to_sq == C1) || (from_sq == E8 && to_sq == C8)) {
                     flags = QUEEN_CASTLE;
                 }
             }
@@ -253,7 +253,7 @@ namespace internal {
                         case 'q': flags = static_cast<MoveFlag>(QUEEN_PROMO + flags); break;
                     }
                 } else {
-                    spdlog::get(logger_name)->error("std::optional<ChessMove> parse_move(...) - Argument error size == 5, but from/to_sq invalid for promotion.");
+                    SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "std::optional<ChessMove> parse_move(...) - Argument error size == 5, but from/to_sq invalid for promotion.");
                     return std::nullopt;
                 }
             }

@@ -23,12 +23,11 @@ if the program immediately terminates, something went wrong. Try adding a logs/ 
 Otherwise, you'll be prompted with an empty terminal. Type "uci" for UCI mode. 
 
 
-Engine Todos
-------------
+Engine Features List
+--------------------
 - Search Stuff
     * [ ] aspiration window (https://www.chessprogramming.org/Aspiration_Windows)
-    * [ ] PVS
-    * [ ] Parallel (PVS)
+    * [ ] Parallel PVS
 - Selectivity Stuff
     - Extensions
         * [x] Check Extensions
@@ -101,3 +100,10 @@ in the PV after executing the same command over and over.
    3. Could also have somthing to do with when we handle quits, we do something weird to the transposition table
    4. Table is becoming overfull, and the original PV is being overwritten or can't write in the first place
       1. add a condition to remove keys exact keys
+2. Pathological Zobrist hashing on one of the Kaufman test positions causes there to be several zobrist hash collisions 
+for that search (probably the same one)
+   - this increases in frequency as the thing gets more full? maybe because there are more opportunities for clashing (not always a bad thing)
+3. Game crashes with "Assertion failed: (from_sq != to_sq), function ChessMove, file chess_move.cpp, line 26." if asked to search 'go movetime 5000' on a mate! -> but only sometimes?
+
+Problem Areas: Tranposition Table is losing PVs -- DONE
+Quiescence search takes WAYY too long, maybe doesn't even work as expected, because basic losing exchanges are fucked up and there is a major horizon effect going on

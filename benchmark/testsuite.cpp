@@ -101,10 +101,10 @@ int main([[maybe_unused]] int argc, char** argv) {
             if (move_str == expected_move_str) {
                 std::cout << "passed" << std::endl;
                 passed++;
-                spdlog::get(logger_name)->info("[{}/{}] - Passed {} == {}", passed, num_fens, move_str, expected_move_str);
+                SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "[{}/{}] - Passed {} == {}", passed, num_fens, move_str, expected_move_str);
             } else {
                 std::cout << "failed" << std::endl;
-                spdlog::get(logger_name)->info("[{}/{}] - Failed {} !=  {}", passed, num_fens, move_str, expected_move_str);
+                SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "[{}/{}] - Failed {} !=  {}", passed, num_fens, move_str, expected_move_str);
             }
             search_state.tt.clear();
         }
@@ -114,7 +114,7 @@ int main([[maybe_unused]] int argc, char** argv) {
     chess_clock.stop();
 
     std::cout.rdbuf(coutbuf); //reset to standard output again
-    spdlog::get(logger_name)->info("Data Acquisition Successful! {}% Accurate. Program took {} seconds", (double)passed / num_fens * 100.0, (chess_clock.duration() / 1e9));
+    SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Data Acquisition Successful! {}% Accurate. Program took {} seconds", (double)passed / num_fens * 100.0, (chess_clock.duration() / 1e9));
     return 0;
 }
 
