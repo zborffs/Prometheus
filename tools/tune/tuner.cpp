@@ -41,14 +41,14 @@ int main(int argc, char** argv) {
     zaamath::Adam adam;
     const int NUM_PARAMS = 2;
     Eigen::Matrix<double, NUM_PARAMS, 1> init({50, 1.0});
-    zaamath::EngineParameters<NUM_PARAMS> engine_params(init);
-    std::function<double(zaamath::EngineParameters<NUM_PARAMS>&)> obj_func = [&](zaamath::EngineParameters<NUM_PARAMS>& p) {
+    zaamath::Parameters<NUM_PARAMS> engine_params(init);
+    std::function<double(zaamath::Parameters<NUM_PARAMS>&)> obj_func = [&](zaamath::Parameters<NUM_PARAMS>& p) {
         Eigen::Matrix<double, 15, 2> x_augmented = Eigen::Matrix<double, 15, 2>::Ones();
         x_augmented.col(1) = hours_studying;
         return 1.0/2.0 * (x_augmented * p.eigen_params() - exam_grad).squaredNorm();
     };
 
-    std::function<Eigen::Matrix<double, NUM_PARAMS, 1>(zaamath::EngineParameters<NUM_PARAMS>&, int)> jacobian = [&](zaamath::EngineParameters<NUM_PARAMS>& p, int i) {
+    std::function<Eigen::Matrix<double, NUM_PARAMS, 1>(zaamath::Parameters<NUM_PARAMS>&, int)> jacobian = [&](zaamath::Parameters<NUM_PARAMS>& p, int i) {
         assert(hours_studying.rows() == exam_grad.rows());
         int index = i % hours_studying.rows();
         double f_theta = p.eigen_params()(0) + p.eigen_params()(1) * hours_studying(index);

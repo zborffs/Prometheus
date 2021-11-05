@@ -1,29 +1,38 @@
+/**
+ * This file contains functions for solving stochastic optimization problems provided the user extends the
+ * "Parameters" class to update the model underlying the parameters and provides both an objective function and a
+ * Jacobian thereof that conforms to the expected format for the optimization algorithm.
+ */
+
 #ifndef PROMETHEUS_OPTIMIZATION_HPP
 #define PROMETHEUS_OPTIMIZATION_HPP
 
 #include <Eigen/Dense>
 #include "stopwatch.hpp"
 
+// zach's-attempt-at-math
 namespace zaamath {
 
+    /**
+     * template class responsible for maintaining the parameters used during optimization and updating the parameters
+     * (and optionally the underlying model of those parameters) once an updated set of parameters are passed in by the
+     * optimization algorithm
+     * @tparam RowIndexType the number of rows of the parameter vector (number of parameters)
+     */
     template <int RowIndexType>
-    class EngineParameters {
+    class Parameters {
     protected:
         Eigen::Matrix<double, RowIndexType, 1> eigen_params_;
-        // EvalutionParameters -> enable us to change the values that the engine uses
-        // SearchParameters -> enable us to change the values that the engine uses
 
     public:
-        explicit EngineParameters(Eigen::Matrix<double, RowIndexType, 1>& eigen_params) : eigen_params_(eigen_params) {
+        Parameters(Eigen::Matrix<double, RowIndexType, 1>& eigen_params) : eigen_params_(eigen_params) {
 
         }
 
-        void update(Eigen::Matrix<double, RowIndexType, 1>& eigen_params) {
+        virtual ~Parameters() = default;
+
+        virtual void update(Eigen::Matrix<double, RowIndexType, 1>& eigen_params) {
             eigen_params_ = eigen_params;
-
-            // update actual evaluation parameters used by the engine given new EigenMatrices
-
-            // update actual search parameters used by the engine given new EigenMatrices
         }
 
         Eigen::Matrix<double, RowIndexType, 1> eigen_params() {
@@ -31,6 +40,17 @@ namespace zaamath {
         }
     };
 
+    /**
+     * This class implements the stochastic gradient descent optimization algorithm known as ADAM (short for Adaptive
+     * Moment Estimation) as well as holds meta-data for the algorithm such as termination conditions and
+     * hyper-parameters.
+     *
+     * The class performs inplace optimization, updating the Parameters object passed in by reference by the user every
+     * iteration. Additional the class stores member variables about the status of the algorithm at each iteration,
+     * which can be read by the client to discover things about the covergence of the algorthim. Therefore, if one seeks
+     * to perform more than one optimization with the same Adam instance, one must first reset those member variables
+     * with the
+     */
     class Adam {
     private:
         bool show_trace_{true};
@@ -48,6 +68,15 @@ namespace zaamath {
         Eigen::Matrix<double, Eigen::Dynamic, 1> f_x_prev_; // don't initialize to any size yet
         Eigen::Matrix<double, Eigen::Dynamic, 1> times_;
 
+        /**
+         * implements the termination conditions for the loop in the optimization algorithm, returning true if the
+         * process as converged or run out of iterations and false otherwise
+         * @tparam RealRowIndexType the number of columns in the parameter vector
+         * @param f_x_prev a running series of past error of all the previous iteration of the algorithm
+         * @param x_prev the previous "x_tol_interval_" parameter values
+         * @param iterations the iteration number that we are currently on
+         * @return true if we have reached any termination criterion, false otherwise
+         */
         template <int RealRowIndexType>
         bool reached_termination(Eigen::Matrix<double, Eigen::Dynamic, 1>& f_x_prev, Eigen::Matrix<double, Eigen::Dynamic, RealRowIndexType>& x_prev, int iterations) {
             if (iterations >= max_iterations_) {
@@ -76,17 +105,33 @@ namespace zaamath {
         }
 
     public:
+
+        /**
+         * clears the member variables having to do with the performance of the optimization at each iteration so that
+         * the object may be used again for another optimization.
+         */
+        void clear() {
+            f_x_prev_ = Eigen::Matrix<double, Eigen::Dynamic, 1>::Zero();
+            f_x_prev_.resize(0);
+            times_ = Eigen::Matrix<double, Eigen::Dynamic, 1>::Zero();
+            times_.resize(0);
+        }
+
+        /**
+         * implements the vanilla Adam optimization algorithm
+         * @tparam RowIndexType the number of parameters (the number of rows of the input parameter vector)
+         * @param initial_params the initial parameter set
+         * @param obj_func the objective function
+         * @param jacobian the jacobian of the objective function w.r.t. the parameters
+         */
         template <int RowIndexType>
-        void optimize(EngineParameters<RowIndexType>& initial_params, std::function<double(EngineParameters<RowIndexType>&)>& obj_func, std::function<Eigen::Matrix<double, RowIndexType, 1>(EngineParameters<RowIndexType>&, int)>& jacobian) {
+        void optimize(Parameters<RowIndexType>& initial_params, std::function<double(Parameters<RowIndexType>&)>& obj_func, std::function<Eigen::Matrix<double, RowIndexType, 1>(Parameters<RowIndexType>&, int)>& jacobian) {
 
             // initialize to zero
             Eigen::Matrix<double, RowIndexType, 1> mt = Eigen::Matrix<double, RowIndexType, 1>::Zero();
             Eigen::Matrix<double, RowIndexType, 1> vt = Eigen::Matrix<double, RowIndexType, 1>::Zero();
             Eigen::Matrix<double, RowIndexType, 1> mthat = Eigen::Matrix<double, RowIndexType, 1>::Zero();
             Eigen::Matrix<double, RowIndexType, 1> vthat = Eigen::Matrix<double, RowIndexType, 1>::Zero();
-
-            // Grab the last 'f_x_tol_interval' results
-
 
             // Grab the last 'x_tol_interval' inputs
             Eigen::Matrix<double, Eigen::Dynamic, RowIndexType> x_prev = Eigen::Matrix<double, Eigen::Dynamic, RowIndexType>::Zero(x_tol_interval_, RowIndexType);

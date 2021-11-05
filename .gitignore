@@ -1,6 +1,10 @@
-cmake-build-debug/test
 cmake-build-debug/
-cmake-build-release/*
+cmake-build-debug/*
 cmake-build-release/
+cmake-build-release/*
+cmake-build-debug-sse/
+cmake-build-debug-sse/*
+cmake-build-release-sse/
+cmake-build-release-sse/*
 logs/*
 logs/

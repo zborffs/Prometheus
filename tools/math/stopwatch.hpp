@@ -1,3 +1,8 @@
+/**
+ * This file contains a stopwatch function for computing how much time has elapsed between iterations of different
+ * algorithms for benchmarking and analysis purposes.
+ */
+
 #ifndef PROMETHEUS_STOPWATCH_HPP
 #define PROMETHEUS_STOPWATCH_HPP
 
@@ -12,6 +17,7 @@
 #include <chrono>
 #endif
 
+// zach's-attempt-at-math
 namespace zaamath {
     using Milliseconds_t = uint64_t;
     using Nanoseconds_t = uint64_t;

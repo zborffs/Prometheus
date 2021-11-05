@@ -1,3 +1,12 @@
+/**
+ * This file contains summary statistics template functions for Eigen::Matrix data types.
+ *
+ * More functions are added once a need for the particular function necessitates their development. In other words,
+ * until there is a use for developing a summary statistic, I will not implement it. For example, as of right now, there
+ * is no kurtosis function, because there are no clients nor any other functions within the library requiring a kurtosis
+ * function.
+ */
+
 #ifndef PROMETHEUS_SUMMARY_STATISTICS_HPP
 #define PROMETHEUS_SUMMARY_STATISTICS_HPP
 
@@ -48,6 +57,14 @@ namespace zaamath {
         return var.array().sqrt();
     }
 
+    /**
+     * computes the range of a given dataset represented by a matrix whose columns represent different populations
+     * @tparam T the datatype of the input matrix (int, float, double, custom, etc.)
+     * @tparam RowIndexType the number of rows of the input datatype
+     * @tparam ColIndexType the number of columns of the input datatype
+     * @param data the data represnted by an Eigen::Matrix (vector or matrix)
+     * @return the range of each column (max element - min element)
+     */
     template <class T, int RowIndexType, int ColIndexType>
     Eigen::Matrix<T, 1, ColIndexType> range(const Eigen::Matrix<T, RowIndexType, ColIndexType>& data) {
         return data.colwise().maxCoeff() - data.colwise().minCoeff();
