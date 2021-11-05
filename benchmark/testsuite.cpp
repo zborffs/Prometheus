@@ -39,7 +39,7 @@ int main([[maybe_unused]] int argc, char** argv) {
     std::string output_file_path;
     Board board;
     ChessClock chess_clock;
-    SearchState search_state(18 * 1000000 / sizeof(ChessHash)); // 18 MB = 18 * 100,000 bytes = 18,000,000 (bytes) / x (bytes/chesshash) = 18,000,000/x (chesshashes)
+    SearchState search_state(32 * 1000000 / sizeof(ChessHash)); // 32 MB = 18 * 100,000 bytes = 18,000,000 (bytes) / x (bytes/chesshash) = 18,000,000/x (chesshashes)
     EvaluationState eval_state;
     UCIOptions options;
     Book book;

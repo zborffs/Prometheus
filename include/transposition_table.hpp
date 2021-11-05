@@ -43,10 +43,9 @@ public:
     ~TranspositionTable();
 
     inline void clear() {
-//        TranspositionTableEntry dummy_entry;
-//        std::fill_n(table_, tt_size_, dummy_entry);
-        std::memset(table_, 0, sizeof(table_) * tt_size_);
+        std::memset(table_, 0, sizeof(Entry) * tt_size_);
 #ifndef NDEBUG
+        num_entries_ = 0;
         reset_tracking_variables();
 #endif // NDEBUG
     }
