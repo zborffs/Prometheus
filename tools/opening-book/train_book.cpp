@@ -195,7 +195,3 @@ double r_value(Book& book, PositionKey key) { // potentially change PositionKey 
 
     return r;
 }
-
-double q_value(Book& book, BookEdge& edge) {
-
-}

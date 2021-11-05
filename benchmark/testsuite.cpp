@@ -39,7 +39,7 @@ int main([[maybe_unused]] int argc, char** argv) {
     std::string output_file_path;
     Board board;
     ChessClock chess_clock;
-    SearchState search_state(262144); // arbitrary
+    SearchState search_state(18 * 1000000 / sizeof(ChessHash)); // 18 MB = 18 * 100,000 bytes = 18,000,000 (bytes) / x (bytes/chesshash) = 18,000,000/x (chesshashes)
     EvaluationState eval_state;
     UCIOptions options;
     Book book;
@@ -78,7 +78,8 @@ int main([[maybe_unused]] int argc, char** argv) {
 
     /// initialize the uci game options before starting
     options.reset_game_state_vars();
-    options.infinite = true; // at some point change this to max depth = ~6
+    options.infinite = false; // at some point change this to max depth = ~6
+    options.move_time = 30000;
 
     chess_clock.start();
     int passed{0};

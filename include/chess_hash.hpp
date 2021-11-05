@@ -79,8 +79,8 @@ struct ChessHash {
             case NO_INFO: os << "No Information"; break;
             case AVOID_NULL: os << "Avoid Null Move"; break;
             case EXACT: os << "Exact"; break;
-            case UPPER_BOUND: os << "Upper Bound"; break; // beta-cutoff
-            case LOWER_BOUND: os << "Lower Bound"; break; // alpha increase
+            case STORED_BETA: os << "Stored Beta (beta-cutoff)"; break;
+            case STORED_ALPHA: os << "Stored Alpha (alpha-cutoff)"; break;
             default: break;
         }
 

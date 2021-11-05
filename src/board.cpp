@@ -430,6 +430,19 @@ Bitboard Board::sq_attacked_by(const Square_t sq, Bitboard occ) noexcept {
         (piece_bb_[B_PAWN] & (((C64(1) << (sq + 9)) & ~(RANK_MASK[RANK1] | FILE_MASK[FILEA])) | ((C64(1) << (sq + 7)) & ~(RANK_MASK[RANK1] | FILE_MASK[FILEH]))));
 }
 
+Bitboard Board::sq_attacked_by_sliding(const Square_t sq, Bitboard occ) noexcept {
+    Bitboard knights, kings, rook_queens, bishop_queens;
+    knights        = (piece_bb_[W_KNIGHT] | piece_bb_[B_KNIGHT]) & occ;
+    kings          = (piece_bb_[W_KING] | piece_bb_[B_KING]) & occ;
+    rook_queens    =
+    bishop_queens  = (piece_bb_[W_QUEEN]  | piece_bb_[B_QUEEN]) & occ;
+    rook_queens   |= (piece_bb_[W_ROOK]   | piece_bb_[B_ROOK]) & occ;
+    bishop_queens |= (piece_bb_[W_BISHOP] | piece_bb_[B_BISHOP]) & occ;
+
+    return (diag_mask(sq, occ) & bishop_queens) |
+           (horzvert_mask(sq, occ) & rook_queens);
+}
+
 /**
  *
  * @param sq
@@ -1052,7 +1065,15 @@ Bitboard Board::get_least_valuable_piece(Bitboard attadef, Color_t by_side, Piec
  *                     losing capture)
  */
 Centipawns_t Board::see(Square_t to_sq, PieceType_t target_piece, Square_t from_sq, PieceType_t a_piece) {
-    std::array<Centipawns_t, 32> gain{};
+    ASSERT(&to_sq != nullptr, "to_sq not defined");
+    ASSERT(&target_piece != nullptr, "target_piece not defined");
+    ASSERT(&from_sq != nullptr, "from_sq not defined");
+    ASSERT(&a_piece != nullptr, "a_piece not defined");
+    ASSERT(target_piece != PieceType::NO_PIECE, std::string("TargetPiece: ") + std::to_string((int)target_piece) + " attacking piece: " + std::to_string((int)a_piece) + " fromsq " + std::to_string((int)from_sq) + " tosq " + std::to_string((int)to_sq));
+    ASSERT(to_sq != from_sq, "move is not defined");
+    ASSERT(a_piece != PieceType::NO_PIECE, "a_piece doesn't exist");
+
+    std::array<Centipawns_t, 32> gain{}; // 32 -> 64
     Centipawns_t d = 0;
     std::array<Centipawns_t, 6> value{{PAWN_BASE_VAL, ROOK_BASE_VAL, KNIGHT_BASE_VAL, BISHOP_BASE_VAL, QUEEN_BASE_VAL, INF}}; // can't add INF
 
@@ -1065,22 +1086,39 @@ Centipawns_t Board::see(Square_t to_sq, PieceType_t target_piece, Square_t from_
     Bitboard occ = occupied_bb_;
     // get a bitboard of all the attackers of the square
     Bitboard attadef = sq_attacked_by(to_sq, occupied_bb_);
+    ASSERT(d < gain.size(), "gain accessor > gain.size() -- 1");
     gain[d] = value[(target_piece - 2) / 2]; // the value of the piece
+    ASSERT((target_piece - 2) / 2 < value.size() , "(target_piece - 2)/2 >= value.size()");
+    ASSERT((target_piece - 2) / 2 >= 0 , "(target_piece - 2)/2 < 0 ");
+
+//    std::cerr << *this << std::endl;
 
     do {
         d++; // next depth and side
+        ASSERT(d < gain.size(), "gain accessor > gain.size()  -- 2");
+        ASSERT(d-1 >= 0, "gain accessor < 0");
+        ASSERT((a_piece-2)/2 < value.size(), "gain accessor < 0");
+        ASSERT((a_piece-2)/2 >= 0, "gain accessor < 0");
         gain[d] = value[(a_piece - 2) / 2] - gain[d - 1]; // attacking piece
         // either side can stop trading pieces off at any point if they're up in material
         if (std::max(-gain[d - 1], gain[d]) < 0) break;
         // take the from_sq piece off the attack bitboard and off the occupied bitboard. i.e. pretend it's not there
         attadef ^= from_set;
         occ ^= from_set;
+//        std::cerr << draw_bitboard(attadef) << std::endl;
+
+//        std::cerr << draw_bitboard(occ) << std::endl;
+//        std::cerr << (int)a_piece << std::endl;
+//        std::cerr << (int)target_piece << std::endl;
+
 
         // if the piece we just attacked with was one of the may_xray piece types, then determine if and what xray piece
         // was behind it
         if (from_set & may_xray) {
-            attadef = sq_attacked_by(to_sq, occ);
+//            attadef |= sq_attacked_by(to_sq, occ);
+            attadef |= sq_attacked_by_sliding(to_sq, occ);
         }
+//        std::cerr << draw_bitboard(attadef) << std::endl;
 
         // from the set of pieces still in the attadef set, find the least valuable one
         from_set = get_least_valuable_piece(attadef, d & 1, a_piece);

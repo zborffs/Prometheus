@@ -64,6 +64,8 @@ namespace internal {
         ChessHash* root_hash = search_state.tt.find(board.key()); // attempt to find root position's hash in table for move ordering purposes only
         ChessMove* hash_move = nullptr;
         if (root_hash != nullptr) {
+            assert(root_hash->hash_flag == EXACT);
+
             PieceType_t moved = board.piece_type(root_hash->from_sq);
             PieceType_t captured = PieceType::NO_PIECE;
             if (root_hash->m_flag() & CAPTURE_MOVE) {
@@ -74,7 +76,8 @@ namespace internal {
                 }
             }
 
-            if (root_hash->from_sq != root_hash->to_sq) {
+            // place higher up in if-statement
+            if (root_hash->key != 0) {
                 hash_move = new ChessMove(root_hash->from_sq, root_hash->to_sq, root_hash->m_flag(), moved, captured); // 'new' key word. WATCH OUT!
             }
         }
@@ -88,8 +91,7 @@ namespace internal {
         }
 
         for (long unsigned int i = 0; i < movelist.size(); i++) {
-            /// make the move, then determine if it's legal by playing it and seeing whether you put yourself in check
-            // 46
+            // make the move, then determine if it's legal by playing it and seeing whether you put yourself in check
             board.make_move(movelist[i]);
             if (board.is_king_checked((!board.side_2_move()))) {
                 movelist.erase(movelist.begin() + i);
@@ -109,19 +111,14 @@ namespace internal {
             board.unmake_move();
             --search_state.height;
 
-
-            /// if we have run out of time, just return the best move so far
-            if (search_state.time_exit) {
-                return std::tuple<ChessMove, Centipawns_t>(best_move, alpha); // hence return 0?
+            if (check_stop_search(depth, options, search_state)) {
+                return std::tuple<ChessMove, Centipawns_t>(best_move, alpha);
             }
 
             /// if the root score exceeds the current best move score or there's not best yet, then update those fields
-            if (root_score > alpha || best_move == ChessMove()) {
+            if (root_score > alpha) {
                 alpha = root_score;
                 best_move = movelist[i];
-
-                ChessHash pv_hash(board.key(), root_score, best_move.from_sq, best_move.to_sq, best_move.flag(), depth, EXACT, board.current_ply());
-                search_state.tt.insert(pv_hash);
             }
         }
 
@@ -153,6 +150,11 @@ namespace internal {
             }
         }
 
+        if (alpha != init_alpha) {
+            ChessHash pv_hash(board.key(), root_score, best_move.from_sq, best_move.to_sq, best_move.flag(), depth, EXACT, board.current_ply());
+            search_state.tt.insert(pv_hash);
+        }
+
         return std::tuple<ChessMove, Centipawns_t>(best_move, alpha);
     }
 
@@ -169,10 +171,10 @@ namespace internal {
      * @return             the score of the best position in centipawns
      */
     Centipawns_t search(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta, bool do_null) {
-        /// if we've run out of time, then quit. By returning alpha, we don't give any new information
-        if (internal::check_stop_search(depth, options, search_state)) {
-            return 0;
-        }
+//        /// if we've run out of time, then quit. By returning alpha, we don't give any new information
+//        if (internal::check_stop_search(depth, options, search_state)) {
+//            return alpha; // return current best
+//        }
 
         /// if the current position is a draw, return 0 immediately
         if (board.is_draw()) {
@@ -203,8 +205,7 @@ namespace internal {
             }
 
             /// forget why these are the conditions
-//            if (hash->depth >= (depth - R) && (score < beta) && (flag == LOWER_BOUND)) {
-            if (hash->depth >= (depth - R) && (score < beta) && (flag == UPPER_BOUND)) {
+            if (hash->depth >= (depth - R) && (hash_score < beta) && (flag == STORED_ALPHA)) {
                 do_null = false;
                 flag = AVOID_NULL;
             }
@@ -212,15 +213,15 @@ namespace internal {
             /// if the hashed move went deeper than we currently are in the search, then it should be adhered to
             if (hash->depth >= depth) { // i don't understand this condition
                 switch (flag) {
-//                    case LOWER_BOUND:
-                    case UPPER_BOUND:
+                    case STORED_ALPHA:
                         if (hash_score <= alpha) {
+                            // the beta passed into this function has a tighter bound, so don't use the hash table one
                             return alpha;
                         }
                         break;
-//                    case UPPER_BOUND:
-                    case LOWER_BOUND:
+                    case STORED_BETA:
                         if (hash_score >= beta) {
+                            // the beta passed into this function has a tighter bound, so don't use the hash table one
                             return beta;
                         }
                         break;
@@ -243,12 +244,12 @@ namespace internal {
                 Centipawns_t null_move_score = -search(board, options, search_state, eval_state, depth - R - 1, -beta, -beta + 1, false);
                 board.unmake_move();
 
-                /// if I have a remarkable position despite the null move, just return current upper bound
+                // if I have a remarkable position despite the null move, just return current upper bound
                 if (null_move_score >= beta) {
                     return beta;
                 }
 
-                /// if I die when I null-move, then something is amiss. let's look into this position a bit more
+                // if I die when I null-move, then something is amiss. let's look into this position a bit more
                 if (null_move_score < -INF + 100) {
                     ++num_extensions;
                 }
@@ -333,7 +334,7 @@ namespace internal {
                         search_state.killer_move[search_state.height].first = movelist[i];
                     }
 
-                    ChessHash upper_bnd_hash(board.key(), beta, movelist[i].from_sq, movelist[i].to_sq, movelist[i].flag(), depth, UPPER_BOUND, board.current_ply()); // could store beta, or could store score
+                    ChessHash upper_bnd_hash(board.key(), beta, movelist[i].from_sq, movelist[i].to_sq, movelist[i].flag(), depth, STORED_BETA, board.current_ply()); // could store beta, or could store score
                     if (std::abs(beta) > INF - 100) {
                         if (beta > 0) {
                             upper_bnd_hash.score += search_state.height;
@@ -377,7 +378,7 @@ namespace internal {
             search_state.tt.insert(exact_hash);
         } else {
             /// store a dummy in the transposition table because we don't know the actual move
-            ChessHash lower_bnd_hash(board.key(), alpha, A1, A1, NO_MOVE_FLAG, depth, LOWER_BOUND, board.current_ply());
+            ChessHash lower_bnd_hash(board.key(), alpha, A1, A1, NO_MOVE_FLAG, depth, STORED_ALPHA, board.current_ply());
             if (std::abs(alpha) > INF - 100) {
                 if (beta > 0) {
                     lower_bnd_hash.score += search_state.height;
@@ -438,10 +439,10 @@ namespace internal {
         movelist.reserve(128);
 
         /// only generate captures and promotions
-        gen_all_caps(board, movelist);
+        gen_all_caps(board, movelist); // captures & promotions
         order_qmoves(movelist, search_state, board);
 
-        for (unsigned i = 0; i < movelist.size(); ++i) {
+        for (unsigned i = 0; i < movelist.size(); i++) {
             /// make the move and test that it's legal
             board.make_move(movelist[i]);
             if (board.is_king_checked(!board.side_2_move())) {
@@ -552,7 +553,8 @@ namespace internal {
 
         /// If the amount of time that's transpired exceeds the amount of time for the search, then stop
         if (options.move_time != -1) {
-            bool should_exit = (int) (search_state.clock.duration() / 1000) >= options.move_time;
+            search_state.clock.stop();
+            bool should_exit = search_state.clock.duration() / 1000000 > options.move_time;
             search_state.time_exit = should_exit;
             return should_exit;
         }
@@ -595,7 +597,13 @@ namespace internal {
         }
 
         std::sort(movelist.begin(), movelist.end());
+#ifndef NDEBUG
+        if (!movelist.empty() && hash_move != nullptr) {
+            ASSERT(movelist[0] == *hash_move, "in order_moves() the hash move is not the first move");
+        }
+#endif // NDEBUG
     }
+
 
     /**
      * ordering qmoves is akin to ordering regular moves only we don't check the hash table, so we don't pass a hash
@@ -608,17 +616,24 @@ namespace internal {
         MoveScore score = 0;
 
         for (unsigned i = 0; i < movelist.size(); ++i) {
+            ASSERT(i < movelist.size(), "i > movelist.size()");
             ChessMove move = movelist[i];
 
+
             // all qmoves are captures, no need checking whether it is
-            auto see = board.see(move.to_sq, move.captured, move.from_sq, move.moved);
-            if (see > 0) {
-                score += see + 100000; // put 100000 in globals
-            } else {
-                /// don't consider losing captures in qsearch
-                movelist.erase(movelist.begin() + i);
-                --i;
-                continue;
+            ASSERT(&board != nullptr, "Board isn't defined!");
+            ASSERT(&move != nullptr, "Move isn't defined!");
+
+            if (move.captured != PieceType::NO_PIECE) {
+                Centipawns_t see = board.see(move.to_sq, move.captured, move.from_sq, move.moved);
+                if (see > 0) {
+                    score += see + 100000; // put 100000 in globals
+                } else {
+                    /// don't consider losing captures in qsearch
+                    movelist.erase(movelist.begin() + i);
+                    --i;
+                    continue;
+                }
             }
 
             movelist[i].score = score;
@@ -743,6 +758,37 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
 #endif // NDEBUG
 
         /// Move through the principal variation by making the next EXACT move in the hash table
+        if (search_state.result_flag == Result::NO_RESULT) {
+            // two cases: no result and we have an answer, because we finished the search or no result and we don't have
+            // an answer, because we were stopped short of the search
+            if (best_move == ChessMove()) {
+                // no answer case: just return and don't print anything, just grab the previous depth's answer if it exists
+                ChessHash* prev_best_move = search_state.tt.find(board.key());
+                if (prev_best_move != nullptr) {
+                    assert(prev_best_move->hash_flag == EXACT);
+
+                    PieceType_t moved = board.piece_type(prev_best_move->from_sq);
+                    PieceType_t captured = PieceType::NO_PIECE;
+                    if (prev_best_move->m_flag() & CAPTURE_MOVE) {
+                        if (prev_best_move->m_flag() == ENPASSANT) {
+                            captured = W_PAWN + !board.side_2_move();
+                        } else {
+                            captured = board.piece_type(prev_best_move->to_sq);
+                        }
+                    }
+
+                    best_move =  ChessMove(prev_best_move->from_sq, prev_best_move->to_sq, prev_best_move->m_flag(), moved, captured);
+                    return best_move;
+                } else {
+                    spdlog::error("Previous Depth's Answer Doesn't exist");
+                    return ChessMove();
+                }
+            }
+        } else {
+            // draw / mate / stalemate
+            return ChessMove();
+        }
+
         std::string pv_string{best_move.to_string()};
         ChessMove next_pv_move = best_move;
         int move_counter = 0;
@@ -769,9 +815,13 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
                         pv_string += " " + next_pv_move.to_string();
                     }
                 } else {
+                    std::cout << "[!]";
+                    spdlog::error("Not Exact");
                     break; // could happen if something has overwritten something else (shouldn't happen)
                 }
             } else {
+                std::cout << "nullptr";
+                spdlog::error("");
                 break; // could happen if something is overwritten by accident or if there is a mate before
             }
         }
@@ -791,6 +841,9 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
             " window_ratio " << search_state.window_ratio() <<
             " position_type " << pos_type_str <<
             " game_stage " << game_stage_str <<
+            " load_factor " << static_cast<double>(search_state.tt.load_factor()) <<
+            " hit_rate " << static_cast<double>(search_state.tt.hit_rate()) <<
+            " overwrite_percentage " << static_cast<double>(search_state.tt.overwrite_percentage()) <<
 #endif // NDEBUG
             std::endl;
 

@@ -9,11 +9,11 @@
 #include <shared_mutex>
 
 const std::string logger_name("Logger");
-const std::string engine_name("Cloak");
-const std::string version("0.2");
+const std::string engine_name("Prometheus");
+const std::string version("0.1");
 const std::string author("Zach Bortoff");
 
-const unsigned int MAX_DEPTH = 6;
+const unsigned int MAX_DEPTH = 20;
 const unsigned int MIN_DEPTH = 2;
 
 const Centipawns_t INF = 1000000;

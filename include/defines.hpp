@@ -121,8 +121,8 @@ enum HashFlag : uint8_t { // 3 bits
     NO_INFO = 0,
     AVOID_NULL = 1,
     EXACT = 5,
-    UPPER_BOUND = 3,
-    LOWER_BOUND = 4
+    STORED_ALPHA = 3,
+    STORED_BETA = 4
 };
 
 enum PositionType : uint8_t { // 2 bits
@@ -152,5 +152,18 @@ enum MoveHistoryIndex {
     EP_SQUARE = 3,
     FIF_MOVE_COUNT = 4
 };
+
+#ifndef NDEBUG
+#   define ASSERT(condition, message) \
+    do { \
+        if (! (condition)) { \
+            std::cerr << "Assertion `" #condition "` failed in " << __FILE__ \
+                      << " line " << __LINE__ << ": " << message << std::endl; \
+            std::terminate(); \
+        } \
+    } while (false)
+#else
+#   define ASSERT(condition, message) do { } while (false)
+#endif
 
 #endif // CLOAK_DEFINES_HPP

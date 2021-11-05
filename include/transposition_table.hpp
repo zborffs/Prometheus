@@ -8,15 +8,8 @@
 #include "chess_hash.hpp"
 #include "extern.hpp"
 
-#define HASHES_LENGTH 4
-
-/// The reason there are four is because my cacheline size is 64 bytes, and a chesshash is 16 bytes, so that fits 4
-struct TranspositionTableEntry {
-    ChessHash hashes[HASHES_LENGTH];
-};
-
 class TranspositionTable {
-    using Entry = TranspositionTableEntry;
+    using Entry = ChessHash;
 
     int tt_size_;
     Entry* table_;
@@ -24,8 +17,8 @@ class TranspositionTable {
     int num_entries_;
     int hash_hits_;
     int num_hash_probes_;
-    int num_type_1_hash_misses_;
-    int num_type_2_hash_misses_;
+    int num_overwrites_;
+    int num_newwrites_;
 #endif // NDEBUG
 
     inline int index(PositionKey key) noexcept {
@@ -39,19 +32,20 @@ class TranspositionTable {
 public:
     explicit TranspositionTable(const int tt_size) : tt_size_(tt_size)
 #ifndef NDEBUG
-    , num_entries_(0), hash_hits_(0), num_hash_probes_(0), num_type_1_hash_misses_(0), num_type_2_hash_misses_(0)
+    , num_entries_(0), hash_hits_(0), num_hash_probes_(0), num_overwrites_(0), num_newwrites_(0)
 #endif // NDEBUG
     {
         assert(tt_size_ > 0);
+
         table_ = new Entry[tt_size_];
     }
 
     ~TranspositionTable();
 
     inline void clear() {
-        TranspositionTableEntry dummy_entry;
-        std::fill_n(table_, tt_size_, dummy_entry);
-//        std::memset(table_, 0, sizeof(table_) * tt_size_);
+//        TranspositionTableEntry dummy_entry;
+//        std::fill_n(table_, tt_size_, dummy_entry);
+        std::memset(table_, 0, sizeof(table_) * tt_size_);
 #ifndef NDEBUG
         reset_tracking_variables();
 #endif // NDEBUG
@@ -62,6 +56,7 @@ public:
     int num_entries();
     double hit_rate();
     void reset_tracking_variables();
+    double overwrite_percentage();
 #endif // NDEBUG
 
     inline int size() noexcept {
@@ -76,13 +71,16 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, TranspositionTable& tt) {
         os << "Transposition Table: " << std::endl;
-        os << "- tt_size: " << tt.tt_size_ << std::endl;
+        os << "- Table Size (in entries): " << tt.tt_size_ << std::endl;
 #ifndef NDEBUG
-        os << "  num_entries: " << tt.num_entries_ << std::endl;
-        os << "  hash_hits: " << tt.hash_hits_ << std::endl;
-        os << "  num_hash_probes: " << tt.num_hash_probes_ << std::endl;
-        os << "  num_type_1_hash_misses: " << tt.num_type_1_hash_misses_ << std::endl;
-        os << "  num_type_2_hash_misses: " << tt.num_type_2_hash_misses_ << std::endl;
+        os << "  Number of Filled Entries: " << tt.num_entries_ << std::endl;
+        os << "  Load factor (Filled Entries/Total Entries): " << tt.load_factor() << std::endl;
+        os << "  Number of Probes: " << tt.num_hash_probes_ << std::endl;
+        os << "  Number of Successful Probes: " << tt.hash_hits_ << std::endl;
+        os << "  Hit Rate (Successful Probes/Total Probes): " << tt.hit_rate() << std::endl;
+        os << "  Number of New Writes: " << tt.num_newwrites_ << std::endl;
+        os << "  Number of Overwrites: " << tt.num_overwrites_ << std::endl;
+        os << "  Overwrite Percentage (Overwrites / Total Writes): " << tt.overwrite_percentage() << std::endl;
 #endif // NDEBUG
 
         return os;

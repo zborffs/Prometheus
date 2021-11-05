@@ -136,7 +136,7 @@ namespace internal {
             /// If we haven't received a "movestogo" command, but we have set wtime and btime variables, then this is a
             /// sudden death game, so set the "sudden death" variable
         } else {
-            if (options.w_time_milli == -1 && options.b_time_milli == -1) {
+            if (options.w_time_milli != -1 && options.b_time_milli != -1) {
                 options.sudden_death = true;
             }
             options.moves_to_go = MAX_DEPTH;
@@ -349,7 +349,7 @@ void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_s
             // If we received "go" command, then parse the go command, then start search
             internal::parse_go(options, commands);
             ChessMove best_move = think(board, options, search_state, eval_state, book);
-            std::cout << best_move.to_string() << std::endl;
+            std::cout << "bestmove " << best_move.to_string() << std::endl;
         } else if (commands[0] == "uci") {
             // If we received "uci" command send back boilerplate "uci" stuff
             internal::identify_engine();

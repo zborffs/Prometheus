@@ -87,6 +87,7 @@ public:
     bool is_sq_attacked(const Square_t sq, const Color_t attacking_color) const noexcept;
     Bitboard sq_attacked_by(const Square_t sq, Bitboard occ) noexcept;
     Bitboard sq_attacked_by(const Square_t sq, Bitboard occ) const noexcept;
+    Bitboard sq_attacked_by_sliding(const Square_t sq, Bitboard occ) noexcept;
     bool is_draw() noexcept;
     bool is_draw() const noexcept;
     bool is_king_checked(Color_t color) noexcept;
