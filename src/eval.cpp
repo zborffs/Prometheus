@@ -166,10 +166,10 @@ namespace internal {
         ret -= dot_product(flip_flop(b), &PAWN_PST[0]);
 
         /// Attacking + Mobility
-        push_pawn = (w << 8) & (board.empty_bb());
-        push_pawn |= (push_pawn << 8) & (board.empty_bb() & RANK_MASK[RANK4]);
-        push_pawn2 = (w << 9) & ~(FILE_MASK[FILEA]);
-        push_pawn3 = (w << 7) & ~(FILE_MASK[FILEH]);
+//        push_pawn = (w << 8) & (board.empty_bb());
+//        push_pawn |= (push_pawn << 8) & (board.empty_bb() & RANK_MASK[RANK4]);
+//        push_pawn2 = (w << 9) & ~(FILE_MASK[FILEA]);
+//        push_pawn3 = (w << 7) & ~(FILE_MASK[FILEH]);
 #ifndef NDEBUG
         w_p_mobility += PAWN_MOBILITY * (
             pop_count(push_pawn) +
@@ -177,15 +177,15 @@ namespace internal {
             pop_count(push_pawn3 & board.capturable(BLACK))
         );
 #endif // NDEBUG
-        ret += PAWN_MOBILITY * (
-            pop_count(push_pawn) +
-            pop_count(push_pawn2 & board.capturable(BLACK)) +
-            pop_count(push_pawn3 & board.capturable(BLACK))
-        ); // try subtracting black pop count and MUL once
+//        ret += PAWN_MOBILITY * (
+//            pop_count(push_pawn) +
+//            pop_count(push_pawn2 & board.capturable(BLACK)) +
+//            pop_count(push_pawn3 & board.capturable(BLACK))
+//        ); // try subtracting black pop count and MUL once
 #ifndef NDEBUG
         w_p_attack_center += PAWN_ATTACK_CENTER * (pop_count(push_pawn2 & CENTER) + pop_count(push_pawn3 & CENTER));
 #endif // NDEBUG
-        ret += PAWN_ATTACK_CENTER * (pop_count(push_pawn2 & CENTER) + pop_count(push_pawn3 & CENTER));
+//        ret += PAWN_ATTACK_CENTER * (pop_count(push_pawn2 & CENTER) + pop_count(push_pawn3 & CENTER));
 
         /// Defending + Connectivity (Take Right)
 //        push_pawn2 &= board.capturable(WHITE);
@@ -208,10 +208,10 @@ namespace internal {
 //        }
 
         /// Attacking + Mobility
-        push_pawn  = (b >> 8) & (board.empty_bb());
-        push_pawn |= (push_pawn >> 8) & (board.empty_bb() & RANK_MASK[RANK5]);
-        push_pawn2 = (b >> 9) & ~(FILE_MASK[FILEH]);
-        push_pawn3 = (b >> 7) & ~(FILE_MASK[FILEA]);
+//        push_pawn  = (b >> 8) & (board.empty_bb());
+//        push_pawn |= (push_pawn >> 8) & (board.empty_bb() & RANK_MASK[RANK5]);
+//        push_pawn2 = (b >> 9) & ~(FILE_MASK[FILEH]);
+//        push_pawn3 = (b >> 7) & ~(FILE_MASK[FILEA]);
 #ifndef NDEBUG
         b_p_mobility -= PAWN_MOBILITY * (
             pop_count(push_pawn) +
@@ -219,15 +219,15 @@ namespace internal {
             pop_count(push_pawn3 & board.capturable(WHITE))
         );
 #endif // NDEBUG
-        ret -= PAWN_MOBILITY * (
-            pop_count(push_pawn) +
-            pop_count(push_pawn2 & board.capturable(WHITE)) +
-            pop_count(push_pawn3 & board.capturable(WHITE))
-        );
+//        ret -= PAWN_MOBILITY * (
+//            pop_count(push_pawn) +
+//            pop_count(push_pawn2 & board.capturable(WHITE)) +
+//            pop_count(push_pawn3 & board.capturable(WHITE))
+//        );
 #ifndef NDEBUG
         b_p_attack_center -= PAWN_ATTACK_CENTER * (pop_count(push_pawn2 & CENTER) + pop_count(push_pawn3 & CENTER));
 #endif // NDEBUG
-        ret -= PAWN_ATTACK_CENTER * (pop_count(push_pawn2 & CENTER) + pop_count(push_pawn3 & CENTER));
+//        ret -= PAWN_ATTACK_CENTER * (pop_count(push_pawn2 & CENTER) + pop_count(push_pawn3 & CENTER));
 
         /// Defending + Connectivity (Take Right)
 //        push_pawn2 &= board.capturable(BLACK);
@@ -263,16 +263,16 @@ namespace internal {
         }
 #endif // NDEBUG
         /// Passed Pawn Boni
-        Bitboard passed_pawn = internal::white_passed_pawns(board);
-        while (passed_pawn) {
-            to_sq = bitscan_forward(passed_pawn);
-            ret += PASSED_PAWN[to_sq / 8];
-            Bitboard to_sq_bb = C64(1) << to_sq;
-            if (file_fill(to_sq_bb) & board.piece_bb(W_ROOK)) {
-                ret += ROOK_SUPPORTING_PASSED_PAWNS;
-            }
-            passed_pawn -= to_sq_bb;
-        }
+//        Bitboard passed_pawn = internal::white_passed_pawns(board);
+//        while (passed_pawn) {
+//            to_sq = bitscan_forward(passed_pawn);
+//            ret += PASSED_PAWN[to_sq / 8];
+//            Bitboard to_sq_bb = C64(1) << to_sq;
+//            if (file_fill(to_sq_bb) & board.piece_bb(W_ROOK)) {
+//                ret += ROOK_SUPPORTING_PASSED_PAWNS;
+//            }
+//            passed_pawn -= to_sq_bb;
+//        }
 
 #ifndef NDEBUG
         debug_passed_pawn = internal::black_passed_pawns(board);
@@ -286,20 +286,20 @@ namespace internal {
             debug_passed_pawn -= to_sq_bb;
         }
 #endif // NDEBUG
-        passed_pawn = internal::black_passed_pawns(board);
-        while (passed_pawn) {
-            to_sq = bitscan_forward(passed_pawn);
-            ret -= PASSED_PAWN[7 - (to_sq / 8)];
-            Bitboard to_sq_bb = C64(1) << to_sq;
-            if (file_fill(to_sq_bb) & board.piece_bb(B_ROOK)) {
-                ret -= ROOK_SUPPORTING_PASSED_PAWNS;
-            }
-            passed_pawn -= to_sq_bb;
-        }
+//        passed_pawn = internal::black_passed_pawns(board);
+//        while (passed_pawn) {
+//            to_sq = bitscan_forward(passed_pawn);
+//            ret -= PASSED_PAWN[7 - (to_sq / 8)];
+//            Bitboard to_sq_bb = C64(1) << to_sq;
+//            if (file_fill(to_sq_bb) & board.piece_bb(B_ROOK)) {
+//                ret -= ROOK_SUPPORTING_PASSED_PAWNS;
+//            }
+//            passed_pawn -= to_sq_bb;
+//        }
 
         /// Pawn islands + isolated pawns
-        ret += pawn_island_differential(board);
-        ret += (pop_count(isolanis(board.piece_bb(W_PAWN))) - pop_count(isolanis(board.piece_bb(B_PAWN)))) * PAWN_ISOLATED;
+//        ret += pawn_island_differential(board);
+//        ret += (pop_count(isolanis(board.piece_bb(W_PAWN))) - pop_count(isolanis(board.piece_bb(B_PAWN)))) * PAWN_ISOLATED;
 //        ret += (pop_count(board.piece_bb(W_PAWN) & white_rear_span(board)) - pop_count(board.piece_bb(B_PAWN) & black_rear_span(board))) * PAWN_DOUBLE;
 
 #ifndef NDEBUG
@@ -512,18 +512,18 @@ namespace internal {
         ret -= dot_product(flip_flop(b), &BISHOP_PST[0]);
 
         /// Bishop Pair Advantage
-        if (pop_count(w) >= 2) {
+//        if (pop_count(w) >= 2) {
 #ifndef NDEBUG
             w_b_pair += BISHOP_PAIR_BONUS;
 #endif // NDEBUG
-            ret += BISHOP_PAIR_BONUS;
-        }
-        if (pop_count(b) >= 2) {
+//            ret += BISHOP_PAIR_BONUS;
+//        }
+//        if (pop_count(b) >= 2) {
 #ifndef NDEBUG
             b_b_pair -= BISHOP_PAIR_BONUS;
 #endif // NDEBUG
-            ret -= BISHOP_PAIR_BONUS;
-        }
+//            ret -= BISHOP_PAIR_BONUS;
+//        }
 //
 //        /// Attacking + Defending + Mobility + Connectivity
 //        for (Color_t col = WHITE; col <= BLACK; col++) {
@@ -614,21 +614,22 @@ namespace internal {
         /// Penalize developing queen before 2 minor pieces in opening
         if (es.stage == OPENING) {
             if (board.piece_bb(W_QUEEN) != (C64(1) << D1)) {
-                Bitboard minor_piece_development = (board.piece_bb(W_BISHOP) | board.piece_bb(W_KNIGHT)) & (C64(1) << B1 | C64(1) << C1 | C64(1) << F1 | C64(1) << G1);
-                if (pop_count(minor_piece_development) > 2) {
+                Bitboard minor_piece_development = (board.piece_bb(W_BISHOP) | board.piece_bb(W_KNIGHT)) & (RANK_MASK[RANK1]);
+                if (pop_count(minor_piece_development) > 3) {
 #ifndef NDEBUG
-                    w_queen_fast_dev += Q_B4_2_MINORS;
+                    w_queen_fast_dev += Q_B4_3_MINORS;
 #endif // NDEBUG
-                    ret += Q_B4_2_MINORS;
+                    ret += Q_B4_3_MINORS;
                 }
             }
+
             if (board.piece_bb(B_QUEEN) != (C64(1) << D8)) {
-                Bitboard minor_piece_development = (board.piece_bb(B_BISHOP) | board.piece_bb(B_KNIGHT)) & (C64(1) << B8 | C64(1) << C8 | C64(1) << F8 | C64(1) << G8);
-                if (pop_count(minor_piece_development) > 2) {
+                Bitboard minor_piece_development = (board.piece_bb(B_BISHOP) | board.piece_bb(B_KNIGHT)) & (RANK_MASK[RANK8]);
+                if (pop_count(minor_piece_development) > 3) {
 #ifndef NDEBUG
-                    b_queen_fast_dev -= Q_B4_2_MINORS;
+                    b_queen_fast_dev -= Q_B4_3_MINORS;
 #endif // NDEBUG
-                    ret -= Q_B4_2_MINORS;
+                    ret -= Q_B4_3_MINORS;
                 }
             }
         }
@@ -1100,6 +1101,9 @@ Centipawns_t evaluate(const Board& board, EvaluationState& es, bool verbose) {
         ret += internal::eval_overall_development(board, es, verbose);
     }
 
+    if (board.side_2_move() == BLACK) {
+        ret = -ret;
+    }
 
     return ret;
 }

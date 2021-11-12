@@ -94,7 +94,7 @@ extern const Centipawns_t PAWN_ISLAND[4];
 extern const Centipawns_t HALF_ISOLATED_PAWN;
 
 /// development
-extern const Centipawns_t Q_B4_2_MINORS;
+extern const Centipawns_t Q_B4_3_MINORS;
 extern const Centipawns_t OVERALL_DEV_BONUS;
 
 /// Search Parameters

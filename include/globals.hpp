@@ -581,22 +581,22 @@ const Centipawns_t KNIGHT_BASE_VAL =  300; // 325 -> 310
 const Centipawns_t ROOK_BASE_VAL   =  500;
 const Centipawns_t QUEEN_BASE_VAL  =  1000; // 910 ->1000
 
-const Centipawns_t TEMPO = 5;
+const Centipawns_t TEMPO = 2;
 
 const double QUEEN_PERC[4] = {
-    0.9, 0.95, 1.2, 1.3
+    0.99, 0.995, 1.1, 1.2
 };
 const double ROOK_PERC[4] = {
-    0.85, 0.9, 1.1, 1.1
+    0.95, 1, 1, 1.1
 };
 const double BISHOP_PERC[4] = {
     1.0, 1.05, 1.15, 1.15
 };
 const double KNIGHT_PERC[4] = {
-    1.1, 1.1, 0.9, 0.85
+    1.05, 1, 0.99, 0.95
 };
 const double PAWN_STRENGTH[4] = {
-    1.0, 1.5, 1.1, 1.15
+    1.0, 1.05, 1.6, 1.07
 };
 const double CONNECTIVITY[5] = {
     9.1, 5.0, 3.3, 3.1, 1.0
@@ -722,7 +722,7 @@ const Centipawns_t HALF_ISOLATED_PAWN = -5;
 /// opening (development)
 // move same piece more than once (-20 repeat piece -10 repeat pawn)
 // early exchange of queens with loss of castling rights = -40
-const Centipawns_t Q_B4_2_MINORS = -300 ; // -90
+const Centipawns_t Q_B4_3_MINORS = -500 ; // -90
 const Centipawns_t OVERALL_DEV_BONUS = 175;
 
 /// Search Parameters

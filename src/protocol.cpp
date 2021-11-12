@@ -267,10 +267,11 @@ namespace internal {
      * @param options  instance of UCIOptions object to be updated
      * @param commands the commands vector needed to fulfill the request
      */
-    void set_options(UCIOptions& options, const std::vector<std::string>& commands) {
+    void set_options(UCIOptions& options, const std::vector<std::string>& commands, SearchState& search_state) {
         if(commands[2] == "Hash") {
             int value = std::stoi(commands[4]);
             options.tt_size = value;
+            search_state.tt = TranspositionTable(options.tt_size * 1000000 / sizeof(ChessHash));
         } else if (commands[2] == "Threads") {
             options.threads = std::stoi(commands[3]);
         } else {
@@ -330,7 +331,7 @@ void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_s
             quit = true;
         } else if (commands[0] == "setoption") {
             // If we received setoption command, then set corresponding option
-            internal::set_options(options, commands);
+            internal::set_options(options, commands, search_state);
         } else if (commands[0] == "register") {
             // If we received "register" command, then register the engine
             internal::register_engine(commands);

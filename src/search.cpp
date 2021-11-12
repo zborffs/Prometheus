@@ -810,7 +810,7 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
                 } else {
                     // in this case, we ran out of time searching the first PV at the first depth. this shouldn't happen unless you do something like
                     // "go movetime 1" or something
-//                    spdlog::error("Previous Depth's Answer Doesn't exist");
+                    SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Previous Depth's Answer Doesn't exist");
                     return ChessMove();
                 }
             }

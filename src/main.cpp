@@ -41,7 +41,7 @@ int main([[maybe_unused]] const int argc, char* argv[]) {
     /// Instantiate all state objects
     Board board;
     UCIOptions options;
-    SearchState search_state(65536);
+    SearchState search_state(32 * 1000000 / sizeof(ChessHash));
     EvaluationState eval_state;
     Book book;
     create_book(bookpath, book);
