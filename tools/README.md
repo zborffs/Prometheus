@@ -17,7 +17,12 @@ Data
 math
 -------------
 - optimization, hypothesis testing, summary statistics, distributions, hdf5 
-  
+  - heteroscedasticity-consitent standard errors
+  - white test (test for  heteroscedasticity)
+  - M-estimators (robust)
+  - L-estimators
+  - diff robust statistics
+  - nonparametric skew
 
 opening-book
 ------------

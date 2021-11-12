@@ -111,9 +111,9 @@ namespace zaamath {
          * the object may be used again for another optimization.
          */
         void clear() {
-            f_x_prev_ = Eigen::Matrix<double, Eigen::Dynamic, 1>::Zero();
+//            f_x_prev_ = Eigen::Matrix<double, Eigen::Dynamic, 1>::Zero();
             f_x_prev_.resize(0);
-            times_ = Eigen::Matrix<double, Eigen::Dynamic, 1>::Zero();
+//            times_ = Eigen::Matrix<double, Eigen::Dynamic, 1>::Zero();
             times_.resize(0);
         }
 

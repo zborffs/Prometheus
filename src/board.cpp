@@ -1091,8 +1091,6 @@ Centipawns_t Board::see(Square_t to_sq, PieceType_t target_piece, Square_t from_
     ASSERT((target_piece - 2) / 2 < value.size() , "(target_piece - 2)/2 >= value.size()");
     ASSERT((target_piece - 2) / 2 >= 0 , "(target_piece - 2)/2 < 0 ");
 
-//    std::cerr << *this << std::endl;
-
     do {
         d++; // next depth and side
         ASSERT(d < gain.size(), "gain accessor > gain.size()  -- 2");
@@ -1105,20 +1103,12 @@ Centipawns_t Board::see(Square_t to_sq, PieceType_t target_piece, Square_t from_
         // take the from_sq piece off the attack bitboard and off the occupied bitboard. i.e. pretend it's not there
         attadef ^= from_set;
         occ ^= from_set;
-//        std::cerr << draw_bitboard(attadef) << std::endl;
-
-//        std::cerr << draw_bitboard(occ) << std::endl;
-//        std::cerr << (int)a_piece << std::endl;
-//        std::cerr << (int)target_piece << std::endl;
-
 
         // if the piece we just attacked with was one of the may_xray piece types, then determine if and what xray piece
         // was behind it
         if (from_set & may_xray) {
-//            attadef |= sq_attacked_by(to_sq, occ);
             attadef |= sq_attacked_by_sliding(to_sq, occ);
         }
-//        std::cerr << draw_bitboard(attadef) << std::endl;
 
         // from the set of pieces still in the attadef set, find the least valuable one
         from_set = get_least_valuable_piece(attadef, d & 1, a_piece);

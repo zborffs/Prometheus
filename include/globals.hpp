@@ -13,7 +13,7 @@ const std::string engine_name("Prometheus");
 const std::string version("0.1");
 const std::string author("Zach Bortoff");
 
-const unsigned int MAX_DEPTH = 20;
+const unsigned int MAX_DEPTH = 32;
 const unsigned int MIN_DEPTH = 2;
 
 const Centipawns_t INF = 1000000;
@@ -577,7 +577,7 @@ const PositionKey EN_PASSANT_KEYS[17] {
 /// Evaluation Parameters
 const Centipawns_t PAWN_BASE_VAL   =  100;
 const Centipawns_t BISHOP_BASE_VAL =  325; // 325 -> 370
-const Centipawns_t KNIGHT_BASE_VAL =  325; // 325 -> 310
+const Centipawns_t KNIGHT_BASE_VAL =  300; // 325 -> 310
 const Centipawns_t ROOK_BASE_VAL   =  500;
 const Centipawns_t QUEEN_BASE_VAL  =  1000; // 910 ->1000
 
@@ -722,7 +722,7 @@ const Centipawns_t HALF_ISOLATED_PAWN = -5;
 /// opening (development)
 // move same piece more than once (-20 repeat piece -10 repeat pawn)
 // early exchange of queens with loss of castling rights = -40
-const Centipawns_t Q_B4_2_MINORS = -90;
+const Centipawns_t Q_B4_2_MINORS = -300 ; // -90
 const Centipawns_t OVERALL_DEV_BONUS = 175;
 
 /// Search Parameters
