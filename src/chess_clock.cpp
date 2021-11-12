@@ -135,7 +135,7 @@ void ChessClock::alloc_time(UCIOptions& options, Color_t side_2_move) {
     }
 
     /// if there are fewer than 10 seconds left, don't extend time. Otherwise, time is extensible
-    time_is_extensible_ = allocated_time_ >= (10000 / 40);
+    time_is_extensible_ = allocated_time_ >= (10000);
 }
 
 /**
@@ -144,9 +144,9 @@ void ChessClock::alloc_time(UCIOptions& options, Color_t side_2_move) {
  */
 void ChessClock::extend_time(unsigned num_ext) noexcept {
     /// if time is extensible, give 0.250 seconds for each extension
-    if(time_is_extensible_) {
+    if (time_is_extensible_) {
         time_is_extensible_ = false;
-        allocated_time_ += num_ext * 250; // 0.250 seconds.
+        allocated_time_ += num_ext * 100; // 0.250 seconds.
     }
 }
 

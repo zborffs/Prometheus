@@ -169,10 +169,6 @@ namespace internal {
      * @return             the score of the best position in centipawns
      */
     Centipawns_t search(Board &board, UCIOptions &options, SearchState &search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta, bool do_null) {
-//        /// if we've run out of time, then quit. By returning alpha, we don't give any new information
-//        if (internal::check_stop_search(depth, options, search_state)) {
-//            return alpha; // return current best
-//        }
 
         /// if the current position is a draw, return 0 immediately
         if (board.is_draw()) {
@@ -203,13 +199,14 @@ namespace internal {
             }
 
             /// forget why these are the conditions
-            if (hash->depth >= (depth - R) && (hash_score < beta) && (flag == STORED_ALPHA)) {
-                do_null = false;
-                flag = AVOID_NULL;
-            }
+//            if (hash->depth >= (depth - R) && (hash_score < beta) && (flag == STORED_ALPHA)) {
+////            if (flag == AVOID_NULL && hash->depth >= depth && search_state.height) {
+//                do_null = false;
+//                flag = AVOID_NULL;
+//            }
 
             /// if the hashed move went deeper than we currently are in the search, then it should be adhered to
-            if (hash->depth >= depth) { // i don't understand this condition
+            if (hash->depth >= depth) {
                 switch (flag) {
                     case STORED_ALPHA:
                         if (hash_score <= alpha) {
@@ -227,7 +224,7 @@ namespace internal {
                 }
             }
 
-            score = hash_score;
+//            score = hash_score; // alpha = hash_score
         }
 
         /// Check Extensions
@@ -237,10 +234,11 @@ namespace internal {
             }
         } else if (do_null) {  // do null move pruning
             internal::def_stage(board, eval_state);
-            if (!(eval_state.stage & 2) && depth > R) {
+//            if (!(eval_state.stage & 2) && depth > R) {
+            if (eval_state.stage != LATE_END_GAME && depth > R && search_state.height >= 1) {
                 board.make_null_move();
                 Centipawns_t null_move_score = -search(board, options, search_state, eval_state, depth - R - 1, -beta, -beta + 1, false);
-                board.unmake_move();
+                board.unmake_null_move(); // board.unmake_null_move();
 
                 // if I have a remarkable position despite the null move, just return current upper bound
                 if (null_move_score >= beta) {
@@ -279,12 +277,14 @@ namespace internal {
                 }
 
                 hash_move = new ChessMove(hash->from_sq, hash->to_sq, hash->m_flag(), moved, captured);
+//                best_move = ChessMove(hash->from_sq, hash->to_sq, hash->m_flag(), moved, captured);
             }
         }
 
         /// generate all the moves from this position
         gen_all_moves(board, movelist);
         order_moves(movelist, search_state, board, hash_move);
+//        order_moves(movelist, search_state, board, &best_move);
         if (hash_move != nullptr) {
             delete hash_move;
             hash_move = nullptr;
@@ -300,7 +300,6 @@ namespace internal {
                 continue;
             }
             ++search_state.height;
-
 #ifndef NDEBUG
             search_state.raw_nodes++;
 #endif // NDEBUG
@@ -312,6 +311,9 @@ namespace internal {
 
             /// if we've run out of time, then quit. By returning alpha, we don't give any new information
             if (internal::check_stop_search(depth, options, search_state)) {
+#ifndef NDEBUG
+                ++search_state.leaf_nodes;
+#endif // NDEBUG
                 return alpha; // return alpha?
             }
 
@@ -324,12 +326,14 @@ namespace internal {
                         ++search_state.fail_high_first_count;
                     }
                     ++search_state.fail_high_count;
+                    ++search_state.leaf_nodes;
 #endif // NDEBUG
 
                     /// store non-capturing beta-cutoffs
                     if (!(movelist[i].flag() & CAPTURE_MOVE)) {
                         search_state.killer_move[search_state.height].second = search_state.killer_move[search_state.height].first;
                         search_state.killer_move[search_state.height].first = movelist[i];
+                        search_state.history_heuristic[movelist[i].moved][movelist[i].to_sq] += static_cast<Centipawns_t>(depth * depth); // depth^2
                     }
 
                     ChessHash upper_bnd_hash(board.key(), beta, movelist[i].from_sq, movelist[i].to_sq, movelist[i].flag(), depth, STORED_BETA, board.current_ply()); // could store beta, or could store score
@@ -344,10 +348,10 @@ namespace internal {
                     return beta;
                 }
 
-                /// store non-capturing alpha cutoffs
-                if (!(movelist[i].flag() & CAPTURE_MOVE)) {
-                    search_state.history_heuristic[movelist[i].moved][movelist[i].to_sq] += (Centipawns_t)depth * depth; // depth^2
-                }
+//                /// store non-capturing alpha cutoffs
+//                if (!(movelist[i].flag() & CAPTURE_MOVE)) {
+//                    search_state.history_heuristic[movelist[i].moved][movelist[i].to_sq] += static_cast<Centipawns_t>(depth * depth); // depth^2
+//                }
 
                 alpha = score;
                 best_move = movelist[i];
@@ -376,7 +380,7 @@ namespace internal {
             search_state.tt.insert(exact_hash);
         } else {
             /// store a dummy in the transposition table because we don't know the actual move
-            ChessHash lower_bnd_hash(board.key(), alpha, A1, A1, NO_MOVE_FLAG, depth, STORED_ALPHA, board.current_ply());
+            ChessHash lower_bnd_hash(board.key(), alpha, best_move.from_sq, best_move.to_sq, best_move.flag(), depth, STORED_ALPHA, board.current_ply());
             if (std::abs(alpha) > INF - 100) {
                 if (beta > 0) {
                     lower_bnd_hash.score += search_state.height;
@@ -406,30 +410,49 @@ namespace internal {
         Centipawns_t score = -INF;
         Centipawns_t init_alpha = alpha;
         Centipawns_t standing_pat = evaluate(board, eval_state); // evaluate the current position
+        assert(alpha < beta);
 
-        /// if this a leaf node (can't go any further) or it's better than the cutoff score, return immediately
-        if (depth == 0 || standing_pat >= beta) {
+        if (board.is_draw()) {
+//            SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Quitting q-search cuz it's a draw!");
+#ifndef NDEBUG
+            search_state.leaf_nodes++;
+#endif // NDEBUG
+            return 0;
+        }
+
+        if (depth == 0) {
+//            SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Quitting q-search cuz we reached the depth limit");
 #ifndef NDEBUG
             search_state.leaf_nodes++;
 #endif // NDEBUG
             return standing_pat;
         }
 
-        /// Delta pruning -- don't delta prune in late end game
+        if (standing_pat >= beta) {
+#ifndef NDEBUG
+            search_state.leaf_nodes++;
+#endif // NDEBUG
+            return beta;
+        }
+
+        // Delta pruning: If the standing_pat + HUGE SCORE (like value of queen and called "delta") is still worse than alpha, then return alpha,
+        // because if the standing_pat + delta < alpha, then the evaluation is so much worse than what's already available,
+        // that there's no point in looking for a quieter position. Don't do it during the late game though, where there
+        // could be huge fluctuations in the evaluation anyway due to mating and stuff like that
         if (eval_state.stage != LATE_END_GAME) {
             Centipawns_t delta = QUEEN_BASE_VAL;
 //            if ((((board.piece_bb(W_PAWN) & RANK_MASK[RANK7]) << 8) & ~board.piece_bb(B_PIECES)) || (((board.piece_bb(B_PAWN) & RANK_MASK[RANK2]) >> 8) & ~board.piece_bb(W_PIECES))) {
 //                delta += 100; // idk some value
 //            }
 
-            if (standing_pat < alpha - delta) {
+            if (standing_pat + delta < alpha) {
                 return alpha;
             }
         }
 
-
+        // update the current best score with standing pat if the standing pat is better than the best score
         if (standing_pat > alpha) {
-            alpha = standing_pat; // update the best score with the current score, if the current score is better
+            alpha = standing_pat;
         }
 
         ChessMove best_move;
@@ -441,7 +464,7 @@ namespace internal {
         order_qmoves(movelist, search_state, board);
 
         for (unsigned i = 0; i < movelist.size(); i++) {
-            /// make the move and test that it's legal
+            // make the move and test that it's legal
             board.make_move(movelist[i]);
             if (board.is_king_checked(!board.side_2_move())) {
                 movelist.erase(movelist.begin() + i);
@@ -450,7 +473,6 @@ namespace internal {
                 continue;
             }
             ++search_state.height;
-
 #ifndef NDEBUG
             search_state.raw_nodes++;
 #endif // NDEBUG
@@ -468,6 +490,7 @@ namespace internal {
                         ++search_state.fail_high_first_count;
                     }
                     ++search_state.fail_high_count;
+                    ++search_state.leaf_nodes;
 #endif // NDEBUG
                     // don't store in transposition table because we don't have any search depth
                     return beta;
@@ -476,11 +499,6 @@ namespace internal {
                 best_move = movelist[i];
                 alpha = score;
             }
-        }
-
-        /// if the movelist if empty i.e. there are no captures or whatever, just return the standing pat
-        if (movelist.empty()) {
-            return standing_pat;
         }
 
         return alpha;
@@ -494,6 +512,10 @@ namespace internal {
      * @return             true means stop searching, false means don't stop searching
      */
     bool check_stop_search(unsigned depth, UCIOptions& options, SearchState& search_state) {
+        if (search_state.height < MIN_DEPTH && depth < MIN_DEPTH) {
+            return false;
+        }
+
         /// If the depth we've reached exceeds the max depth, then stop the search
         if (depth > MAX_DEPTH) {
             search_state.time_exit = true;
@@ -565,33 +587,33 @@ namespace internal {
         MoveScore score = 0;
 
         for (auto & move : movelist) {
-//            score += move.score; // MVV-LVA
+            score = move.score; // MVV-LVA
 
             if (hash_move != nullptr) {
                 if (move == *hash_move) {
-                    score |= (1 << 31); // 128; // |= (1 << 7) (4294967295)
+                    score |= (1 << 31); // |= (1 << 7) (4294967295)
                 }
             } else {
                 if (move.flag() == CAPTURE_MOVE) { // maybe exclude promotions later
                     auto see = board.see(move.to_sq, move.captured, move.from_sq, move.moved);
-                    if (see > 0) {
+                    if (see >= 0) { // only reject losing moves, not winning or tying moves
                         score += see + 100000; // put 100000 in globals
-                    } else {
-                        score = 0;
                     }
                 } else {
-                    if (move == search_state.killer_move[search_state.height].first) {
+                    if (move == search_state.killer_move[search_state.height].first) { // maybe rendered more effective if we index by PLY (board.current_ply())?
                         score += 90000; // put 90000 in globals
                     } else if (move == search_state.killer_move[search_state.height].second) {
                         score += 80000; // put 80000 in globals
-                    } else {
-                        score += search_state.history_heuristic[move.moved][move.to_sq];
                     }
+//                    } else {
+                    // depth = 15 => 15 * 15 = 225 => 225,000 -> tune later!
+                        score += 1000 * search_state.history_heuristic[move.moved][move.to_sq]; // hmm... so we are always adding this no matter what? the element better be 0 by default
+//                    }
                 }
             }
 
             move.score = score;
-            score = 0;
+//            score = 0;
         }
 
         std::sort(movelist.begin(), movelist.end());
@@ -616,7 +638,7 @@ namespace internal {
         for (unsigned i = 0; i < movelist.size(); ++i) {
             ASSERT(i < movelist.size(), "i > movelist.size()");
             ChessMove move = movelist[i];
-
+//            score = move.score;
 
             // all qmoves are captures, no need checking whether it is
             ASSERT(&board != nullptr, "Board isn't defined!");
@@ -625,7 +647,7 @@ namespace internal {
             if (move.captured != PieceType::NO_PIECE) {
                 Centipawns_t see = board.see(move.to_sq, move.captured, move.from_sq, move.moved);
                 if (see > 0) {
-                    score += see + 100000; // put 100000 in globals
+                    score += see + 100000; // put 100000 in globals (just added the >= condition from ==)
                 } else {
                     /// don't consider losing captures in qsearch
                     movelist.erase(movelist.begin() + i);
@@ -650,7 +672,8 @@ namespace internal {
     }
 
     Depth compute_adap_null_move_r(Depth depth) {
-        return NULL_MOVE_R + (depth > 6) + (depth > 11) + (depth > 16) + (depth > 21);
+        return NULL_MOVE_R;
+//        return NULL_MOVE_R + (depth > 6) + (depth > 11) + (depth > 16) + (depth > 21);
     }
 };
 
@@ -787,7 +810,7 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
                 } else {
                     // in this case, we ran out of time searching the first PV at the first depth. this shouldn't happen unless you do something like
                     // "go movetime 1" or something
-                    spdlog::error("Previous Depth's Answer Doesn't exist");
+//                    spdlog::error("Previous Depth's Answer Doesn't exist");
                     return ChessMove();
                 }
             }

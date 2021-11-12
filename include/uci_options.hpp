@@ -12,17 +12,10 @@
 struct UCIOptions {
     /// Engine State Variables (Options)
     Style style{Style::BALANCED};
-    int default_tt_size{1}; // in MB
+    int default_tt_size{32}; // in MB
     int minimum_tt_size{1}; // in MB
-    int maximum_tt_size{10}; // in MB
+    int maximum_tt_size{128}; // in MB
     int tt_size{0}; // in MB
-    bool own_book{false}; // use Prometheus's own book
-    bool show_current_line{false}; // output the current line
-    bool limit_strength{false}; // should the engine limit its strength
-    int default_elo{3000};
-    int minimum_elo{500};
-    int maximum_elo{3000};
-    int elo{0};
     int default_threads{1};
     int minimum_threads{1};
     int maximum_threads{1};
@@ -61,28 +54,13 @@ struct UCIOptions {
      */
     friend std::ostream& operator<<(std::ostream& os, const UCIOptions& opt) {
         os << "UCIOptions:" << std::endl;
-        os << "- Style: ";
 
-        switch (opt.style) {
-            case Style::AGGRESSIVE: os << "Aggressive"; break;
-            case Style::BALANCED: os << "Balanced"; break;
-            case Style::DEFENSIVE: os << "Defensive"; break;
-        }
-
-        os << std::endl;
         os << std::boolalpha;
 
         os << "  Default Transposition Table Size: " << opt.default_tt_size << " [MB]" << std::endl;
         os << "  Minimum Transposition Table Size: " << opt.minimum_tt_size << " [MB]" << std::endl;
         os << "  Maximum Transposition Table Size: " << opt.maximum_tt_size << " [MB]" << std::endl;
         os << "  Actual Transposition Table Size: " << opt.tt_size << " [MB]" << std::endl;
-        os << "  Use Own Book: " << opt.own_book << std::endl;
-        os << "  Show Current Line: " << opt.show_current_line << std::endl;
-        os << "  Limit Strength: " << opt.limit_strength << std::endl;
-        os << "  Default ELO: " << opt.default_elo << std::endl;
-        os << "  Minimum ELO: " << opt.minimum_elo << std::endl;
-        os << "  Maximum ELO: " << opt.maximum_elo << std::endl;
-        os << "  Actual ELO: " << opt.elo << std::endl;
         os << "  Default Number of Threads: " << opt.default_threads << std::endl;
         os << "  Minimum Number of Threads: " << opt.minimum_threads << std::endl;
         os << "  Maximum Number of Threads: " << opt.maximum_threads << std::endl;

@@ -20,21 +20,6 @@ void UCIOptions::send_options() noexcept {
     /// Transposition Table Options
     std::cout << "option name Hash type spin default " << default_tt_size << " min " << minimum_tt_size << " max " << maximum_tt_size << std::endl;
 
-    /// OwnBook Options
-    std::cout << "option name OwnBook type check default " << own_book << std::endl;
-
-    /// UCI_ShowCurrLine options
-    std::cout << "option name UCI_ShowCurrLine type check default " << show_current_line << std::endl;
-
-    /// UCI_LimitStrength options
-    std::cout << "option name UCI_LimitStrength type check default " << limit_strength << std::endl;
-
-    /// UCI_Elo options
-    std::cout << "option name UCI_Elo type spin default " << default_elo << " min " << minimum_elo << " max " << maximum_elo << std::endl;
-
-    /// Style options
-    std::cout << "options name Style type combo default Balanced var Aggressive var Balanced var Defensive" << std::endl;
-
     /// Threads options
     std::cout << "options name Threads type spin default " << default_threads << " min " << minimum_threads << " max " << maximum_threads << std::endl;
 

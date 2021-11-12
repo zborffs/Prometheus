@@ -271,37 +271,8 @@ namespace internal {
         if(commands[2] == "Hash") {
             int value = std::stoi(commands[4]);
             options.tt_size = value;
-        } else if(commands[2] == "OwnBook") {
-            if(commands[4] == "true") {
-                options.own_book  = true;
-            } else if(commands[4] == "false") {
-                options.own_book = false;
-            }
-        } else if(commands[2] == "UCI_ShowCurrLine") {
-            if(commands[4] == "true") {
-                options.show_current_line = true;
-            } else if(commands[4] == "false") {
-                options.show_current_line = false;
-            }
-        } else if(commands[2] == "UCI_LimitStrength") {
-            if(commands[4] == "true") {
-                options.limit_strength = true;
-            } else if(commands[4] == "false") {
-                options.limit_strength = false;
-            }
-        } else if(commands[2] == "Threads") {
+        } else if (commands[2] == "Threads") {
             options.threads = std::stoi(commands[3]);
-        } else if(commands[2] == "UCI_Elo") {
-            int elo = std::stoi(commands[4]);
-            options.elo = elo;
-        } else if(commands[2] == "Style") {
-            if(commands[4] == "Balanced") {
-                options.style = Style::BALANCED;
-            } else if(commands[4] == "Aggressive") {
-                options.style = Style::AGGRESSIVE;
-            } else if(commands[4] == "Defensive") {
-                options.style = Style::DEFENSIVE;
-            }
         } else {
 
         }

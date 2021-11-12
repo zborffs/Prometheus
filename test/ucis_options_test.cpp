@@ -9,17 +9,9 @@ protected:
 TEST_F(UCIOptionsTest, Constructor) {
     EXPECT_EQ(options.style, Style::BALANCED);
     EXPECT_EQ(options.default_tt_size, 1);
-    EXPECT_EQ(options.minimum_tt_size, 1);
-    EXPECT_EQ(options.maximum_tt_size, 10);
+    EXPECT_EQ(options.minimum_tt_size, 128);
+    EXPECT_EQ(options.maximum_tt_size, 32);
     EXPECT_EQ(options.tt_size, 0);
-    EXPECT_EQ(options.own_book, false);
-    EXPECT_EQ(options.ponder, false);
-    EXPECT_EQ(options.show_current_line, false);
-    EXPECT_EQ(options.limit_strength, false);
-    EXPECT_EQ(options.default_elo, 3000);
-    EXPECT_EQ(options.minimum_elo, 500);
-    EXPECT_EQ(options.maximum_elo, 3000);
-    EXPECT_EQ(options.elo, 0);
     EXPECT_EQ(options.default_threads, 1);
     EXPECT_EQ(options.minimum_threads, 1);
     EXPECT_EQ(options.maximum_threads, 1);
