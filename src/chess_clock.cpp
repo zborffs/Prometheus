@@ -129,13 +129,13 @@ void ChessClock::alloc_time(UCIOptions& options, Color_t side_2_move) {
     /// Assume that there are on average 40 moves (White and Black make moves) per game.
     /// Allow (total amount of time) / (number of moves)
     if (side_2_move == WHITE) {
-        allocated_time_ = options.w_time_milli / 40;
+        allocated_time_ = options.w_time_milli / 50;
     } else {
-        allocated_time_ = options.b_time_milli / 40;
+        allocated_time_ = options.b_time_milli / 50;
     }
 
     /// if there are fewer than 10 seconds left, don't extend time. Otherwise, time is extensible
-    time_is_extensible_ = allocated_time_ >= (10000);
+    time_is_extensible_ = allocated_time_ >= (15000);
 }
 
 /**
@@ -146,7 +146,7 @@ void ChessClock::extend_time(unsigned num_ext) noexcept {
     /// if time is extensible, give 0.250 seconds for each extension
     if (time_is_extensible_) {
         time_is_extensible_ = false;
-        allocated_time_ += num_ext * 100; // 0.250 seconds.
+        allocated_time_ += num_ext * 100; // 0.10 seconds.
     }
 }
 
