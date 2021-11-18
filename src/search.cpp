@@ -446,6 +446,9 @@ namespace internal {
 //            }
 
             if (standing_pat + delta < alpha) {
+#ifndef NDEBUG
+                search_state.leaf_nodes++;
+#endif // NDEBUG
                 return alpha;
             }
         }

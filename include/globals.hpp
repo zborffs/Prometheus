@@ -731,7 +731,7 @@ const Centipawns_t WINDOW_SIZE[3] = {
 };
 const Depth NULL_MOVE_R = 2; // 3
 const Depth FUTILITY_DEPTH = 2;
-const Centipawns_t FUTILITY_THRESHOLD_DEPTH_1 = 500;
+const Centipawns_t FUTILITY_THRESHOLD_DEPTH_1 = 150; // 500
 const Centipawns_t FUTILITY_THRESHOLD_DEPTH_2 = 600;
 const Centipawns_t FUTILITY_THRESHOLD_DEPTH_3 = 850;
 const Depth MULTICUT_R = 3;

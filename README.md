@@ -13,7 +13,6 @@ pushd Prometheus/build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make -j
 ```
-At this point, you ought to have the Cloak-lib.a static library and the Cloak executable built for your host.
 
 To run in terminal:
 ```shell
@@ -23,10 +22,10 @@ if the program immediately terminates, something went wrong. Try adding a logs/ 
 Otherwise, you'll be prompted with an empty terminal. Type "uci" for UCI mode. 
 
 
-Engine Features List
+Search Features List
 --------------------
 - Search Stuff
-    * [ ] aspiration window (https://www.chessprogramming.org/Aspiration_Windows)
+    * [ ] aspiration window
     * [ ] Parallel PVS
 - Selectivity Stuff
     - Extensions
@@ -72,8 +71,8 @@ Pawns:
   - [ ] fixing enemy pawns (forcing them to not move anymore)
   - [ ] possibility to attack the enemy king position
 - Eval
-  - [ ] Piece-square tables (positioning)
-  - [ ] base-value * bonus/penalty game_stage
+  - [x] Piece-square tables (positioning)
+  - [x] base-value * bonus/penalty game_stage
   - [ ] pass pawn bonus
   - [ ] unopposed passer bonux
   - [ ] supported passer (by rook)
@@ -97,14 +96,14 @@ Rooks:
 - [ ] mobility (account for pins)
 
 bishops:
-- [ ] positioning (PST)
+- [x] positioning (PST)
 - [ ] connectivity
 - [ ] mobility (account for pins)
-- [ ] bishop pair bonus
+- [ ] ~~bishop pair bonus~~
 
 
 knights:
-- [ ] positioning (PST)
+- [x] positioning (PST)
 - [ ] connectivity
 - [ ] mobility (account for pins)
 
@@ -149,8 +148,6 @@ the pawn to the new position is positive, then it's a good move to take the spac
 matrix dynamically. This will identify roots of a pawn chain (which are weak spots)
 
 
-
-
 Book Learning
 -------------
 - Q-Learning on previous performance
@@ -177,10 +174,9 @@ Test Suites
 
 Procedure for Development
 -------------------------
-1. Fix bugs / REMOVE functionality until something works consistently without weird bugs (but maybe just slow)
-2. Capture data related to performance in 4 test suites (1 end game, 2 generic, 1 quiet)
-3. Perform regression test (get baseline performance)
-4. Make a (small) change to the engine
-5. validate that the small change makes a statistically noticeable improvement in performance of at least 1 or 2 test suites
-6. once we can prove that there is an improvement, perform regression test
-7. repeat steps 4,5,6 until all features we want to develop are done
+1. Capture data related to performance in a few test suites
+2. Perform regression test (get baseline performance)
+3. Make a (small) change to the engine
+4. validate that the small change makes a statistically noticeable improvement in performance of the test suite
+5. once we can prove that there is an improvement, perform regression test
+6. repeat steps 3,4,5 until all features we want to develop are done

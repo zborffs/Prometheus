@@ -319,8 +319,27 @@ std::string ChessMove::to_string() noexcept {
     char from_rank = (this->from_sq / 8) + '1';
     char to_rank = (this->to_sq / 8) + '1';
 
-    std::string ret{from_file, from_rank, to_file, to_rank};
-    return ret;
+    auto p = this->promoted();
+    char ptp_char;
+    switch(p) {
+        case W_QUEEN:
+        case B_QUEEN: ptp_char = 'Q'; break;
+        case W_KNIGHT:
+        case B_KNIGHT: ptp_char = 'N'; break;
+        case W_ROOK:
+        case B_ROOK: ptp_char = 'R'; break;
+        case W_BISHOP:
+        case B_BISHOP: ptp_char = 'B'; break;
+        default: ptp_char = ' '; break;
+    }
+
+    if (ptp_char == ' ') {
+        std::string ret{from_file, from_rank, to_file, to_rank};
+        return ret;
+    } else {
+        std::string ret{from_file, from_rank, to_file, to_rank, ptp_char};
+        return ret;
+    }
 }
 
 [[nodiscard]] std::string ChessMove::to_string() const noexcept {
@@ -333,6 +352,25 @@ std::string ChessMove::to_string() noexcept {
     char from_rank = (this->from_sq / 8) + '1';
     char to_rank = (this->to_sq / 8) + '1';
 
-    std::string ret{from_file, from_rank, to_file, to_rank};
-    return ret;
+    auto p = this->promoted();
+    char ptp_char;
+    switch(p) {
+        case W_QUEEN:
+        case B_QUEEN: ptp_char = 'Q'; break;
+        case W_KNIGHT:
+        case B_KNIGHT: ptp_char = 'N'; break;
+        case W_ROOK:
+        case B_ROOK: ptp_char = 'R'; break;
+        case W_BISHOP:
+        case B_BISHOP: ptp_char = 'B'; break;
+        default: ptp_char = ' '; break;
+    }
+
+    if (ptp_char == ' ') {
+        std::string ret{from_file, from_rank, to_file, to_rank};
+        return ret;
+    } else {
+        std::string ret{from_file, from_rank, to_file, to_rank, ptp_char};
+        return ret;
+    }
 }

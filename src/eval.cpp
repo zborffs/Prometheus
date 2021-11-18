@@ -141,20 +141,9 @@ namespace internal {
         Bitboard b = board.piece_bb(B_PAWN);
         Centipawns_t ret{0};
 
-        Bitboard push_pawn, push_pawn2, push_pawn3;
-        Square_t to_sq;
-        PieceType_t piece_defending;
 #ifndef NDEBUG
         Centipawns_t w_p_pst{0};
         Centipawns_t b_p_pst{0};
-        Centipawns_t w_p_mobility{0};
-        Centipawns_t b_p_mobility{0};
-        Centipawns_t w_p_attack_center{0};
-        Centipawns_t b_p_attack_center{0};
-        Centipawns_t w_p_passed_pawn{0};
-        Centipawns_t b_p_passed_pawn{0};
-        Centipawns_t w_p_rook_passed_pawn{0};
-        Centipawns_t b_p_rook_passed_pawn{0};
 #endif // NDEBUG
 
         /// Piece Square Tables --> Positioning
@@ -165,160 +154,10 @@ namespace internal {
         ret += dot_product(w, &PAWN_PST[0]);
         ret -= dot_product(flip_flop(b), &PAWN_PST[0]);
 
-        /// Attacking + Mobility
-//        push_pawn = (w << 8) & (board.empty_bb());
-//        push_pawn |= (push_pawn << 8) & (board.empty_bb() & RANK_MASK[RANK4]);
-//        push_pawn2 = (w << 9) & ~(FILE_MASK[FILEA]);
-//        push_pawn3 = (w << 7) & ~(FILE_MASK[FILEH]);
-#ifndef NDEBUG
-        w_p_mobility += PAWN_MOBILITY * (
-            pop_count(push_pawn) +
-            pop_count(push_pawn2 & board.capturable(BLACK)) +
-            pop_count(push_pawn3 & board.capturable(BLACK))
-        );
-#endif // NDEBUG
-//        ret += PAWN_MOBILITY * (
-//            pop_count(push_pawn) +
-//            pop_count(push_pawn2 & board.capturable(BLACK)) +
-//            pop_count(push_pawn3 & board.capturable(BLACK))
-//        ); // try subtracting black pop count and MUL once
-#ifndef NDEBUG
-        w_p_attack_center += PAWN_ATTACK_CENTER * (pop_count(push_pawn2 & CENTER) + pop_count(push_pawn3 & CENTER));
-#endif // NDEBUG
-//        ret += PAWN_ATTACK_CENTER * (pop_count(push_pawn2 & CENTER) + pop_count(push_pawn3 & CENTER));
-
-        /// Defending + Connectivity (Take Right)
-//        push_pawn2 &= board.capturable(WHITE);
-//        while (push_pawn2) {
-//            to_sq = bitscan_forward(push_pawn2);
-//            piece_defending = board.piece_type(to_sq, WHITE);
-//            Centipawns_t s = (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_PAWN - 2) / 2]);
-//            ret += s;
-//            push_pawn2 -= C64(1) << to_sq;
-//        }
-//
-//        /// Defending + Connectivity
-//        push_pawn3 &= board.capturable(WHITE);
-//        while (push_pawn3) {
-//            to_sq = bitscan_forward(push_pawn3);
-//            piece_defending = board.piece_type(to_sq, WHITE);
-//            Centipawns_t s = (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_PAWN - 2) / 2]);
-//            ret += s;
-//            push_pawn3 -= C64(1) << to_sq;
-//        }
-
-        /// Attacking + Mobility
-//        push_pawn  = (b >> 8) & (board.empty_bb());
-//        push_pawn |= (push_pawn >> 8) & (board.empty_bb() & RANK_MASK[RANK5]);
-//        push_pawn2 = (b >> 9) & ~(FILE_MASK[FILEH]);
-//        push_pawn3 = (b >> 7) & ~(FILE_MASK[FILEA]);
-#ifndef NDEBUG
-        b_p_mobility -= PAWN_MOBILITY * (
-            pop_count(push_pawn) +
-            pop_count(push_pawn2 & board.capturable(WHITE)) +
-            pop_count(push_pawn3 & board.capturable(WHITE))
-        );
-#endif // NDEBUG
-//        ret -= PAWN_MOBILITY * (
-//            pop_count(push_pawn) +
-//            pop_count(push_pawn2 & board.capturable(WHITE)) +
-//            pop_count(push_pawn3 & board.capturable(WHITE))
-//        );
-#ifndef NDEBUG
-        b_p_attack_center -= PAWN_ATTACK_CENTER * (pop_count(push_pawn2 & CENTER) + pop_count(push_pawn3 & CENTER));
-#endif // NDEBUG
-//        ret -= PAWN_ATTACK_CENTER * (pop_count(push_pawn2 & CENTER) + pop_count(push_pawn3 & CENTER));
-
-        /// Defending + Connectivity (Take Right)
-//        push_pawn2 &= board.capturable(BLACK);
-//        while (push_pawn2) {
-//            to_sq = bitscan_forward(push_pawn2);
-//            piece_defending = board.piece_type(to_sq, BLACK);
-//            Centipawns_t s = (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(B_PAWN - 2) / 2]);
-//            ret -= s;
-//            push_pawn2 -= C64(1) << to_sq;
-//        }
-//
-//        /// Defending + Connectivity
-//        push_pawn3 &= board.capturable(BLACK);
-//        while (push_pawn3) {
-//            to_sq = bitscan_forward(push_pawn3);
-//            piece_defending = board.piece_type(to_sq, BLACK);
-//            Centipawns_t s = (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(B_PAWN - 2) / 2]);
-//            ret -= s;
-//            push_pawn3 -= C64(1) << to_sq;
-//        }
-
-#ifndef NDEBUG
-        Bitboard debug_passed_pawn = internal::white_passed_pawns(board);
-        while (debug_passed_pawn) {
-            to_sq = bitscan_forward(debug_passed_pawn);
-            w_p_passed_pawn += PASSED_PAWN[to_sq / 8];
-            Bitboard to_sq_bb = C64(1) << to_sq;
-            if (file_fill(to_sq_bb) & board.piece_bb(W_ROOK)) {
-                w_p_rook_passed_pawn += ROOK_SUPPORTING_PASSED_PAWNS;
-            }
-
-            debug_passed_pawn -= to_sq_bb;
-        }
-#endif // NDEBUG
-        /// Passed Pawn Boni
-//        Bitboard passed_pawn = internal::white_passed_pawns(board);
-//        while (passed_pawn) {
-//            to_sq = bitscan_forward(passed_pawn);
-//            ret += PASSED_PAWN[to_sq / 8];
-//            Bitboard to_sq_bb = C64(1) << to_sq;
-//            if (file_fill(to_sq_bb) & board.piece_bb(W_ROOK)) {
-//                ret += ROOK_SUPPORTING_PASSED_PAWNS;
-//            }
-//            passed_pawn -= to_sq_bb;
-//        }
-
-#ifndef NDEBUG
-        debug_passed_pawn = internal::black_passed_pawns(board);
-        while (debug_passed_pawn) {
-            to_sq = bitscan_forward(debug_passed_pawn);
-            b_p_passed_pawn -= PASSED_PAWN[7 - (to_sq / 8)];
-            Bitboard to_sq_bb = C64(1) << to_sq;
-            if (file_fill(to_sq_bb) & board.piece_bb(B_ROOK)) {
-                b_p_rook_passed_pawn -= ROOK_SUPPORTING_PASSED_PAWNS;
-            }
-            debug_passed_pawn -= to_sq_bb;
-        }
-#endif // NDEBUG
-//        passed_pawn = internal::black_passed_pawns(board);
-//        while (passed_pawn) {
-//            to_sq = bitscan_forward(passed_pawn);
-//            ret -= PASSED_PAWN[7 - (to_sq / 8)];
-//            Bitboard to_sq_bb = C64(1) << to_sq;
-//            if (file_fill(to_sq_bb) & board.piece_bb(B_ROOK)) {
-//                ret -= ROOK_SUPPORTING_PASSED_PAWNS;
-//            }
-//            passed_pawn -= to_sq_bb;
-//        }
-
-        /// Pawn islands + isolated pawns
-//        ret += pawn_island_differential(board);
-//        ret += (pop_count(isolanis(board.piece_bb(W_PAWN))) - pop_count(isolanis(board.piece_bb(B_PAWN)))) * PAWN_ISOLATED;
-//        ret += (pop_count(board.piece_bb(W_PAWN) & white_rear_span(board)) - pop_count(board.piece_bb(B_PAWN) & black_rear_span(board))) * PAWN_DOUBLE;
-
 #ifndef NDEBUG
         if (verbose) {
             es.printer.add("White Pawn PST", w_p_pst);
             es.printer.add("Black Pawn PST", b_p_pst);
-            es.printer.add("White Pawn Mobility", w_p_mobility);
-            es.printer.add("Black Pawn Mobility", b_p_mobility);
-            es.printer.add("White Attack Center", w_p_attack_center);
-            es.printer.add("Black Attack Center", b_p_attack_center);
-            es.printer.add("White Passed Pawn", w_p_passed_pawn);
-            es.printer.add("Black Passed Pawn", b_p_passed_pawn);
-            es.printer.add("White Rook Supported Passed Pawn", w_p_rook_passed_pawn);
-            es.printer.add("Black Rook Supported Passed Pawn", b_p_rook_passed_pawn);
-            es.printer.add("Pawn Island Differential", pawn_island_differential(board));
-            es.printer.add("White Isolated Pawn", pop_count(isolanis(board.piece_bb(W_PAWN))) * PAWN_ISOLATED);
-            es.printer.add("Black Isolated Pawn", -pop_count(isolanis(board.piece_bb(B_PAWN))) * PAWN_ISOLATED);
-            es.printer.add("White Doubled Pawns", pop_count(board.piece_bb(W_PAWN) & white_rear_span(board)) * PAWN_DOUBLE);
-            es.printer.add("Black Doubled Pawns", -pop_count(board.piece_bb(B_PAWN) & black_rear_span(board)) * PAWN_DOUBLE);
         }
 #endif // NDEBUG
 
@@ -335,10 +174,6 @@ namespace internal {
         Bitboard w = board.piece_bb(W_ROOK);
         Bitboard b = board.piece_bb(B_ROOK);
         Centipawns_t ret{0};
-        Bitboard push_rook;
-        Square_t from_sq;
-        Square_t to_sq;
-        PieceType_t piece_defending;
 #ifndef NDEBUG
         Centipawns_t w_r_pst{0};
         Centipawns_t b_r_pst{0};
@@ -351,41 +186,6 @@ namespace internal {
 #endif // NDEBUG
         ret += dot_product(w, &ROOK_PST[0]);
         ret -= dot_product(flip_flop(b), &ROOK_PST[0]);
-
-//        /// Open File + Half Open File Boni --> Positioning
-//        Bitboard of = open_files(board);
-//        Bitboard nsf = ~semiclosed_files(board);
-//        ret += (pop_count(of & w) - pop_count(of & b)) * ROOK_ON_OPEN_FILE_BONUS;
-//        ret += (pop_count(white_half_open_files(board) & w & nsf) - pop_count(black_half_open_files(board) & b & nsf)) * ROOK_ON_HALF_OPEN_FILE_BONUS;
-//
-//        /// Attacking + Defending + Mobility + Connectivity
-//        for (Color_t col = WHITE; col <= BLACK; col++) {
-//            Bitboard rook_bb = col == WHITE ? w : b;
-//            Centipawns_t color_multiplier = col * -2 + 1;
-//            while (rook_bb) {
-//                from_sq = bitscan_forward(rook_bb);
-//                push_rook = rook_moves(from_sq, board.occupied_bb());
-//                ret += pop_count(push_rook & (board.empty_bb() | board.capturable(!col) | CENTER_FILES)) * color_multiplier * OM_ROOK_MOBILITY;
-//
-//                push_rook &= board.capturable(col);
-//
-//                while (push_rook) {
-//                    to_sq = bitscan_forward(push_rook);
-//                    piece_defending = board.piece_type(to_sq, col);
-//                    Centipawns_t s = ((CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_ROOK - 2) / 2]) * color_multiplier);
-//                    ret += s;
-//
-//                    // bonus for connected rooks
-//                    if (piece_defending == W_ROOK + col) {
-//                        ret += CONNECTED_ROOK_BONUS * color_multiplier;
-//                    }
-//                    push_rook -= C64(1) << to_sq;
-//                }
-//
-//                rook_bb -= C64(1) << from_sq;
-//            }
-//        }
-//
 
 #ifndef NDEBUG
         if (verbose) {
@@ -408,11 +208,6 @@ namespace internal {
         Bitboard b = board.piece_bb(B_KNIGHT);
         Centipawns_t ret{0};
 
-        Bitboard push_knight;
-        Bitboard knight_bb;
-        Square_t from_sq;
-        Square_t to_sq;
-        PieceType_t piece_defending;
 #ifndef NDEBUG
         Centipawns_t w_n_pst{0};
         Centipawns_t b_n_pst{0};
@@ -425,49 +220,6 @@ namespace internal {
 #endif // NDEBUG
         ret += dot_product(w, &KNIGHT_PST[0]);
         ret -= dot_product(flip_flop(b), &KNIGHT_PST[0]);
-
-//        /// Attacking + Defending + Mobility + Connectivity
-//        for (Color_t col = WHITE; col <= BLACK; col++) {
-//            knight_bb = board.piece_bb(W_QUEEN + col);
-//            Centipawns_t color_multiplier = col * -2 + 1;
-//            while (knight_bb) {
-//                from_sq = bitscan_forward(knight_bb);
-//                push_knight = knight_moves(C64(1) << from_sq);
-//                ret += pop_count(push_knight & (board.capturable(!col) | board.empty_bb() | CENTER)) * color_multiplier * KNIGHT_MOBILITY;
-//
-//                /// Outpost --> Positioning
-//                if (col == WHITE) {
-//                    Bitboard outpost = (((board.piece_bb(W_PAWN) << 9) & ~(FILE_MASK[FILEA])) | ((board.piece_bb(W_PAWN) << 7) & ~(FILE_MASK[FILEH]))) & (C64(1) << from_sq);
-//                    if (outpost) {
-//                        outpost = ~((board.piece_bb(B_PAWN) & north_fill(((C64(1) << (from_sq + 1)) & ~(FILE_MASK[FILEA])) | ((C64(1) << (from_sq - 1)) & ~(FILE_MASK[FILEH])))));
-//                        if(outpost) {
-//                            ret += KNIGHT_OUTPOST_BONUS;
-//                        }
-//                    }
-//                } else {
-//                    Bitboard outpost = (((board.piece_bb(B_PAWN) >> 9) & ~(FILE_MASK[FILEH])) | ((board.piece_bb(B_PAWN) >> 7) & ~(FILE_MASK[FILEA]))) & (C64(1) << from_sq);
-//                    if(outpost) {
-//                        outpost = ~((board.piece_bb(W_PAWN) & south_fill(((C64(1) << (from_sq + 1)) & ~(FILE_MASK[FILEA])) | ((C64(1) << (from_sq - 1)) & ~(FILE_MASK[FILEH])))));
-//
-//                        if(outpost) {
-//                            ret -= KNIGHT_OUTPOST_BONUS;
-//                        }
-//                    }
-//                }
-//
-//                push_knight &= board.capturable(col);
-//                while (push_knight) {
-//                    to_sq = bitscan_forward(push_knight);
-//                    piece_defending = board.piece_type(to_sq, col);
-//                    Centipawns_t s = (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_KNIGHT - 2) / 2]) * color_multiplier;
-//                    ret += s;
-//                    push_knight -= C64(1) << to_sq;
-//                }
-//
-//                knight_bb -= C64(1) << from_sq;
-//            }
-//        }
-//
 
 #ifndef NDEBUG
         if (verbose) {
@@ -490,16 +242,9 @@ namespace internal {
         Bitboard b = board.piece_bb(B_BISHOP);
         Centipawns_t ret{0};
 
-        Bitboard push_bishop;
-        Bitboard bishop_bb;
-        Square_t from_sq;
-        Square_t to_sq;
-        PieceType_t piece_defending;
 #ifndef NDEBUG
         Centipawns_t w_b_pst{0};
         Centipawns_t b_b_pst{0};
-        Centipawns_t w_b_pair{0};
-        Centipawns_t b_b_pair{0};
 #endif // NDEBUG
 
 
@@ -511,49 +256,10 @@ namespace internal {
         ret += dot_product(w, &BISHOP_PST[0]);
         ret -= dot_product(flip_flop(b), &BISHOP_PST[0]);
 
-        /// Bishop Pair Advantage
-//        if (pop_count(w) >= 2) {
-#ifndef NDEBUG
-            w_b_pair += BISHOP_PAIR_BONUS;
-#endif // NDEBUG
-//            ret += BISHOP_PAIR_BONUS;
-//        }
-//        if (pop_count(b) >= 2) {
-#ifndef NDEBUG
-            b_b_pair -= BISHOP_PAIR_BONUS;
-#endif // NDEBUG
-//            ret -= BISHOP_PAIR_BONUS;
-//        }
-//
-//        /// Attacking + Defending + Mobility + Connectivity
-//        for (Color_t col = WHITE; col <= BLACK; col++) {
-//            bishop_bb = board.piece_bb(W_BISHOP + col);
-//            Centipawns_t color_multiplier = col * -2 + 1;
-//            while (bishop_bb) {
-//                from_sq = bitscan_forward(bishop_bb);
-//                push_bishop = bishop_moves(from_sq, board.occupied_bb());
-//
-//                ret += pop_count(push_bishop & (board.capturable(!col) | board.empty_bb() | CENTER)) * color_multiplier;
-//
-//                push_bishop &= board.capturable(col);
-//                while (push_bishop) {
-//                    to_sq = bitscan_forward(push_bishop);
-//                    piece_defending = board.piece_type(to_sq, col);
-//                    Centipawns_t s = (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_BISHOP - 2) / 2]) * color_multiplier;
-//                    ret += s;
-//                    push_bishop -= C64(1) << to_sq;
-//                }
-//
-//                bishop_bb -= C64(1) << from_sq;
-//            }
-//        }
-
 #ifndef NDEBUG
         if (verbose) {
             es.printer.add("White Bishop PST", w_b_pst);
             es.printer.add("Black Bishop PST", b_b_pst);
-            es.printer.add("White Bishop Pair", w_b_pair);
-            es.printer.add("Black Bishop Pair", b_b_pair);
         }
 #endif // NDEBUG
 
@@ -570,11 +276,6 @@ namespace internal {
         Bitboard w = board.piece_bb(W_QUEEN);
         Bitboard b = board.piece_bb(B_QUEEN);
         Centipawns_t ret{0};
-        Bitboard push_queen;
-        Bitboard queen_bb;
-        Square_t from_sq;
-        Square_t to_sq;
-        PieceType_t piece_defending;
 #ifndef NDEBUG
         Centipawns_t w_queen_pst{0};
         Centipawns_t b_queen_pst{0};
@@ -588,28 +289,6 @@ namespace internal {
 #endif // NDEBUG
         ret += dot_product(w, &QUEEN_PST[0]);
         ret -= dot_product(flip_flop(b), &QUEEN_PST[0]);
-
-//        for (Color_t col = WHITE; col <= BLACK; col++) {
-//            queen_bb = board.piece_bb(W_QUEEN + col);
-//            Centipawns_t color_multiplier = col * -2 + 1;
-//
-//            while (queen_bb) {
-//                from_sq = bitscan_forward(queen_bb);
-//                push_queen = queen_moves(from_sq, board.occupied_bb());
-//                ret += pop_count(push_queen & (board.capturable(!col) | board.empty_bb() | CENTER)) * color_multiplier;
-//
-//                push_queen &= board.capturable(col);
-//                while (push_queen) {
-//                    to_sq = bitscan_forward(push_queen);
-//                    piece_defending = board.piece_type(to_sq, col);
-//                    Centipawns_t s = (CONNECTIVITY[(piece_defending - 2) / 2] + CONNECTIVITY[(W_QUEEN - 2) / 2]) * color_multiplier;
-//                    ret += s;
-//                    push_queen -= C64(1) << to_sq;
-//                }
-//
-//                queen_bb -= C64(1) << from_sq;
-//            }
-//        }
 
         /// Penalize developing queen before 2 minor pieces in opening
         if (es.stage == OPENING) {
@@ -656,11 +335,6 @@ namespace internal {
         Bitboard w = board.piece_bb(W_KING);
         Bitboard b = board.piece_bb(B_KING);
         Centipawns_t ret{0};
-
-        Bitboard push_king;
-        Bitboard king_bb;
-        Square_t to_sq;
-        PieceType_t piece_defending;
 #ifndef NDEBUG
         Centipawns_t w_king_pst;
         Centipawns_t b_king_pst;
@@ -686,12 +360,10 @@ namespace internal {
             ret -= dot_product(flip_flop(b), &M_KING_PST[0]);
         }
 
-//        for (Color_t col = WHITE; col <= BLACK; col++) {
-//            king_bb = board.piece_bb(W_KING + col);
-//            push_king = king_moves(king_bb);
-//            Centipawns_t color_multiplier = col * -2 + 1;
-//            ret += pop_count(push_king & (board.capturable(!col) | board.empty_bb())) * color_multiplier;
-//        }
+        // penalty if not castled by mid game
+
+        // pawn shield
+        // - applicable when king has castled, so if the king hasn't castled
 
 #ifndef NDEBUG
         if (verbose) {
