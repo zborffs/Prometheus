@@ -249,6 +249,4 @@ namespace zaamath {
     }
 };
 
-
-
 #endif //PROMETHEUS_HYPOTHESIS_TESTING_HPP

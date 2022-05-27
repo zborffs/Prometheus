@@ -406,6 +406,12 @@ namespace internal {
      * @return             the score of the best position in centipawns
      */
     Centipawns_t q_search(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta) {
+        // check to see if we have run out of time
+        if (((unsigned)search_state.raw_nodes & 127) == 0) { // every 127 might be a little extreme? Test moving in further
+            internal::check_stop_search(depth, options, search_state);
+        }
+        search_state.raw_nodes++;
+
         /// initialize the local variables
         Centipawns_t score = -INF;
         Centipawns_t init_alpha = alpha;
@@ -422,9 +428,6 @@ namespace internal {
 
         if (depth == 0) {
 //            SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Quitting q-search cuz we reached the depth limit");
-#ifndef NDEBUG
-            search_state.leaf_nodes++;
-#endif // NDEBUG
             return standing_pat;
         }
 
@@ -458,6 +461,11 @@ namespace internal {
             alpha = standing_pat;
         }
 
+        // if we have run out of time to search, then just quit.
+        if (search_state.time_exit) {
+            return 0;
+        }
+
         ChessMove best_move;
         std::vector<ChessMove> movelist;
         movelist.reserve(128);
@@ -476,9 +484,6 @@ namespace internal {
                 continue;
             }
             ++search_state.height;
-#ifndef NDEBUG
-            search_state.raw_nodes++;
-#endif // NDEBUG
 
             /// recursively search and return to the original position
             score = -q_search(board, options, search_state, eval_state, depth - 1, -beta, -alpha);
@@ -563,7 +568,7 @@ namespace internal {
         }
 
         /// If it's sudden death, and we've run outta time, then stop the search
-        if (options.sudden_death && search_state.clock.has_exceeded_time()) {
+        if (search_state.clock.has_exceeded_time()) {
             search_state.time_exit = true;
             return true;
         }
@@ -575,15 +580,14 @@ namespace internal {
         }
 
         /// If the amount of time that's transpired exceeds the amount of time for the search, then stop
-        if (options.move_time != -1) {
-            search_state.clock.stop();
-            bool should_exit = search_state.clock.duration() / 1000000 > options.move_time;
-            search_state.time_exit = should_exit;
-            return should_exit;
-        }
+//        if (options.search_for_time_x != -1) {
+//            search_state.clock.stop();
+//            bool should_exit = search_state.clock.duration() / 1000000 > (unsigned long long)options.search_for_time_x;
+//            search_state.time_exit = should_exit;
+//            return should_exit;
+//        }
 
         return false;
-
     }
 
     void order_moves(std::vector<ChessMove>& movelist, SearchState& search_state, Board& board, ChessMove* hash_move) {

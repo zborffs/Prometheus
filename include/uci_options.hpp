@@ -31,7 +31,6 @@ struct UCIOptions {
     int search_for_time_x{-1};
     int search_x_nodes{-1};
     int search_for_mate_in_x{-1};
-    int move_time{-1};
     bool infinite{false};
     bool ponder{false};
     bool sudden_death{false};
@@ -74,7 +73,6 @@ struct UCIOptions {
         os << "  Search for Time: " << opt.search_for_time_x << " [ms]" << std::endl;
         os << "  Search for Nodes: " << opt.search_x_nodes << " [nodes]" << std::endl;
         os << "  Search for Mate in: " << opt.search_for_mate_in_x << " [moves]" << std::endl;
-        os << "  Search for Exactly: " << opt.move_time << " [ms]" << std::endl;
         os << "  Infinite: " << opt.infinite << std::endl;
         os << "  Ponder: " << opt.ponder << std::endl;
         os << "  Sudden Death: " << opt.sudden_death << std::endl;

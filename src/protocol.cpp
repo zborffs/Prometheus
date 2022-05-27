@@ -156,7 +156,7 @@ namespace internal {
 
         /// If we received a "movetime" command, update corresponding variable
         itr = std::find(go_command.begin() + 1, go_command.end(), "movetime");
-        options.move_time = itr != go_command.end() ? std::stoi(*(itr + 1)) : -1; // search exactly for 'x' seconds
+        options.search_for_time_x = itr != go_command.end() ? std::stoi(*(itr + 1)) : -1; // search exactly for 'x' milliseconds
 
         /// If we received a "infinite" command, update corresponding variable
         itr = std::find(go_command.begin() + 1, go_command.end(), "infinite");

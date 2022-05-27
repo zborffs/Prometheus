@@ -31,3 +31,8 @@ opening book
 tune
 ----
 - C++ source code for tuning the engine's evaluation parameters
+
+
+```shell
+./c-chess-cli -each movetime=1.0 -engine cmd=../../cmake-build-release-sse/prometheus -engine cmd=../../../Chess/Vice_poly/Source/vice -pgn out.pgn 3 -log
+```

@@ -24,10 +24,10 @@ struct SearchState {
     Depth height; // ply
     std::array<std::pair<ChessMove, ChessMove>, 64> killer_move; // * 4 is for good measure
     std::array<std::array<Centipawns_t, 65>, 14> history_heuristic; // 13 being the max value a PieceType can be and 64 being the number of squares
+    int raw_nodes;
 
 #ifndef NDEBUG
     int leaf_nodes;
-    int raw_nodes;
     int fail_high_count;
     int fail_high_first_count;
     int window_widen_count;
@@ -62,9 +62,10 @@ struct SearchState {
         os << "- result_flag: " << result_flag_str << std::endl;
         os << "  time_exit: " << ss.time_exit << std::endl;
         os << "  height: " << ss.height << std::endl;
+        os << "  raw_nodes: " << ss.raw_nodes << std::endl;
 #ifndef NDEBUG
         os << "  leaf_nodes: " << ss.leaf_nodes << std::endl;
-        os << "  raw_nodes: " << ss.raw_nodes << std::endl;
+//        os << "  raw_nodes: " << ss.raw_nodes << std::endl;
         os << "  fail_high_count: " << ss.fail_high_count << std::endl;
         os << "  fail_high_first_count: " << ss.fail_high_first_count << std::endl;
         os << "  window_widen_count: " << ss.window_widen_count << std::endl;

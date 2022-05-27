@@ -86,13 +86,5 @@ int main(int argc, char** argv) {
 //    matplot::plot(adam.f_x_prev());
 //    matplot::show();
 
-
-    H5Easy::File file("../../tools/data/vector.hdf5", H5Easy::File::Overwrite);
-
-    H5Easy::dump(file, "/vector", vector);
-
-    Eigen::Matrix<double, 10, 1> vector123 = H5Easy::load<Eigen::Matrix<double, 10, 1>>(file, "/vector");
-    std::cout << vector << std::endl << std::endl;
-    std::cout << vector123 << std::endl << std::endl;
     return 0;
 }

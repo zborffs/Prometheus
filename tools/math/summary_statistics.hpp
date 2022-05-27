@@ -1,8 +1,7 @@
 /**
  * This file contains summary statistics template functions for Eigen::Matrix data types.
  *
- * More functions are added once a need for the particular function necessitates their development. In other words,
- * until there is a use for developing a summary statistic, I will not implement it. For example, as of right now, there
+ * Until there is a use for developing a summary statistic, I will not implement it. For example, as of right now, there
  * is no kurtosis function, because there are no clients nor any other functions within the library requiring a kurtosis
  * function.
  */
@@ -69,7 +68,6 @@ namespace zaamath {
     Eigen::Matrix<T, 1, ColIndexType> range(const Eigen::Matrix<T, RowIndexType, ColIndexType>& data) {
         return data.colwise().maxCoeff() - data.colwise().minCoeff();
     }
-
 };
 
 #endif //PROMETHEUS_SUMMARY_STATISTICS_HPP
