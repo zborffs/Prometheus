@@ -17,11 +17,11 @@ static constexpr MoveScore MVVLVA[5][5] {
 
 struct ChessMove {
     /// Member Variables
-    Square_t from_sq : 6;
-    MoveFlag_t mf : 2;
+    Square_t from_sq : 6; // square we moved from
+    MoveFlag_t mf : 2; // first two bits of the move flag
     Square_t to_sq : 6;
-    MoveFlag_t pf : 2;
-    PieceType_t moved : 4;
+    MoveFlag_t pf : 2; // second two bits of the move flag
+    PieceType_t moved : 4; // piece type
     PieceType_t captured : 4;
     MoveScore score;
 

@@ -80,8 +80,6 @@ namespace internal {
             } else {
                 board.make_move(move.value());
             }
-
-
         }
     }
 
@@ -218,20 +216,18 @@ namespace internal {
                 return std::nullopt;
             }
 
-            /// Set the move flags: if there was a captured piece, then it's a captured move
+            // Set the move flag
             if (ptc != PieceType::NO_PIECE) {
+                // if there was a captured piece, then it's a captured move
                 flags = CAPTURE_MOVE;
-
-                /// If it was an en-passant move, then set the en passant flag
             } else if (((ptm == PieceType::W_PAWN && (to_sq - from_sq == 9 || to_sq - from_sq == 7)) || (ptm == PieceType::B_PAWN && (from_sq - to_sq == 9 || from_sq - to_sq == 7))) && to_sq == board.ep_sq()) {
-                flags = ENPASSANT;
-
-                /// if the moved piece was a pawn and it moved 2 squares, then set the double-push-pawn flag
+                // If it was an en-passant move, then set the en passant flag
+                flags = ENPASSANT; // TODO: TEST FOR BUG...
             } else if ((ptm == PieceType::W_PAWN && to_sq - from_sq == 16 && from_sq / 8 == Rank::RANK2) || (ptm == PieceType::B_PAWN && from_sq - to_sq == 16 && from_sq / 8 == Rank::RANK7)) {
+                // if the moved piece was a pawn and it moved 2 squares, then set the double-push-pawn flag
                 flags = DOUBLE_PUSH_PAWN;
-
-                /// If it was a castle, then set the castle flag
             } else if (ptm == PieceType::W_KING || ptm == PieceType::B_KING) {
+                // If it was a castle, then set the castle flag
                 if ((from_sq == E1 && to_sq == G1) || (from_sq == E8 && to_sq == G8)) {
                     flags = KING_CASTLE;
                 } else if ((from_sq == E1 && to_sq == C1) || (from_sq == E8 && to_sq == C8)) {
@@ -239,8 +235,9 @@ namespace internal {
                 }
             }
 
-            /// If there was a fifth character, then that indicates a promotion, and we need to figure that out
+            // If there was a fifth character, then that indicates a promotion, and we need to figure that out
             if (move.size() == 5) {
+                assert((ptm == W_PAWN && to_sq / 8 == Rank::RANK8 && from_sq / 8 == Rank::RANK7) || (ptm == B_PAWN && to_sq / 8 == Rank::RANK1 && from_sq / 8 == Rank::RANK2));
                 if ((ptm == W_PAWN && to_sq / 8 == Rank::RANK8) || (ptm == B_PAWN && to_sq / 8 == Rank::RANK1)) {
                     switch (move[4]) {
                         case 'N':

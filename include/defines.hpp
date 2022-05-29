@@ -84,7 +84,7 @@ enum MoveFlag : uint8_t {
     BISHOP_PROMO_CAPTURE = 14,
     QUEEN_PROMO_CAPTURE = 15,
     PROMO = 8,
-    NO_MOVE_FLAG = 0
+    NO_MOVE_FLAG = 0 // uh oh... same fucking thing as quiet move?
 };
 
 enum Rank : uint8_t {

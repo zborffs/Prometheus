@@ -881,11 +881,11 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
 #ifndef NDEBUG
             " raw_nodes " << search_state.raw_nodes <<
             " leaf_nodes " << search_state.leaf_nodes <<
-            " nps " << (double)(search_state.raw_nodes / (time_elapsed / 1000.)) <<
+//            " nps " << (double)(search_state.raw_nodes / (time_elapsed / 1000.)) <<
             " ordering " << search_state.ordering() <<
-            " window_ratio " << search_state.window_ratio() <<
-            " position_type " << pos_type_str <<
-            " game_stage " << game_stage_str <<
+//            " window_ratio " << search_state.window_ratio() <<
+//            " position_type " << pos_type_str <<
+//            " game_stage " << game_stage_str <<
             " load_factor " << static_cast<double>(search_state.tt.load_factor()) <<
             " hit_rate " << static_cast<double>(search_state.tt.hit_rate()) <<
             " overwrite_percentage " << static_cast<double>(search_state.tt.overwrite_percentage()) <<

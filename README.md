@@ -180,3 +180,23 @@ Procedure for Development
 4. validate that the small change makes a statistically noticeable improvement in performance of the test suite
 5. once we can prove that there is an improvement, perform regression test
 6. repeat steps 3,4,5 until all features we want to develop are done
+
+-------
+```
+   [1] Started game 1 of 1 (Prometheus 0.1 vs Vice 1.1)
+   [1] WARNING: Illegal move in PV 'h2h1Q' from Prometheus 0.1
+   [1] WARNING: Illegal move in PV 'h2h1Q g5d5 f2f3 d5f7 f3f7 g4g5 f7d7' from Prometheus 0.1
+   [1] WARNING: Illegal move in PV 'g7h7' from Prometheus 0.1
+   [1] WARNING: Illegal move in PV 'f1f4 f1f4' from Prometheus 0.1
+   [1] Finished game 1 (Prometheus 0.1 vs Vice 1.1): 0-1 {checkmate}
+   Score of Prometheus 0.1 vs Vice 1.1: 0 - 1 - 0  [0.000] 1
+   zachbortoff@Zachs-MacBook-Pro bin % 
+```
+
+------
+
+Problems
+--------
+1. Repeating moves "illegal moves"
+2. timing problem
+3. engine performance

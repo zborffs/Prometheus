@@ -19,37 +19,58 @@ ChessMove::ChessMove(Square_t from_sq, Square_t to_sq, MoveFlag_t flag, PieceTyp
         from_sq(from_sq), mf(flag & (MoveFlag_t)3), to_sq(to_sq), pf(flag >> (MoveFlag_t)2), moved(moved), captured(captured), score(0) {
 
     if (captured != NO_PIECE) {
+        // if a piece was captured then compute a move score using the MVVLVA table
         score = MVVLVA[captured / 2 - 1][moved / 2 - 1];
     }
 
-    /// Make sure that both the moved and captured PieceTypes are valid PieceTypes (0 and 1 are W_PIECES and B_PIECES)
+    // make sure we didn't move to the same square
     assert(from_sq != to_sq);
+
+    // make sure neither king was captured
     assert(captured != W_KING && captured != B_KING);
 #ifndef NDEBUG
+    // get the type of move
+    MoveFlag_t fl = this->flag();
+
     if (captured != NO_PIECE) {
+        // so long as a piece was captured, make sure the moved piece is a different color than the captured piece
         assert(moved % 2 != captured % 2);
-        /// if there is a piece being captured, make sure the capture flag is set.
-        assert(flag & CAPTURE_MOVE);
+
+        // if there is a piece being captured, make sure the capture flag is set.
+        assert(fl & CAPTURE_MOVE);
     } else {
-        /// captured == NO_PIECE; flag & CAPTURED => 0; !0 => 1 => true
-//        assert(!(flag & CAPTURE_MOVE));
+        // if no piece was captured, then the flag must not be a capture move.
+        assert(!(fl & CAPTURE_MOVE));
     }
 
-    if (flag == KING_CASTLE || flag == QUEEN_CASTLE) {
+    if (fl == KING_CASTLE || fl == QUEEN_CASTLE) {
+        // if the flag type was a castle, then no piece should have been captured
         assert(captured == NO_PIECE);
+
+        // if the flag type was a castle, then either the black or white king should have moved
         assert(moved == W_KING || moved == B_KING);
     }
 
     if (flag == ENPASSANT) {
+        // if it was an en passant move, then either a whie pawn or a black pawn should have moved
         assert(moved == W_PAWN || moved == B_PAWN);
-        if (moved % 2 == 0) {
-            // white
+
+        if (moved % 2 == WHITE) {
+            // if a black pawn performed en passant it must have moved from a square on row 3 and to a square on row 2
             assert(from_sq / 8 == 4);
             assert(to_sq / 8 == 5);
+
+            // if white pawn performed en passant, then it must have captured a black pawn
+            assert(captured == B_PAWN);
         } else {
-            // black
+            // if the get to this point, we can infer that the piece that got moved is the black pawn
+
+            // if a black pawn performed en passant it must have moved from a square on row 3 and to a square on row 2
             assert(from_sq / 8 == 3);
             assert(to_sq / 8 == 2);
+
+            // if black pawn performed en passant, then it must have captured a white pawn
+            assert(captured == W_PAWN);
         }
     }
 #endif // NDEBUG
@@ -61,12 +82,11 @@ ChessMove::ChessMove(Square_t from_sq, Square_t to_sq, MoveFlag_t flag, PieceTyp
  */
 PieceType_t ChessMove::promoted() noexcept {
     MoveFlag_t move_info = flag();
-
     if (!(move_info & PROMO)) {
+        // if the 'PROMO' bit of the move flag isn't set, then no piece was promoted
         return NO_PIECE;
     }
-
-
+    // equation converts any promoted MOVEFLAG into PieceType corresponding to the thing being promoted to
     return 2 * (move_info & ~CAPTURE_MOVE) - 12 + (!(to_sq / 8)); // NOLINT
 }
 
@@ -76,11 +96,11 @@ PieceType_t ChessMove::promoted() noexcept {
  */
 PieceType_t ChessMove::promoted() const noexcept {
     auto move_info = flag();
-
     if (!(move_info & PROMO)) {
+        // if the 'PROMO' bit of the move flag isn't set, then no piece was promoted
         return NO_PIECE;
     }
-
+    // equation converts any promoted MOVEFLAG into PieceType corresponding to the thing being promoted to
     return 2 * (move_info & ~CAPTURE_MOVE) - 12 + (!(to_sq / 8)); // NOLINT
 }
 
@@ -322,14 +342,14 @@ std::string ChessMove::to_string() noexcept {
     auto p = this->promoted();
     char ptp_char;
     switch(p) {
-        case W_QUEEN:
-        case B_QUEEN: ptp_char = 'Q'; break;
-        case W_KNIGHT:
-        case B_KNIGHT: ptp_char = 'N'; break;
-        case W_ROOK:
-        case B_ROOK: ptp_char = 'R'; break;
-        case W_BISHOP:
-        case B_BISHOP: ptp_char = 'B'; break;
+        case W_QUEEN: ptp_char = 'Q'; break;
+        case B_QUEEN: ptp_char = 'q'; break;
+        case W_KNIGHT: ptp_char = 'N'; break;
+        case B_KNIGHT: ptp_char = 'n'; break;
+        case W_ROOK: ptp_char = 'R'; break;
+        case B_ROOK: ptp_char = 'r'; break;
+        case W_BISHOP: ptp_char = 'B'; break;
+        case B_BISHOP: ptp_char = 'b'; break;
         default: ptp_char = ' '; break;
     }
 
@@ -355,14 +375,14 @@ std::string ChessMove::to_string() noexcept {
     auto p = this->promoted();
     char ptp_char;
     switch(p) {
-        case W_QUEEN:
-        case B_QUEEN: ptp_char = 'Q'; break;
-        case W_KNIGHT:
-        case B_KNIGHT: ptp_char = 'N'; break;
-        case W_ROOK:
-        case B_ROOK: ptp_char = 'R'; break;
-        case W_BISHOP:
-        case B_BISHOP: ptp_char = 'B'; break;
+        case W_QUEEN: ptp_char = 'Q'; break;
+        case B_QUEEN: ptp_char = 'q'; break;
+        case W_KNIGHT: ptp_char = 'N'; break;
+        case B_KNIGHT: ptp_char = 'n'; break;
+        case W_ROOK: ptp_char = 'R'; break;
+        case B_ROOK: ptp_char = 'r'; break;
+        case W_BISHOP: ptp_char = 'B'; break;
+        case B_BISHOP: ptp_char = 'b'; break;
         default: ptp_char = ' '; break;
     }
 

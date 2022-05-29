@@ -121,7 +121,7 @@ void ChessClock::alloc_time(UCIOptions& options, Color_t side_2_move) {
     } else if (options.search_for_time_x != -1) {
         /// if the options say to search for a certain amount of time, then time isn't extensible
         time_is_extensible_ = false;
-        allocated_time_ = options.search_for_time_x - 10; // "- 100" just to make sure we don't violate the time move constraint
+        allocated_time_ = options.search_for_time_x - 50; // "- 50" just to make sure we don't violate the time move constraint
         return;
     }
 
@@ -158,7 +158,7 @@ bool ChessClock::has_exceeded_time() {
     stop();
     Milliseconds_t delta = duration() / 1000000;
     bool ret = false;
-    if (delta + 10 >= allocated_time_) { // "+ 10" for safety
+    if (delta + 15 >= allocated_time_) { // "+ 10" for safety
         ret = true;
     }
     return ret;
