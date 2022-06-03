@@ -1,0 +1,10 @@
+June 03, 2022 @ roughly 4:23 PM EST
+Prometheus 0.1 played Vice 1.1 in 10 games at 1000 ms time control orchestrated by c-chess-cli on MacBook Pro (personal)
+
+Command Run:
+```
+./c-chess-cli -games 10 -each movetime=1.0 -engine cmd=../../cmake-build-debug-sse/prometheus -engine cmd=../../../Chess/Vice_poly/Source/vice -pgn out.pgn 3 -log
+```
+
+Prometheus (win-lose-draw) = (0-9-1)
+LOS 0.05 -> Very likely not as good
