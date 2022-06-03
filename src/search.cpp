@@ -908,9 +908,8 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
         }
 
         /// print search information
-        std::cout << "info score cp " << score << " time " << time_elapsed << " depth " << depth <<
+        std::cout << std::setprecision(2) << "info score cp " << score << " time " << time_elapsed << " depth " << depth <<
 #ifndef NDEBUG
-            // only want X.XX decimals (i.e. 3 sig figs)
             " nodes " << search_state.raw_nodes <<
 //            " leaf_nodes " << search_state.leaf_nodes <<
 //            " nps " << (double)(search_state.raw_nodes / (time_elapsed / 1000.)) <<

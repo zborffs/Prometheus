@@ -31,14 +31,14 @@ int main([[maybe_unused]] const int argc, char* argv[]) {
     std::string base(path.substr(0, path.find_last_of('/')));
 #endif // WINDOWS
 
-    /// Initialize the logger variables, if it fails to initialize, then quit.
+    // Initialize the logger variables, if it fails to initialize, then quit.
     std::string logpath(base + "/../logs/Prometheus.log");
     std::string bookpath(base + "/../data/PrometheusOpening.book");
     if (!init_logger(logpath)) {
         return LOG_FAILURE;
     }
 
-    /// Instantiate all state objects
+    // Instantiate all state objects
     Board board;
     UCIOptions options;
     SearchState search_state(32 * 1000000 / sizeof(ChessHash));
@@ -46,24 +46,20 @@ int main([[maybe_unused]] const int argc, char* argv[]) {
     Book book;
     create_book(bookpath, book);
 
-    /// Create loop variables
+    // Create loop variables
     bool quit = false;
     std::string input{};
 
-    // set some std::cout globals
-    std::setprecision(3);
-
-    /// While the user hasn't quit the program, process the user input for "uci" command
+    // While the user hasn't quit the program, process the user input for "uci" command
     while (!quit) {
         getline(std::cin, input);
 
-        /// If we get "uci" command, then log it and enter uci protocol function
         if (input == "uci") {
+            // If we get "uci" command, then log it and enter uci protocol function
             start_uci_protocol(board, options, search_state, eval_state, book);
             quit = true;
-
-            /// If we get "quit" command, just quit
         } else if (input == "quit") {
+            // If we get "quit" command, just quit
             quit = true;
         }
     }
@@ -79,21 +75,13 @@ int main([[maybe_unused]] const int argc, char* argv[]) {
  */
 bool init_logger(const std::string& logpath) noexcept {
     try {
-        /// Setup the console sink
-//        auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-//        console_sink->set_level(spdlog::level::trace);
-//        console_sink->set_pattern("[%D %H:%M:%S] [%^%l%$] [Thread %t] [File: %s] [Function: %!] [Line: %#] %v");
-//        console_sink->set_color_mode(spdlog::color_mode::always);
-
-        /// setup the file sink
+        // setup the file sink
         auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logpath, true);
         file_sink->set_level(spdlog::level::trace);
 
-        /// setup the logger using both sinks
-//        spdlog::logger logger(logger_name, {console_sink, file_sink});
+        // setup the logger using both sinks
         spdlog::logger logger(logger_name, {file_sink});
         logger.set_level(spdlog::level::debug);
-//        spdlog::set_default_logger(std::make_shared<spdlog::logger>(logger_name, spdlog::sinks_init_list({console_sink, file_sink})));
         spdlog::set_default_logger(std::make_shared<spdlog::logger>(logger_name, spdlog::sinks_init_list({file_sink})));
     } catch (const spdlog::spdlog_ex& ex) {
         std::cout << "Log initialization failed: " << ex.what() << std::endl;

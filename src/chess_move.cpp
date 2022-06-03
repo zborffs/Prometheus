@@ -345,13 +345,13 @@ std::string ChessMove::to_string() noexcept {
     auto p = this->promoted();
     char ptp_char;
     switch(p) {
-        case W_QUEEN: ptp_char = 'Q'; break;
+        case W_QUEEN: //ptp_char = 'Q'; break;
         case B_QUEEN: ptp_char = 'q'; break;
-        case W_KNIGHT: ptp_char = 'N'; break;
+        case W_KNIGHT: //ptp_char = 'N'; break;
         case B_KNIGHT: ptp_char = 'n'; break;
-        case W_ROOK: ptp_char = 'R'; break;
+        case W_ROOK: //ptp_char = 'R'; break;
         case B_ROOK: ptp_char = 'r'; break;
-        case W_BISHOP: ptp_char = 'B'; break;
+        case W_BISHOP: //ptp_char = 'B'; break;
         case B_BISHOP: ptp_char = 'b'; break;
         default: ptp_char = ' '; break;
     }
@@ -378,13 +378,13 @@ std::string ChessMove::to_string() noexcept {
     auto p = this->promoted();
     char ptp_char;
     switch(p) {
-        case W_QUEEN: ptp_char = 'Q'; break;
+        case W_QUEEN: //ptp_char = 'Q'; break;
         case B_QUEEN: ptp_char = 'q'; break;
-        case W_KNIGHT: ptp_char = 'N'; break;
+        case W_KNIGHT: //ptp_char = 'N'; break;
         case B_KNIGHT: ptp_char = 'n'; break;
-        case W_ROOK: ptp_char = 'R'; break;
+        case W_ROOK: //ptp_char = 'R'; break;
         case B_ROOK: ptp_char = 'r'; break;
-        case W_BISHOP: ptp_char = 'B'; break;
+        case W_BISHOP: //ptp_char = 'B'; break;
         case B_BISHOP: ptp_char = 'b'; break;
         default: ptp_char = ' '; break;
     }
