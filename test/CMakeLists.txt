@@ -9,6 +9,7 @@ add_executable(UCIOptionsTestRunner ucis_options_test.cpp)
 add_executable(PerftTestRunner perft_test.cpp)
 add_executable(EvalTestRunner eval_test.cpp)
 add_executable(TranspositionTableTestRunner transposition_table_test.cpp)
+add_executable(test test.cpp)
 
 if (CODE_COVERAGE MATCHES ON)
     target_link_libraries(BitmaskTestRunner --coverage)

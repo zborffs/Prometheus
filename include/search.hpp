@@ -38,11 +38,11 @@ struct SearchState {
 
 #ifndef NDEBUG
     [[nodiscard]] inline double ordering() const {
-        return (double)fail_high_first_count / fail_high_count;
+        return (double)fail_high_first_count / (double)fail_high_count;
     }
 
     [[nodiscard]] inline double window_ratio() const {
-        return (double)window_success_count / window_widen_count;
+        return (double)window_success_count / (double)window_widen_count;
     }
 #endif // NDEBUG
     void reset();

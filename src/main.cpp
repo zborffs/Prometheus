@@ -50,6 +50,9 @@ int main([[maybe_unused]] const int argc, char* argv[]) {
     bool quit = false;
     std::string input{};
 
+    // set some std::cout globals
+    std::setprecision(3);
+
     /// While the user hasn't quit the program, process the user input for "uci" command
     while (!quit) {
         getline(std::cin, input);
