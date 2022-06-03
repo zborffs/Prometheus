@@ -1,5 +1,5 @@
-#ifndef CLOAK_CHESS_MOVE_HPP
-#define CLOAK_CHESS_MOVE_HPP
+#ifndef PROMETHEUS_CHESS_MOVE_HPP
+#define PROMETHEUS_CHESS_MOVE_HPP
 
 #include "defines.hpp"
 #include <ostream>
@@ -154,4 +154,4 @@ struct ChessMove {
     }
 };
 
-#endif // CLOAK_CHESS_MOVE_HPP
+#endif // PROMETHEUS_CHESS_MOVE_HPP

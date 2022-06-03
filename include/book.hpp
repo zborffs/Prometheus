@@ -1,5 +1,5 @@
-#ifndef CLOAK_BOOK_HPP
-#define CLOAK_BOOK_HPP
+#ifndef PROMETHEUS_BOOK_HPP
+#define PROMETHEUS_BOOK_HPP
 
 #include "defines.hpp"
 #include "extern.hpp"

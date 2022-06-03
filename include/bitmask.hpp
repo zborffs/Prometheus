@@ -1,5 +1,5 @@
- #ifndef CLOAK_BITMASK_HPP
-#define CLOAK_BITMASK_HPP
+#ifndef PROMETHEUS_BITMASK_HPP
+#define PROMETHEUS_BITMASK_HPP
 
 /// STL Includes
 #include <cstdint>
@@ -70,4 +70,4 @@ Bitboard mirror(Bitboard bb);
 Centipawns_t dot_product(Bitboard bb, const Centipawns_t* weights);
 Bitboard in_between(Square_t sq1, Square_t sq2);
 
-#endif // CLOAK_BITMASK_HPP
+#endif // PROMETHEUS_BITMASK_HPP

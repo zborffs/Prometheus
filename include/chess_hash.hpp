@@ -1,5 +1,5 @@
-#ifndef CLOAK_CHESS_HASH_HPP
-#define CLOAK_CHESS_HASH_HPP
+#ifndef PROMETHEUS_CHESS_HASH_HPP
+#define PROMETHEUS_CHESS_HASH_HPP
 
 #include "defines.hpp"
 #include <ostream>
@@ -91,4 +91,4 @@ struct ChessHash {
     }
 };
 
-#endif // CLOAK_CHESS_HASH_HPP
+#endif // PROMETHEUS_CHESS_HASH_HPP

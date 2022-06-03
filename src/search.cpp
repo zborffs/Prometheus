@@ -80,10 +80,38 @@ namespace internal {
                 }
             }
 
+            // the "root_hash->hash_flag != STORED_ALPHA" is meant to capture a weird case of us putting a dummy fake
+            // move into the PV just with the lower bound alpha corresponding to that position without knowing what the
+            // position is. Really, we should just be checking to see if root_hash-> chess move is a dummy move not a
+            // STORED_ALPHA, but STORED_ALPHA is the only time (hopefully) we should have a dummy move in the PV
             if (root_hash->key != 0) { // could do root_hash->key == board.key()???
-                // watch for memory leaks.
-                // if the root hash key isn't 0, then the key must correspond to the next position after the hash move
-                hash_move = new ChessMove(root_hash->from_sq, root_hash->to_sq, root_hash->m_flag(), moved, captured);
+                if (root_hash->from_sq == root_hash->to_sq) {
+                    // if the "best_move" stored in the TT is a dummy move, but somehow has a key attached to it, then
+                    // it must be the case that we have stored a STORED_ALPHA hash flag. If that's not the case, then
+                    // crash the program. However, if it is the case, then that indicates that in a previous search of
+                    // the tree, we came across this position before. We performed a search from this position up to
+                    // some depth 'D' having already been informed by the search of a sister node (or something) that
+                    // the 'alpha' for the search on this position was something like '32' (i.e. not '-INF'). In
+                    // returning from the search on this position, we found that after reach depth 'D' NO possible
+                    // combination of moves improves on the '32' score for us. Meaning, all the moves from this position
+                    // have scores < '32'. Therefore, in future searches, we shouldn't pursue this branch, because we
+                    // know already that there is an alternative sister (or something) move that precludes considering
+                    // this position altogether. That is, of course, assuming the depth we are searching for in the
+                    // future is less than or equal to the depth we searched to when we made the TT entry. All that
+                    // being said, *I THINK* if we encounter this case (however unlikely), we should NOT increment
+                    // alpha, even though, we have evidence that alpha should be increased. The reason is that, this is
+                    // the ROOT of the tree now. Therefore, it's not as if we could avoid this position by taking an
+                    // alternative route, because this is our current position. The best we can do from a software
+                    // engineering perspective is make sure our assumption that root_hash->hash_flag == STORED_ALPHA
+                    // is true if we have a key for the position and a dummy move is stored.
+                    assert(root_hash->hash_flag == STORED_ALPHA);
+                } else {
+                    // if the root hash key isn't 0, then the key must correspond to our current position. For reasons
+                    // explained in the comments above, it is possible for the hash move stored inside this entry in the
+                    // PV to not exist. Therefore, only create a hash_move for move ordering IF we such a hash move
+                    // exists in the TT.
+                    hash_move = new ChessMove(root_hash->from_sq, root_hash->to_sq, root_hash->m_flag(), moved, captured); // watch for memory leaks with "new" keyword
+                }
             }
         }
 
@@ -174,7 +202,6 @@ namespace internal {
             search_state.tt.insert(pv_hash);
         }
 
-        // whatever happened, return the best move and the best alpha!
         return {best_move, alpha};
     }
 
@@ -309,7 +336,6 @@ namespace internal {
         /// generate all the moves from this position
         gen_all_moves(board, movelist);
         order_moves(movelist, search_state, board, hash_move);
-//        order_moves(movelist, search_state, board, &best_move);
         if (hash_move != nullptr) {
             delete hash_move;
             hash_move = nullptr;
@@ -325,9 +351,6 @@ namespace internal {
                 continue;
             }
             ++search_state.height;
-#ifndef NDEBUG
-            search_state.raw_nodes++;
-#endif // NDEBUG
 
             /// recursively call this function, decrementing the depth and flipping the scores
             score = -search(board, options, search_state, eval_state, depth - 1 + num_extensions, -beta, -alpha, true);
@@ -336,9 +359,6 @@ namespace internal {
 
             /// if we've run out of time, then quit. By returning alpha, we don't give any new information
             if (internal::check_stop_search(depth, options, search_state)) {
-#ifndef NDEBUG
-                ++search_state.leaf_nodes;
-#endif // NDEBUG
                 return alpha; // return alpha?
             }
 
@@ -404,7 +424,8 @@ namespace internal {
             }
             search_state.tt.insert(exact_hash);
         } else {
-            /// store a dummy in the transposition table because we don't know the actual move
+            // is this wrong? or are we just not checking for the ChessMove() dummy move case when we probe?
+            // store a dummy in the transposition table because we don't know the actual move
             ChessHash lower_bnd_hash(board.key(), alpha, best_move.from_sq, best_move.to_sq, best_move.flag(), depth, STORED_ALPHA, board.current_ply());
             if (std::abs(alpha) > INF - 100) {
                 if (beta > 0) {
@@ -887,12 +908,10 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
         }
 
         /// print search information
-        std::cout << "info score cp " << score << " time " << time_elapsed << " depth " << depth << " pv " << pv_string <<
+        std::cout << "info score cp " << score << " time " << time_elapsed << " depth " << depth <<
 #ifndef NDEBUG
             // only want X.XX decimals (i.e. 3 sig figs)
-
-
-            " raw_nodes " << search_state.raw_nodes <<
+            " nodes " << search_state.raw_nodes <<
 //            " leaf_nodes " << search_state.leaf_nodes <<
 //            " nps " << (double)(search_state.raw_nodes / (time_elapsed / 1000.)) <<
             " ordering " << search_state.ordering() <<
@@ -901,7 +920,7 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
 //            " hit_rate " << static_cast<double>(search_state.tt.hit_rate()) <<
 //            " overwrite_percentage " << static_cast<double>(search_state.tt.overwrite_percentage()) <<
 #endif // NDEBUG
-            std::endl;
+            " pv " << pv_string << std::endl;
 
         // if we've run out of time or the user has said "stop" or whatever, then break out of the loop and just return
         if (internal::check_stop_search(depth, options, search_state)) {

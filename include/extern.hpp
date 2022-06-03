@@ -1,5 +1,5 @@
-#ifndef CLOAK_EXTERN_HPP
-#define CLOAK_EXTERN_HPP
+#ifndef PROMETHEUS_EXTERN_HPP
+#define PROMETHEUS_EXTERN_HPP
 
 #include "defines.hpp"
 #include "uci_options.hpp"
@@ -120,4 +120,4 @@ extern const Depth LATE_MOVE_REDUCTION_DISCOUNT_NUMBER;
 extern const double LATE_MOVE_REDUCTION_DISCOUNT_PERCENTAGE;
 extern const int AGE_DIFFERENCE_THRESHOLD;
 
-#endif // CLOAK_EXTERN_HPP
+#endif // PROMETHEUS_EXTERN_HPP

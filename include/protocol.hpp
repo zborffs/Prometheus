@@ -1,5 +1,5 @@
-#ifndef CLOAK_PROTOCOL_HPP
-#define CLOAK_PROTOCOL_HPP
+#ifndef PROMETHEUS_PROTOCOL_HPP
+#define PROMETHEUS_PROTOCOL_HPP
 
 /// Standard Library Includes
 #include <iostream>
@@ -32,4 +32,4 @@ namespace internal {
 
 void start_uci_protocol(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, Book& book);
 
-#endif // CLOAK_PROTOCOL_HPP
+#endif // PROMETHEUS_PROTOCOL_HPP

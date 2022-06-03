@@ -1,16 +1,16 @@
-#ifndef CLOAK_EVAL_HPP
-#define CLOAK_EVAL_HPP
+#ifndef PROMETHEUS_EVAL_HPP
+#define PROMETHEUS_EVAL_HPP
 
 /// STL includes
 #include <numeric>
 #include <iomanip>
+#include <utility>
 
 /// Project includes
 #include "defines.hpp"
 #include "board.hpp"
-#include <attack.hpp>
+#include "attack.hpp"
 #include "bitmask.hpp"
-#include <utility>
 
 class EvalPrettyPrinter {
     std::vector<std::pair<std::string, Centipawns_t> > eval_params_;
@@ -167,4 +167,4 @@ namespace internal {
 
 Centipawns_t evaluate(const Board& board, EvaluationState& es, bool verbose = false);
 
-#endif // CLOAK_EVAL_HPP
+#endif // PROMETHEUS_EVAL_HPP

@@ -1,5 +1,5 @@
-#ifndef CLOAK_UCI_OPTIONS_HPP
-#define CLOAK_UCI_OPTIONS_HPP
+#ifndef PROMETHEUS_UCI_OPTIONS_HPP
+#define PROMETHEUS_UCI_OPTIONS_HPP
 
 /// STL Includes
 #include <string>
@@ -82,4 +82,4 @@ struct UCIOptions {
     }
 };
 
-#endif // CLOAK_UCI_OPTIONS_HPP
+#endif // PROMETHEUS_UCI_OPTIONS_HPP

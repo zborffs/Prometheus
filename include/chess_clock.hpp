@@ -1,5 +1,5 @@
-#ifndef CLOAK_CHESS_CLOCK_HPP
-#define CLOAK_CHESS_CLOCK_HPP
+#ifndef PROMETHEUS_CHESS_CLOCK_HPP
+#define PROMETHEUS_CHESS_CLOCK_HPP
 
 /// Standard Library Includes
 #include <ios>
@@ -75,4 +75,4 @@ public:
     }
 };
 
-#endif // CLOAK_CHESS_CLOCK_HPP
+#endif // PROMETHEUS_CHESS_CLOCK_HPP

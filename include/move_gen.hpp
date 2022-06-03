@@ -1,5 +1,5 @@
-#ifndef CLOAK_MOVE_GEN_HPP
-#define CLOAK_MOVE_GEN_HPP
+#ifndef PROMETHEUS_MOVE_GEN_HPP
+#define PROMETHEUS_MOVE_GEN_HPP
 
 /// STL Includes
 #include <algorithm>
@@ -49,4 +49,4 @@ namespace internal {
 void gen_all_moves(Board& board, std::vector<ChessMove>& movelist);
 void gen_all_caps(Board& board, std::vector<ChessMove>& movelist);
 
-#endif // CLOAK_MOVE_GEN_HPP
+#endif // PROMETHEUS_MOVE_GEN_HPP

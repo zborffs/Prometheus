@@ -24,6 +24,9 @@ ChessMove::ChessMove(Square_t from_sq, Square_t to_sq, MoveFlag_t flag, PieceTyp
     }
 
     // make sure we didn't move to the same square
+    if (from_sq == to_sq) {
+        assert(false);
+    }
     assert(from_sq != to_sq);
 
     // make sure neither king was captured

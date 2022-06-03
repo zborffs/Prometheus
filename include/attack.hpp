@@ -1,5 +1,5 @@
-#ifndef CLOAK_ATTACK_HPP
-#define CLOAK_ATTACK_HPP
+#ifndef PROMETHEUS_ATTACK_HPP
+#define PROMETHEUS_ATTACK_HPP
 
 #include "bitmask.hpp"
 #include "defines.hpp"
@@ -30,4 +30,4 @@ Bitboard xray_rook_moves(Square_t rook_sq, Bitboard occupied, Bitboard blockers)
 Bitboard xray_bishop_moves(Square_t bishop_sq, Bitboard occupied, Bitboard blockers);
 Bitboard xray_queen_moves(Square_t queen_sq, Bitboard occupied, Bitboard blockers);
 
-#endif // CLOAK_ATTACK_HPP
+#endif // PROMETHEUS_ATTACK_HPP

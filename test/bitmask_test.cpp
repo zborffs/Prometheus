@@ -172,7 +172,6 @@ TEST_F(BitmaskTester, blocker) {
 //    Square_t s2 = G2;
 //    Bitboard t = C64(1) << s1 | C64(1) << s2;
 //
-//
 //    if (s1 < s2) {
 //        Bitboard d = (DIAGONAL_MASK[7] & ~((C64(1) << s1) - 1) & ((C64(1) << s2) - 1)) & ~C64(1) << s1;
 //        std::cout << draw_bitboard(d);
@@ -180,7 +179,7 @@ TEST_F(BitmaskTester, blocker) {
 //        Bitboard d = (DIAGONAL_MASK[7] & ~((C64(1) << s2) - 1) & ((C64(1) << s1) - 1)) & ~C64(1) << s2;
 //        std::cout << draw_bitboard(d);
 //    }
-
+//
 //    Square_t s = D4;
 //    Square_t t = D7;
 //    Bitboard bb = C64(1) << s;
@@ -188,7 +187,6 @@ TEST_F(BitmaskTester, blocker) {
 //    Bitboard dm = diag_mask(s, 0);
 //    std::cout << draw_bitboard(hm) << std::endl;
 //    std::cout << draw_bitboard(dm) << std::endl;
-
 }
 
 int main(int argc, char **argv) {

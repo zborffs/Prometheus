@@ -1,5 +1,5 @@
-#ifndef CLOAK_MAGIC_HPP
-#define CLOAK_MAGIC_HPP
+#ifndef PROMETHEUS_MAGIC_HPP
+#define PROMETHEUS_MAGIC_HPP
 
 #include "defines.hpp"
 #include "extern.hpp"
@@ -41,4 +41,4 @@ void init_sliding_attacks();
 #endif // __GNUC__
 #endif // USE_SSE
 
-#endif // CLOAK_MAGIC_HPP
+#endif // PROMETHEUS_MAGIC_HPP
