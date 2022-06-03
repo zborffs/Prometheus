@@ -329,7 +329,6 @@ namespace internal {
                 }
 
                 hash_move = new ChessMove(hash->from_sq, hash->to_sq, hash->m_flag(), moved, captured);
-//                best_move = ChessMove(hash->from_sq, hash->to_sq, hash->m_flag(), moved, captured);
             }
         }
 
@@ -371,7 +370,6 @@ namespace internal {
                         ++search_state.fail_high_first_count;
                     }
                     ++search_state.fail_high_count;
-                    ++search_state.leaf_nodes;
 #endif // NDEBUG
 
                     /// store non-capturing beta-cutoffs
@@ -456,7 +454,7 @@ namespace internal {
         if (((unsigned)search_state.raw_nodes & 127) == 0) { // every 127 might be a little extreme? Test moving in further
             internal::check_stop_search(depth, options, search_state);
         }
-        search_state.raw_nodes++;
+        ++search_state.raw_nodes;
 
         /// initialize the local variables
         Centipawns_t score = -INF;
@@ -465,22 +463,16 @@ namespace internal {
         assert(alpha < beta);
 
         if (board.is_draw()) {
-//            SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Quitting q-search cuz it's a draw!");
-#ifndef NDEBUG
-            search_state.leaf_nodes++;
-#endif // NDEBUG
+//            SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Quitting q-search because it's a draw!");
             return 0;
         }
 
         if (depth == 0) {
-//            SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Quitting q-search cuz we reached the depth limit");
+//            SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Quitting q-search because we reached the depth limit");
             return standing_pat;
         }
 
         if (standing_pat >= beta) {
-#ifndef NDEBUG
-            search_state.leaf_nodes++;
-#endif // NDEBUG
             return beta;
         }
 
@@ -495,9 +487,6 @@ namespace internal {
 //            }
 
             if (standing_pat + delta < alpha) {
-#ifndef NDEBUG
-                search_state.leaf_nodes++;
-#endif // NDEBUG
                 return alpha;
             }
         }
@@ -544,7 +533,6 @@ namespace internal {
                         ++search_state.fail_high_first_count;
                     }
                     ++search_state.fail_high_count;
-                    ++search_state.leaf_nodes;
 #endif // NDEBUG
                     // don't store in transposition table because we don't have any search depth
                     return beta;
