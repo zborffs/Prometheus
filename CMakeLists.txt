@@ -19,16 +19,11 @@ include_directories(${GTEST_INCLUDE_DIR})
 include_directories(include)
 
 # Options
-option(CODE_COVERAGE "Enable Code Coverage" OFF)
 option(BUILD_TESTS "Build Tests" ON)
 option(BENCH_TESTS "Build Benchmarks" OFF)
 option(LOGGING "Enable Logging" ON) # Disable on Final Release
 
-# If CODE_COVERAGE has been enabled, then update compilation flags
-if(CODE_COVERAGE)
-    message(STATUS "Enabling Code Coverage")
-endif()
-
+#
 if (USE_SSE)
     add_compile_definitions(USE_SSE)
     add_compile_definitions(__BMI2__)
@@ -77,21 +72,4 @@ if(BUILD_TESTS)
     add_subdirectory(test)
     add_subdirectory(tools)
     add_subdirectory(benchmark)
-
-    # If we want to do code coverage, then do it
-    if (CODE_COVERAGE MATCHES ON)
-        include(cmake/CodeCoverage.cmake)
-        target_link_libraries(Prometheus-lib --coverage)
-        append_coverage_compiler_flags()
-
-        setup_target_for_coverage_lcov(NAME BitmaskCoverage EXECUTABLE BitmaskTestRunner BASE_DIRECTORY "src")
-        setup_target_for_coverage_lcov(NAME BoardCoverage EXECUTABLE BoardTestRunner BASE_DIRECTORY "src" EXECUTABLE_ARGS data/board-test/FullBoardTest.fen)
-        setup_target_for_coverage_lcov(NAME ChessClockCoverage EXECUTABLE ChessClockTestRunner BASE_DIRECTORY "src")
-        setup_target_for_coverage_lcov(NAME ChessMoveCoverage EXECUTABLE ChessMoveTestRunner BASE_DIRECTORY "src")
-        setup_target_for_coverage_lcov(NAME StringManipCoverage EXECUTABLE StringManipTestRunner BASE_DIRECTORY "src")
-        setup_target_for_coverage_lcov(NAME UCIOptionsCoverage EXECUTABLE UCIOptionsTestRunner BASE_DIRECTORY "src")
-        setup_target_for_coverage_lcov(NAME PerftCoverage EXECUTABLE PerftTestRunner BASE_DIRECTORY "src" EXECUTABLE_ARGS data/perft-test/positions.perft)
-        setup_target_for_coverage_lcov(NAME EvalCoverage EXECUTABLE EvalTestRunner BASE_DIRECTORY "src" EXECUTABLE_ARGS data/eval-test/FullEvalTest.fen data/eval-test/NearlyFullEvalTest.fen)
-        setup_target_for_coverage_lcov(NAME SearchCoverage EXECUTABLE SearchTestRunner BASE_DIRECTORY "src" EXECUTABLE_ARGS data/puzzles/mate-in-2.puz)
-    endif()
 endif()

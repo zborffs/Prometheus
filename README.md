@@ -25,13 +25,6 @@ cmake -DCMAKE_BUILD_TYPE=Release -DUSE_SSE=On
 
 I have only tested this on Unix machines, so I don't guarantee that it will run on Windows.
 
-Bugs
-----
-1. ~~Promotion illegal move bug? Perhaps just everything is upper case?~~
-2. ~~Weird unreproducible assert(from_sq != to_sq moves)... not sure what's going on here. maybe related to TT~~
-3. ~~three decimal place bug for "info ... ordering ..."~~
-4. ~~counting raw nodes and counting fail highs~~
-
 Search Features List
 --------------------
 List of all the search, selectivity, and move-ordering features I have / want to implement.
