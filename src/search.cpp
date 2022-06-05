@@ -65,18 +65,18 @@ namespace internal {
         Centipawns_t root_score = -INF;
 
         // Try to reconstruct the best move from hash table
-        ChessHash* root_hash = search_state.tt.find(board.key()); // attempt to find root position's hash in the TT
-        ChessMove* hash_move = nullptr; // will be set to non-nullptr if the root_hash has good info in it...
-        if (root_hash != nullptr) {
-            PieceType_t moved = board.piece_type(root_hash->from_sq);
+        std::optional<ChessHash> root_hash = search_state.tt.find(board.key()); // attempt to find root position's hash in the TT
+        ChessMove hash_move; // will be set to non-nullptr if the root_hash has good info in it...
+        if (root_hash.has_value()) {
+            PieceType_t moved = board.piece_type(root_hash.value().from_sq);
             PieceType_t captured = PieceType::NO_PIECE;
-            if (root_hash->m_flag() & CAPTURE_MOVE) {
-                if (root_hash->m_flag() == ENPASSANT) {
+            if (root_hash.value().m_flag() & CAPTURE_MOVE) {
+                if (root_hash.value().m_flag() == ENPASSANT) {
                     // if the move in the TT is an EN PASSANT capture, then
                     captured = W_PAWN + !board.side_2_move(); // set the captured piece type flag correspondingly
                 } else {
                     // if it's a capture move but not an EN PASSANT, then set it to whatever piece IS at the to-sq
-                    captured = board.piece_type(root_hash->to_sq);
+                    captured = board.piece_type(root_hash.value().to_sq);
                 }
             }
 
@@ -84,8 +84,8 @@ namespace internal {
             // move into the PV just with the lower bound alpha corresponding to that position without knowing what the
             // position is. Really, we should just be checking to see if root_hash-> chess move is a dummy move not a
             // STORED_ALPHA, but STORED_ALPHA is the only time (hopefully) we should have a dummy move in the PV
-            if (root_hash->key != 0) { // could do root_hash->key == board.key()???
-                if (root_hash->from_sq == root_hash->to_sq) {
+            if (root_hash.value().key != 0) { // could do root_hash->key == board.key()???
+                if (root_hash.value().from_sq == root_hash.value().to_sq) {
                     // if the "best_move" stored in the TT is a dummy move, but somehow has a key attached to it, then
                     // it must be the case that we have stored a STORED_ALPHA hash flag. If that's not the case, then
                     // crash the program. However, if it is the case, then that indicates that in a previous search of
@@ -104,13 +104,13 @@ namespace internal {
                     // alternative route, because this is our current position. The best we can do from a software
                     // engineering perspective is make sure our assumption that root_hash->hash_flag == STORED_ALPHA
                     // is true if we have a key for the position and a dummy move is stored.
-                    assert(root_hash->hash_flag == STORED_ALPHA);
+                    assert(root_hash.value().hash_flag == STORED_ALPHA);
                 } else {
                     // if the root hash key isn't 0, then the key must correspond to our current position. For reasons
                     // explained in the comments above, it is possible for the hash move stored inside this entry in the
                     // PV to not exist. Therefore, only create a hash_move for move ordering IF we such a hash move
                     // exists in the TT.
-                    hash_move = new ChessMove(root_hash->from_sq, root_hash->to_sq, root_hash->m_flag(), moved, captured); // watch for memory leaks with "new" keyword
+                    hash_move = ChessMove(root_hash.value().from_sq, root_hash.value().to_sq, root_hash.value().m_flag(), moved, captured); // watch for memory leaks with "new" keyword
                 }
             }
         }
@@ -118,12 +118,6 @@ namespace internal {
         // in the root position, we must generate all the moves and order them...
         gen_all_moves(board, movelist);
         order_moves(movelist, search_state, board, hash_move);
-
-        if (hash_move != nullptr) {
-            // if the hash move is not a nullptr, then delete it. only needed for move ordering purposes
-            delete hash_move;
-            hash_move = nullptr;
-        }
 
         for (std::size_t i = 0; i < movelist.size(); i++) {
             // determine if it's legal by playing it and seeing whether you put yourself in check
@@ -233,13 +227,12 @@ namespace internal {
         Depth R = compute_adap_null_move_r(depth);
 
         // Check the hash table for extra information
-        ChessHash* hash = search_state.tt.find(board.key());
+        std::optional<ChessHash> hash = search_state.tt.find(board.key());
         HashFlag flag = NO_INFO;
         Centipawns_t hash_score;
-        ChessMove* hash_move = nullptr;
-        if (hash != nullptr) {
-            flag = hash->hash_flag;
-            hash_score = hash->score;
+        if (hash.has_value()) {
+            flag = hash.value().hash_flag;
+            hash_score = hash.value().score;
 
             /// this segment causes the SearchTest to fail
             if (std::abs(hash_score) > INF - 100) {
@@ -258,7 +251,7 @@ namespace internal {
 //            }
 
             /// if the hashed move went deeper than we currently are in the search, then it should be adhered to
-            if (hash->depth >= depth) {
+            if (hash.value().depth >= depth) {
                 switch (flag) {
                     case STORED_ALPHA:
                         if (hash_score <= alpha) {
@@ -313,32 +306,29 @@ namespace internal {
         ChessMove best_move;
         std::vector<ChessMove> movelist;
         movelist.reserve(128); // performance
+        ChessMove hash_move;
 
-        if (hash != nullptr) {
+        if (hash.has_value()) {
             /// if we fail low (alpha cutoff) then we will store a dummy move in the hashtable causing moved==captured
             /// if this is the case, don't create a ChessMove pointer just keep going.
-            if (hash->from_sq != hash->to_sq) {
-                PieceType_t moved = board.piece_type(hash->from_sq);
+            if (hash.value().from_sq != hash.value().to_sq) {
+                PieceType_t moved = board.piece_type(hash.value().from_sq);
                 PieceType_t captured = PieceType::NO_PIECE;
-                if (hash->m_flag() & CAPTURE_MOVE) {
-                    if (hash->m_flag() == ENPASSANT) {
+                if (hash.value().m_flag() & CAPTURE_MOVE) {
+                    if (hash.value().m_flag() == ENPASSANT) {
                         captured = W_PAWN + !board.side_2_move();
                     } else {
-                        captured = board.piece_type(hash->to_sq);
+                        captured = board.piece_type(hash.value().to_sq);
                     }
                 }
 
-                hash_move = new ChessMove(hash->from_sq, hash->to_sq, hash->m_flag(), moved, captured);
+                hash_move = ChessMove(hash.value().from_sq, hash.value().to_sq, hash.value().m_flag(), moved, captured);
             }
         }
 
         /// generate all the moves from this position
         gen_all_moves(board, movelist);
         order_moves(movelist, search_state, board, hash_move);
-        if (hash_move != nullptr) {
-            delete hash_move;
-            hash_move = nullptr;
-        }
 
         for (std::size_t i = 0; i < movelist.size(); ++i) {
             /// for each move, determine its legality by playing it and seeing whether you put yourself in check
@@ -635,14 +625,14 @@ namespace internal {
      * @param hash_move    a pointer to a ChessMove object (either nullptr or the move we found in the TT for this
      * search)
      */
-    void order_moves(std::vector<ChessMove>& movelist, SearchState& search_state, Board& board, ChessMove* hash_move) {
+    void order_moves(std::vector<ChessMove>& movelist, SearchState& search_state, Board& board, ChessMove& hash_move) {
         MoveScore score = 0; // MoveScore is uint32_t type (
 
         for (auto & move : movelist) {
             score = move.score; // MVV-LVA
 
-            if (hash_move != nullptr) {
-                if (move == *hash_move) {
+            if (hash_move.from_sq != hash_move.to_sq) {
+                if (move == hash_move) {
                     score |= (1 << 31);
                 }
             } else {
@@ -669,9 +659,9 @@ namespace internal {
 
         std::sort(movelist.begin(), movelist.end());
 #ifndef NDEBUG
-        if (!movelist.empty() && hash_move != nullptr) {
+        if (!movelist.empty() && hash_move.from_sq != hash_move.to_sq) {
             // make sure the hash_move is the first move in the movelist...
-            ASSERT(movelist[0] == *hash_move, "in order_moves() the hash move is not the first move");
+            ASSERT(movelist[0] == hash_move, "in order_moves() the hash move is not the first move");
         }
 #endif // NDEBUG
     }
@@ -817,22 +807,21 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
                 //         compute the PV really quickly, so this doesn't happen at move like 5/6 but at move like 20/21, where that's
                 //         less significant
 
-                ChessHash* prev_best_move = search_state.tt.find(board.key());
-                if (prev_best_move != nullptr) {
-                    assert(prev_best_move->hash_flag == EXACT);
+                std::optional<ChessHash> prev_best_move = search_state.tt.find(board.key());
+                if (prev_best_move.has_value()) {
+                    assert(prev_best_move.value().hash_flag == EXACT);
 
-                    PieceType_t moved = board.piece_type(prev_best_move->from_sq);
+                    PieceType_t moved = board.piece_type(prev_best_move.value().from_sq);
                     PieceType_t captured = PieceType::NO_PIECE;
-                    if (prev_best_move->m_flag() & CAPTURE_MOVE) {
-                        if (prev_best_move->m_flag() == ENPASSANT) {
+                    if (prev_best_move.value().m_flag() & CAPTURE_MOVE) {
+                        if (prev_best_move.value().m_flag() == ENPASSANT) {
                             captured = W_PAWN + !board.side_2_move();
                         } else {
-                            captured = board.piece_type(prev_best_move->to_sq);
+                            captured = board.piece_type(prev_best_move.value().to_sq);
                         }
                     }
 
-                    best_move =  ChessMove(prev_best_move->from_sq, prev_best_move->to_sq, prev_best_move->m_flag(), moved, captured);
-                    return best_move;
+                    return ChessMove(prev_best_move.value().from_sq, prev_best_move.value().to_sq, prev_best_move.value().m_flag(), moved, captured);
                 } else {
                     // in this case, we ran out of time searching the first PV at the first depth. this shouldn't happen unless you do something like
                     // "go movetime 1" or something
@@ -855,37 +844,35 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
         for (unsigned i = 0; i < depth - 1; i++) {
             board.make_move(next_pv_move);
             ++move_counter;
-            ChessHash* next_move_hash = search_state.tt.find(board.key());
+            std::optional<ChessHash> next_move_hash = search_state.tt.find(board.key());
 
-            if (next_move_hash != nullptr) {
-                if (next_move_hash->hash_flag == EXACT) {
-                    PieceType_t moved = board.piece_type(next_move_hash->from_sq);
+            if (next_move_hash.has_value()) {
+                if (next_move_hash.value().hash_flag == EXACT) {
+                    PieceType_t moved = board.piece_type(next_move_hash.value().from_sq);
                     PieceType_t captured = PieceType::NO_PIECE;
-                    if (next_move_hash->m_flag() & CAPTURE_MOVE) {
-                        if (next_move_hash->m_flag() == ENPASSANT) {
+                    if (next_move_hash.value().m_flag() & CAPTURE_MOVE) {
+                        if (next_move_hash.value().m_flag() == ENPASSANT) {
                             captured = W_PAWN + !board.side_2_move();
                         } else {
-                            captured = board.piece_type(next_move_hash->to_sq);
+                            captured = board.piece_type(next_move_hash.value().to_sq);
                         }
                     }
 
                     // this can happen for reasons that are totally reasonable that I can't remember the specifics of
-                    if (next_move_hash->from_sq != next_move_hash->to_sq) {
-                        next_pv_move = ChessMove(next_move_hash->from_sq, next_move_hash->to_sq, next_move_hash->m_flag(), moved, captured);
+                    if (next_move_hash.value().from_sq != next_move_hash.value().to_sq) {
+                        next_pv_move = ChessMove(next_move_hash.value().from_sq, next_move_hash.value().to_sq, next_move_hash.value().m_flag(), moved, captured);
                         pv_string += " " + next_pv_move.to_string();
                     }
                 } else {
                     // we reach this space if the position pointed to by the PV up until this point isn't EXACT, but it
                     // is the right board (maybe check to see if the depth is equal to the depth of the search to see if
                     // the thing in the table was put there by this search and not the previous search)
-                    ASSERT(depth - i == next_move_hash->depth, "Next move hash in PV is not EXACT and the depths don't match, but it's right position"); // if this is triggered
-                    SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "Next Move Hash in PV is not EXACT, i = {}", i);
+                    ASSERT(depth - i == next_move_hash.value().depth, "Next move hash in PV is not EXACT and the depths don't match, but it's right position"); // if this is triggered
                     break; // could happen if something has overwritten something else (shouldn't happen)
                 }
             } else {
                 // we reach this space if the position pointed to by the PV doesn't correspond with the current position,
                 // This happens when there is a Zobrist hash collision
-                SPDLOG_LOGGER_ERROR(spdlog::get(logger_name), "Zobrist Hash Collision: Next Move Hash in PV has been overwritten, i = {}", i);
                 break;
             }
         }

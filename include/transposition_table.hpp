@@ -65,7 +65,7 @@ public:
         return tt_size_;
     }
 
-    ChessHash* find(PositionKey key);
+    std::optional<ChessHash> find(PositionKey key);
     bool insert(const ChessHash& inserted_hash);
 
     friend std::ostream& operator<<(std::ostream& os, TranspositionTable& tt) {

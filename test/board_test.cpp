@@ -181,6 +181,10 @@ TEST_F(BoardTester, see) {
     EXPECT_EQ(g, -(ROOK_BASE_VAL - PAWN_BASE_VAL));
 }
 
+// 11th WAC move fails with move_ordering()
+// r1b1kb1r/3q1ppp/pBp1pn2/8/Np3P2/5B2/PPP3PP/R2Q1RK1 w kq -
+// position fen r1b1kb1r/3q1ppp/pBp1pn2/8/Np3P2/5B2/PPP3PP/R2Q1RK1 w kq -
+
 // Execute: "./BoardTestRunner data/BoardTest.fen"
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv); // boilerplate for gtest

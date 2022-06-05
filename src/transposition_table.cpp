@@ -37,7 +37,7 @@ void TranspositionTable::reset_tracking_variables() {
 
 #endif // NDEBUG
 
-ChessHash* TranspositionTable::find(const PositionKey key) {
+std::optional<ChessHash> TranspositionTable::find(const PositionKey key) {
     int x = index(key);
     TranspositionTable::Entry* entry = &table_[x];
 
@@ -49,10 +49,10 @@ ChessHash* TranspositionTable::find(const PositionKey key) {
 #ifndef NDEBUG
         ++hash_hits_;
 #endif // NDEBUG
-        return entry;
+        return *entry;
     }
 
-    return nullptr;
+    return std::nullopt;
 }
 
 /**

@@ -15,6 +15,7 @@
 #include <array>
 #include <utility>
 #include <random>
+#include <optional>
 
 struct SearchState {
     ChessClock clock;
@@ -82,7 +83,7 @@ namespace internal {
     Centipawns_t search(Board& board, UCIOptions &options, SearchState &search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta, bool do_null);
     Centipawns_t q_search(Board& board, UCIOptions& options, SearchState& search_state, EvaluationState& eval_state, unsigned depth, Centipawns_t alpha, Centipawns_t beta);
     bool check_stop_search(unsigned depth, UCIOptions& options, SearchState& search_state);
-    void order_moves(std::vector<ChessMove>& movelist, SearchState& search_state, Board& board, ChessMove* hash_move = nullptr);
+    void order_moves(std::vector<ChessMove>& movelist, SearchState& search_state, Board& board, ChessMove& hash_move);
     void order_qmoves(std::vector<ChessMove>& movelist, SearchState& search_state, Board& board);
     std::size_t choose_book_move(const std::vector<BookEdge>& book_moves);
     Depth compute_adap_null_move_r(Depth depth);

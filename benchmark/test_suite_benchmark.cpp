@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
 
     /// initialize the uci game options before starting
     options.reset_game_state_vars();
-    options.search_for_time_x = 30000;
+    options.search_for_time_x = 10000;
 
     chess_clock.start();
     int passed{0};
