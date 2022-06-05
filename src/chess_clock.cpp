@@ -113,29 +113,33 @@ void ChessClock::stop() noexcept {
  */
 void ChessClock::alloc_time(UCIOptions& options, Color_t side_2_move) {
     if (options.search_to_depth_x != -1 || options.search_x_nodes != -1 || options.ponder || options.infinite) {
-        /// If any of the above options are set, we don't need to time ourselves, just think until the associated
-        /// condition is met
+        // If any of the above options are set, we don't need to time ourselves, just think until the associated
+        // condition is met
         time_is_extensible_ = false;
         allocated_time_ = -1;
         return;
     } else if (options.search_for_time_x != -1) {
-        /// if the options say to search for a certain amount of time, then time isn't extensible
+        // if the options say to search for a certain amount of time, then time isn't extensible
         time_is_extensible_ = false;
+        if (options.search_for_time_x <= 50) {
+            allocated_time_ = options.search_for_time_x;
+            return;
+        }
         allocated_time_ = options.search_for_time_x - 50; // "- 50" just to make sure we don't violate the time move constraint
         return;
     }
 
-    /// If we have just received milliseconds data, then we may use our own allocation algorithm:
-    /// Assume that there are on average 40 moves (White and Black make moves) per game.
-    /// Allow (total amount of time) / (number of moves)
+    // if we have just received milliseconds data, then we may use our own allocation algorithm:
+    // Assume that there are on average 50 moves (White and Black make moves) per game.
+    // Allow (total amount of time) / (number of moves)
     if (side_2_move == WHITE) {
         allocated_time_ = options.w_time_milli / 50;
     } else {
         allocated_time_ = options.b_time_milli / 50;
     }
 
-    /// if there are fewer than 10 seconds left, don't extend time. Otherwise, time is extensible
-    time_is_extensible_ = allocated_time_ >= (15000);
+    // if there are fewer than 10 seconds left, don't extend time. Otherwise, time is extensible
+    time_is_extensible_ = allocated_time_ >= (10000);
 }
 
 /**
@@ -146,7 +150,7 @@ void ChessClock::extend_time(unsigned num_ext) noexcept {
     /// if time is extensible, give 0.250 seconds for each extension
     if (time_is_extensible_) {
         time_is_extensible_ = false;
-        allocated_time_ += num_ext * 100; // 0.10 seconds.
+        allocated_time_ += num_ext * 250; // 0.10 seconds.
     }
 }
 

@@ -61,218 +61,71 @@ void Board::set_board(std::vector<std::string>::const_iterator first, std::vecto
     init_pos_keys();
 }
 
-/**
- * getter for board's PositionKey
- * @return PositionKey of the board
- */
-PositionKey Board::key() noexcept {
-    return key_;
-}
+
+/// Getters
+PositionKey Board::key() noexcept { return key_; }
+PositionKey Board::key() const noexcept { return key_; }
+Bitboard Board::piece_bb(const PieceType_t piece_type) noexcept { return piece_bb_[piece_type]; }
+Bitboard Board::piece_bb(const PieceType_t piece_type) const noexcept { return piece_bb_[piece_type]; }
+Bitboard Board::occupied_bb() noexcept { return occupied_bb_; }
+Bitboard Board::empty_bb() noexcept { return empty_bb_; }
+Bitboard Board::empty_bb() const noexcept { return empty_bb_; }
+Bitboard Board::capturable(const Color_t color) noexcept { return capturable_[color]; }
+Bitboard Board::capturable(const Color_t color) const noexcept { return capturable_[color]; }
+uint8_t Board::fif_move_counter() noexcept { return fif_move_counter_; }
+uint8_t Board::fif_move_counter() const noexcept { return fif_move_counter_; }
+Square_t Board::ep_sq() noexcept { return ep_sq_; }
+Square_t Board::ep_sq() const noexcept { return ep_sq_; }
+CastleRights_t Board::castle_perm() noexcept { return castle_perm_; }
+CastleRights_t Board::castle_perm() const noexcept { return castle_perm_; }
+Color_t Board::side_2_move() noexcept { return side_2_move_; }
+Color_t Board::side_2_move() const noexcept { return side_2_move_; }
+Depth Board::current_ply() noexcept { return current_ply_; }
 
 /**
- * getter for board's PositionKey
- * @return PositionKey of the board
- */
-PositionKey Board::key() const noexcept {
-    return key_;
-}
-
-/**
- * getter for bitboard corresponding to requested piece type, which denotes location of all pieces of that piece type
- * @param piece_type desired piece type
- * @return           bitboard of desired piece type
- */
-Bitboard Board::piece_bb(const PieceType_t piece_type) noexcept {
-    return piece_bb_[piece_type];
-}
-
-/**
- * getter for bitboard corresponding to requested piece type, which denotes location of all pieces of that piece type
- * @param piece_type desired piece type
- * @return           bitboard of desired piece type
- */
-Bitboard Board::piece_bb(const PieceType_t piece_type) const noexcept {
-    return piece_bb_[piece_type];
-}
-
-/**
- * getter for bitboard denoting all occupied squares
- * @return occupied bitboard
- */
-Bitboard Board::occupied_bb() noexcept {
-    return occupied_bb_;
-}
-
-/**
- * getter for bitboard denoting all occupied squares
- * @return occupied bitboard
- */
-Bitboard Board::occupied_bb() const noexcept {
-    return occupied_bb_;
-}
-
-/**
- * getter for bitboard denoting all empty squares
- * @return empty bitboard
- */
-Bitboard Board::empty_bb() noexcept {
-    return empty_bb_;
-}
-
-/**
- * getter for bitboard denoting all empty squares
- * @return empty bitboard
- */
-Bitboard Board::empty_bb() const noexcept {
-    return empty_bb_;
-}
-
-/**
- * getter for bitboard denoting location of all capturable pieces by color
- * @param color given color
- * @return      capturable bitboard of given color
- */
-Bitboard Board::capturable(const Color_t color) noexcept {
-    return capturable_[color];
-}
-
-/**
- * getter for bitboard denoting location of all capturable pieces by color
- * @param color given color
- * @return      capturable bitboard of given color
- */
-Bitboard Board::capturable(const Color_t color) const noexcept {
-    return capturable_[color];
-}
-
-/**
- * getter for 50 move counter, denoting how many plys have been played since a capture, promotion, pawn move, or castle
- * @return 50 move counter
- */
-uint8_t Board::fif_move_counter() noexcept {
-    return fif_move_counter_;
-}
-
-/**
- * getter for 50 move counter, denoting how many plys have been played since a capture, promotion, pawn move, or castle
- * @return 50 move counter
- */
-uint8_t Board::fif_move_counter() const noexcept {
-    return fif_move_counter_;
-}
-
-/**
- * getter for en passant square denoting the square on which an en passant could happen this turn
- * @return en passant square
- */
-Square_t Board::ep_sq() noexcept {
-    return ep_sq_;
-}
-
-/**
- * getter for en passant square denoting the square on which an en passant could happen this turn
- * @return en passant square
- */
-Square_t Board::ep_sq() const noexcept {
-    return ep_sq_;
-}
-
-/**
- * getter for castle permission denoting which side can perform which sort of castle
- * @return castle permission
- */
-CastleRights_t Board::castle_perm() noexcept {
-    return castle_perm_;
-}
-
-/**
- * getter for castle permission denoting which side can perform which sort of castle
- * @return castle permission
- */
-CastleRights_t Board::castle_perm() const noexcept {
-    return castle_perm_;
-}
-
-/**
- * getter for side to move denoting whose turn it is to move in the current position
- * @return side to move
- */
-Color_t Board::side_2_move() noexcept {
-    return side_2_move_;
-}
-
-/**
- * getter for side to move denoting whose turn it is to move in the current position
- * @return side to move
- */
-Color_t Board::side_2_move() const noexcept {
-    return side_2_move_;
-}
-
-/**
- * getter for the ply we're currently on (how many moves have been played x2)
- * @return current ply
- */
-Depth Board::current_ply() noexcept {
-    return current_ply_;
-}
-
-/**
- * getter for the ply we're currently on (how many moves have been played x2)
- * @return current ply
- */
-Depth Board::current_ply() const noexcept {
-    return current_ply_;
-}
-
-/**
- * getter for the location of a given color's king
- * @param color given color
- * @return      Square the king of a given color is on
+ * get the the square of a particular color's king (uses bitscan over bitboard)
+ * @param color  the color of the king we want the location of
+ * @return  the square the king is on
  */
 Square_t Board::king_location(const Color_t color) noexcept {
     return bitscan_forward(piece_bb_[W_KING + color]);
 }
 
 /**
- * getter for the location of a given color's king
- * @param color given color
- * @return      Square the king of a given color is on
+ * get the the square of a particular color's king (uses bitscan over bitboard)
+ * @param color  the color of the king we want the location of
+ * @return  the square the king is on
  */
 Square_t Board::king_location(const Color_t color) const noexcept {
     return bitscan_forward(piece_bb_[W_KING + color]);
 }
 
 /**
- * getter for the piece type located a given square
- * @param sq the given square
- * @return   the piece type on the given square
+ * get the type of piece on a given square
+ * @param sq  the square under interrogation
+ * @return  a piece type primitive (W_PAWN, B_QUEEN, NO_PIECE, etc.)
  */
 PieceType_t Board::piece_type(const Square_t sq) noexcept {
-    for (int i = W_PAWN; i < NO_PIECE; i++) {
+    for (int i = W_PAWN; i < NO_PIECE; ++i) {
         if ((piece_bb_[i] >> sq) & 1) {
             return i;
         }
     }
-
-    // if we didn't find the piece on the board, then return NO_PIECE
-    return PieceType::NO_PIECE;
+    return PieceType::NO_PIECE; // if we didn't find the piece on the board, then return NO_PIECE
 }
 
 /**
- * getter for the piece type located a given square
- * @param sq the given square
- * @return   the piece type on the given square
+ * get the type of piece on a given square
+ * @param sq  the square under interrogation
+ * @return  a piece type primitive (W_PAWN, B_QUEEN, NO_PIECE, etc.)
  */
 PieceType_t Board::piece_type(const Square_t sq) const noexcept {
-    for (int i = W_PAWN; i < NO_PIECE; i++) {
+    for (int i = W_PAWN; i < NO_PIECE; ++i) {
         if ((piece_bb_[i] >> sq) & 1) {
             return i;
         }
     }
-
-    // if we didn't find the piece on the board, then return NO_PIECE
-    return PieceType::NO_PIECE;
+    return PieceType::NO_PIECE; // if we didn't find the piece on the board, then return NO_PIECE
 }
 
 /**

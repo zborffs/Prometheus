@@ -8,9 +8,9 @@ protected:
 
 TEST_F(UCIOptionsTest, Constructor) {
     EXPECT_EQ(options.style, Style::BALANCED);
-    EXPECT_EQ(options.default_tt_size, 1);
-    EXPECT_EQ(options.minimum_tt_size, 128);
-    EXPECT_EQ(options.maximum_tt_size, 32);
+    EXPECT_EQ(options.default_tt_size, 32);
+    EXPECT_EQ(options.minimum_tt_size, 1);
+    EXPECT_EQ(options.maximum_tt_size, 128);
     EXPECT_EQ(options.tt_size, 0);
     EXPECT_EQ(options.default_threads, 1);
     EXPECT_EQ(options.minimum_threads, 1);

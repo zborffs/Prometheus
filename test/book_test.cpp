@@ -1,9 +1,14 @@
+/// Internal Includes
 #include "globals.hpp"
 #include "book.hpp"
-#include <gtest/gtest.h>
-#include <fstream>
-#include <cereal/archives/binary.hpp>
 #include "board.hpp"
+
+/// STL Includes
+#include <fstream>
+
+/// external includes
+#include <gtest/gtest.h>
+#include <cereal/archives/binary.hpp>
 
 std::string bookpath;
 
@@ -14,11 +19,12 @@ protected:
     std::string filename{};
 
     void SetUp() override {
+        // in the setup to all tests, load the book object from memory
         board.set_board();
         std::ifstream f(bookpath, std::ios::binary);
         cereal::BinaryInputArchive iarchive(f); // Create an input archive
         iarchive(book); // Read the data from the archive
-        std::cout << "Hello World " << std::endl;
+        std::cout << "Start of Test" << std::endl;
     }
 
 };
@@ -39,6 +45,7 @@ TEST_F(BookTester, AllFirstMoves) {
     EXPECT_EQ(0, 0);
 }
 
+// Execute: "./BoardTestRunner data/PrometheusOpening.book"
 int main(int argc, char** argv) {
     std::string path(argv[0]);
 #ifdef WINDOWS
@@ -47,14 +54,11 @@ int main(int argc, char** argv) {
     std::string base(path.substr(0, path.find_last_of('/')));
 #endif // WINDOWS
 
-    /// Get path to the input file, "Bratko-Kopec.fen", and output file, "tools/data/bratko.txt", from executable directory and command line arguments
     path = std::string(argv[0]);
     bool first_is_slash = path[0] == '/';
     auto splitvec = split(path, '/');
-
-    std::string s{""};
     assert(!splitvec.empty());
-
+    std::string s{""};
     if (first_is_slash) {
         s += "/" + splitvec[0];
     } else {

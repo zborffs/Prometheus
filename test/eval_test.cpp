@@ -299,6 +299,7 @@ TEST_F(EvaluationTester, KingSymmetry) {
     }
 }
 
+// Execute: ./EvalTestRunner data/FullEvalTest.fen data/NearlyFullEvalTest.fen
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
 

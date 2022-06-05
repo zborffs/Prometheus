@@ -35,9 +35,7 @@ List of all the search, selectivity, and move-ordering features I have / want to
 - Selectivity Stuff
     - Extensions
         * [x] Check Extensions
-        * [ ] One Reply Extensions
         * [ ] Passed Pawn Extensions
-        * [x] Mate Threat Extensions
         * [ ] SEX Algorithm
     - Pruning
         * [ ] AEL Pruning
@@ -57,7 +55,6 @@ List of all the search, selectivity, and move-ordering features I have / want to
     * [X] SEE // redo
     * [x] Killer Heuristic // optimize
     * [x] History Heuristic // optimize
-    * [ ] Guard Heuristic
 
 Evaluation Function
 -------------------
@@ -106,7 +103,7 @@ Pawns:
   - [x] positioning (PST)
   - [ ] connectivity
   - [ ] mobility (account for pins)
-  - [ ] ~~bishop pair bonus~~
+  - [ ] bishop pair bonus
 
 - Knights:
   - [x] positioning (PST)

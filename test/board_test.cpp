@@ -1,6 +1,6 @@
 /// Internal Includes
-#include "defines.hpp"
 #include "globals.hpp"
+#include "defines.hpp"
 #include "board.hpp"
 
 /// STL Includes
@@ -17,6 +17,10 @@ protected:
     Board board;
 };
 
+/**
+ * try reading all the FEN positions in the BoardTest.fen file, and checking that the internal representation of the
+ * location of both kings matches the known string at the end of each line in the file.
+ */
 TEST_F(BoardTester, KingLocation) {
     try {
         auto fens = read_all_fen_from_file(fen_path);
@@ -26,7 +30,7 @@ TEST_F(BoardTester, KingLocation) {
             board.set_board(fen_string);
             std::cout << fen_string << std::endl << board << std::endl;
 
-            /// Get King Locations from .fen file
+            // Get King Locations from .fen file
             auto king_locs = split(separated_fen[1]);
             std::string w_king_loc_str = king_locs[0];
             std::string b_king_loc_str = king_locs[1];
@@ -47,6 +51,12 @@ TEST_F(BoardTester, KingLocation) {
     }
 }
 
+/**
+ * test the "is_sq_attacked(...)" function in the board class by loading a known position into the board, and checking
+ * that squares we know to be attacked by inspection are indeed being attacked and vice versa
+ *
+ * there have been bugs in this function in the past, so this test set was generated to handle that
+ */
 TEST_F(BoardTester, IsSquareAttacked) {
     board.set_board("1k1r4/pp1b1R2/3q2pp/4p3/2B5/4Q3/PPP2B2/2K5 b - - bm Qd1+");
     std::cout << board << std::endl;
@@ -65,6 +75,12 @@ TEST_F(BoardTester, IsSquareAttacked) {
     EXPECT_EQ(board.is_sq_attacked(H2, BLACK), false);
 }
 
+/**
+ * test the "is_king_checked(...)" function by loading various known positions into the board and seeing if the return
+ * from that function matches the a priori known solution
+ *
+ * there have been bugs in this function in the past, so this test set was generated to handle that
+ */
 TEST_F(BoardTester, IsKingChecked) {
     board.set_board("1k1r4/pp1b1R2/3q2pp/4p3/2B5/4Q3/PPP2B2/2K5 b - - bm Qd1+");
     std::cout << board << std::endl;
@@ -137,40 +153,44 @@ TEST_F(BoardTester, IsKingChecked) {
     EXPECT_EQ(board.is_king_checked(BLACK), false);
 }
 
+/**
+ * test the "see(...)" (static exchange evaluation) function in the board class by providing known bugging static
+ * exchange evaluation positions and checking that the return value of the function matches the expected output
+ *
+ * Known buggy positions and algorithm description: https://www.chessprogramming.org/SEE_-_The_Swap_Algorithm
+ */
 TEST_F(BoardTester, see) {
     board.set_board("1k1r4/1pp4p/p7/4p3/8/P5P1/1PP4P/2K1R3 w - - ");
     std::cout << board << std::endl;
-
     Centipawns_t g = board.see(E5, B_PAWN, E1, W_ROOK);
-    std::cout << g << std::endl;
-    EXPECT_EQ(g, 100);
+    EXPECT_EQ(g, PAWN_BASE_VAL);
 
     board.set_board("1k1r3q/1ppn3p/p4b2/4p3/8/P2N2P1/1PP1R1BP/2K1Q3 w - -");
     std::cout << board << std::endl;
     g = board.see(E5, B_PAWN, D3, W_KNIGHT);
-    EXPECT_EQ(g, -225); // will fail with changes to Piece values
+    EXPECT_EQ(g, -(KNIGHT_BASE_VAL - PAWN_BASE_VAL));
 
     board.set_board("k7/8/5n2/3p4/8/2N2B2/8/K7 w - -");
     std::cout << board << std::endl;
     g = board.see(D5, B_PAWN, C3, W_KNIGHT);
-    EXPECT_EQ(g, 100); // will fail with changes to Piece values
+    EXPECT_EQ(g, (PAWN_BASE_VAL)); // will fail with changes to Piece values
 
     board.set_board("2K5/8/8/3pRrRr/8/8/8/2k5 w - -");
     std::cout << board << std::endl;
     g = board.see(D5, B_PAWN, E5, W_ROOK);
-    EXPECT_EQ(g, -400); // will fail with changes to Piece values
+    EXPECT_EQ(g, -(ROOK_BASE_VAL - PAWN_BASE_VAL));
 }
 
-
+// Execute: "./BoardTestRunner data/BoardTest.fen"
 int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
+    testing::InitGoogleTest(&argc, argv); // boilerplate for gtest
 
-    /// Get path to the eval file from executable directory and command line arguments
+    // get path to the FEN file from executable directory and command line arguments
     exec_path = std::string(argv[0]);
     bool first_is_slash = exec_path[0] == '/';
     auto splitvec = split(exec_path, '/');
-    std::string s{""};
     assert(!splitvec.empty());
+    std::string s{""};
 
     if (first_is_slash) {
         s += "/" + splitvec[0];
@@ -181,9 +201,7 @@ int main(int argc, char **argv) {
     for (unsigned i = 1; i < splitvec.size() - 1; i++) {
         s += std::string("/" + splitvec[i]);
     }
-    fen_path = std::string(s + "/../../" + argv[1]);
+    fen_path = std::string(s + "/../../" + argv[1]); // expect the first argument to be the path to a FEN
 
     return RUN_ALL_TESTS();
 }
-
-///position startpos moves e2e4 e7e5 g1f3 g8f6 f3g1 f6g8 g1f3 g8f6 f3g1 f6g8

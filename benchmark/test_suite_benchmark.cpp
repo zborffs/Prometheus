@@ -1,28 +1,25 @@
 /// Project Includes
-#include "defines.hpp"
 #include "globals.hpp"
+#include "defines.hpp"
 #include "board.hpp"
 #include "chess_clock.hpp"
 #include "search.hpp"
-#include "book.hpp"
 
 /// Standard Library Includes
 #include <iostream>
 #include <string>
 
-/// Third-Party Includes
+/// External includes
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
-#include <spdlog/sinks/daily_file_sink.h>
-#include <cereal/archives/binary.hpp>
 #include <spdlog/sinks/basic_file_sink.h>
+#include <cereal/archives/binary.hpp>
 
-#define LOG_FAILURE -1 // flesh out all the quit flags later
+#define LOG_FAILURE (-1) // flesh out all the quit flags later
 
 bool init_logger(const std::string& path) noexcept;
-void create_book(const std::string& filename, Book& book);
 
-int main([[maybe_unused]] int argc, char **argv) {
+int main(int argc, char** argv) {
     std::string path(argv[0]);
 #ifdef WINDOWS
     std::string base(path.substr(0, path.find_last_of("\\")));
@@ -31,28 +28,35 @@ int main([[maybe_unused]] int argc, char **argv) {
 #endif // WINDOWS
 
     /// Initialize the logger variables, if it fails to initialize, then quit.
-    std::string logfile_path(base + "/../../logs/TestSuiteBenchmark.log");
+    std::string logfile_path(base + "/../../logs/TestSuiteBenchmarker.log");
+    std::string bookpath(base + "/../../data/PrometheusOpening.book");
     if (!init_logger(logfile_path)) {
         return LOG_FAILURE;
     }
 
     /// Create local variables at the top
-    std::string basic_tester_path;
+    std::string bratko_fen_path;
     std::string output_file_path;
-    std::string book_path;
     Board board;
     ChessClock chess_clock;
-    SearchState search_state(16384);
+    SearchState search_state(32 * 1000000 / sizeof(ChessHash)); // 32 MB = 18 * 100,000 bytes = 18,000,000 (bytes) / x (bytes/chesshash) = 18,000,000/x (chesshashes)
     EvaluationState eval_state;
     UCIOptions options;
     Book book;
 
-    /// Get path to the input file, "BasicTests.fen", and output file, "tools/data/ordering_output.txt", from executable directory and command line arguments
+    /// initialize book
+    {
+        std::ifstream f(bookpath, std::ios::binary);
+        cereal::BinaryInputArchive iarchive(f); // Create an input archive
+        iarchive(book); // Read the data from the archive
+    }
+
+    /// Get path to the input file, "Bratko-Kopec.fen", and output file, "tools/data/bratko.txt", from executable directory and command line arguments
+    path = std::string(argv[0]);
     bool first_is_slash = path[0] == '/';
     auto splitvec = split(path, '/');
-
-    std::string s{""};
     assert(!splitvec.empty());
+    std::string s{""};
 
     if (first_is_slash) {
         s += "/" + splitvec[0];
@@ -60,12 +64,11 @@ int main([[maybe_unused]] int argc, char **argv) {
         s += splitvec[0];
     }
 
-    for (int i = 1; i < splitvec.size() - 1; i++) {
+    for (unsigned i = 1; i < splitvec.size() - 1; i++) {
         s += std::string("/" + splitvec[i]);
     }
-    basic_tester_path = std::string(s + "/../../" + argv[1]);
+    bratko_fen_path = std::string(s + "/../../" + argv[1]);
     output_file_path = std::string(s + "/../../" + argv[2]);
-    book_path = std::string(s + "/../../data/PrometheusOpening.book");
 
     /// redirect std::cout to the output file
     std::ofstream output(output_file_path);
@@ -74,20 +77,33 @@ int main([[maybe_unused]] int argc, char **argv) {
 
     /// initialize the uci game options before starting
     options.reset_game_state_vars();
-    options.infinite = true; // at some point change this to max depth = ~6
-    create_book(book_path, book);
+    options.search_for_time_x = 30000;
 
     chess_clock.start();
+    int passed{0};
+    int num_fens{0};
     try {
         /// read all the FENs from the input file
-        auto fens = read_all_fen_from_file(basic_tester_path);
+        auto fens = read_all_fen_from_file(bratko_fen_path);
+        num_fens = fens.size();
 
         /// Think for each position (inside of "think" it will cout some useful information)
         for (auto & fen : fens) {
             auto separated_fen = split(fen, ';');
             std::string fen_string = separated_fen[0];
             board.set_board(fen_string);
-            think(board, options, search_state, eval_state, book);
+            std::string expected_move_str = board.best_move();
+            ChessMove best_move = think(board, options, search_state, eval_state, book);
+            std::string move_str = best_move.to_algebraic_notation();
+
+            if (move_str == expected_move_str) {
+                std::cout << "passed" << std::endl;
+                passed++;
+                SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "[{}/{}] - Passed {} == {}", passed, num_fens, move_str, expected_move_str);
+            } else {
+                std::cout << "failed" << std::endl;
+                SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "[{}/{}] - Failed {} !=  {}", passed, num_fens, move_str, expected_move_str);
+            }
             search_state.tt.clear();
         }
     } catch (const std::exception& e) {
@@ -95,29 +111,26 @@ int main([[maybe_unused]] int argc, char **argv) {
     }
     chess_clock.stop();
 
-    std::cout.rdbuf(coutbuf); // reset to standard output again
-
-    std::cout << "Data Acquisition Successful! Program took " << (chess_clock.duration() / 1000000.) << " [ms]" << std::endl;
-
+    std::cout.rdbuf(coutbuf); //reset to standard output again
+    SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Data Acquisition Successful! {}% Accurate. Program took {} seconds", (double)passed / num_fens * 100.0, (chess_clock.duration() / 1e9));
     return 0;
 }
 
 /**
- * initializes the logger; assumes that the folder containing the executable is in the same directory as the folder
- * storing the log text files.
- * @param path the path to the executable of this program
- * @return     boolean representing the success of the function
+ * initializes the logger
+ * @param logfile_path path to the logfile
+ * @return             whether the function successfully setup the logger
  */
-bool init_logger(const std::string& path) noexcept {
+bool init_logger(const std::string& logfile_path) noexcept {
     try {
         /// Setup the console sink
         auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
         console_sink->set_level(spdlog::level::trace);
-        console_sink->set_pattern("[%D %H:%M:%S] [%^%l%$] [Thread %t] [File:Line %@] [Function: %!] %v");
+        console_sink->set_pattern("[%D %H:%M:%S] [%^%l%$] [Thread %t] [File: %s] [Function: %!] [Line: %#] %v");
         console_sink->set_color_mode(spdlog::color_mode::always);
 
         /// setup the file sink
-        auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(path, true);
+        auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logfile_path, true);
         file_sink->set_level(spdlog::level::trace);
 
         /// setup the logger using both sinks
@@ -130,15 +143,4 @@ bool init_logger(const std::string& path) noexcept {
     }
 
     return true;
-}
-
-/**
- *
- * @param filename
- * @param book
- */
-void create_book(const std::string& filename, Book& book) {
-    std::ifstream f(filename, std::ios::binary);
-    cereal::BinaryInputArchive iarchive(f);
-    iarchive(book);
 }

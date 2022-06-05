@@ -53,7 +53,7 @@ TEST_F(PerftTester, Positions_Perft_1) {
     }
 }
 
-
+// Execute: ./PerftTestRunner data/Positions.perft
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
 

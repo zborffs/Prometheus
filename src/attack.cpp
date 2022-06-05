@@ -1,69 +1,5 @@
 #include "attack.hpp"
 
-#ifdef USE_SSE
-
-__m128i but_not_A(__m128i b) {
-    b = _mm_srli_epi64 (b, 1);
-    b = _mm_add_epi8(b, b);
-    return b;
-}
-
-__m128i but_not_H(__m128i b) {
-    b = _mm_add_epi8   (b, b);
-    b = _mm_srli_epi64 (b, 1);
-    return b;
-}
-
-__m128i north_one(__m128i b) {
-    b = _mm_slli_epi64 (b, 8);
-    return b;
-}
-
-__m128i south_one(__m128i b) {
-    b = _mm_srli_epi64 (b, 8);
-    return b;
-}
-
-__m128i east_one(__m128i b) {
-    b = _mm_add_epi8(b, b);
-    return b;
-}
-
-__m128i no_ea_one (__m128i b) {
-    b = _mm_add_epi8   (b, b);
-    b = _mm_slli_epi64 (b, 8);
-    return b;
-}
-
-__m128i so_ea_one (__m128i b) {
-    b = _mm_add_epi8   (b, b);
-    b = _mm_srli_epi64 (b, 8);
-    return b;
-}
-
-__m128i west_one(__m128i b) {
-    b = _mm_srli_epi64 (b, 1);
-    b = _mm_add_epi8   (b, b);
-    b = _mm_srli_epi64 (b, 1);
-    return b;
-}
-
-__m128i so_we_one (__m128i b) {
-    b = _mm_srli_epi64 (b, 1);
-    b = _mm_add_epi8   (b, b);
-    b = _mm_srli_epi64 (b, 9);
-    return b;
-}
-
-__m128i no_we_one (__m128i b) {
-    b = _mm_srli_epi64(b, 1);
-    b = _mm_add_epi8(b, b);
-    b = _mm_slli_epi64(b, 7);
-    return b;
-}
-
-#endif // USE_SSE
-
 /**
  * Computes all pseudo-legal moves of specified bishop
  * @param  sq square the bishop occupies
@@ -119,24 +55,25 @@ Bitboard queen_moves(Square_t sq, Bitboard occupied) {
 }
 
 /**
- * Computes all pseudo-legal moves of specified knight
- * @param  sq square the knight occupies
- * @param  occupied bitboard of occupied squares
+ * Computes all pseudo-legal moves of a specified knight
+ * @param  knights bitboard of the specified knight
  * @return bitboard of pseudo-legal knight moves
  */
 Bitboard knight_moves(Bitboard knights) {
-    Square_t square = bitscan_forward(knights);
+    Square_t square = bitscan_forward(knights); // find the square the knight is on
     Bitboard ret = 0;
+    unsigned test{0};
     for ( ; knights != 0; knights -= C64(1) << square) {
-        ret |= KNIGHT_ATTACK_ARRAY[square];
+        ++test;
+        ret |= KNIGHT_ATTACK_ARRAY[square]; // OR together precomputed all the attack bitboards
     }
+    assert(test == 1); // i'm pretty sure this loop is only gone through once... ever
     return ret;
 }
 
 /**
  * Computes all pseudo-legal moves of specified king
- * @param  sq square the king occupies
- * @param  occupied bitboard of occupied squares
+ * @param  king_bb the king bitboard
  * @return bitboard of pseudo-legal king moves
  */
 Bitboard king_moves(Bitboard king_bb) {

@@ -66,10 +66,10 @@ TEST_F(ChessClockTester, TimeIsExtensible_TimeLimit_Over10Seconds) {
     /// UCI Options allocated time is < 10 seconds, so time isn't extensible
     EXPECT_EQ(uci_options.search_to_depth_x, -1);
     EXPECT_EQ(uci_options.search_for_time_x, -1);
-    uci_options.b_time_milli = 10000;
-    uci_options.w_time_milli = 10000;
-    EXPECT_EQ(uci_options.b_time_milli, 10000);
-    EXPECT_EQ(uci_options.w_time_milli, 10000);
+    uci_options.b_time_milli = 50 * 10 * 1000;
+    uci_options.w_time_milli = 50 * 10 * 1000;
+    EXPECT_EQ(uci_options.b_time_milli, 50 * 10 * 1000);
+    EXPECT_EQ(uci_options.w_time_milli, 50 * 10 * 1000);
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
@@ -78,14 +78,14 @@ TEST_F(ChessClockTester, TimeIsExtensible_TimeLimit_Over10Seconds) {
     EXPECT_EQ(cc.time_is_extensible(), true);
 
     /// UCI Options allocated time is < 10 seconds, so time isn't extensible
-    uci_options.b_time_milli = 100000;
-    uci_options.w_time_milli = 1234567;
+    uci_options.b_time_milli = 50 * 10 * 1000 - 2000;
+    uci_options.w_time_milli = 50 * 10 * 1000 - 1;
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.time_is_extensible(), true);
+    EXPECT_EQ(cc.time_is_extensible(), false);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.time_is_extensible(), true);
+    EXPECT_EQ(cc.time_is_extensible(), false);
 }
 
 /**
@@ -153,14 +153,14 @@ TEST_F(ChessClockTester, AllocateTime_TimeLimit) {
     EXPECT_EQ(cc.time_is_extensible(), false);
 
     /// UCI Options allocated time is < 10 seconds, so time isn't extensible
-    uci_options.b_time_milli = 1000;
-    uci_options.w_time_milli = 1000;
+    uci_options.b_time_milli = 50 * 10 * 1000;
+    uci_options.w_time_milli = 50 * 10 * 1000;
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 1000 / 40);
+    EXPECT_EQ(cc.allocated_time(), 50 * 10 * 1000 / 50);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 1000 / 40);
+    EXPECT_EQ(cc.allocated_time(), 50 * 10 * 1000 / 50);
 
     /// UCI Options allocated time is < 10 seconds, so time isn't extensible
     uci_options.b_time_milli = 9999;
@@ -168,29 +168,30 @@ TEST_F(ChessClockTester, AllocateTime_TimeLimit) {
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 10 / 40);
+    EXPECT_EQ(cc.allocated_time(), 10 / 50);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 9999 / 40);
+    EXPECT_EQ(cc.allocated_time(), 9999 / 50);
 
     /// UCI Options allocated time is < 10 seconds, so time isn't extensible
-    uci_options.b_time_milli = 10000;
-    uci_options.w_time_milli = 10000;
+    uci_options.w_time_milli = 50 * 10 * 1000 - 200;
+    uci_options.b_time_milli = 50 * 10 * 1000 - 100;
+
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 10000 / 40);
+    EXPECT_EQ(cc.allocated_time(), (50 * 10 * 1000 - 200) / 50);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 10000 / 40);
+    EXPECT_EQ(cc.allocated_time(), (50 * 10 * 1000 - 100) / 50);
 
     /// UCI Options allocated time is < 10 seconds, so time isn't extensible
-    uci_options.b_time_milli = 100000;
     uci_options.w_time_milli = 1234567;
+    uci_options.b_time_milli = 100000;
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 1234567 / 40);
+    EXPECT_EQ(cc.allocated_time(), 1234567 / 50);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 100000 / 40);
+    EXPECT_EQ(cc.allocated_time(), 100000 / 50);
 }
 
 /**
@@ -227,24 +228,24 @@ TEST_F(ChessClockTester, AllocateTime_SearchForXSeconds) {
     /// UCI Options allocated time is < 10 seconds, so time isn't extensible
     EXPECT_EQ(uci_options.search_to_depth_x, -1);
     EXPECT_EQ(uci_options.search_for_time_x, -1);
-    uci_options.search_for_time_x = 10;
+    uci_options.search_for_time_x = 55;
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 10 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 55 - 50);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 10 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 55 - 50);
 
     /// UCI Options allocated time is < 10 seconds, so time isn't extensible
-    uci_options.search_for_time_x = 15;
+    uci_options.search_for_time_x = 99;
     uci_options.w_time_milli = 100000;
     uci_options.b_time_milli = 100000;
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 15 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 99 - 50);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 15 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 99 - 50);
 }
 
 /**
@@ -268,17 +269,17 @@ TEST_F(ChessClockTester, ExtendTime_TimeLimit) {
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 1000 / 40);
+    EXPECT_EQ(cc.allocated_time(), 1000 / 50);
     cc.extend_time(0);
-    EXPECT_EQ(cc.allocated_time(), 1000 / 40);
+    EXPECT_EQ(cc.allocated_time(), 1000 / 50);
     cc.extend_time(10);
-    EXPECT_EQ(cc.allocated_time(), 1000 / 40);
+    EXPECT_EQ(cc.allocated_time(), 1000 / 50);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 1000 / 40);
+    EXPECT_EQ(cc.allocated_time(), 1000 / 50);
     cc.extend_time(0);
-    EXPECT_EQ(cc.allocated_time(), 1000 / 40);
+    EXPECT_EQ(cc.allocated_time(), 1000 / 50);
     cc.extend_time(10);
-    EXPECT_EQ(cc.allocated_time(), 1000 / 40);
+    EXPECT_EQ(cc.allocated_time(), 1000 / 50);
 
     /// UCI Options allocated time is < 10 seconds, so time isn't extensible
     uci_options.b_time_milli = 9999;
@@ -286,53 +287,35 @@ TEST_F(ChessClockTester, ExtendTime_TimeLimit) {
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 10 / 40);
+    EXPECT_EQ(cc.allocated_time(), 10 / 50);
     cc.extend_time(2);
-    EXPECT_EQ(cc.allocated_time(), 10 / 40);
+    EXPECT_EQ(cc.allocated_time(), 10 / 50);
     cc.extend_time(3);
-    EXPECT_EQ(cc.allocated_time(), 10 / 40);
+    EXPECT_EQ(cc.allocated_time(), 10 / 50);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 9999 / 40);
+    EXPECT_EQ(cc.allocated_time(), 9999 / 50);
     cc.extend_time(0);
-    EXPECT_EQ(cc.allocated_time(), 9999 / 40);
+    EXPECT_EQ(cc.allocated_time(), 9999 / 50);
     cc.extend_time(9);
-    EXPECT_EQ(cc.allocated_time(), 9999 / 40);
+    EXPECT_EQ(cc.allocated_time(), 9999 / 50);
 
     /// UCI Options allocated time is < 10 seconds, so time isn't extensible
-    uci_options.b_time_milli = 10000;
-    uci_options.w_time_milli = 10000;
+    uci_options.b_time_milli = 50 * 20 * 1000;
+    uci_options.w_time_milli = 50 * 20 * 1000;
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 10000 / 40);
+    EXPECT_EQ(cc.allocated_time(), 50 * 20 * 1000 / 50);
     cc.extend_time(0);
-    EXPECT_EQ(cc.allocated_time(), 10000 / 40 + 250 * 0);
+    EXPECT_EQ(cc.allocated_time(), 50 * 20 * 1000 / 50 + 250 * 0);
     cc.extend_time(3);
-    EXPECT_EQ(cc.allocated_time(), 10000 / 40 + 250 * 0);
+    EXPECT_EQ(cc.allocated_time(), 50 * 20 * 1000 / 50 + 250 * 0);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 10000 / 40);
+    EXPECT_EQ(cc.allocated_time(), 50 * 20 * 1000 / 50);
     cc.extend_time(10);
-    EXPECT_EQ(cc.allocated_time(), 10000 / 40 + 250 * 10);
+    EXPECT_EQ(cc.allocated_time(), 50 * 20 * 1000 / 50 + 250 * 10);
     cc.extend_time(9);
-    EXPECT_EQ(cc.allocated_time(), 10000 / 40 + 250 * 10);
-
-    /// UCI Options allocated time is < 10 seconds, so time isn't extensible
-    uci_options.b_time_milli = 100000;
-    uci_options.w_time_milli = 1234567;
-
-    /// Test white and black
-    cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 1234567 / 40);
-    cc.extend_time(4);
-    EXPECT_EQ(cc.allocated_time(), 1234567 / 40 + 250 * 4);
-    cc.extend_time(0);
-    EXPECT_EQ(cc.allocated_time(), 1234567 / 40 + 250 * 4);
-    cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 100000 / 40);
-    cc.extend_time(1);
-    EXPECT_EQ(cc.allocated_time(), 100000 / 40 + 250 * 1);
-    cc.extend_time(15);
-    EXPECT_EQ(cc.allocated_time(), 100000 / 40 + 250 * 1);
+    EXPECT_EQ(cc.allocated_time(), 50 * 20 * 1000 / 50 + 250 * 10);
 }
 
 /**
@@ -377,32 +360,32 @@ TEST_F(ChessClockTester, ExtendTime_SearchForXSeconds) {
 /// UCI Options allocated time is < 10 seconds, so time isn't extensible
     EXPECT_EQ(uci_options.search_to_depth_x, -1);
     EXPECT_EQ(uci_options.search_for_time_x, -1);
-    uci_options.search_for_time_x = 10;
+    uci_options.search_for_time_x = 1000;
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 10 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 1000 - 50);
     cc.extend_time(0);
-    EXPECT_EQ(cc.allocated_time(), 10 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 1000 - 50);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 10 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 1000 - 50);
     cc.extend_time(12);
-    EXPECT_EQ(cc.allocated_time(), 10 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 1000 - 50);
 
     /// UCI Options allocated time is < 10 seconds, so time isn't extensible
-    uci_options.search_for_time_x = 15;
+    uci_options.search_for_time_x = 1050;
     uci_options.w_time_milli = 100000;
     uci_options.b_time_milli = 100000;
 
     /// Test white and black
     cc.alloc_time(uci_options, WHITE);
-    EXPECT_EQ(cc.allocated_time(), 15 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 1050 - 50);
     cc.extend_time(0);
-    EXPECT_EQ(cc.allocated_time(), 15 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 1050 - 50);
     cc.alloc_time(uci_options, BLACK);
-    EXPECT_EQ(cc.allocated_time(), 15 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 1050 - 50);
     cc.extend_time(2);
-    EXPECT_EQ(cc.allocated_time(), 15 * 1000);
+    EXPECT_EQ(cc.allocated_time(), 1050 - 50);
 }
 
 /**

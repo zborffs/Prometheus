@@ -98,4 +98,4 @@ public:
     }
 };
 
-#endif // CLOAK_BOOK_HPP
+#endif // PROMETHEUS_BOOK_HPP

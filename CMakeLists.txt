@@ -18,11 +18,6 @@ find_package(spdlog REQUIRED) # Logging Library
 include_directories(${GTEST_INCLUDE_DIR})
 include_directories(include)
 
-# Options
-option(BUILD_TESTS "Build Tests" ON)
-option(BENCH_TESTS "Build Benchmarks" OFF)
-option(LOGGING "Enable Logging" ON) # Disable on Final Release
-
 #
 if (USE_SSE)
     add_compile_definitions(USE_SSE)
@@ -67,9 +62,7 @@ target_link_libraries(Prometheus-lib Threads::Threads spdlog::spdlog)
 add_executable(prometheus src/main.cpp)
 target_link_libraries(prometheus Prometheus-lib Threads::Threads spdlog::spdlog)
 
-# If we want to build a test, then build them
-if(BUILD_TESTS)
-    add_subdirectory(test)
-    add_subdirectory(tools)
-    add_subdirectory(benchmark)
-endif()
+# Add all the subdirectories
+add_subdirectory(test) # correctness testing
+add_subdirectory(tools) # miscellaneous code
+add_subdirectory(benchmark) # performance testing through benchmarking

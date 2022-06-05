@@ -236,6 +236,12 @@ Centipawns_t dot_product(Bitboard bb, const Centipawns_t* weights) {
     return accu;
 }
 
+/**
+ * returns a bitboard with '1's set for all the squares in between sq1 and sq2 including
+ * @param sq1 the lower square
+ * @param sq2 the upper square
+ * @return a bitboard
+ */
 Bitboard in_between(Square_t sq1, Square_t sq2) {
     const Bitboard m1   = C64(-1);
     const Bitboard a2a7 = C64(0x0001010101010100);

@@ -6,9 +6,6 @@
 #include <memory>
 #include <optional>
 
-/// External Library Includes
-#include <spdlog/spdlog.h> // logger
-
 /// Project Includes
 #include "board.hpp"
 #include "book.hpp"
