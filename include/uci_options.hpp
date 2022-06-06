@@ -11,7 +11,6 @@
 
 struct UCIOptions {
     /// Engine State Variables (Options)
-    Style style{Style::BALANCED};
     int default_tt_size{32}; // in MB
     int minimum_tt_size{1}; // in MB
     int maximum_tt_size{128}; // in MB

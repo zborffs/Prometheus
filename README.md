@@ -1,9 +1,11 @@
 Prometheus
 ==========
-This is a chess engine written in C++.
+Prometheus is a UCI-compliant chess engine written in C++.
 
 Installation
 ------------
+I have only tested this on Unix machines, so I don't guarantee that it will run on Windows. 
+
 To download and build:
 ```shell
 git clone https://gitlab.com/zborffs/Prometheus
@@ -22,8 +24,6 @@ To build with SSE commands enabled, instead run the following "cmake":
 ```shell
 cmake -DCMAKE_BUILD_TYPE=Release -DUSE_SSE=On
 ```
-
-I have only tested this on Unix machines, so I don't guarantee that it will run on Windows.
 
 Search Features List
 --------------------
@@ -116,7 +116,7 @@ Pawns:
     - [ ] Penalty for insufficient pawns in pawn shelter
     - [ ] connectivity bonus for pawn shelter
     - [ ] connectivitiy bonus for pawn shelter root
-    - [ ] penality for placement of pawns in shelter (f3 = -50, h3 = -25, g3 = 0)
+    - [ ] penalty for placement of pawns in shelter (f3 = -50, h3 = -25, g3 = 0)
     - [ ] doubled pawns in pawn shelter, or open rank in pawn shelter
     - [ ] pawn storm penalty (+40 for enemy pawn on fourth rank, +60 for fifth rank and +80 for sixth rank)
     - [ ] (only in end game) king mobility
