@@ -9,7 +9,6 @@ namespace internal {
      */
     void def_stage(const Board& board, EvaluationState& es) {
         auto m = material(board, es, WHITE, false) + material(board, es, BLACK, false);
-
         if (m > 6600) {
             es.stage = OPENING;
         } else if (m > 4000) {
@@ -338,6 +337,12 @@ namespace internal {
 #ifndef NDEBUG
         Centipawns_t w_king_pst;
         Centipawns_t b_king_pst;
+        Centipawns_t w_castling_bonus;
+        Centipawns_t b_castling_bonus;
+        Centipawns_t w_openfile_castling{0};
+        Centipawns_t b_openfile_castling{0};
+        Centipawns_t w_pawn_shield_hole{0};
+        Centipawns_t b_pawn_shield_hole{0};
 #endif // NDEBUG
 
 
@@ -360,20 +365,104 @@ namespace internal {
             ret -= dot_product(flip_flop(b), &M_KING_PST[0]);
         }
 
-        // penalty if not castled by mid game
+        if (es.stage != LATE_END_GAME) {
+            Bitboard W_CASTLING_BB = C64(1) << A1 | C64(1) << B1 | C64(1) << C1 | C64(1) << G1 | C64(1) << H1;
+            Bitboard B_CASTLING_BB = C64(1) << A8 | C64(1) << B8 | C64(1) << C8 | C64(1) << G8 | C64(1) << H8;
 
-        // pawn shield
-        // - applicable when king has castled, so if the king hasn't castled
+            Bitboard w_has_castled = w & W_CASTLING_BB;
+            Bitboard b_has_castled = b & B_CASTLING_BB;
+#ifndef NDEBUG
+            w_castling_bonus = CASTLING_BONUS * pop_count(w_has_castled);
+            b_castling_bonus = -CASTLING_BONUS * pop_count(b_has_castled);
+#endif // NDEBUG
+
+            ret += CASTLING_BONUS * pop_count(w_has_castled);
+            ret -= CASTLING_BONUS * pop_count(b_has_castled);
+
+            if (w_has_castled != 0) {
+                // white has castled
+                Bitboard king_attacks = king_moves(w);
+                Bitboard king_region = (king_attacks << 8) | king_attacks | w;
+
+                Bitboard pawn_shield = king_region & board.piece_bb(W_PAWN);
+                int pawn_shield_count = pop_count8(file_set(board.piece_bb(W_PAWN)) & file_set(king_region));
+
+                if (pawn_shield_count != 3) {
+                    // if there is an open file in front of the castled king, then apply a penalty
+                    ret += OPEN_FILE_CASTLING_PENALTY;
+#ifndef NDEBUG
+                    w_openfile_castling = OPEN_FILE_CASTLING_PENALTY;
+#endif // NDEBUG
+                } else {
+                    // if there isn't an open file in front of the king, but one of the squares in the king region
+                    // belongs to a file which doesn't have a pawn in the king region, then apply a small penalty. this
+                    // indicates, that the pawn shield has a hole.
+
+                    int pawn_shield_holes = pop_count8(file_set(pawn_shield) & file_set(king_region));
+                    if (pawn_shield_holes != 3) {
+                        // we have at least 1 hole in the pawn shield
+                        ret += PAWN_SHIELD_HOLE_PENALTY;
+
+#ifndef NDEBUG
+                        w_pawn_shield_hole = PAWN_SHIELD_HOLE_PENALTY;
+#endif // NDEBUG
+                    }
+                }
+            }
+
+
+            // testing: position startpos moves e2e4 e7e6 g1f3 g8f6 f1e2 f8e7 e1g1 e8g8
+            if (b_has_castled != 0) {
+                // black has castled
+                Bitboard king_attacks = king_moves(b);
+                Bitboard king_region = (king_attacks >> 8) | king_attacks | b;
+
+                Bitboard pawn_shield = king_region & board.piece_bb(B_PAWN);
+                int pawn_shield_count = pop_count8(file_set(board.piece_bb(B_PAWN)) & file_set(king_region));
+                if (pawn_shield_count != 3) {
+                    // if there is an open file in front of the castled king, then apply a penalty
+                    ret -= OPEN_FILE_CASTLING_PENALTY;
+#ifndef NDEBUG
+                    b_openfile_castling = -OPEN_FILE_CASTLING_PENALTY;
+#endif // NDEBUG
+                } else {
+                    // if there isn't an open file in front of the king, but one of the squares in the king region
+                    // belongs to a file which doesn't have a pawn in the king region, then apply a small penalty. this
+                    // indicates, that the pawn shield has a hole.
+
+                    int pawn_shield_holes = pop_count8(file_set(pawn_shield) & file_set(king_region));
+                    if (pawn_shield_holes != 3) {
+                        // we have at least 1 hole in the pawn shield
+                        ret -= PAWN_SHIELD_HOLE_PENALTY;
+
+#ifndef NDEBUG
+                        b_pawn_shield_hole = -PAWN_SHIELD_HOLE_PENALTY;
+#endif // NDEBUG
+                    }
+                }
+            }
+        }
 
 #ifndef NDEBUG
         if (verbose) {
             es.printer.add("White King PST", w_king_pst);
             es.printer.add("Black King PST", b_king_pst);
+            es.printer.add("White Castling Bonus", w_castling_bonus);
+            es.printer.add("Black Castling Bonus", b_castling_bonus);
+            es.printer.add("White Open File Castling Penalty", w_openfile_castling);
+            es.printer.add("Black Open File Castling Penalty", b_openfile_castling);
+            es.printer.add("White Pawn Shield Hole Penalty", w_pawn_shield_hole);
+            es.printer.add("Black Pawn Shield Hole Penalty", b_pawn_shield_hole);
         }
 #endif // NDEBUG
 
-
         return ret;
+    }
+
+    Centipawns_t eval_king_safety(const Board& board, EvaluationState& es, bool verbose) {
+
+
+        return 0;
     }
 
     /**

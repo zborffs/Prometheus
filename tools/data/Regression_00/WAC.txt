@@ -1,0 +1,2346 @@
+info score cp -186 time 1 depth 1 nodes 141 ordering 0.88 pv f6d5
+info score cp -346 time 12 depth 2 nodes 1055 ordering 0.98 pv f6g4 c6e5
+info score cp 999997 time 117 depth 3 nodes 10499 ordering 0.95 pv g3g6 f7g6 e5g6
+passed
+info score cp 23 time 0 depth 1 nodes 38 ordering 1 pv f6e6
+info score cp 7 time 2 depth 2 nodes 240 ordering 0.99 pv f6e6 e3e4
+info score cp 18 time 12 depth 3 nodes 1132 ordering 0.88 pv b3b8 e3e4 b8d8
+info score cp 28 time 58 depth 4 nodes 3745 ordering 0.9 pv b3b8 e3e4 b8e8 e4e5
+info score cp 33 time 126 depth 5 nodes 10583 ordering 0.9 pv b3b8 e3e4 f5e4 f3e4 b8e8
+info score cp 28 time 446 depth 6 nodes 37792 ordering 0.88 pv b3b8 e3e4 f5e4 f3e4 b8d8 h2h3
+info score cp 48 time 1280 depth 7 nodes 123234 ordering 0.84 pv c4c3 b2c3 b3c3 d2a2 f6e6 h2h3 e6d5
+info score cp 28 time 9935 depth 8 nodes 942529 ordering 0.81 pv b3b5 e3e4 b5b8 h2h3 b8d8 e4e5 f6e6 f3e3
+failed
+info score cp -83 time 3 depth 1 nodes 231 ordering 0.98 pv e3g3
+info score cp 180 time 12 depth 2 nodes 666 ordering 0.99 pv e3g3 g5g3
+info score cp 180 time 45 depth 3 nodes 4051 ordering 0.99 pv e3g3 g5g3 h1g3
+info score cp 182 time 126 depth 4 nodes 10285 ordering 0.96 pv e3g3 g5g3 e2c4 g8h8
+info score cp 198 time 365 depth 5 nodes 34380 ordering 0.96 pv e3g3 g5g3 h1g3 f4g3 f1d1
+info score cp 217 time 866 depth 6 nodes 80103 ordering 0.93 pv e3g3 g5g3 h1g3 f4g3 e2c4 g8h8
+info score cp 243 time 7765 depth 7 nodes 648960 ordering 0.85 pv e3g3 d7g4 g3g4 h4g4 e2g4 g5g4 h3g4
+passed
+info score cp 82 time 2 depth 1 nodes 159 ordering 0.98 pv h6e3
+info score cp 999997 time 10 depth 2 nodes 804 ordering 0.99 pv h6h7 h8h7
+info score cp 999997 time 48 depth 3 nodes 2696 ordering 1 pv h6h7 h8h7 h5g6
+passed
+info score cp -77 time 0 depth 1 nodes 70 ordering 1 pv c6d6
+info score cp 999997 time 3 depth 2 nodes 397 ordering 0.98 pv c6c4 d6c4
+info score cp 999997 time 20 depth 3 nodes 2240 ordering 1 pv c6c4 d6c4 b5c4
+passed
+info score cp 38 time 0 depth 1 nodes 32 ordering 1 pv h6g5
+info score cp 38 time 0 depth 2 nodes 119 ordering 1 pv h6g5 a7b6
+info score cp 446 time 5 depth 3 nodes 668 ordering 0.88 pv b6b7 g5b5 b7b5
+info score cp 440 time 12 depth 4 nodes 1525 ordering 0.95 pv b6b7 g5b5 b7b5 h8g8
+info score cp 518 time 39 depth 5 nodes 4729 ordering 0.92 pv b6b7 g5b5 b7b5 h8g8 b5g5
+info score cp 528 time 81 depth 6 nodes 10257 ordering 0.94 pv b6b7 g5b5 b7b5 h8g8 b5a5 g8f7
+info score cp 538 time 222 depth 7 nodes 25315 ordering 0.93 pv b6b7 g5b5 b7b5 h8g8 b5b7 a7a6 b7g7
+info score cp 558 time 497 depth 8 nodes 56341 ordering 0.93 pv b6b7 g5b5 b7b5 h8g8 b5b7 g8f8 h6g5 f8e8
+info score cp 580 time 1086 depth 9 nodes 125626 ordering 0.95 pv b6b7 g5b5 b7b5 h8g8 b5g5 g8f7 g5g4 f7e6 g4a4
+info score cp 610 time 2542 depth 10 nodes 293177 ordering 0.95 pv b6b7 g5b5 b7b5 h8g8 b5a5 g8f7 h6g5 f7e6 a5a7 e6d5
+info score cp 630 time 6163 depth 11 nodes 667703 ordering 0.95 pv b6b7 g5b5 b7b5 h8g8 b5f5 a7a6 f5f1 a6a5 f1f4 a5a4 f4a4
+passed
+info score cp 18 time 0 depth 1 nodes 67 ordering nan pv g4e5
+info score cp -38 time 1 depth 2 nodes 230 ordering 1 pv g4e5 e2e4
+info score cp 18 time 17 depth 3 nodes 2431 ordering 0.93 pv g4e5 e2e4 d7d5
+info score cp 482 time 78 depth 4 nodes 8805 ordering 0.88 pv g4e3 g1f3 e3d1 e1d1
+info score cp 538 time 205 depth 5 nodes 24743 ordering 0.91 pv g4e3 g1f3 e3d1 e1d1 d7d5
+info score cp 472 time 537 depth 6 nodes 65685 ordering 0.93 pv g4e3 g1f3 e3d1 e1d1 b8c6 e2e4
+info score cp 548 time 1564 depth 7 nodes 180924 ordering 0.94 pv g4e3 g1f3 e3d1 e1d1 d7d5 e2e3 b8c6
+info score cp 507 time 5143 depth 8 nodes 526865 ordering 0.91 pv g4e3 g1f3 e3d1 e1d1 f8c5 d2e4 d7d6 c1g5
+passed
+info score cp 233 time 1 depth 1 nodes 124 ordering 1 pv h6f7
+info score cp 504 time 8 depth 2 nodes 590 ordering 0.98 pv e7f7 f8c5
+info score cp 546 time 54 depth 3 nodes 4153 ordering 0.98 pv e7f7 f8f7 h6f7
+info score cp 676 time 147 depth 4 nodes 11539 ordering 0.99 pv e7f7 f8f7 h6f7 h8g8
+info score cp 676 time 305 depth 5 nodes 30135 ordering 0.99 pv e7f7 f8f7 h6f7 h8g8 f7h6
+info score cp 830 time 742 depth 6 nodes 76292 ordering 0.98 pv e7f7 f8f7 h6f7 h8g8 f7h6 g8h8
+info score cp 954 time 2132 depth 7 nodes 229459 ordering 0.97 pv e7f7 f8f7 h6f7 h8g8 f7h6 g8h8 a1d1
+info score cp 954 time 4767 depth 8 nodes 526628 ordering 0.98 pv e7f7 f8f7 h6f7 h8g8 f7h6 g8h8 a1d1 a8e8
+info score cp 954 time 9935 depth 9 nodes 1010507 ordering 0.98 pv e7f7 f8f7 h6f7 h8g8 f7h6 g8h8 a1d1 a8e8 h6f7
+passed
+info score cp -217 time 0 depth 1 nodes 78 ordering 1 pv h4g4
+info score cp -217 time 9 depth 2 nodes 701 ordering 0.9 pv d6h2 g1h1
+info score cp -212 time 58 depth 3 nodes 5670 ordering 0.92 pv h4g4 d2e3 d8d7
+info score cp -203 time 499 depth 4 nodes 30429 ordering 0.92 pv d8f6 f2f4 h4g4 f4f5
+info score cp 999991 time 1178 depth 5 nodes 79366 ordering 0.94 pv d6h2 g1h1 h2g3 h1g1 h4h1
+info score cp 999991 time 1418 depth 6 nodes 105361 ordering 0.95 pv d6h2 g1h1 h2g3 h1g1 h4h1 g1h1
+info score cp 999991 time 2553 depth 7 nodes 231155 ordering 0.96 pv d6h2 g1h1 h2g3 h1g1 h4h1 g1h1 d8h4
+info score cp 999991 time 9935 depth 8 nodes 1028314 ordering 0.99 pv d6h2 g1h1 h2g3 h1g1 h4h1 g1h1 d8h4 h1g1
+passed
+info score cp 42 time 1 depth 1 nodes 157 ordering 0.95 pv h4h7
+info score cp 42 time 8 depth 2 nodes 792 ordering 0.91 pv h4h7 f6e5
+info score cp 71 time 51 depth 3 nodes 5657 ordering 0.93 pv h4h7 f6e5 g6g7
+info score cp 71 time 150 depth 4 nodes 16630 ordering 0.96 pv h4h7 f6e5 g6g7 c7g7
+info score cp 218 time 542 depth 5 nodes 51521 ordering 0.95 pv h4h7 f6e5 g6g7 c7g7 h7g7
+info score cp 218 time 1357 depth 6 nodes 119763 ordering 0.93 pv h4h7 f6e5 g6g7 c7g7 h7g7 g8g7
+info score cp 202 time 5617 depth 7 nodes 476126 ordering 0.93 pv h4h7 f6e5 g6g7 c7g7 h7g7 g8g7 d6f5
+passed
+info score cp -11 time 0 depth 1 nodes 106 ordering 0.78 pv a1c1
+info score cp 11 time 4 depth 2 nodes 469 ordering 0.89 pv d1d7 c8d7
+info score cp 55 time 35 depth 3 nodes 4156 ordering 0.94 pv f3c6 f8c5 a4c5
+info score cp 649 time 98 depth 4 nodes 10255 ordering 0.93 pv f3c6 f6d5 c6d7 c8d7
+info score cp 648 time 291 depth 5 nodes 31104 ordering 0.9 pv f3c6 a8a7 d1d4 h8g8 c6d7
+info score cp 653 time 2009 depth 6 nodes 129715 ordering 0.88 pv f3c6 f6d5 c6d7 c8d7 b6c5 e8d8
+info score cp 469 time 4922 depth 7 nodes 465107 ordering 0.86 pv f3c6 f6d5 c6d7 c8d7 c2c3 d5b6 a4b6
+info score cp 469 time 9935 depth 8 nodes 973513 ordering 0.88 pv f3c6 f6d5 c6d7 c8d7 c2c3 d5b6 a4b6 f8c5
+passed
+info score cp -462 time 1 depth 1 nodes 143 ordering 0.97 pv g8f8
+info score cp 999997 time 5 depth 2 nodes 481 ordering 0.98 pv g4f3 f1f3
+info score cp 999997 time 17 depth 3 nodes 1786 ordering 0.99 pv g4f3 f1f3 g7g1
+passed
+info score cp -139 time 2 depth 1 nodes 185 ordering 1 pv g2f3
+info score cp -141 time 12 depth 2 nodes 981 ordering 0.94 pv f1e1 c6d4
+info score cp -142 time 67 depth 3 nodes 4525 ordering 0.83 pv f1f8 g8f8 c5d7
+info score cp -92 time 365 depth 4 nodes 28728 ordering 0.91 pv g2f3 f8e8 a1d1 b7b5
+info score cp -81 time 962 depth 5 nodes 88818 ordering 0.87 pv f1f8 g8f8 c5d7 f8e7 d7e5
+info score cp -107 time 3546 depth 6 nodes 311468 ordering 0.88 pv f1f8 g8f8 c5d7 f8e7 d7e5 c6e5
+info score cp -51 time 6048 depth 7 nodes 596801 ordering 0.89 pv f1f8 g8f8 c5d7 f8e7 d7e5 c6e5 a1d1
+info score cp -42 time 9935 depth 8 nodes 988213 ordering 0.89 pv f1f8 g8f8 c5d7 f8e7 d7e5 c6e5 e2e4 e7d6
+passed
+info score cp 8 time 1 depth 1 nodes 133 ordering 1 pv a1d1
+info score cp -31 time 10 depth 2 nodes 845 ordering 0.86 pv a1d1 a8c8
+info score cp 317 time 63 depth 3 nodes 7277 ordering 0.93 pv h3h7 g8f8 h7g7
+info score cp 328 time 129 depth 4 nodes 14447 ordering 0.94 pv h3h7 g8f8 b2f6 c5e3
+info score cp 999993 time 1146 depth 5 nodes 156019 ordering 0.98 pv h3h7 g8f8 b2f6 c5e3 f3e3
+info score cp 999993 time 2414 depth 6 nodes 318536 ordering 0.99 pv h3h7 g8f8 b2f6 c5e3 f3e3 d5d4
+info score cp 999993 time 9935 depth 7 nodes 1123735 ordering 1 pv h3h7 g8f8 b2f6 c5e3 f3e3 d5d4 h7g7
+passed
+info score cp 289 time 2 depth 1 nodes 77 ordering 1 pv g1f2
+info score cp 428 time 8 depth 2 nodes 590 ordering 0.88 pv c5c6 b7c6
+info score cp 475 time 26 depth 3 nodes 2600 ordering 0.91 pv b8b7 c7b7 c5c6
+info score cp 475 time 64 depth 4 nodes 7092 ordering 0.93 pv b8b7 c7b7 c5c6 d7c7
+info score cp 501 time 117 depth 5 nodes 13828 ordering 0.94 pv b8b7 c7b7 c5c6 d7c7 c6b7
+info score cp 495 time 460 depth 6 nodes 46075 ordering 0.92 pv b8b7 c7b7 c5c6 d7c7 c6b7 c7b7
+info score cp 531 time 1161 depth 7 nodes 103111 ordering 0.92 pv b8b7 c7b7 c5c6 d7c7 c6b7 c7b7 g1f2
+info score cp 550 time 3154 depth 8 nodes 273627 ordering 0.89 pv b8b7 c7b7 c5c6 d7c7 c6b7 c7b7 c1d1 b7b6
+info score cp 553 time 7687 depth 9 nodes 698867 ordering 0.92 pv b8b7 c7b7 c5c6 d7c7 c6b7 c7b7 g1f2 b7b6 f2e3
+info score cp 580 time 9935 depth 10 nodes 921624 ordering 0.89 pv b8b7 c7b7 c5c6 d7c7 c6b7 c7b7 g1f2 b7b6 c1c8 g7g5
+passed
+info score cp -24 time 0 depth 1 nodes 107 ordering 1 pv a1c1
+info score cp -43 time 10 depth 2 nodes 1053 ordering 0.95 pv c2c4 d5d6
+info score cp -4 time 27 depth 3 nodes 3271 ordering 0.96 pv c2c4 d5d6 a1c1
+info score cp 270 time 105 depth 4 nodes 11718 ordering 0.95 pv e2c3 d5e6 e3c5 f8d8
+info score cp 288 time 303 depth 5 nodes 32307 ordering 0.96 pv e2c3 d5d6 c3e4 d6d5 e3c5
+info score cp 255 time 1082 depth 6 nodes 112617 ordering 0.94 pv e2c3 d5e6 e3c5 f8e8 c3b5 e6d5
+info score cp 286 time 2435 depth 7 nodes 264164 ordering 0.93 pv e2c3 d5e6 e3c5 f8e8 d1f3 a8d8 a1d1
+info score cp 263 time 9935 depth 8 nodes 886414 ordering 0.87 pv e2c3 d5d7 e3c5 f8e8 a1c1 b7b6 c5e3 a8d8
+passed
+info score cp -6 time 1 depth 1 nodes 177 ordering 1 pv a1b1
+info score cp -17 time 14 depth 2 nodes 1113 ordering 0.9 pv c4e5 g6f6
+info score cp 9 time 42 depth 3 nodes 4827 ordering 0.93 pv c4e5 g6f6 c3c4
+info score cp 5 time 94 depth 4 nodes 9488 ordering 0.91 pv c4e5 g6f6 e5d7 e6d7
+info score cp 79 time 488 depth 5 nodes 43201 ordering 0.92 pv c4e5 h8d8 e5g6 e7g6 c3c4
+info score cp 80 time 3438 depth 6 nodes 285598 ordering 0.89 pv c4e5 h8e8 f2f3 g6f6 e5d7 e6d7
+info score cp 98 time 8089 depth 7 nodes 676565 ordering 0.88 pv c4e5 h8e8 e5g6 e7g6 c3c4 b8a8 b3c3
+passed
+info score cp 85 time 0 depth 1 nodes 43 ordering 1 pv g1f1
+info score cp 49 time 1 depth 2 nodes 151 ordering 0.96 pv g1f1 f7e6
+info score cp 85 time 11 depth 3 nodes 1228 ordering 0.92 pv g1f1 f7e7 f1e1
+info score cp 59 time 24 depth 4 nodes 2770 ordering 0.94 pv g1f1 f7e7 f1e1 e7d6
+info score cp 85 time 105 depth 5 nodes 10342 ordering 0.93 pv g1f1 f7e7 f1e1 e7d7 e1d1
+info score cp 79 time 552 depth 6 nodes 50662 ordering 0.9 pv g1h1 f7g7 h1g1 g7h7 g1f1 a2d2
+info score cp 462 time 1929 depth 7 nodes 170608 ordering 0.9 pv a8h8 a2a1 g1f2 f7e6 a7a8q a1a8 h8a8
+info score cp 502 time 3665 depth 8 nodes 326982 ordering 0.9 pv a8h8 a2a1 g1f2 a1a2 f2e3 f7e6 a7a8q a2a8
+info score cp 508 time 7875 depth 9 nodes 708226 ordering 0.9 pv a8h8 a2a1 g1f2 a1a2 f2e3 a2a3 e3d4 a3a4 d4c5
+passed
+info score cp -73 time 2 depth 1 nodes 186 ordering 0.97 pv a3c4
+info score cp -104 time 18 depth 2 nodes 1353 ordering 0.9 pv a3c4 h5d5
+info score cp -73 time 140 depth 3 nodes 9634 ordering 0.92 pv a3c4 h5d5 a1a4
+info score cp 15 time 252 depth 4 nodes 19335 ordering 0.93 pv c5c6 h5d5 b5d5 e6d5
+info score cp 21 time 590 depth 5 nodes 52856 ordering 0.93 pv c5c6 h5d5 c6d7 c8d7 b5d3
+info score cp 25 time 1497 depth 6 nodes 140197 ordering 0.91 pv c5c6 h5d5 b5d5 e6d5 a3b5 c7h2
+info score cp 41 time 4487 depth 7 nodes 420111 ordering 0.91 pv c5c6 h5d5 b5d5 e6d5 c6d7 c8d7 a3c2
+passed
+info score cp 184 time 0 depth 1 nodes 73 ordering nan pv a8c8
+info score cp 162 time 8 depth 2 nodes 747 ordering 0.95 pv d7e6 c4e2
+info score cp 772 time 35 depth 3 nodes 4240 ordering 0.95 pv d7b5 c4b5 a6b5
+info score cp 958 time 55 depth 4 nodes 5852 ordering 0.91 pv d7b5 c4b5 a6b5 g1f3
+info score cp 938 time 345 depth 5 nodes 40843 ordering 0.89 pv d7b5 c4b5 a6b5 c1b2 d8d3
+info score cp 932 time 1206 depth 6 nodes 120420 ordering 0.9 pv d7b5 c4b5 a6b5 c1b2 d8d3 g1e2
+info score cp 977 time 4310 depth 7 nodes 443743 ordering 0.88 pv d7b5 c4b5 a6b5 f1e1 d8d3 g1e2 d3e4
+info score cp 993 time 9935 depth 8 nodes 1001586 ordering 0.9 pv d7b5 c4b5 a6b5 f1e2 d8h4 f2f4 h4g4 e2f1
+passed
+info score cp 17 time 1 depth 1 nodes 117 ordering 0.83 pv d2c3
+info score cp 17 time 7 depth 2 nodes 693 ordering 0.94 pv d2c3 d5c3
+info score cp 43 time 47 depth 3 nodes 4778 ordering 0.97 pv d2c3 d5c3 f3f4
+info score cp 27 time 213 depth 4 nodes 22225 ordering 0.97 pv f5e7 g8g7 e7f5 g7h8
+info score cp 51 time 640 depth 5 nodes 63927 ordering 0.96 pv d2c3 d5c3 g1f2 f8d8 f2e3
+info score cp 479 time 2638 depth 6 nodes 277392 ordering 0.92 pv d2h6 c3e1 d3f1 e1e3 f5e3 d5e3
+info score cp 505 time 4617 depth 7 nodes 485466 ordering 0.92 pv d2h6 c3e1 d3f1 e1e3 f5e3 d5e3 h6e3
+info score cp 570 time 9457 depth 8 nodes 991316 ordering 0.93 pv d2h6 c3e1 d3f1 e1e3 f5e3 d5e3 h6e3 b6b5
+passed
+info score cp -87 time 2 depth 1 nodes 191 ordering 0.95 pv c4e2
+info score cp -10 time 11 depth 2 nodes 948 ordering 0.94 pv c4a2 e8g8
+info score cp -10 time 36 depth 3 nodes 4063 ordering 0.94 pv c4a2 e8g8 g5e4
+info score cp -26 time 237 depth 4 nodes 19532 ordering 0.92 pv c4a2 e7d5 g5e4 e8g8
+info score cp 18 time 841 depth 5 nodes 84066 ordering 0.91 pv c4a2 a5c6 e1g1 e8g8 g5e4
+info score cp -1 time 4238 depth 6 nodes 377194 ordering 0.88 pv c4a2 d8d6 g5e4 d6c6 d1d3 e8g8
+passed
+info score cp 128 time 1 depth 1 nodes 151 ordering 0.9 pv d4d2
+info score cp 117 time 10 depth 2 nodes 817 ordering 0.85 pv c5e6 f7e6
+info score cp 133 time 82 depth 3 nodes 7563 ordering 0.9 pv e3e2 a6a5 d4d1
+info score cp 500 time 223 depth 4 nodes 17487 ordering 0.9 pv g2g4 f5c2 e1e2 c2e2
+info score cp 500 time 451 depth 5 nodes 45725 ordering 0.92 pv g2g4 f5c2 e1e2 c2e2 c3e2
+info score cp 493 time 1295 depth 6 nodes 118989 ordering 0.9 pv g2g4 f5c2 e1e2 c2e2 e3e2 a8a7
+info score cp 500 time 6112 depth 7 nodes 621994 ordering 0.88 pv g2g4 f5c2 e1e2 c2e2 e3e2 a8a7 d4d1
+info score cp 492 time 9935 depth 8 nodes 923391 ordering 0.89 pv g2g4 f5c2 e1e2 c2e2 e3e2 e8g7 d4d1 f8d8
+passed
+info score cp 12 time 1 depth 1 nodes 130 ordering 1 pv e7e3
+info score cp 23 time 5 depth 2 nodes 445 ordering 0.96 pv e7e3 c4e3
+info score cp 708 time 52 depth 3 nodes 4899 ordering 0.91 pv g7d4 g1f2 d4e3
+info score cp 728 time 97 depth 4 nodes 8648 ordering 0.94 pv g7d4 e1d2 d4e3 c4e3
+info score cp 728 time 266 depth 5 nodes 24835 ordering 0.93 pv g7d4 e1d2 d4e3 c4e3 g6f5
+info score cp 748 time 676 depth 6 nodes 55190 ordering 0.93 pv g7d4 e1d2 d4e3 c4e3 e7e5 a2a3
+info score cp 728 time 2401 depth 7 nodes 223621 ordering 0.88 pv g7d4 e1d2 d4e3 c4e3 e7e5 f5g6 h7g6
+info score cp 768 time 5463 depth 8 nodes 473631 ordering 0.88 pv g7d4 e1d2 d4e3 c4e3 e7e5 a2a3 g8g7 b1d3
+passed
+info score cp -143 time 0 depth 1 nodes 50 ordering 1 pv f8d8
+info score cp 846 time 4 depth 2 nodes 374 ordering 1 pv g4h4 f2g2
+info score cp 855 time 11 depth 3 nodes 950 ordering 1 pv g4h4 f2g2 h4f6
+info score cp 935 time 27 depth 4 nodes 2141 ordering 0.98 pv g4h4 f2g2 h4f6 d8f8
+info score cp 961 time 75 depth 5 nodes 4723 ordering 0.98 pv g4h4 f2g2 h4f6 d8f8 g8f8
+info score cp 1020 time 149 depth 6 nodes 10947 ordering 0.96 pv g4h4 f2g2 h4f6 d8f8 g8f8 b2b4
+info score cp 1090 time 375 depth 7 nodes 33175 ordering 0.92 pv g4h4 f2g2 h4f6 d8f8 g8f8 b2b4 f6b2
+info score cp 1135 time 1283 depth 8 nodes 96132 ordering 0.88 pv g4h4 f2g2 h4f6 d8f8 g8f8 b2b4 c5b4 a3b4
+info score cp 1140 time 3176 depth 9 nodes 249438 ordering 0.86 pv g4h4 f2g2 h4f6 d8f8 g8f8 b2b4 f8e7 g2g3 f6c3
+info score cp 1217 time 8920 depth 10 nodes 786810 ordering 0.86 pv g4h4 f2g2 h4f6 d8f8 g8f8 b2b4 f6c3 b4c5 c3e3 c5c6
+passed
+info score cp 39 time 0 depth 1 nodes 93 ordering 0.75 pv b6b2
+info score cp 33 time 7 depth 2 nodes 677 ordering 0.89 pv b6b2 e4e2
+info score cp 48 time 40 depth 3 nodes 4375 ordering 0.87 pv b6b2 e4e2 b2c1
+info score cp 59 time 103 depth 4 nodes 10588 ordering 0.91 pv b6b2 e4e2 b2c1 g1h2
+info score cp 84 time 779 depth 5 nodes 78370 ordering 0.84 pv b6b2 d3c2 b2c2 d4c2 d7c6
+info score cp 73 time 2108 depth 6 nodes 220608 ordering 0.86 pv b6b2 d3c2 b2c2 d4c2 d7f5 e4e2
+info score cp 79 time 9935 depth 7 nodes 914317 ordering 0.82 pv b6b2 d3c2 b2c2 d4c2 d7f5 e4e2 g8h7
+failed
+info score cp -234 time 2 depth 1 nodes 196 ordering 0.88 pv e5f7
+info score cp 999997 time 11 depth 2 nodes 713 ordering 0.9 pv a3f8 f2f8
+info score cp 999997 time 41 depth 3 nodes 2320 ordering 0.97 pv a3f8 f2f8 f1f8
+passed
+info score cp 28 time 2 depth 1 nodes 209 ordering 0.97 pv b4b2
+info score cp -52 time 10 depth 2 nodes 802 ordering 0.97 pv b4e1 c4f1
+info score cp 10 time 49 depth 3 nodes 4726 ordering 0.97 pv b4e1 c4f1 e6b3
+info score cp 10 time 115 depth 4 nodes 10970 ordering 0.98 pv b4e1 c4f1 e6b3 c2c6
+info score cp 10 time 498 depth 5 nodes 55761 ordering 0.98 pv b4e1 c4f1 e6b3 c2c6 b3a4
+info score cp 10 time 1360 depth 6 nodes 128915 ordering 0.93 pv b4e1 c4f1 e6b3 c2c6 b3a4 c6a4
+info score cp 10 time 9935 depth 7 nodes 866610 ordering 0.86 pv b4e1 c4f1 e6b3 c2c6 b3a4 c6a4 b8b2
+passed
+info score cp 112 time 0 depth 1 nodes 128 ordering 1 pv b1d1
+info score cp 73 time 8 depth 2 nodes 698 ordering 0.87 pv b1d1 a8c8
+info score cp 112 time 58 depth 3 nodes 6959 ordering 0.95 pv b1d1 f6d5 e2d3
+info score cp 182 time 120 depth 4 nodes 13901 ordering 0.95 pv c5c6 b7c6 g2c6 a8c8
+info score cp 182 time 476 depth 5 nodes 56608 ordering 0.95 pv c5c6 b7c6 g2c6 a8c8 c6d7
+info score cp 157 time 1392 depth 6 nodes 143359 ordering 0.94 pv c5c6 b7c6 g2c6 a8c8 c6d7 d8d7
+info score cp 198 time 4008 depth 7 nodes 399752 ordering 0.91 pv c5c6 b7c6 g2c6 a8c8 c6d7 d8d7 b1d1
+passed
+info score cp 70 time 3 depth 1 nodes 229 ordering 0.8 pv b4b5
+info score cp 56 time 19 depth 2 nodes 1317 ordering 0.92 pv c1c3 g7g8
+info score cp 54 time 143 depth 3 nodes 7915 ordering 0.94 pv e4d2 e7e6 c1c3
+info score cp 144 time 524 depth 4 nodes 29876 ordering 0.93 pv e4d6 c4d6 c1c6 a6c4
+info score cp 144 time 1626 depth 5 nodes 98375 ordering 0.91 pv e4d6 c4d6 c1c6 a6c4 d1d6
+info score cp 144 time 8779 depth 6 nodes 476295 ordering 0.9 pv e4d6 c4d6 c1c6 a6c4 d1d6 b8b4
+passed
+info score cp 470 time 0 depth 1 nodes 89 ordering 0.88 pv b7a8
+info score cp 276 time 10 depth 2 nodes 789 ordering 0.89 pv d5e6 b8f4
+info score cp 334 time 34 depth 3 nodes 3746 ordering 0.94 pv d5e6 b8h2 g1h2
+info score cp 222 time 209 depth 4 nodes 14377 ordering 0.9 pv d5e6 f7e6 b7e4 b8f4
+info score cp 292 time 1241 depth 5 nodes 86262 ordering 0.94 pv g2g3 b8d6 d5e6 d6e7 d1d7
+info score cp 277 time 2416 depth 6 nodes 170244 ordering 0.88 pv g2g3 b8d6 d5e6 d6e7 e6f7 g8f7
+info score cp 281 time 9935 depth 7 nodes 810602 ordering 0.87 pv g2g3 b8d6 d5e6 d6e7 e6f7 g8f7 b7d5
+failed
+info score cp -24 time 0 depth 1 nodes 101 ordering 0.8 pv d1d2
+info score cp -20 time 7 depth 2 nodes 714 ordering 0.87 pv d1d4 g8g7
+info score cp 34 time 34 depth 3 nodes 3473 ordering 0.89 pv d1d8 g8g7 d8f6
+info score cp 34 time 91 depth 4 nodes 8049 ordering 0.91 pv d1d8 g8g7 d8f6 g7f6
+info score cp 34 time 288 depth 5 nodes 30269 ordering 0.92 pv d1d8 g8g7 d8f6 g7f6 g3e4
+info score cp 44 time 684 depth 6 nodes 61472 ordering 0.91 pv d1d8 g8g7 d8f6 g7f6 g3e4 f6e5
+info score cp 49 time 1813 depth 7 nodes 167690 ordering 0.9 pv d1d8 g8g7 d8f6 g7f6 g3e4 f6f5 e4c5
+info score cp 64 time 3765 depth 8 nodes 327519 ordering 0.9 pv d1d8 g8g7 d8f6 g7f6 g3e4 f6e5 e4c5 b6c5
+info score cp 69 time 9935 depth 9 nodes 853811 ordering 0.87 pv d1d8 g8g7 d8f6 g7f6 g3e4 f6f5 e4c5 b6c5 f2f4
+passed
+info score cp 201 time 1 depth 1 nodes 127 ordering 1 pv g1g2
+info score cp 201 time 9 depth 2 nodes 871 ordering 0.86 pv e4e5 f7f6
+info score cp 185 time 83 depth 3 nodes 7305 ordering 0.91 pv g1g2 f7f5 e4e5
+info score cp 193 time 451 depth 4 nodes 30527 ordering 0.88 pv e4e5 f7f6 e5c3 d6d8
+info score cp 325 time 824 depth 5 nodes 61918 ordering 0.84 pv e4e5 g7h6 e5d6 c7d6 c6c7
+info score cp 325 time 1139 depth 6 nodes 86677 ordering 0.82 pv e4e5 g7h6 e5d6 c7d6 c6c7 d6a3
+info score cp 325 time 2168 depth 7 nodes 166339 ordering 0.83 pv e4e5 g7h6 e5d6 c7d6 c6c7 d6a3 c7c8q
+info score cp 365 time 4517 depth 8 nodes 350330 ordering 0.86 pv e4e5 f7f6 e5d6 c7d6 c6c7 d6b4 c7c8q b4a4
+passed
+info score cp -160 time 5 depth 1 nodes 365 ordering 0.98 pv b7e4
+info score cp -160 time 12 depth 2 nodes 872 ordering 0.98 pv b7e4 d3e4
+info score cp 280 time 53 depth 3 nodes 4768 ordering 0.95 pv d4g1 h1g1 d7d3
+info score cp 280 time 128 depth 4 nodes 10665 ordering 0.98 pv d4g1 h1g1 d7d3 d1d3
+info score cp 451 time 678 depth 5 nodes 47781 ordering 0.93 pv d4g1 h1g1 d7d3 b1d3 b7e4
+info score cp 381 time 1390 depth 6 nodes 103510 ordering 0.91 pv d4g1 h1g1 d7d3 b1d3 e5e6 f5d4
+info score cp 441 time 4102 depth 7 nodes 315873 ordering 0.9 pv d4g1 h1g1 d7d3 b1d3 b7e4 d3e4 e5e4
+info score cp 440 time 9234 depth 8 nodes 715454 ordering 0.91 pv d4g1 h1g1 d7d3 b1d3 b7e4 d3e4 e5e4 f5d4
+passed
+info score cp 188 time 1 depth 1 nodes 117 ordering 1 pv c7e7
+info score cp 97 time 8 depth 2 nodes 768 ordering 0.91 pv c7b7 a8d8
+info score cp 133 time 66 depth 3 nodes 5197 ordering 0.93 pv d1b1 f6f5 c7e7
+info score cp 999993 time 155 depth 4 nodes 12352 ordering 0.93 pv h4h7 h8h7 d1h5 h7g8
+info score cp 999993 time 427 depth 5 nodes 43092 ordering 0.97 pv h4h7 h8h7 d1h5 h7g8 h5f7
+info score cp 999993 time 1354 depth 6 nodes 131226 ordering 0.99 pv h4h7 h8h7 d1h5 h7g8 h5f7 g8h7
+info score cp 999993 time 3766 depth 7 nodes 365914 ordering 0.98 pv h4h7 h8h7 d1h5 h7g8 h5f7 g8h7 f7g7
+passed
+info score cp 97 time 2 depth 1 nodes 101 ordering 1 pv e7e1
+info score cp 97 time 7 depth 2 nodes 595 ordering 0.98 pv e7e1 g1f2
+info score cp 97 time 48 depth 3 nodes 4259 ordering 0.92 pv e7e1 g1f2 d6c6
+info score cp 97 time 215 depth 4 nodes 17379 ordering 0.95 pv e7e1 g1f2 d6c6 c1c6
+info score cp 133 time 745 depth 5 nodes 60307 ordering 0.96 pv e7e1 g1f2 d6c6 c1c6 e1a1
+info score cp 167 time 2535 depth 6 nodes 201193 ordering 0.96 pv e7e1 g1f2 d6c6 c1c6 e1a1 c6c7
+info score cp 222 time 7414 depth 7 nodes 600431 ordering 0.95 pv e7e1 g1f2 d6c6 c1c6 e1a1 c6c7 f7e6
+passed
+info score cp -9 time 1 depth 1 nodes 157 ordering 0.95 pv a2b4
+info score cp 148 time 18 depth 2 nodes 893 ordering 0.96 pv c6d4 b3d4
+info score cp 122 time 68 depth 3 nodes 4502 ordering 0.98 pv c6d4 b3d4 c7c2
+info score cp 152 time 177 depth 4 nodes 13822 ordering 0.97 pv c6d4 b3d4 c7c2 d4c2
+info score cp 152 time 547 depth 5 nodes 44303 ordering 0.98 pv c6d4 b3d4 c7c2 d4c2 c8c2
+info score cp 177 time 1632 depth 6 nodes 136670 ordering 0.95 pv c6d4 b5d4 c7c2 d4c2 c8c2 d1d2
+info score cp 177 time 4672 depth 7 nodes 399722 ordering 0.91 pv c6d4 b5d4 c7c2 d4c2 c8c2 d1d2 c2b2
+passed
+info score cp 209 time 1 depth 1 nodes 143 ordering 0.82 pv d2d8
+info score cp 209 time 5 depth 2 nodes 487 ordering 0.92 pv d2d8 e8d8
+info score cp 193 time 38 depth 3 nodes 3471 ordering 0.94 pv d2d8 e8d8 c3e1
+info score cp 229 time 111 depth 4 nodes 8868 ordering 0.96 pv d2d8 e8d8 c3e1 d8d7
+info score cp 228 time 392 depth 5 nodes 33258 ordering 0.94 pv d2d8 e8d8 c3e1 g7g6 e1e4
+info score cp 264 time 1511 depth 6 nodes 126405 ordering 0.87 pv d2d8 e8d8 c3e1 d8d7 e1e5 g7g6
+info score cp 278 time 7964 depth 7 nodes 609149 ordering 0.86 pv d2d8 e8d8 c3e1 f7f6 e1e4 g7d7 g2f3
+failed
+info score cp -99 time 6 depth 1 nodes 436 ordering 0.83 pv d1d3
+info score cp 351 time 16 depth 2 nodes 1206 ordering 0.83 pv c3a4 b2a1
+info score cp 351 time 52 depth 3 nodes 4543 ordering 0.87 pv c3a4 b2a1 d1a1
+info score cp 335 time 98 depth 4 nodes 7933 ordering 0.91 pv c3a4 b2a1 d1a1 a8b8
+info score cp 331 time 262 depth 5 nodes 25570 ordering 0.96 pv c3a4 b2a1 d1a1 e6e5 f4e3
+info score cp 315 time 1168 depth 6 nodes 102227 ordering 0.96 pv c3a4 b2a1 d1a1 e6e5 f4e3 a8b8
+info score cp 376 time 3483 depth 7 nodes 325773 ordering 0.91 pv c3a4 b2a1 d1a1 e6e5 f4e3 a8b8 a1c3
+passed
+info score cp 36 time 1 depth 1 nodes 77 ordering 1 pv f6f5
+info score cp 425 time 8 depth 2 nodes 786 ordering 0.98 pv d8c8 e2e4
+info score cp 425 time 28 depth 3 nodes 2796 ordering 0.99 pv d8c8 e2e4 c8c4
+info score cp 425 time 87 depth 4 nodes 10342 ordering 0.98 pv d8c8 e2e4 c8c4 c1c4
+info score cp 422 time 265 depth 5 nodes 26433 ordering 0.97 pv d8c8 c4c8 f8c8 c1c8 h3c8
+info score cp 435 time 852 depth 6 nodes 93496 ordering 0.95 pv d8c8 e2e4 c8c4 c1c4 h3e6 g1g2
+info score cp 452 time 1744 depth 7 nodes 179139 ordering 0.95 pv d8c8 c4c8 f8c8 c1c8 h3c8 e2e4 f6f5
+passed
+info score cp 655 time 0 depth 1 nodes 62 ordering 1 pv f7f8
+info score cp 655 time 3 depth 2 nodes 321 ordering 0.81 pv f7f8 b8b7
+info score cp 655 time 15 depth 3 nodes 1701 ordering 0.9 pv f7f8 b8b7 g7g8q
+info score cp 655 time 108 depth 4 nodes 8454 ordering 0.92 pv b5a6 g4a4 a6b5 a4g4
+info score cp 655 time 319 depth 5 nodes 29808 ordering 0.93 pv b5a6 g4a4 a6b5 a4g4 b5a6
+info score cp 655 time 1018 depth 6 nodes 90715 ordering 0.91 pv b5a6 g4a4 a6b5 a4g4 b5a6 g4a4
+info score cp 655 time 2910 depth 7 nodes 267605 ordering 0.91 pv b5a6 g4a4 a6b5 a4g4 b5a6 g4a4 a6b5
+info score cp 655 time 9816 depth 8 nodes 876041 ordering 0.9 pv b5a6 g4a4 a6b5 a4g4 b5a6 g4a4 a6b5 a4g4
+failed
+info score cp 80 time 3 depth 1 nodes 190 ordering 0.79 pv a1d1
+info score cp 64 time 29 depth 2 nodes 1443 ordering 0.81 pv a1d1 a8b8
+info score cp 85 time 85 depth 3 nodes 5580 ordering 0.87 pv a1d1 a8b8 a3c3
+info score cp 375 time 270 depth 4 nodes 18143 ordering 0.89 pv b4a5 g7f8 a3c3 f8b4
+info score cp 375 time 479 depth 5 nodes 35007 ordering 0.91 pv b4a5 g7f8 a3c3 f8b4 a5b4
+info score cp 359 time 1060 depth 6 nodes 95694 ordering 0.93 pv b4a5 g7f8 a3c3 f8b4 a5b4 a8b8
+info score cp 395 time 2361 depth 7 nodes 226870 ordering 0.93 pv b4a5 g7f8 a3c3 f8b4 a5b4 a7a5 b4d6
+info score cp 379 time 9939 depth 8 nodes 789205 ordering 0.9 pv b4a5 g7f8 a3c3 f8b4 a5b4 a7a5 b4d6 a8a7
+passed
+info score cp 125 time 5 depth 1 nodes 172 ordering 1 pv a3b2
+info score cp 150 time 35 depth 2 nodes 723 ordering 0.91 pv a3e7 g5e5
+info score cp 156 time 100 depth 3 nodes 5385 ordering 0.95 pv a3e7 g5e5 e7f6
+info score cp 461 time 168 depth 4 nodes 9294 ordering 0.96 pv a3e7 d8e7 d5a8 g5g8
+info score cp 628 time 403 depth 5 nodes 21090 ordering 0.94 pv a3e7 d8e7 c1c8 e7d8 c8a8
+info score cp 688 time 1133 depth 6 nodes 70865 ordering 0.94 pv a3e7 d8e7 c1c8 a8c8 d7c8q h8g7
+info score cp 728 time 4018 depth 7 nodes 308265 ordering 0.91 pv a3e7 d8e7 c1c8 a8c8 d7c8q h8g7 d5g8
+passed
+info score cp -46 time 0 depth 1 nodes 105 ordering 1 pv e8c6
+info score cp -37 time 30 depth 2 nodes 1407 ordering 0.89 pv e8c6 c4d6
+info score cp 179 time 99 depth 3 nodes 6283 ordering 0.92 pv d5c4 d1d8 e6d8
+info score cp 149 time 295 depth 4 nodes 15227 ordering 0.9 pv d5c4 d1d8 e6d8 f3b7
+info score cp 149 time 1528 depth 5 nodes 102379 ordering 0.89 pv d5c4 d1d8 e6d8 f3b7 d8b7
+info score cp 123 time 3441 depth 6 nodes 204826 ordering 0.87 pv d5c4 d1d8 e6d8 f3b7 d8b7 b1e4
+info score cp 154 time 9935 depth 7 nodes 834445 ordering 0.84 pv d5c4 d1d8 e6d8 f3b7 d8b7 b1e4 b7c5
+passed
+info score cp -19 time 0 depth 1 nodes 97 ordering 1 pv f1a1
+info score cp -19 time 3 depth 2 nodes 448 ordering 0.98 pv f1a1 g3f4
+info score cp 382 time 34 depth 3 nodes 3850 ordering 0.97 pv f1a1 h2h3 a1c1
+info score cp 391 time 130 depth 4 nodes 12375 ordering 0.92 pv f1a1 g3g2 f4f1 b2b3
+info score cp 391 time 391 depth 5 nodes 32261 ordering 0.89 pv f1a1 g3g2 f4f1 b2b3 f1g1
+info score cp 428 time 1579 depth 6 nodes 114303 ordering 0.88 pv f1a1 h2h3 f4e4 g3h2 c7c6 c3c4
+info score cp 468 time 7177 depth 7 nodes 526305 ordering 0.86 pv f1a1 g3g2 a1e1 g2d5 e1e4 d5e4 f4e4
+info score cp 468 time 9935 depth 8 nodes 707015 ordering 0.85 pv f1a1 g3g2 a1e1 g2d5 e1e4 d5e4 f4e4 g1d4
+passed
+info score cp -2 time 0 depth 1 nodes 116 ordering 1 pv h1h5
+info score cp -18 time 5 depth 2 nodes 478 ordering 0.68 pv h1h5 a8b8
+info score cp 46 time 87 depth 3 nodes 6841 ordering 0.9 pv f1b5 d8a5 e1g1
+info score cp -13 time 258 depth 4 nodes 21190 ordering 0.87 pv h1h3 a8b8 c2d3 e7f6
+info score cp 38 time 1500 depth 5 nodes 122438 ordering 0.9 pv f1d3 a8b8 e1g1 e7f6 f1e1
+info score cp 39 time 9545 depth 6 nodes 486953 ordering 0.87 pv c3b5 d8a5 b2b4 a5b6 b5c7 e7b4
+passed
+info score cp 45 time 0 depth 1 nodes 93 ordering 1 pv c6d4
+info score cp 39 time 8 depth 2 nodes 590 ordering 0.97 pv c6d4 e2e3
+info score cp 39 time 45 depth 3 nodes 4404 ordering 0.96 pv c6d4 e2e3 d4f3
+info score cp 53 time 312 depth 4 nodes 13568 ordering 0.95 pv c6d4 f3d4 a5g5 c1d1
+info score cp 64 time 1340 depth 5 nodes 93488 ordering 0.91 pv c6d4 e2d2 d4f3 g2f3 a5c5
+info score cp 53 time 3086 depth 6 nodes 186000 ordering 0.89 pv c6d4 f3d4 a5g5 f1e1 f8d8 c1d1
+info score cp 69 time 7844 depth 7 nodes 571360 ordering 0.89 pv c6d4 f3d4 a5g5 c1d1 a8b8 f1e1 f8d8
+passed
+info score cp 37 time 0 depth 1 nodes 102 ordering 1 pv d8d4
+info score cp -30 time 15 depth 2 nodes 1356 ordering 0.91 pv b8b7 f1d1
+info score cp -7 time 61 depth 3 nodes 5560 ordering 0.91 pv b8b7 c1e3 d8d6
+info score cp 126 time 564 depth 4 nodes 35463 ordering 0.88 pv b8b4 a4c6 c8b7 c4f7
+info score cp 224 time 851 depth 5 nodes 59999 ordering 0.88 pv b8b4 a4a7 b4c4 c1e3 d8d6
+info score cp 186 time 1949 depth 6 nodes 153379 ordering 0.91 pv b8b4 a4a7 b4c4 c1e3 f6d5 a1c1
+info score cp 195 time 5374 depth 7 nodes 466180 ordering 0.9 pv b8b4 c4f7 f8f7 a4a7 d8d4 a7c7 c8b7
+passed
+info score cp -214 time 5 depth 1 nodes 253 ordering 0.9 pv h4f5
+info score cp -214 time 20 depth 2 nodes 763 ordering 0.91 pv h4f5 c8f5
+info score cp -214 time 63 depth 3 nodes 2781 ordering 0.95 pv h4f5 c8f5 g5f5
+info score cp -214 time 277 depth 4 nodes 11496 ordering 0.94 pv h4f5 c8f5 g5f5 b2b3
+info score cp -185 time 1580 depth 5 nodes 77613 ordering 0.9 pv h5h6 g7g6 h4f5 e7d7 g1d1
+info score cp -194 time 4219 depth 6 nodes 232067 ordering 0.89 pv h5h6 e7d7 h6e6 g8f8 h4f5 b2b3
+failed
+info score cp -236 time 1 depth 1 nodes 97 ordering 1 pv e2c2
+info score cp -236 time 9 depth 2 nodes 850 ordering 1 pv e2c2 a2c2
+info score cp 999995 time 92 depth 3 nodes 4960 ordering 1 pv b7b6 c2c6 e2a2
+info score cp 999995 time 209 depth 4 nodes 14723 ordering 1 pv b7b6 c2c6 e2a2 c6a4
+info score cp 999995 time 437 depth 5 nodes 32594 ordering 1 pv b7b6 c2c6 e2a2 c6a4 a2a4
+passed
+info score cp -330 time 1 depth 1 nodes 144 ordering 1 pv c3c4
+info score cp -348 time 18 depth 2 nodes 1300 ordering 0.87 pv c3c4 f8e8
+info score cp 160 time 109 depth 3 nodes 9039 ordering 0.9 pv f4g4 d8g5 h4g5
+info score cp 452 time 317 depth 4 nodes 28905 ordering 0.95 pv f4g4 d8g5 h4g5 f5g4
+info score cp 710 time 840 depth 5 nodes 81333 ordering 0.96 pv f4g4 d8g5 h4g5 c8d7 g5h6
+info score cp 778 time 2325 depth 6 nodes 227452 ordering 0.96 pv f4g4 d8g5 h4g5 f8f7 d4e6 c8e6
+info score cp 764 time 5884 depth 7 nodes 567022 ordering 0.96 pv f4g4 d8g5 h4g5 f8f7 g5h6 g7f8 h5g5
+info score cp 975 time 9935 depth 8 nodes 932593 ordering 0.96 pv f4g4 d8g5 h4g5 f8f7 g5h6 g7f8 g4g6 f8e7
+passed
+info score cp 238 time 3 depth 1 nodes 223 ordering 0.95 pv d5e3
+info score cp 207 time 13 depth 2 nodes 1201 ordering 0.93 pv d5c3 a8a6
+info score cp 378 time 78 depth 3 nodes 7321 ordering 0.94 pv e1e7 d6b4 b6b4
+info score cp 562 time 297 depth 4 nodes 23365 ordering 0.96 pv e1e7 f7e7 d5e7 d6e7
+info score cp 552 time 753 depth 5 nodes 65251 ordering 0.95 pv e1e7 f7e7 d5e7 d6e7 b6e3
+info score cp 557 time 2208 depth 6 nodes 183177 ordering 0.95 pv e1e7 f7e7 d5e7 d6e7 b6b3 a8a5
+info score cp 571 time 5462 depth 7 nodes 471848 ordering 0.93 pv e1e7 f7e7 d5e7 d6e7 b6b3 a8a5 b3e6
+info score cp 565 time 9935 depth 8 nodes 853900 ordering 0.92 pv e1e7 f7e7 d5e7 d6e7 b6b3 a8a5 b3e6 c8d8
+passed
+info score cp -120 time 1 depth 1 nodes 116 ordering 1 pv e5f3
+info score cp -120 time 14 depth 2 nodes 1160 ordering 0.94 pv e5f3 f2f3
+info score cp 321 time 51 depth 3 nodes 4362 ordering 0.96 pv e3e1 f3e4 e1f1
+info score cp 336 time 118 depth 4 nodes 10957 ordering 0.97 pv e3e1 f3e2 e1f1 g1f1
+info score cp 341 time 271 depth 5 nodes 27323 ordering 0.96 pv e3e1 f3e2 e1f1 g1f1 g3a3
+info score cp 372 time 674 depth 6 nodes 66025 ordering 0.92 pv e3e1 f3e2 e1f1 e2f1 f4f3 a2a4
+info score cp 361 time 1986 depth 7 nodes 196431 ordering 0.92 pv e3e1 f3e2 e1f1 e2f1 f4f3 a2a4 g8h7
+info score cp 401 time 7018 depth 8 nodes 596204 ordering 0.86 pv e3e1 f3e2 e1f1 e2f1 g3a3 f2f4 a3c5 f4f2
+passed
+info score cp -2 time 5 depth 1 nodes 289 ordering 0.97 pv h5c5
+info score cp 999997 time 27 depth 2 nodes 1213 ordering 0.97 pv h5h1 g1h1
+info score cp 999997 time 86 depth 3 nodes 5481 ordering 0.99 pv h5h1 g1h1 f8f1
+passed
+info score cp -77 time 0 depth 1 nodes 123 ordering 1 pv g1h1
+info score cp -88 time 8 depth 2 nodes 712 ordering 0.96 pv f4f2 f7f5
+info score cp -77 time 77 depth 3 nodes 8010 ordering 0.98 pv f4f2 d7d6 f2d2
+info score cp -106 time 365 depth 4 nodes 26909 ordering 0.91 pv f4f2 a7a6 f2d2 a8c8
+info score cp 999993 time 835 depth 5 nodes 73448 ordering 0.92 pv d4g7 g8g7 g5f6 g7f8 f4h4
+info score cp 999993 time 1228 depth 6 nodes 111260 ordering 0.94 pv d4g7 g8g7 g5f6 g7f8 f4h4 a8c8
+info score cp 999993 time 2968 depth 7 nodes 307296 ordering 0.96 pv d4g7 g8g7 g5f6 g7f8 f4h4 a8c8 h4h8
+passed
+info score cp 73 time 1 depth 1 nodes 145 ordering 1 pv f6g4
+info score cp 661 time 10 depth 2 nodes 869 ordering 0.93 pv c5f2 e1f2
+info score cp 661 time 40 depth 3 nodes 3288 ordering 0.96 pv c5f2 e1f2 f6e4
+info score cp 672 time 128 depth 4 nodes 13564 ordering 0.97 pv c5f2 g3f2 e5d3 e1f1
+info score cp 651 time 285 depth 5 nodes 31561 ordering 0.95 pv c5f2 g3f2 e5d3 e1f1 d3f2
+info score cp 694 time 1395 depth 6 nodes 142724 ordering 0.93 pv c5f2 e1f2 f6e4 f2e1 e4g3 h2g3
+info score cp 685 time 7779 depth 7 nodes 745761 ordering 0.91 pv c5f2 g3f2 e5d3 e1f1 d3f2 f1f2 f6e4
+passed
+info score cp 55 time 1 depth 1 nodes 134 ordering 1 pv f3f8
+info score cp 55 time 7 depth 2 nodes 678 ordering 1 pv f3f8 e8f8
+info score cp 999995 time 53 depth 3 nodes 4139 ordering 1 pv f3f8 e8f8 f1f8
+info score cp 999995 time 126 depth 4 nodes 12936 ordering 1 pv f3f8 e8f8 f1f8 a8f8
+info score cp 999995 time 406 depth 5 nodes 31056 ordering 1 pv f3f8 e8f8 f1f8 a8f8 h6g6
+passed
+info score cp 158 time 1 depth 1 nodes 139 ordering 0.96 pv f2f3
+info score cp 298 time 16 depth 2 nodes 963 ordering 0.92 pv c6c5 e5e6
+info score cp 468 time 96 depth 3 nodes 6359 ordering 0.91 pv c6c5 e5e7 c5f5
+info score cp 512 time 365 depth 4 nodes 25061 ordering 0.9 pv d3d1 h5g5 d1d2 f5f4
+info score cp 575 time 1324 depth 5 nodes 75339 ordering 0.91 pv d3d1 h5g5 d1c1 e4f4 g3f4
+info score cp 585 time 6041 depth 6 nodes 410511 ordering 0.89 pv d3d1 h5g5 d1c1 e4f4 g3f4 e5f4
+passed
+info score cp 133 time 1 depth 1 nodes 107 ordering 1 pv e4e5
+info score cp 142 time 5 depth 2 nodes 439 ordering 1 pv d4g7 g8g7
+info score cp 444 time 41 depth 3 nodes 4212 ordering 0.98 pv c3d5 g7d4 d5e7
+info score cp 597 time 99 depth 4 nodes 8767 ordering 0.99 pv c3d5 g7d4 d5e7 g8g7
+info score cp 597 time 462 depth 5 nodes 46192 ordering 0.98 pv c3d5 g7d4 d5e7 g8g7 b2d4
+info score cp 587 time 836 depth 6 nodes 77177 ordering 0.95 pv c3d5 g7d4 d5e7 g8g7 f3d4 f7e5
+info score cp 630 time 2341 depth 7 nodes 230276 ordering 0.94 pv c3d5 g7d4 d5e7 g8g7 f3d4 f7d8 d4e6
+info score cp 588 time 7606 depth 8 nodes 608655 ordering 0.94 pv c3d5 g7d4 d5e7 g8g7 f3d4 g7h6 b2c1 g6g5
+passed
+info score cp -206 time 3 depth 1 nodes 235 ordering 0.83 pv h3h7
+info score cp 999997 time 12 depth 2 nodes 844 ordering 0.84 pv h3h8 d4h8
+info score cp 999997 time 35 depth 3 nodes 2881 ordering 0.92 pv h3h8 d4h8 h1h8
+passed
+info score cp -74 time 1 depth 1 nodes 125 ordering 0.91 pv a1d1
+info score cp 999997 time 8 depth 2 nodes 912 ordering 0.85 pv f3f7 e7f7
+info score cp 999997 time 67 depth 3 nodes 5323 ordering 0.97 pv f3f7 e7f7 e6f7
+passed
+info score cp -142 time 5 depth 1 nodes 119 ordering 1 pv g8d8
+info score cp -160 time 28 depth 2 nodes 710 ordering 0.95 pv g8d8 f1d1
+info score cp -110 time 103 depth 3 nodes 5630 ordering 0.91 pv g6g3 g1h1 g3c3
+info score cp -87 time 237 depth 4 nodes 15783 ordering 0.92 pv g6g3 g1h1 g3g4 h2h3
+info score cp -108 time 863 depth 5 nodes 59337 ordering 0.92 pv g6g3 g1h1 g3f3 f1g1 g7g1
+info score cp -103 time 3058 depth 6 nodes 215258 ordering 0.91 pv g6g3 g1h1 g3d3 c5a3 g8d8 f1e1
+info score cp -123 time 9935 depth 7 nodes 725106 ordering 0.9 pv g6g3 g1h1 g3d3 f1e1 h7h8 e1g1 g7g1
+passed
+info score cp 303 time 2 depth 1 nodes 236 ordering 0.89 pv a1a2
+info score cp 97 time 17 depth 2 nodes 1328 ordering 0.9 pv c3c4 e8d6
+info score cp 392 time 153 depth 3 nodes 10924 ordering 0.92 pv e5f7 e8f6 f7d8
+info score cp 288 time 425 depth 4 nodes 30468 ordering 0.94 pv e5f7 d8d5 c3c4 d5d4
+info score cp 321 time 2057 depth 5 nodes 192217 ordering 0.93 pv e5f7 d8d5 d3e4 e8f6 e4d5
+info score cp 321 time 3858 depth 6 nodes 340917 ordering 0.93 pv e5f7 d8d5 d3e4 e8f6 e4d5 e6d5
+passed
+info score cp 147 time 0 depth 1 nodes 88 ordering 1 pv g2g4
+info score cp 157 time 16 depth 2 nodes 626 ordering 0.94 pv g2g4 f5g6
+info score cp 999995 time 55 depth 3 nodes 3034 ordering 0.97 pv g2g4 f5g6 e3e8
+info score cp 999995 time 140 depth 4 nodes 9540 ordering 0.99 pv g2g4 f5g6 e3e8 g6g5
+info score cp 999995 time 762 depth 5 nodes 62648 ordering 1 pv g2g4 f5g6 e3e8 g6g5 e8h5
+passed
+info score cp -90 time 1 depth 1 nodes 118 ordering 0.94 pv h6f8
+info score cp -74 time 15 depth 2 nodes 738 ordering 0.96 pv h6f8 g8f8
+info score cp 776 time 70 depth 3 nodes 5342 ordering 0.97 pv d5e7 g8h8 e7g6
+info score cp 896 time 245 depth 4 nodes 23996 ordering 0.98 pv d5e7 f8e7 d6e7 d8e8
+info score cp 896 time 497 depth 5 nodes 50222 ordering 0.98 pv d5e7 f8e7 d6e7 d8e8 h3e6
+info score cp 896 time 992 depth 6 nodes 90866 ordering 0.98 pv d5e7 f8e7 d6e7 d8e8 h3e6 f7e6
+info score cp 880 time 3159 depth 7 nodes 305623 ordering 0.98 pv d5e7 f8e7 d6e7 d8e8 h3e6 f7e6 d1d7
+info score cp 861 time 9935 depth 8 nodes 888184 ordering 0.95 pv d5e7 f8e7 d6e7 d8e8 h3e6 f7e6 d1d7 b8b7
+passed
+info score cp 284 time 0 depth 1 nodes 65 ordering 1 pv c7e5
+info score cp 284 time 13 depth 2 nodes 927 ordering 0.88 pv c7e5 f3e5
+info score cp 325 time 28 depth 3 nodes 2826 ordering 0.92 pv c7e5 f3e5 g8e8
+info score cp 264 time 349 depth 4 nodes 23411 ordering 0.91 pv c7e5 f3e5 g8e8 a1e1
+info score cp 359 time 597 depth 5 nodes 47955 ordering 0.92 pv c7e5 f3e5 g8g5 e5f3 g5h5
+info score cp 385 time 1007 depth 6 nodes 85989 ordering 0.92 pv c7e5 f3e5 g8g5 e5f3 g5h5 f3h2
+info score cp 494 time 2930 depth 7 nodes 236864 ordering 0.92 pv c7e5 f3e5 g8g5 e5c6 b7c6 f1f3 g5h5
+info score cp 520 time 9935 depth 8 nodes 755874 ordering 0.88 pv c7e5 f3e5 g8g5 e5c6 b7c6 f1f3 g5h5 f3h3
+passed
+info score cp 353 time 0 depth 1 nodes 73 ordering 1 pv e5d5
+info score cp -80 time 15 depth 2 nodes 422 ordering 0.94 pv d1d5 d7d5
+info score cp 167 time 47 depth 3 nodes 3035 ordering 0.96 pv e5d5 d7d5 e2e8
+info score cp 167 time 90 depth 4 nodes 6346 ordering 0.94 pv e5d5 d7d5 e2e8 g8f7
+info score cp 167 time 687 depth 5 nodes 56374 ordering 0.86 pv e5d5 d7d5 e2e8 g8f7 e8d8
+info score cp 198 time 1046 depth 6 nodes 80857 ordering 0.88 pv e5d5 d7d5 e2e8 g8f7 e8d8 d5a2
+info score cp 365 time 2063 depth 7 nodes 167688 ordering 0.84 pv e5d5 d7d5 e2e8 g8f7 e8d8 d5d1 d8d1
+info score cp 371 time 3832 depth 8 nodes 303086 ordering 0.87 pv e5d5 d7d5 e2e8 g8f7 e8d8 d5d1 d8d1 f7e6
+passed
+info score cp 98 time 1 depth 1 nodes 67 ordering 1 pv f3f4
+info score cp 73 time 4 depth 2 nodes 337 ordering 0.69 pv f3f4 b6d6
+info score cp 206 time 45 depth 3 nodes 4659 ordering 0.89 pv e2e3 c5e3 c3c8
+info score cp 467 time 67 depth 4 nodes 7020 ordering 0.89 pv e2e3 b6b2 c3c5 g8f8
+info score cp 500 time 180 depth 5 nodes 16066 ordering 0.9 pv e2e3 b6b2 e3c5 h7h6 f3f4
+info score cp 492 time 649 depth 6 nodes 49352 ordering 0.91 pv e2e3 b6b2 c3c5 g7g6 f3f4 g8g7
+info score cp 508 time 1954 depth 7 nodes 153372 ordering 0.89 pv e2e3 b6b2 e3c5 g7g6 c5d4 b2a1 h1g2
+info score cp 502 time 5123 depth 8 nodes 418571 ordering 0.88 pv e2e3 b6b2 e3c5 g7g6 c5d4 b2a1 h1g2 a1a2
+passed
+info score cp 108 time 1 depth 1 nodes 124 ordering 1 pv e6e7
+info score cp 323 time 15 depth 2 nodes 807 ordering 0.87 pv e6e8 d7d8
+info score cp 265 time 64 depth 3 nodes 3758 ordering 0.94 pv e6e8 d7d8 e8d8
+info score cp 313 time 243 depth 4 nodes 16142 ordering 0.94 pv f2f3 g4h4 e6e8 d7d8
+info score cp 295 time 862 depth 5 nodes 51572 ordering 0.94 pv f2f3 g4h4 e6e8 d7d8 e5e6
+info score cp 414 time 1728 depth 6 nodes 114102 ordering 0.93 pv f2f3 g4h4 e6e8 d7d8 e5f5 c8b8
+info score cp 558 time 4264 depth 7 nodes 299243 ordering 0.91 pv f2f3 g4h4 e6e8 d7d8 e5f5 c8b8 f5f4
+info score cp 560 time 9937 depth 8 nodes 667536 ordering 0.88 pv f2f3 g4h4 e6e8 d7d8 e5f5 c8b8 f5d7 h4e1
+passed
+info score cp 290 time 3 depth 1 nodes 231 ordering 0.9 pv b4a2
+info score cp 688 time 15 depth 2 nodes 642 ordering 0.95 pv b4a2 c3a2
+info score cp 687 time 61 depth 3 nodes 4046 ordering 0.93 pv b4a2 c3a2 d7b5
+info score cp 697 time 133 depth 4 nodes 10573 ordering 0.94 pv b4a2 c3a2 d7b5 b3b4
+info score cp 707 time 364 depth 5 nodes 29957 ordering 0.94 pv b4a2 c3a2 d7b5 d4e5 d6e5
+info score cp 691 time 1440 depth 6 nodes 103805 ordering 0.93 pv b4a2 c3a2 d7b5 d4e5 d6e5 f3g5
+info score cp 671 time 4149 depth 7 nodes 303732 ordering 0.91 pv b4a2 c3a2 d7b5 d4e5 d6e5 f3g5 h8e8
+info score cp 703 time 9935 depth 8 nodes 775953 ordering 0.9 pv b4a2 c3a2 d7b5 d4e5 f6e4 b3b4 a5b6 e3b6
+passed
+info score cp 16 time 0 depth 1 nodes 104 ordering 1 pv b5d4
+info score cp -69 time 5 depth 2 nodes 621 ordering 0.88 pv h3d7 f6d7
+info score cp -24 time 92 depth 3 nodes 8023 ordering 0.86 pv h3f3 h8e8 b5d4
+info score cp -57 time 580 depth 4 nodes 44166 ordering 0.88 pv h3d7 f6d7 b1d1 d7f6
+info score cp -95 time 9937 depth 5 nodes 655417 ordering 0.84 pv h3b3 d4d3 b1d1 d7f5 f4e3
+failed
+info score cp 99 time 2 depth 1 nodes 113 ordering 0.95 pv a3d6
+info score cp 61 time 7 depth 2 nodes 511 ordering 0.95 pv a1c1 a8d8
+info score cp 184 time 50 depth 3 nodes 3892 ordering 0.96 pv e5e6 f5e6 c4e6
+info score cp 184 time 109 depth 4 nodes 8681 ordering 0.95 pv e5e6 f5e6 c4e6 f7e6
+info score cp 184 time 373 depth 5 nodes 31952 ordering 0.97 pv e5e6 f5e6 c4e6 f7e6 d1d7
+info score cp 168 time 1108 depth 6 nodes 97067 ordering 0.95 pv e5e6 f5e6 c4e6 f7e6 d1d7 e6e5
+info score cp 229 time 2819 depth 7 nodes 247370 ordering 0.94 pv e5e6 f5e6 c4e6 f7e6 d1d7 a8b8 a1e1
+passed
+info score cp 193 time 0 depth 1 nodes 110 ordering 1 pv e6g7
+info score cp 119 time 11 depth 2 nodes 997 ordering 0.94 pv e2c4 d7c6
+info score cp 135 time 83 depth 3 nodes 5986 ordering 0.93 pv e2c4 d7e6 f5e6
+info score cp 397 time 439 depth 4 nodes 29616 ordering 0.9 pv e2d2 g8e8 d2d7 c7c5
+info score cp 398 time 1097 depth 5 nodes 89727 ordering 0.89 pv e2d2 g8e8 d2d7 c8d7 d1d7
+info score cp 398 time 3423 depth 6 nodes 261496 ordering 0.89 pv e2d2 g8e8 d2d7 c7c5 h3g3 c8d7
+info score cp 428 time 9935 depth 7 nodes 746015 ordering 0.89 pv e2d2 g8e8 d2d7 c7c6 h3g3 c8d7 d1d7
+passed
+info score cp 341 time 0 depth 1 nodes 82 ordering 1 pv f4e4
+info score cp 335 time 6 depth 2 nodes 590 ordering 0.97 pv f4e4 d1b2
+info score cp 353 time 46 depth 3 nodes 4653 ordering 0.93 pv f4e4 d1b2 f8d8
+info score cp 393 time 209 depth 4 nodes 17968 ordering 0.9 pv f4f1 e2f1 e3e2 d1f2
+info score cp 393 time 357 depth 5 nodes 32504 ordering 0.92 pv f4f1 e2f1 e3e2 d1f2 e2f1r
+info score cp 403 time 721 depth 6 nodes 63447 ordering 0.93 pv f4f1 e2f1 e3e2 d1f2 e2f1r g1f1
+info score cp 518 time 1722 depth 7 nodes 158749 ordering 0.96 pv f4f1 e2f1 e3e2 d1f2 e2f1r g1f1 f8f2
+info score cp 548 time 3613 depth 8 nodes 326451 ordering 0.96 pv f4f1 e2f1 e3e2 d1f2 e2f1r g1f1 f8f2 f1e1
+info score cp 548 time 8092 depth 9 nodes 756948 ordering 0.95 pv f4f1 e2f1 e3e2 d1f2 e2f1r g1f1 f8f2 f1e1 f2g2
+passed
+info score cp -269 time 1 depth 1 nodes 131 ordering 1 pv e8e1
+info score cp -208 time 8 depth 2 nodes 551 ordering 0.95 pv e8e1 b4e1
+info score cp -224 time 58 depth 3 nodes 4716 ordering 0.93 pv e8e1 b4e1 a8e8
+info score cp -208 time 178 depth 4 nodes 12310 ordering 0.93 pv e8e1 b4e1 a8e8 e1d2
+info score cp 470 time 1372 depth 5 nodes 94030 ordering 0.87 pv d7d6 e1e8 a8e8 h3g4 d6b4
+info score cp 503 time 2311 depth 6 nodes 177224 ordering 0.88 pv d7d6 h3g4 d6b4 e1f1 b4a4 b1c3
+info score cp 543 time 5078 depth 7 nodes 403249 ordering 0.88 pv d7d6 h3g4 d6b4 e1f1 b4g4 c1e3 g4e4
+info score cp 537 time 9935 depth 8 nodes 746788 ordering 0.89 pv d7d6 h3g4 d6b4 e1f1 b4g4 c1e3 g4e4 b1a3
+passed
+info score cp 65 time 1 depth 1 nodes 147 ordering 0.92 pv f5g7
+info score cp 9 time 11 depth 2 nodes 860 ordering 0.93 pv g5f6 g7f6
+info score cp 145 time 67 depth 3 nodes 5897 ordering 0.98 pv g5f6 g7f6 d4e5
+info score cp 135 time 194 depth 4 nodes 17099 ordering 0.97 pv g5f6 g7f6 e2g4 g8h8
+info score cp 141 time 767 depth 5 nodes 64641 ordering 0.95 pv g5f6 g7f6 b3d5 a8a7 d4e5
+info score cp 209 time 4507 depth 6 nodes 297027 ordering 0.9 pv g5f6 e6d4 c3d4 c8f5 e4f5 g7f6
+passed
+info score cp 251 time 1 depth 1 nodes 124 ordering 1 pv c3c2
+info score cp 217 time 12 depth 2 nodes 1111 ordering 0.95 pv g6g4 f1e1
+info score cp 865 time 118 depth 3 nodes 11263 ordering 0.92 pv f5g3 f4c7 g6e4
+info score cp 926 time 276 depth 4 nodes 28815 ordering 0.94 pv f5g3 e4d4 g3e2 g1h1
+info score cp 908 time 783 depth 5 nodes 83859 ordering 0.95 pv f5g3 e4d4 g3e2 g1h1 e2d4
+info score cp 934 time 2942 depth 6 nodes 267474 ordering 0.93 pv f5g3 e4d4 g3e2 g1h1 e2d4 f1e1
+info score cp 959 time 8004 depth 7 nodes 726858 ordering 0.92 pv f5g3 e4d4 g3e2 g1h1 e2d4 b1a3 g6e4
+passed
+info score cp 203 time 3 depth 1 nodes 286 ordering 0.97 pv f5b5
+info score cp 399 time 16 depth 2 nodes 1351 ordering 0.98 pv f5e6 f7e6
+info score cp 448 time 85 depth 3 nodes 8736 ordering 0.98 pv e4g5 e6g5 d1d7
+info score cp 461 time 385 depth 4 nodes 40051 ordering 0.98 pv e4g5 e6g5 d1d7 d8d7
+info score cp 461 time 1638 depth 5 nodes 175440 ordering 0.97 pv e4g5 e6g5 d1d7 d8d7 f5d7
+info score cp 461 time 6908 depth 6 nodes 649998 ordering 0.94 pv e4g5 e6g5 d1d7 d8d7 f5d7 f7f8
+passed
+info score cp -139 time 3 depth 1 nodes 243 ordering 1 pv h8h5
+info score cp -195 time 54 depth 2 nodes 3383 ordering 0.9 pv h3d7 e3f5
+info score cp 999995 time 123 depth 3 nodes 9345 ordering 0.94 pv h3h2 g1h2 h4g3
+info score cp 999995 time 184 depth 4 nodes 15635 ordering 0.95 pv h3h2 g1h2 h4g3 h2g1
+info score cp 999995 time 1443 depth 5 nodes 154358 ordering 0.99 pv h3h2 g1h2 h4g3 h2g1 h8h1
+passed
+info score cp 164 time 0 depth 1 nodes 80 ordering 1 pv f3f4
+info score cp 133 time 9 depth 2 nodes 801 ordering 0.83 pv d3b1 a2a4
+info score cp 159 time 33 depth 3 nodes 3743 ordering 0.9 pv d3b1 a2a4 f3f4
+info score cp 150 time 308 depth 4 nodes 28733 ordering 0.91 pv d4d5 a8c8 c7g3 f6h5
+info score cp 161 time 1619 depth 5 nodes 164323 ordering 0.86 pv f3f4 f8e8 d1a1 a2b3 a1e1
+info score cp 154 time 9935 depth 6 nodes 795262 ordering 0.88 pv d4d5 e6d5 e2e7 d5c4 d3e4 a8e8
+failed
+info score cp -70 time 5 depth 1 nodes 324 ordering 0.92 pv a8a3
+info score cp -70 time 10 depth 2 nodes 704 ordering 0.92 pv a8a3 c7e7
+info score cp -49 time 41 depth 3 nodes 3976 ordering 0.95 pv b7g2 c7e7 a8e8
+info score cp -72 time 319 depth 4 nodes 29849 ordering 0.91 pv e7d6 d1d6 f6e8 d6b6
+info score cp -62 time 908 depth 5 nodes 88670 ordering 0.93 pv e7b4 a3b4 b7a6 c7c6 f8d8
+info score cp -74 time 3405 depth 6 nodes 305181 ordering 0.9 pv b7e4 c7e7 f6d5 e7d7 a8a3 e2b5
+info score cp -67 time 9935 depth 7 nodes 885270 ordering 0.88 pv b7e4 c7e7 f6d5 e7d7 d5c3 e2d3 e4d3
+failed
+info score cp -37 time 5 depth 1 nodes 320 ordering 0.89 pv g3f4
+info score cp -50 time 29 depth 2 nodes 1953 ordering 0.86 pv e4h7 g8f8
+info score cp -32 time 84 depth 3 nodes 6542 ordering 0.9 pv e4h7 g8f8 g3a3
+info score cp -48 time 558 depth 4 nodes 37896 ordering 0.89 pv g3f4 e2a2 e4b7 d8d2
+info score cp 500 time 3391 depth 5 nodes 210244 ordering 0.88 pv e4h7 g8f8 g3a3 d8d6 a3d6
+info score cp 693 time 4908 depth 6 nodes 296653 ordering 0.9 pv e4h7 g8f8 g3a3 e8e7 h7d3 e2f1
+info score cp 876 time 9237 depth 7 nodes 531127 ordering 0.92 pv e4h7 g8f8 g3a3 e8e7 h7d3 e2f1 d3f1
+passed
+info score cp 344 time 1 depth 1 nodes 150 ordering 0.91 pv e7d7
+info score cp 343 time 22 depth 2 nodes 822 ordering 0.99 pv e7d7 f4e2
+info score cp 343 time 99 depth 3 nodes 7826 ordering 0.99 pv e7d7 f4e2 g3e2
+info score cp 344 time 448 depth 4 nodes 31261 ordering 0.99 pv d4d7 c7d7 d1d7 d8d7
+info score cp 388 time 1805 depth 5 nodes 133953 ordering 0.98 pv d4d7 c7b8 e7e8 d8e8 d7d4
+info score cp 403 time 4352 depth 6 nodes 354789 ordering 0.97 pv d4d7 c7b8 e7e8 d8e8 c2b3 f4e6
+info score cp 398 time 9937 depth 7 nodes 859435 ordering 0.95 pv d4d7 c7b8 e7e8 d8e8 c3c4 h7h6 g3e4
+passed
+info score cp 118 time 0 depth 1 nodes 122 ordering 1 pv g5e4
+info score cp 999997 time 6 depth 2 nodes 556 ordering 1 pv d5g8 f8g8
+info score cp 999997 time 40 depth 3 nodes 4705 ordering 1 pv d5g8 f8g8 g5f7
+passed
+info score cp 94 time 1 depth 1 nodes 152 ordering 0.83 pv e8e7
+info score cp 114 time 8 depth 2 nodes 736 ordering 0.88 pv e8b8 d6b8
+info score cp 423 time 49 depth 3 nodes 5775 ordering 0.91 pv c5a6 d6g3 a3g3
+info score cp 438 time 133 depth 4 nodes 14449 ordering 0.95 pv c5a6 b8e8 a3d6 a8b7
+info score cp 469 time 664 depth 5 nodes 60256 ordering 0.94 pv c5a6 d6d8 e8d8 b8d8 a6b4
+info score cp 448 time 1623 depth 6 nodes 142725 ordering 0.91 pv c5a6 d6d8 e8d8 b8d8 f1c4 f7d7
+info score cp 548 time 5453 depth 7 nodes 468464 ordering 0.9 pv c5a6 d6d8 e8d8 b8d8 f2f3 d8d4 f3g4
+info score cp 528 time 9936 depth 8 nodes 818182 ordering 0.88 pv c5a6 d6d8 e8d8 b8d8 a3c1 a8b7 c1h6 d8d4
+passed
+info score cp -2 time 0 depth 1 nodes 52 ordering 1 pv c6c5
+info score cp -13 time 5 depth 2 nodes 287 ordering 0.97 pv c6c5 f2d3
+info score cp 3 time 18 depth 3 nodes 1713 ordering 0.91 pv c6c5 h2h3 g5g4
+info score cp -7 time 78 depth 4 nodes 7106 ordering 0.91 pv c6c5 d4d5 f6g4 f2g4
+info score cp -2 time 334 depth 5 nodes 29418 ordering 0.9 pv c6c5 h2h3 h5h4 g3h4 g5h4
+info score cp -7 time 1793 depth 6 nodes 122480 ordering 0.88 pv c6c5 h2h4 g5h4 g3h4 f6g4 f2g4
+info score cp -3 time 9935 depth 7 nodes 651701 ordering 0.83 pv f6g4 f2g4 h5g4 e3d3 d6e6 d3e3 c6c5
+passed
+info score cp 238 time 0 depth 1 nodes 91 ordering 0.95 pv c5c4
+info score cp 212 time 3 depth 2 nodes 313 ordering 0.99 pv c5c4 g3f3
+info score cp 238 time 18 depth 3 nodes 1447 ordering 0.96 pv c5c4 g3f3 e7d6
+info score cp 228 time 82 depth 4 nodes 6586 ordering 0.95 pv f5f4 g3g4 c5d4 c3d4
+info score cp 227 time 463 depth 5 nodes 29626 ordering 0.93 pv c5c4 f2f4 g5f4 g3f4 e7f6
+info score cp 223 time 1165 depth 6 nodes 75783 ordering 0.94 pv c5c4 f2f4 g5f4 g3f4 e6f6 a4a5
+info score cp 231 time 3464 depth 7 nodes 250125 ordering 0.92 pv c5c4 b4b5 e7f6 e5c6 a7a6 g3f3 f5f4
+info score cp 230 time 9935 depth 8 nodes 726937 ordering 0.86 pv c5c4 b4b5 e7f6 g3f3 e6e7 e5c6 e7d7 f3e3
+failed
+info score cp -300 time 5 depth 1 nodes 344 ordering 0.9 pv h6g7
+info score cp -375 time 18 depth 2 nodes 1311 ordering 0.93 pv e6a2 c7e5
+info score cp -269 time 123 depth 3 nodes 7767 ordering 0.92 pv h6g5 f1f2 a8c8
+info score cp 999981 time 317 depth 4 nodes 22547 ordering 0.95 pv g6g2 g1g2 a8g8 g2f3
+info score cp 999991 time 1210 depth 5 nodes 94520 ordering 0.98 pv g6g2 g1g2 h6h3 g2f2 h3h2
+info score cp 999991 time 2374 depth 6 nodes 179621 ordering 0.99 pv g6g2 g1g2 h6h3 g2f2 h3h2 f2f3
+passed
+info score cp 436 time 0 depth 1 nodes 107 ordering 1 pv b8d8
+info score cp 410 time 15 depth 2 nodes 1067 ordering 0.96 pv g7g5 h4h5
+info score cp 441 time 152 depth 3 nodes 9169 ordering 0.93 pv e6e5 f4e5 f6e5
+info score cp 804 time 446 depth 4 nodes 26164 ordering 0.93 pv g7g5 f4g5 f6g5 c1g5
+info score cp 804 time 753 depth 5 nodes 48574 ordering 0.92 pv g7g5 f4g5 f6g5 c1g5 f7f1
+info score cp 808 time 1334 depth 6 nodes 96012 ordering 0.93 pv g7g5 f4g5 f6g5 h4g5 f7f1 g5d2
+info score cp 809 time 3628 depth 7 nodes 278503 ordering 0.94 pv g7g5 f4g5 f6g5 h4g5 f7f1 g5d5 e6d5
+info score cp 853 time 9642 depth 8 nodes 746396 ordering 0.92 pv g7g5 f4g5 f6g5 f1f7 g5h4 h3h4 f8d6 g3h3
+passed
+info score cp 19 time 2 depth 1 nodes 157 ordering 0.83 pv c1f4
+info score cp 3 time 14 depth 2 nodes 782 ordering 0.74 pv c1f4 d8d3
+info score cp 109 time 93 depth 3 nodes 5926 ordering 0.9 pv f5g7 g8g7 f1f6
+info score cp 45 time 309 depth 4 nodes 22475 ordering 0.89 pv f5h6 g7h6 g3h4 d8d7
+info score cp 85 time 1136 depth 5 nodes 89849 ordering 0.9 pv f5g7 g8g7 g3h4 d8d6 f1f6
+info score cp 72 time 3421 depth 6 nodes 269445 ordering 0.9 pv f5g7 g8g7 g3h4 e6c4 h4f6 d8f6
+info score cp 72 time 9935 depth 7 nodes 732973 ordering 0.87 pv f5g7 g8g7 f1f6 d8f6 g3e5 f6e5 e1e5
+passed
+info score cp -7 time 2 depth 1 nodes 105 ordering 1 pv c8e6
+info score cp -23 time 30 depth 2 nodes 1380 ordering 0.98 pv b3e6 g3g4
+info score cp -7 time 79 depth 3 nodes 5761 ordering 0.94 pv b3e6 g3g4 c8d7
+info score cp -7 time 519 depth 4 nodes 27001 ordering 0.92 pv d4c2 e1e2 c2e3 f2e3
+info score cp -15 time 3144 depth 5 nodes 208540 ordering 0.88 pv c8e6 g2h1 d4f3 e1e2 f6f5
+info score cp 8 time 9935 depth 6 nodes 611274 ordering 0.88 pv d4c2 e1e2 c2e3 f2e3 b3c4 e2d2
+failed
+info score cp 13 time 4 depth 1 nodes 175 ordering 1 pv f6g4
+info score cp -18 time 27 depth 2 nodes 1292 ordering 0.94 pv a8d8 g4g5
+info score cp 13 time 157 depth 3 nodes 9518 ordering 0.93 pv e6g4 b2b4 a5h5
+info score cp -44 time 2649 depth 4 nodes 121811 ordering 0.91 pv e6c4 f1e1 e7e5 f4e5
+info score cp -52 time 8405 depth 5 nodes 505733 ordering 0.92 pv a8d8 g4g5 f6h5 f4f5 a5b4
+info score cp -73 time 9935 depth 6 nodes 600650 ordering 0.92 pv a8d8 g4g5 f6h5 d4g7 h5g7 d1d4
+failed
+info score cp -47 time 1 depth 1 nodes 117 ordering 1 pv f1b5
+info score cp -42 time 6 depth 2 nodes 613 ordering 0.96 pv f1b5 c8d7
+info score cp -36 time 71 depth 3 nodes 4950 ordering 0.94 pv c1h6 f6g7 h6g7
+info score cp -51 time 477 depth 4 nodes 29753 ordering 0.92 pv g7f6 g8f6 g1f3 e5f3
+info score cp -1 time 1347 depth 5 nodes 93499 ordering 0.9 pv c1h6 e5d7 f1b5 f6g7 h6g7
+info score cp 62 time 3507 depth 6 nodes 244384 ordering 0.9 pv c1h6 e5d7 f1b5 f6h6 g7h8 h6g6
+info score cp 87 time 6516 depth 7 nodes 520931 ordering 0.89 pv c1h6 e5d7 f1b5 f6h6 g7h8 h6g6 e1f1
+passed
+info score cp 60 time 1 depth 1 nodes 91 ordering 0.94 pv a4b6
+info score cp 878 time 6 depth 2 nodes 632 ordering 0.96 pv e5e4 d3e4
+info score cp 878 time 43 depth 3 nodes 3551 ordering 0.97 pv e5e4 d3e4 a4c3
+info score cp 878 time 180 depth 4 nodes 14118 ordering 0.97 pv e5e4 d3e4 a4c3 e4d3
+info score cp 894 time 820 depth 5 nodes 56737 ordering 0.96 pv e5e4 d3e4 a4c3 e4d3 c3d5
+info score cp 951 time 1442 depth 6 nodes 112203 ordering 0.97 pv e5e4 d3e4 a4c3 e4d3 c3d5 c4d5
+info score cp 961 time 5741 depth 7 nodes 490245 ordering 0.96 pv e5e4 d3e4 a4c3 e4d3 c3d5 c4d5 b2b1
+passed
+info score cp -267 time 0 depth 1 nodes 21 ordering 1 pv e3g5
+info score cp 442 time 2 depth 2 nodes 208 ordering 1 pv f6g4 h5g4
+info score cp 442 time 10 depth 3 nodes 1081 ordering 1 pv f6g4 h5g4 a1h1
+info score cp 442 time 48 depth 4 nodes 5306 ordering 1 pv f6g4 h5g4 a1h1 h6g7
+info score cp 448 time 150 depth 5 nodes 16352 ordering 0.97 pv f6g4 h5g4 a1h1 h6g7 e3g5
+info score cp 438 time 395 depth 6 nodes 38334 ordering 0.97 pv f6g4 h5g4 a1h1 h6g7 e3g5 g4f3
+info score cp 584 time 1085 depth 7 nodes 103623 ordering 0.94 pv f6g4 h5g4 a1h1 h6g7 e3g5 g4f3 g2f3
+info score cp 626 time 3066 depth 8 nodes 294378 ordering 0.91 pv f6g4 h5g4 a1h1 h6g7 e3g5 g4f3 g2f3 b7f7
+passed
+info score cp 116 time 1 depth 1 nodes 140 ordering 0.95 pv h4d8
+info score cp 186 time 10 depth 2 nodes 701 ordering 0.92 pv h4d8 g7f8
+info score cp 302 time 51 depth 3 nodes 4322 ordering 0.96 pv h4d8 b4f8 d8f8
+info score cp 306 time 94 depth 4 nodes 9460 ordering 0.97 pv h4d8 b4f8 d8f8 g7f8
+info score cp 167 time 822 depth 5 nodes 65128 ordering 0.93 pv h4d8 b4f8 d8f8 g7f8 f7d5
+info score cp 303 time 2535 depth 6 nodes 219308 ordering 0.92 pv h4d8 b4f8 h1h6 g7h6 d8f8 h6f8
+info score cp 303 time 5875 depth 7 nodes 538103 ordering 0.92 pv h4d8 b4f8 h1h6 g7h6 d8f8 h6f8 d1h1
+info score cp 307 time 9935 depth 8 nodes 884107 ordering 0.92 pv h4d8 b4f8 h1h6 g7h6 d8f8 h6f8 d1h1 f8h6
+passed
+info score cp 379 time 2 depth 1 nodes 213 ordering 0.89 pv g2a8
+info score cp 379 time 7 depth 2 nodes 587 ordering 0.89 pv g2a8 g8h7
+info score cp 999995 time 41 depth 3 nodes 3622 ordering 0.9 pv g2a8 g8h7 a8h8
+info score cp 999995 time 72 depth 4 nodes 7033 ordering 0.94 pv g2a8 g8h7 a8h8 g6h8
+info score cp 999995 time 108 depth 5 nodes 11870 ordering 0.96 pv g2a8 g8h7 a8h8 g6h8 g1g7
+passed
+info score cp 161 time 1 depth 1 nodes 117 ordering 1 pv c5e4
+info score cp 136 time 13 depth 2 nodes 1010 ordering 0.92 pv c5e4 a5e5
+info score cp 426 time 56 depth 3 nodes 5671 ordering 0.94 pv c5b3 a5e5 b3d2
+info score cp 620 time 170 depth 4 nodes 16810 ordering 0.94 pv c5e4 f3e4 e5a5 d2d3
+info score cp 626 time 586 depth 5 nodes 58101 ordering 0.91 pv c5e4 a5e5 e4d2 b1c1 d6e5
+info score cp 626 time 1955 depth 6 nodes 186435 ordering 0.92 pv c5e4 a5e5 e4d2 b1c1 d6e5 c1d2
+info score cp 626 time 7012 depth 7 nodes 583965 ordering 0.92 pv c5e4 a5e5 e4d2 b1c1 d6e5 c1d2 b8b4
+passed
+info score cp 6 time 1 depth 1 nodes 143 ordering 1 pv e5e1
+info score cp -12 time 11 depth 2 nodes 890 ordering 0.97 pv e5e1 f8e8
+info score cp 999997 time 58 depth 3 nodes 5611 ordering 0.93 pv e5h5 g6h5 h6f6
+passed
+info score cp 150 time 0 depth 1 nodes 37 ordering 1 pv a4b3
+info score cp 134 time 1 depth 2 nodes 136 ordering 0.75 pv a4b3 a7b6
+info score cp 160 time 4 depth 3 nodes 437 ordering 0.9 pv a4b3 a7b6 b3c3
+info score cp 154 time 12 depth 4 nodes 1446 ordering 0.92 pv a4b3 a7b6 b3c3 c7d6
+info score cp 160 time 54 depth 5 nodes 6572 ordering 0.91 pv a4b3 c7d6 b3c3 a7b6 d2e3
+info score cp 164 time 132 depth 6 nodes 16259 ordering 0.9 pv a4b3 c7d6 b3c3 a7b6 d2e3 b6c7
+info score cp 180 time 522 depth 7 nodes 60138 ordering 0.86 pv a4b3 c7d6 b3c3 a7b6 d2e3 d6e7 c3d3
+info score cp 174 time 1312 depth 8 nodes 147186 ordering 0.85 pv a4b3 c7d6 b3c3 a7b6 d2e3 d6e7 c3d3 e7d6
+info score cp 175 time 4362 depth 9 nodes 458664 ordering 0.84 pv a4b3 c7d6 b3c3 a7b6 c3d3 d6b8 d3e3 b8d6 d2c3
+info score cp 174 time 9935 depth 10 nodes 904925 ordering 0.85 pv a4b3 c7b8 b3c2 a7b6 d2e3 b8d6 e3d2 d6e7 d2a5 b6a7
+failed
+info score cp 169 time 0 depth 1 nodes 72 ordering 1 pv f8e8
+info score cp 146 time 3 depth 2 nodes 414 ordering 0.76 pv d4c3 e1d1
+info score cp 169 time 17 depth 3 nodes 2395 ordering 0.9 pv d4c3 e1c1 c3d4
+info score cp 131 time 157 depth 4 nodes 9841 ordering 0.83 pv d4c3 e1d1 g8f7 f1e3
+info score cp 161 time 422 depth 5 nodes 38293 ordering 0.86 pv d4c3 e1c1 f8f3 h1g2 g8f7
+info score cp 138 time 1211 depth 6 nodes 96549 ordering 0.83 pv d4c3 e1d1 g8f7 f1d2 f8e8 h1g2
+info score cp 159 time 2967 depth 7 nodes 254465 ordering 0.84 pv d4c3 e1d1 g8f7 f1e3 f7e6 h1g2 f8e8
+info score cp 143 time 9935 depth 8 nodes 755669 ordering 0.84 pv d4c3 e1d1 g8f7 f1e3 f8b8 h1g2 b8b3 d1d7
+passed
+info score cp 169 time 5 depth 1 nodes 113 ordering 0.92 pv f2f4
+info score cp 1591 time 11 depth 2 nodes 602 ordering 0.96 pv c8f8 h6h5
+info score cp 999995 time 55 depth 3 nodes 4314 ordering 0.98 pv c8f8 h6h5 c7h7
+info score cp 999995 time 157 depth 4 nodes 11356 ordering 0.99 pv c8f8 h6h5 c7h7 h5g4
+info score cp 999995 time 667 depth 5 nodes 45086 ordering 1 pv c8f8 h6h5 c7h7 h5g4 f2f3
+passed
+info score cp -187 time 9 depth 1 nodes 482 ordering 0.83 pv c3b5
+info score cp -37 time 57 depth 2 nodes 2003 ordering 0.84 pv g1g6 g8h8
+info score cp -58 time 178 depth 3 nodes 6572 ordering 0.89 pv g1g6 g8h8 h6e3
+info score cp 999993 time 564 depth 4 nodes 24962 ordering 0.91 pv h6g6 h7g6 g1g6 f7g7
+info score cp 999993 time 866 depth 5 nodes 39304 ordering 0.93 pv h6g6 h7g6 g1g6 f7g7 g6g7
+info score cp 999993 time 1759 depth 6 nodes 88194 ordering 0.96 pv h6g6 h7g6 g1g6 f7g7 g6g7 g8f8
+info score cp 999993 time 3605 depth 7 nodes 225387 ordering 0.98 pv h6g6 h7g6 g1g6 f7g7 g6g7 g8f8 h1h8
+passed
+info score cp -63 time 19 depth 1 nodes 515 ordering 0.85 pv e5c6
+info score cp -128 time 52 depth 2 nodes 2096 ordering 0.86 pv e5f7 f8f7
+info score cp 433 time 146 depth 3 nodes 8654 ordering 0.92 pv e2h5 d6e5 h5h6
+info score cp 999995 time 344 depth 4 nodes 25561 ordering 0.93 pv e2h5 d6e5 h5h6 f6h7
+info score cp 999995 time 629 depth 5 nodes 55927 ordering 0.96 pv e2h5 d6e5 h5h6 f6h7 h6h7
+passed
+info score cp 250 time 5 depth 1 nodes 337 ordering 1 pv e6e5
+info score cp 224 time 18 depth 2 nodes 1393 ordering 0.96 pv e6e5 e1c2
+info score cp 274 time 133 depth 3 nodes 11647 ordering 0.94 pv h5h4 e1f3 d4f3
+info score cp 270 time 431 depth 4 nodes 33361 ordering 0.94 pv h5h4 e1f3 d4f3 d2f3
+info score cp 470 time 1195 depth 5 nodes 96932 ordering 0.94 pv h5h4 e1f3 b7f3 d3h7 h4h7
+info score cp 776 time 2805 depth 6 nodes 241181 ordering 0.94 pv h5h4 e1f3 d4f3 d2f3 b7f3 d3h7
+info score cp 715 time 7097 depth 7 nodes 658148 ordering 0.95 pv h5h4 e1f3 d4f3 d2f3 b7f3 d3h7 h4h7
+failed
+info score cp 17 time 1 depth 1 nodes 175 ordering 1 pv e4f2
+info score cp 18 time 11 depth 2 nodes 988 ordering 0.99 pv e4f2 h1g2
+info score cp 65 time 81 depth 3 nodes 7167 ordering 0.98 pv f8f1 e1f1 e4g3
+info score cp 665 time 357 depth 4 nodes 31612 ordering 0.97 pv e4f2 d4f2 f8f2 e1e8
+info score cp 734 time 893 depth 5 nodes 80272 ordering 0.95 pv e4f2 d4f2 f8f2 e1e2 h5f7
+info score cp 753 time 2756 depth 6 nodes 254870 ordering 0.94 pv e4f2 d4f2 f8f2 c2c4 f2b2 a1d1
+info score cp 754 time 7698 depth 7 nodes 724699 ordering 0.94 pv e4f2 d4f2 f8f2 c2c4 f2b2 a1d1 g5g4
+passed
+info score cp -120 time 4 depth 1 nodes 57 ordering 1 pv b7c7
+info score cp -109 time 7 depth 2 nodes 334 ordering 0.79 pv d4b5 c7b7
+info score cp -109 time 17 depth 3 nodes 1439 ordering 0.9 pv d4b5 c7b7 a6b7
+info score cp 141 time 31 depth 4 nodes 2896 ordering 0.89 pv d4b5 f8e6 b5c7 e6c7
+info score cp 141 time 71 depth 5 nodes 6807 ordering 0.93 pv d4b5 f8e6 b5c7 e6c7 b7a7
+info score cp 141 time 218 depth 6 nodes 17163 ordering 0.93 pv d4b5 f8e6 b5c7 e6c7 g1f2 f6f5
+info score cp 141 time 613 depth 7 nodes 51171 ordering 0.96 pv d4b5 f8e6 b5c7 e6c7 g1f2 f6f5 b7a7
+info score cp 121 time 2800 depth 8 nodes 234974 ordering 0.84 pv d4b5 f8e6 g1f2 f6f5 b5c7 e6c7 f2e2 d7d6
+info score cp 151 time 5124 depth 9 nodes 445569 ordering 0.89 pv d4b5 f8e6 g1f2 f6f5 b5c7 e6c7 b7a7 d7d6 f2e3
+passed
+info score cp 25 time 0 depth 1 nodes 111 ordering 1 pv e2e7
+info score cp 10 time 9 depth 2 nodes 778 ordering 0.92 pv e2e7 a1a2
+info score cp 9 time 193 depth 3 nodes 8524 ordering 0.94 pv e2e7 a1a2 f2g1
+info score cp 13 time 1199 depth 4 nodes 50156 ordering 0.86 pv c5e5 b7a7 c4c5 a1c1
+info score cp 276 time 1882 depth 5 nodes 101500 ordering 0.86 pv c5e5 b7a7 c4c5 h7h6 e5a1
+info score cp 215 time 4124 depth 6 nodes 246376 ordering 0.87 pv c5e5 b7a7 c4c5 h7h6 e5a1 a7c5
+info score cp 244 time 9945 depth 7 nodes 649047 ordering 0.88 pv c5e5 b7a7 c4c5 h7h6 e5a1 a7c5 f2f1
+passed
+info score cp 53 time 4 depth 1 nodes 236 ordering 1 pv b8c6
+info score cp 33 time 20 depth 2 nodes 1123 ordering 0.96 pv b8c6 a3d6
+info score cp 43 time 76 depth 3 nodes 5199 ordering 0.97 pv d6a3 b2a3 b8c6
+info score cp 27 time 188 depth 4 nodes 13019 ordering 0.93 pv d6a3 b2a3 b8c6 a3b2
+info score cp 27 time 1406 depth 5 nodes 118495 ordering 0.93 pv d6a3 b2a3 b8c6 a3b2 c6e5
+info score cp 15 time 5832 depth 6 nodes 405063 ordering 0.91 pv c4c3 a3d6 c7d6 b2c3 d6e5 c3e5
+passed
+info score cp 106 time 9 depth 1 nodes 277 ordering 0.99 pv d6d5
+info score cp 94 time 40 depth 2 nodes 753 ordering 0.99 pv d6d5 g3e5
+info score cp 832 time 109 depth 3 nodes 4950 ordering 0.94 pv a7e3 b3d4 e3d2
+info score cp 871 time 141 depth 4 nodes 7143 ordering 0.86 pv a7e3 c2c3 e3d2 b3d2
+info score cp 886 time 564 depth 5 nodes 30395 ordering 0.88 pv a7e3 b3a1 e3d2 d1d2 c4f1
+info score cp 936 time 1119 depth 6 nodes 56048 ordering 0.91 pv a7e3 b3a1 e3d2 d1d2 d6d5 b2b3
+info score cp 977 time 3412 depth 7 nodes 239608 ordering 0.9 pv a7e3 c1b1 e3d2 d1d2 c4b3 g3d6 d8d6
+info score cp 993 time 5671 depth 8 nodes 387290 ordering 0.9 pv a7e3 c1b1 e3d2 d1d2 c4b3 g3d6 b3c4 b1c1
+passed
+info score cp 372 time 0 depth 1 nodes 75 ordering 0.88 pv g1d1
+info score cp 372 time 5 depth 2 nodes 517 ordering 0.98 pv g1d1 f3g2
+info score cp 372 time 40 depth 3 nodes 3571 ordering 0.97 pv g1d1 f3g2 d1g1
+info score cp 674 time 179 depth 4 nodes 11340 ordering 0.94 pv g1f1 f3g4 f1e2 g4h4
+info score cp 711 time 450 depth 5 nodes 29913 ordering 0.95 pv g1f1 f3g4 f1e2 g4h4 g7g5
+info score cp 755 time 1271 depth 6 nodes 79390 ordering 0.94 pv g1f1 f3g4 f1e2 g4h4 g7g5 h4g3
+info score cp 818 time 3746 depth 7 nodes 243263 ordering 0.95 pv g1f1 f3g4 f1e2 g4h4 g7g5 h4g3 e3f4
+passed
+info score cp -80 time 5 depth 1 nodes 267 ordering 0.98 pv e1e6
+info score cp -80 time 24 depth 2 nodes 1228 ordering 0.97 pv e1e6 h6f4
+info score cp 564 time 98 depth 3 nodes 4876 ordering 0.99 pv e1e6 h6f4 d4f4
+info score cp 503 time 202 depth 4 nodes 10551 ordering 0.99 pv e1e6 h6f4 d4f4 f6f4
+info score cp 524 time 481 depth 5 nodes 32203 ordering 0.99 pv e1e6 h6f4 d4f4 f6f4 g3f4
+info score cp 508 time 1238 depth 6 nodes 82316 ordering 0.95 pv e1e6 h6f4 d4f4 f6f4 g3f4 a8d8
+info score cp 529 time 4305 depth 7 nodes 306941 ordering 0.92 pv e1e6 h6f4 d4f4 f6f4 g3f4 a8d8 e6f6
+info score cp 493 time 9935 depth 8 nodes 718146 ordering 0.88 pv e1e6 h6f4 d4f4 f6f4 g3f4 g8g1 h5d1 a8d8
+passed
+info score cp 183 time 0 depth 1 nodes 17 ordering 1 pv g7f6
+info score cp 62 time 6 depth 2 nodes 124 ordering 0.9 pv g7f6 d1d8
+info score cp 102 time 21 depth 3 nodes 1266 ordering 0.97 pv d8f6 g5f6 f8b4
+info score cp 102 time 65 depth 4 nodes 4863 ordering 0.98 pv d8f6 g5f6 f8b4 d1d2
+info score cp 102 time 226 depth 5 nodes 16755 ordering 0.96 pv d8f6 g5f6 f8b4 d1d2 b4d2
+info score cp 102 time 641 depth 6 nodes 44504 ordering 0.97 pv d8f6 g5f6 f8b4 d1d2 b4d2 e1d2
+info score cp 139 time 3050 depth 7 nodes 230656 ordering 0.91 pv d8f6 d1d2 f6b6 c4b5 c8e6 a2a4 b8d7
+info score cp 110 time 7943 depth 8 nodes 609586 ordering 0.91 pv d8f6 g5f6 f8b4 d1d2 b4d2 e1d2 g7f6 c4b5
+passed
+info score cp 167 time 7 depth 1 nodes 317 ordering 0.95 pv e5d7
+info score cp 150 time 26 depth 2 nodes 977 ordering 0.95 pv g4h5 f6e5
+info score cp 294 time 91 depth 3 nodes 7303 ordering 0.93 pv d3h7 f8h7 e5g6
+info score cp 294 time 164 depth 4 nodes 13856 ordering 0.96 pv d3h7 f8h7 e5g6 c8f5
+info score cp 456 time 382 depth 5 nodes 39581 ordering 0.97 pv d3h7 f8h7 e5g6 h4g3 f3g3
+info score cp 430 time 681 depth 6 nodes 67648 ordering 0.95 pv d3h7 f8h7 e5g6 h4g3 f3g3 h5g3
+info score cp 446 time 2388 depth 7 nodes 249135 ordering 0.96 pv d3h7 f8h7 e5g6 h4g3 f3g3 h5g3 c2d3
+info score cp 431 time 6871 depth 8 nodes 643134 ordering 0.92 pv d3h7 f8h7 e5g6 h4g3 f3g3 h5g3 c2f2 g3e4
+passed
+info score cp 246 time 0 depth 1 nodes 78 ordering 1 pv e8g7
+info score cp 110 time 8 depth 2 nodes 707 ordering 0.95 pv e8d6 f7d7
+info score cp 128 time 44 depth 3 nodes 3394 ordering 0.93 pv e8d6 f7f8 f2f4
+info score cp 273 time 99 depth 4 nodes 7132 ordering 0.92 pv e8d6 h8g8 d6f7 g8f7
+info score cp 279 time 315 depth 5 nodes 29444 ordering 0.92 pv e8d6 h8g8 d6f7 g8f7 f2f4
+info score cp 283 time 612 depth 6 nodes 54537 ordering 0.89 pv e8d6 h8g8 d6f7 g8f7 f2f4 e5d5
+info score cp 308 time 1454 depth 7 nodes 142191 ordering 0.9 pv e8d6 h8g8 d6f7 g8f7 f2f4 e5f6 b6b5
+info score cp 307 time 7757 depth 8 nodes 588149 ordering 0.83 pv e8d6 h8g8 d6f7 g8f7 f2f4 e5d5 b6c7 f7f6
+passed
+info score cp 0 time 3 depth 1 nodes 246 ordering 0.93 pv a8c8
+info score cp -31 time 32 depth 2 nodes 1764 ordering 0.9 pv a8c8 g1d1
+info score cp -21 time 172 depth 3 nodes 11364 ordering 0.89 pv h4f4 a1a3 a8b8
+info score cp -4 time 490 depth 4 nodes 29756 ordering 0.9 pv h4f4 a4b5 g5f3 e2e4
+info score cp 19 time 2711 depth 5 nodes 184113 ordering 0.88 pv h4f4 c2d1 d8d2 e2e3 g5e6
+info score cp 87 time 9935 depth 6 nodes 598135 ordering 0.89 pv d8d2 e2e3 d2c2 g1g5 h4f2 e3e4
+passed
+info score cp 190 time 2 depth 1 nodes 71 ordering 1 pv a7f2
+info score cp 190 time 6 depth 2 nodes 318 ordering 0.94 pv a7f2 g1f2
+info score cp 595 time 36 depth 3 nodes 2616 ordering 0.93 pv d6e4 f2d4 d8d4
+info score cp 595 time 103 depth 4 nodes 7747 ordering 0.97 pv d6e4 f2d4 d8d4 b3d4
+info score cp 611 time 373 depth 5 nodes 32489 ordering 0.95 pv d6e4 f2d4 d8d4 b3d4 e6e5
+info score cp 616 time 1069 depth 6 nodes 99101 ordering 0.96 pv d6e4 f2d4 d8d4 b3d4 e6e5 f3e4
+info score cp 791 time 2690 depth 7 nodes 227185 ordering 0.88 pv d6e4 f2d4 e6e5 f3e4 e5d4 c6c4 f7f5
+info score cp 786 time 6939 depth 8 nodes 607090 ordering 0.9 pv d6e4 f2d4 e6e5 f3e4 e5d4 c6c4 d4d3 b3c5
+passed
+info score cp 37 time 0 depth 1 nodes 100 ordering 1 pv c3c4
+info score cp 15 time 28 depth 2 nodes 1678 ordering 0.93 pv f4f5 h5g6
+info score cp 144 time 76 depth 3 nodes 6890 ordering 0.96 pv f4f7 e7f7 f1f7
+info score cp 89 time 1069 depth 4 nodes 63838 ordering 0.91 pv d3c4 a8f8 f4f7 f8f7
+info score cp 89 time 3528 depth 5 nodes 228140 ordering 0.89 pv d3c4 a8f8 f4f7 f8f7 f1f7
+info score cp 131 time 9935 depth 6 nodes 619840 ordering 0.86 pv d3c4 b7d5 f4f5 h5f5 f1f5 d5c4
+failed
+info score cp 146 time 0 depth 1 nodes 101 ordering 1 pv e4f2
+info score cp 146 time 15 depth 2 nodes 571 ordering 0.98 pv e4f2 f1f2
+info score cp 130 time 57 depth 3 nodes 6007 ordering 0.93 pv e4f2 f1f2 c5f2
+info score cp 179 time 183 depth 4 nodes 15944 ordering 0.95 pv e4f2 f1f2 c5f2 c1d2
+info score cp 349 time 1030 depth 5 nodes 69357 ordering 0.92 pv d8d3 g4g7 g8g7 c2d3 e4f2
+info score cp 440 time 3150 depth 6 nodes 203281 ordering 0.91 pv d8d3 g4g7 g8g7 c2d3 e4f2 h1g1
+info score cp 440 time 9026 depth 7 nodes 671697 ordering 0.88 pv d8d3 g4g7 g8g7 c2d3 e4f2 h1g1 f2d3
+passed
+info score cp 141 time 4 depth 1 nodes 111 ordering 1 pv f6g7
+info score cp 141 time 14 depth 2 nodes 790 ordering 0.85 pv f6g7 f7g7
+info score cp 141 time 63 depth 3 nodes 5294 ordering 0.92 pv f6g7 f7g7 h6d6
+info score cp 84 time 295 depth 4 nodes 20936 ordering 0.91 pv f6g7 f7g7 h6d6 a8d8
+info score cp 82 time 2086 depth 5 nodes 162471 ordering 0.92 pv f6g7 f7g7 h6d6 a8d8 d6f4
+info score cp 39 time 9935 depth 6 nodes 672042 ordering 0.87 pv h1e1 a8e8 h6g7 f7g7 f6g7 g8g7
+failed
+info score cp 94 time 0 depth 1 nodes 98 ordering 0.93 pv h6g7
+info score cp 93 time 7 depth 2 nodes 726 ordering 0.94 pv h6g7 g3g4
+info score cp 803 time 38 depth 3 nodes 3876 ordering 0.93 pv c6f3 g2f3 b1h1
+info score cp 787 time 91 depth 4 nodes 8473 ordering 0.96 pv c6f3 g2f3 b1h1 e3g2
+info score cp 812 time 222 depth 5 nodes 21028 ordering 0.97 pv c6f3 g2f3 b1h1 e3g2 h6d2
+info score cp 792 time 537 depth 6 nodes 50882 ordering 0.94 pv c6f3 g2f3 b1h1 e3g2 h6d2 d6d7
+info score cp 886 time 1279 depth 7 nodes 122989 ordering 0.95 pv c6f3 g2f3 b1h1 e3g2 h6d2 d6d7 d2a5
+info score cp 948 time 4200 depth 8 nodes 379453 ordering 0.94 pv c6f3 g2f3 b1h1 e3g2 h6d2 d6d7 e5e4 f3e4
+info score cp 1058 time 9935 depth 9 nodes 854142 ordering 0.94 pv c6f3 g2f3 b1h1 e3g2 h6d2 d6d7 d2a5 f2e1 h1f1
+passed
+info score cp 188 time 1 depth 1 nodes 146 ordering 0.92 pv d1d2
+info score cp 987 time 15 depth 2 nodes 1094 ordering 0.91 pv d1f1 f2f1
+info score cp 987 time 50 depth 3 nodes 4839 ordering 0.96 pv d1f1 f2f1 f5d3
+info score cp 987 time 159 depth 4 nodes 14914 ordering 0.98 pv d1f1 f2f1 f5d3 f1g1
+info score cp 1153 time 577 depth 5 nodes 58006 ordering 0.98 pv d1f1 f2f1 f5d3 f1e1 f6f4
+info score cp 1153 time 1504 depth 6 nodes 140459 ordering 0.97 pv d1f1 f2f1 f5d3 f1e1 f6f4 e5e6
+info score cp 1153 time 5843 depth 7 nodes 535491 ordering 0.95 pv d1f1 f2f1 f5d3 f1e1 f6f4 e5e6 f4c1
+info score cp 1153 time 9935 depth 8 nodes 895302 ordering 0.94 pv d1f1 f2f1 f5d3 f1e1 f6f4 e5e6 f4c1 e1f2
+passed
+info score cp -71 time 3 depth 1 nodes 189 ordering 0.88 pv e7e8
+info score cp -87 time 13 depth 2 nodes 1151 ordering 0.92 pv e7c7 b4b6
+info score cp 81 time 56 depth 3 nodes 4912 ordering 0.93 pv e7c7 d1c1 b7d5
+info score cp 191 time 184 depth 4 nodes 16543 ordering 0.94 pv b7d5 c3d5 f3d1 g1h2
+info score cp 219 time 361 depth 5 nodes 32594 ordering 0.93 pv b7d5 c3d5 f3d1 g1h2 e7e2
+info score cp 210 time 759 depth 6 nodes 67708 ordering 0.91 pv b7d5 c3d5 f3d1 g1h2 e7e2 d5e7
+info score cp 226 time 4779 depth 7 nodes 418739 ordering 0.91 pv b7d5 c3d5 f3d1 g1h2 e7e2 d5f6 g8g7
+info score cp 206 time 9935 depth 8 nodes 766378 ordering 0.89 pv b7d5 c3d5 f3d1 g1h2 e7e2 d5f6 g8g7 f6e4
+passed
+info score cp -66 time 0 depth 1 nodes 73 ordering 0.75 pv g8f7
+info score cp -77 time 6 depth 2 nodes 612 ordering 0.87 pv d7d2 f2c5
+info score cp -51 time 36 depth 3 nodes 3428 ordering 0.91 pv d7d2 c6f6 g8g7
+info score cp -67 time 175 depth 4 nodes 14230 ordering 0.89 pv d7d2 c6f6 g8g7 g1g2
+info score cp -71 time 1651 depth 5 nodes 91432 ordering 0.84 pv d7d2 c6f6 g8h7 g1g2 h7g7
+info score cp 257 time 6440 depth 6 nodes 355114 ordering 0.81 pv g4g3 c6f6 g3f2 f6f2 d7d2 f2e2
+info score cp 277 time 9523 depth 7 nodes 570587 ordering 0.84 pv g4g3 c6g6 g8h7 g6f6 g3f2 f6f2 e2e8
+passed
+info score cp 287 time 1 depth 1 nodes 120 ordering 1 pv b6d4
+info score cp 287 time 11 depth 2 nodes 613 ordering 0.99 pv b6d4 d1d4
+info score cp 166 time 202 depth 3 nodes 9789 ordering 0.9 pv d5f4 d4b6 d8b6
+info score cp 315 time 394 depth 4 nodes 21349 ordering 0.93 pv b6d4 d1d4 d5c3 d4d8
+info score cp 315 time 990 depth 5 nodes 77168 ordering 0.95 pv b6d4 d1d4 d5c3 d4d8 c3e2
+info score cp 287 time 3681 depth 6 nodes 309321 ordering 0.92 pv b6d4 d1d4 d5c3 b2c3 d8d4 c3d4
+info score cp 286 time 9935 depth 7 nodes 837632 ordering 0.91 pv b6d4 d1d4 d5c3 d4c3 e8e2 a1e1 d8b6
+passed
+info score cp 77 time 1 depth 1 nodes 95 ordering 1 pv b7h7
+info score cp 943 time 11 depth 2 nodes 1039 ordering 0.95 pv f6c6 c5b5
+info score cp 943 time 56 depth 3 nodes 5172 ordering 0.97 pv f6c6 c5b5 c6b6
+info score cp 923 time 217 depth 4 nodes 18799 ordering 0.95 pv f6c6 c5b5 c6b6 a7b6
+info score cp 898 time 1191 depth 5 nodes 88031 ordering 0.95 pv f6c6 c5b5 c6b6 a7b6 b7d5
+info score cp 897 time 4895 depth 6 nodes 414065 ordering 0.93 pv f6c6 c5b5 c6b6 a7b6 b7d5 b5a6
+passed
+info score cp 213 time 0 depth 1 nodes 89 ordering 1 pv c3c4
+info score cp 203 time 5 depth 2 nodes 400 ordering 0.89 pv f4g5 h6g5
+info score cp 229 time 48 depth 3 nodes 3299 ordering 0.9 pv f4g5 h6g5 c3c4
+info score cp 168 time 321 depth 4 nodes 17647 ordering 0.89 pv f4g5 h6g5 c3c4 h8d8
+info score cp 364 time 953 depth 5 nodes 62689 ordering 0.89 pv b2b7 h8e8 b7b8 c8d7 b8e8
+info score cp 369 time 1497 depth 6 nodes 97833 ordering 0.89 pv b2b7 h8e8 b7b8 c8d7 b8e8 d7e8
+info score cp 379 time 5310 depth 7 nodes 355077 ordering 0.88 pv b2b7 h8e8 b7b8 c8d7 b8e8 d7e8 b1b8
+passed
+info score cp -256 time 0 depth 1 nodes 96 ordering 1 pv f6g7
+info score cp -229 time 15 depth 2 nodes 927 ordering 0.85 pv f6g7 g8g7
+info score cp 184 time 82 depth 3 nodes 5391 ordering 0.91 pv f7g6 f4f6 g6f6
+info score cp 184 time 212 depth 4 nodes 15565 ordering 0.95 pv f7g6 f4f6 g6f6 d4c2
+info score cp 245 time 617 depth 5 nodes 50112 ordering 0.96 pv f7g6 f4f6 g6f6 d4c2 a1d1
+info score cp 208 time 1612 depth 6 nodes 136463 ordering 0.92 pv f7g6 f4f6 g6f6 d4c2 a1c1 c2d4
+info score cp 205 time 9935 depth 7 nodes 790287 ordering 0.89 pv f7g6 f4f6 g6f6 d4c2 a1d1 g8e8 h5f5
+passed
+info score cp 143 time 0 depth 1 nodes 106 ordering 1 pv f8e8
+info score cp 145 time 20 depth 2 nodes 910 ordering 0.96 pv b7f3 e2f2
+info score cp 163 time 54 depth 3 nodes 5432 ordering 0.97 pv b7f3 e2f2 f8e8
+info score cp 160 time 173 depth 4 nodes 13607 ordering 0.91 pv b7f3 c4b5 a4e4 b5c6
+info score cp 181 time 507 depth 5 nodes 50146 ordering 0.95 pv b7f3 c4b5 a4e4 e2f2 g7g5
+info score cp 245 time 1478 depth 6 nodes 139079 ordering 0.94 pv b7f3 g1a1 a4a1 e2f3 a1a4 c2c1
+info score cp 261 time 4222 depth 7 nodes 436531 ordering 0.94 pv b7f3 c4b5 a4e4 e2c4 e4e3 g1c1 e3e4
+passed
+info score cp -178 time 2 depth 1 nodes 199 ordering 1 pv e3c4
+info score cp -189 time 6 depth 2 nodes 580 ordering 0.98 pv e3c4 d2c3
+info score cp -183 time 45 depth 3 nodes 2986 ordering 0.95 pv e3c4 d2c3 g7d7
+info score cp -184 time 150 depth 4 nodes 11927 ordering 0.93 pv e3c4 d2c3 g7d7 g4g5
+info score cp -202 time 742 depth 5 nodes 67565 ordering 0.89 pv e3c4 e1e8 g8f7 e8d8 g7g6
+info score cp -239 time 5568 depth 6 nodes 456626 ordering 0.82 pv g7h7 d3h7 g8h7 g1f2 e3c4 e1e7
+info score cp -244 time 9935 depth 7 nodes 784074 ordering 0.83 pv g7h7 d3h7 g8h7 g1f2 h7g6 d2c3 f6e6
+failed
+info score cp -107 time 0 depth 1 nodes 108 ordering 1 pv f4e5
+info score cp -128 time 12 depth 2 nodes 788 ordering 0.82 pv f4e5 d8d6
+info score cp -97 time 56 depth 3 nodes 5417 ordering 0.94 pv f4e5 f7f6 e5e3
+info score cp -120 time 176 depth 4 nodes 15364 ordering 0.92 pv d4f6 d8d7 f4e5 c8c5
+info score cp 78 time 1095 depth 5 nodes 90084 ordering 0.86 pv e1e8 d8c7 f4f6 c7h2 g1h2
+info score cp 103 time 2168 depth 6 nodes 165217 ordering 0.87 pv e1e8 c8c1 e8f8 d8f8 d1c1 d5a2
+info score cp 210 time 9369 depth 7 nodes 767709 ordering 0.85 pv e1e8 g6g5 e8d8 g5f4 d8d5 f8c5 g1g2
+passed
+info score cp 220 time 0 depth 1 nodes 90 ordering 1 pv h3f1
+info score cp 231 time 5 depth 2 nodes 554 ordering 0.99 pv h3f1 g1f1
+info score cp 231 time 30 depth 3 nodes 3641 ordering 0.99 pv h3f1 g1f1 e5e2
+info score cp 211 time 160 depth 4 nodes 15131 ordering 0.98 pv h3f1 g1f1 e5h5 f1g1
+info score cp 999995 time 401 depth 5 nodes 37438 ordering 0.97 pv e5e1 c1e1 e8e1 f1e1 h3g2
+passed
+info score cp 130 time 0 depth 1 nodes 105 ordering 1 pv c3c4
+info score cp 91 time 9 depth 2 nodes 895 ordering 0.82 pv c3c4 h8f8
+info score cp 109 time 114 depth 3 nodes 8658 ordering 0.91 pv f1e1 h8f8 c3c4
+info score cp 93 time 514 depth 4 nodes 40046 ordering 0.91 pv f1e1 h8f8 c3c4 a8a7
+info score cp 107 time 5030 depth 5 nodes 411179 ordering 0.89 pv g3h4 e7e6 h4f6 e6d5 b3d5
+info score cp 123 time 6913 depth 6 nodes 575962 ordering 0.89 pv g3h4 c8e6 d5e6 e7e6 b3e6 c6e5
+info score cp 123 time 9936 depth 7 nodes 821732 ordering 0.89 pv g3h4 c8e6 d5e6 e7e6 b3e6 c6e5 c3c4
+passed
+info score cp -22 time 17 depth 1 nodes 109 ordering 1 pv d8d1
+info score cp -22 time 25 depth 2 nodes 775 ordering 0.94 pv d8d1 c1c2
+info score cp -67 time 125 depth 3 nodes 8259 ordering 0.91 pv e5h2 c6e6 g8f8
+info score cp 999993 time 301 depth 4 nodes 20158 ordering 0.94 pv d8d1 c1c2 d1d2 c2d2
+info score cp 999993 time 3200 depth 5 nodes 273330 ordering 0.99 pv d8d1 c1c2 d1d2 c2d2 e5b2
+info score cp 999993 time 7481 depth 6 nodes 660127 ordering 1 pv d8d1 c1c2 d1d2 c2d2 e5b2 d2e1
+info score cp 999993 time 9935 depth 7 nodes 890209 ordering 1 pv d8d1 c1c2 d1d2 c2d2 e5b2 d2e1 b2c1
+passed
+info score cp -62 time 0 depth 1 nodes 98 ordering 1 pv f8e8
+info score cp -69 time 10 depth 2 nodes 811 ordering 0.98 pv d7d4 g1h1
+info score cp -42 time 91 depth 3 nodes 8007 ordering 0.91 pv e6d4 c4a6 d7d6
+info score cp -66 time 225 depth 4 nodes 17874 ordering 0.93 pv e6d4 c4a6 d4e2 g1h1
+info score cp 48 time 687 depth 5 nodes 60762 ordering 0.94 pv e6d4 c4a6 d8a8 a6b6 a8a7
+info score cp 48 time 2114 depth 6 nodes 193116 ordering 0.95 pv e6d4 c4a6 d8a8 a6b6 a8a7 b6c5
+info score cp 48 time 8959 depth 7 nodes 801311 ordering 0.87 pv e6d4 c4a6 d8a8 a6b6 a8a7 b6c5 a7a2
+passed
+info score cp 220 time 0 depth 1 nodes 107 ordering 1 pv g6f5
+info score cp 223 time 16 depth 2 nodes 1276 ordering 0.87 pv e6d4 f5f4
+info score cp 999995 time 101 depth 3 nodes 7084 ordering 0.96 pv c1c8 b7c8 g6g7
+info score cp 999995 time 215 depth 4 nodes 20342 ordering 0.98 pv c1c8 b7c8 g6g7 e7g7
+info score cp 999995 time 446 depth 5 nodes 46660 ordering 0.99 pv c1c8 b7c8 g6g7 e7g7 g3g7
+passed
+info score cp 166 time 0 depth 1 nodes 121 ordering 1 pv d1d8
+info score cp -128 time 13 depth 2 nodes 1303 ordering 0.83 pv a1a7 f8e8
+info score cp 30 time 156 depth 3 nodes 13789 ordering 0.89 pv a1a7 c7c6 c2e4
+info score cp -106 time 499 depth 4 nodes 47620 ordering 0.91 pv a1a7 c7c6 f5d6 b7a6
+info score cp 90 time 3375 depth 5 nodes 294612 ordering 0.9 pv d1d7 c7d7 f5h6 g7h6 h3d7
+info score cp 90 time 9944 depth 6 nodes 752488 ordering 0.87 pv d1d7 c7d7 f5h6 g7h6 h3d7 e5e7
+passed
+info score cp -164 time 1 depth 1 nodes 149 ordering 0.96 pv d3e3
+info score cp -189 time 18 depth 2 nodes 1423 ordering 0.77 pv d3e3 h6h7
+info score cp -158 time 62 depth 3 nodes 6058 ordering 0.84 pv h4h5 f6h5 e7g7
+info score cp -198 time 277 depth 4 nodes 23921 ordering 0.91 pv h4h5 f6h5 d3e3 g7g5
+info score cp -178 time 1833 depth 5 nodes 166640 ordering 0.92 pv e7e5 g7g6 d3e3 h6h7 e5e7
+info score cp 453 time 3657 depth 6 nodes 319915 ordering 0.91 pv h4h5 f6h5 d3f5 d8e8 e7e8 h8e8
+info score cp 1152 time 6064 depth 7 nodes 566086 ordering 0.93 pv h4h5 f6h5 d3f5 d8e8 e7e8 g7g6 e8h8
+passed
+info score cp -87 time 0 depth 1 nodes 109 ordering 1 pv f3d4
+info score cp -252 time 31 depth 2 nodes 2326 ordering 0.75 pv a3b3 c8e6
+info score cp -221 time 158 depth 3 nodes 10979 ordering 0.82 pv a3b3 c8e6 f2g1
+info score cp 999993 time 832 depth 4 nodes 53251 ordering 0.87 pv e4f6 g7f6 a3f8 g8f8
+info score cp 999993 time 3336 depth 5 nodes 300324 ordering 0.95 pv e4f6 g7f6 a3f8 g8f8 c1h6
+info score cp 999993 time 9157 depth 6 nodes 893081 ordering 0.98 pv e4f6 g7f6 a3f8 g8f8 c1h6 f8g8
+info score cp 999993 time 9935 depth 7 nodes 975106 ordering 0.98 pv e4f6 g7f6 a3f8 g8f8 c1h6 f8g8 e1e8
+passed
+info score cp 159 time 2 depth 1 nodes 198 ordering 0.88 pv e5f6
+info score cp 104 time 12 depth 2 nodes 1082 ordering 0.94 pv h6h7 g8h8
+info score cp 392 time 90 depth 3 nodes 7962 ordering 0.94 pv c3c7 b7c7 e5c7
+info score cp 392 time 190 depth 4 nodes 21113 ordering 0.96 pv c3c7 b7c7 e5c7 d8c7
+info score cp 934 time 496 depth 5 nodes 48376 ordering 0.95 pv c3c7 b7c7 e5c7 f8f7 h6h7
+info score cp 934 time 1031 depth 6 nodes 98686 ordering 0.97 pv c3c7 b7c7 e5c7 f8f7 h6h7 g8h8
+info score cp 996 time 3057 depth 7 nodes 289411 ordering 0.93 pv c3c7 b7c7 e5c7 f8f7 c7d8 a8d8 h6h7
+info score cp 996 time 7877 depth 8 nodes 788625 ordering 0.95 pv c3c7 b7c7 e5c7 f8f7 c7d8 a8d8 h6h7 g8h8
+failed
+info score cp -117 time 0 depth 1 nodes 15 ordering 1 pv g2g1
+info score cp -153 time 2 depth 2 nodes 282 ordering 0.92 pv g2f1 c6c5
+info score cp -137 time 26 depth 3 nodes 1763 ordering 0.97 pv g2f1 f4d5 f6e5
+info score cp -148 time 81 depth 4 nodes 6599 ordering 0.94 pv g2f1 c6c5 c1d2 e8e2
+info score cp -122 time 630 depth 5 nodes 47177 ordering 0.88 pv g2f1 f4d3 c1c3 e8e1 f1g2
+info score cp -161 time 2390 depth 6 nodes 174884 ordering 0.86 pv g2f1 c6c5 d4c5 f4e2 c1d2 c7c5
+failed
+info score cp 250 time 0 depth 1 nodes 112 ordering 0.86 pv h1h8
+info score cp 37 time 16 depth 2 nodes 1385 ordering 0.92 pv c4e3 a8c8
+info score cp 188 time 200 depth 3 nodes 14230 ordering 0.78 pv e1e8 d8e8 f4g5
+info score cp 212 time 452 depth 4 nodes 35779 ordering 0.86 pv f5f6 g7g6 e1e7 a8c8
+info score cp 362 time 1178 depth 5 nodes 100539 ordering 0.91 pv f5f6 g7g6 e1e5 d8f6 h1h6
+info score cp 374 time 3200 depth 6 nodes 297068 ordering 0.94 pv f5f6 g7g6 e1e5 d8f6 h1h6 g6h6
+failed
+info score cp -35 time 4 depth 1 nodes 197 ordering 0.89 pv g3f3
+info score cp -90 time 14 depth 2 nodes 744 ordering 0.89 pv g3f3 e2e4
+info score cp 999995 time 64 depth 3 nodes 4144 ordering 0.93 pv g6h6 g7h6 h5f6
+info score cp 999995 time 134 depth 4 nodes 9195 ordering 0.96 pv g6h6 g7h6 h5f6 h7h8
+info score cp 999995 time 300 depth 5 nodes 23418 ordering 0.98 pv g6h6 g7h6 h5f6 h7h8 g3g8
+passed
+info score cp 13 time 1 depth 1 nodes 101 ordering 1 pv g4e6
+info score cp -2 time 7 depth 2 nodes 603 ordering 0.91 pv d8a5 h3g4
+info score cp 21 time 53 depth 3 nodes 3748 ordering 0.94 pv g4e2 d1e2 a8c8
+info score cp -32 time 288 depth 4 nodes 19505 ordering 0.87 pv g4e2 d1e2 b7b5 a4b3
+info score cp 133 time 885 depth 5 nodes 69412 ordering 0.9 pv d4d3 c2d3 g4e2 d1e2 d8d4
+info score cp 133 time 1822 depth 6 nodes 154860 ordering 0.91 pv d4d3 c2d3 g4e2 d1e2 d8d4 g1h1
+info score cp 115 time 4257 depth 7 nodes 369789 ordering 0.92 pv d4d3 c2d3 g4e2 d1e2 d8d4 g1h1 d4a4
+info score cp 138 time 9950 depth 8 nodes 836408 ordering 0.91 pv d4d3 c2d3 g4e2 d1e2 d8d4 e2f2 d4a4 e4e5
+passed
+info score cp 81 time 0 depth 1 nodes 107 ordering 1 pv d4c4
+info score cp 45 time 10 depth 2 nodes 768 ordering 0.88 pv d4c4 g7h8
+info score cp 54 time 70 depth 3 nodes 7242 ordering 0.91 pv d4c4 g7h8 c4d4
+info score cp 48 time 564 depth 4 nodes 45919 ordering 0.9 pv d4c4 d6d5 c4d4 a8a6
+info score cp 56 time 3787 depth 5 nodes 325125 ordering 0.87 pv g2g4 h7h6 g5h4 g7g6 d4c4
+info score cp 33 time 9935 depth 6 nodes 792937 ordering 0.86 pv g2g4 d6d5 g4f5 a8a6 g5e3 g7h8
+failed
+info score cp 391 time 0 depth 1 nodes 43 ordering 1 pv f5d3
+info score cp 385 time 1 depth 2 nodes 150 ordering 0.97 pv f5d3 f4e5
+info score cp 381 time 4 depth 3 nodes 611 ordering 0.97 pv f5d3 f4e5 c4c5
+info score cp 385 time 10 depth 4 nodes 1287 ordering 0.98 pv f5d3 f4e5 c4c5 e5d4
+info score cp 371 time 40 depth 5 nodes 4969 ordering 0.98 pv f5h3 f4e5 c4c5 d6c5 c6c5
+info score cp 415 time 145 depth 6 nodes 13556 ordering 0.96 pv f5h3 f4g3 h3f1 g3f2 f1h3 f2g3
+info score cp 415 time 303 depth 7 nodes 33677 ordering 0.97 pv f5h3 f4g3 h3f1 g3f2 f1h3 f2g3 h3f1
+info score cp 415 time 545 depth 8 nodes 57023 ordering 0.95 pv f5h3 f4g3 h3f1 g3f2 f1h3 f2g3 h3f1 g3f2
+info score cp 346 time 2377 depth 9 nodes 264118 ordering 0.88 pv f5h3 f4g3 h3f1 g3f2 f1h3 f2e1 c6d6 f3f2 d6e5
+info score cp 346 time 4375 depth 10 nodes 463285 ordering 0.88 pv f5h3 f4g3 h3f1 g3f2 f1h3 f2e1 c6d6 f3f2 d6e5 f2f1q
+info score cp 346 time 8050 depth 11 nodes 879746 ordering 0.89 pv f5h3 f4g3 h3f1 g3f2 f1h3 f2e1 c6d6 f3f2 d6e5 f2f1q h3f1
+info score cp 346 time 9935 depth 12 nodes 1070313 ordering 0.89 pv f5h3 f4g3 h3f1 g3f2 f1h3 f2g3 h3f1 g3f2 f1h3 f2g3 h3f1 g3f2
+failed
+info score cp 168 time 1 depth 1 nodes 122 ordering 1 pv f6g4
+info score cp 153 time 47 depth 2 nodes 3402 ordering 0.95 pv c7a5 c2c3
+info score cp 108 time 280 depth 3 nodes 18375 ordering 0.94 pv e7e5 e1g1 a8c8
+info score cp 76 time 2659 depth 4 nodes 159033 ordering 0.93 pv c7a5 d1d2 a8c8 d2a5
+info score cp 224 time 7536 depth 5 nodes 443262 ordering 0.92 pv f6g4 b2g7 g4e3 f2e3 c7g3
+info score cp 224 time 9592 depth 6 nodes 627351 ordering 0.92 pv f6g4 b2g7 g4e3 f2e3 c7g3 e1f1
+passed
+info score cp -11 time 1 depth 1 nodes 119 ordering 0.75 pv g1e1
+info score cp -29 time 8 depth 2 nodes 588 ordering 0.55 pv g1e1 c8d8
+info score cp -13 time 43 depth 3 nodes 4904 ordering 0.88 pv g1e1 c8d8 e6e7
+info score cp 164 time 154 depth 4 nodes 16218 ordering 0.87 pv g1g7 h7g7 d1h5 e8d8
+info score cp 555 time 804 depth 5 nodes 75782 ordering 0.87 pv g1g7 c4e6 g7h7 e6e4 d1h5
+info score cp 565 time 2720 depth 6 nodes 221445 ordering 0.92 pv g1g7 c4e6 g7h7 e8d8 d6c5 d8e8
+passed
+info score cp 43 time 1 depth 1 nodes 127 ordering 1 pv c6c5
+info score cp 22 time 23 depth 2 nodes 1492 ordering 0.97 pv d3d1 e2e1
+info score cp 33 time 102 depth 3 nodes 7566 ordering 0.92 pv c6c5 e2e1 d3d5
+info score cp 112 time 248 depth 4 nodes 23263 ordering 0.93 pv e4g2 e2e3 g2e4 e3e1
+info score cp 128 time 549 depth 5 nodes 49506 ordering 0.95 pv e4g2 e2e3 g2e4 e3d3 e4d3
+info score cp 142 time 1297 depth 6 nodes 113958 ordering 0.94 pv e4g2 e2e3 d3e3 f2e3 g2e4 e3e1
+info score cp 168 time 4546 depth 7 nodes 440101 ordering 0.92 pv e4g2 e2e3 d3e3 f2e3 g2e4 e3f2 g8f7
+info score cp 167 time 9935 depth 8 nodes 983697 ordering 0.92 pv e4g2 e2e3 d3e3 f2e3 g2e4 e3f2 g8f7 c3d4
+passed
+info score cp 382 time 1 depth 1 nodes 118 ordering 0.62 pv a8d8
+info score cp 479 time 23 depth 2 nodes 1536 ordering 0.79 pv d6f8 h6f8
+info score cp 493 time 67 depth 3 nodes 5846 ordering 0.81 pv d6f8 h6f8 b2c1
+info score cp 509 time 293 depth 4 nodes 23009 ordering 0.89 pv d6f8 e2c4 f8h6 b6g6
+info score cp 492 time 1532 depth 5 nodes 148051 ordering 0.85 pv d6f8 e2c4 f8g7 c4f7 g8f7
+info score cp 357 time 9935 depth 6 nodes 763881 ordering 0.84 pv d6f8 e2c4 f8h6 b6g6 h6g7 c4f7
+failed
+info score cp -68 time 0 depth 1 nodes 84 ordering 1 pv a4c3
+info score cp -64 time 10 depth 2 nodes 644 ordering 0.82 pv a4c3 b5c5
+info score cp -58 time 78 depth 3 nodes 3068 ordering 0.9 pv a4c3 b5c5 f2f4
+info score cp -22 time 198 depth 4 nodes 9807 ordering 0.9 pv c4d6 b5b4 a4c5 b4b6
+info score cp -22 time 533 depth 5 nodes 33172 ordering 0.91 pv c4d6 b5b4 a4c5 b4b6 c5d7
+info score cp 28 time 1244 depth 6 nodes 70076 ordering 0.91 pv c4d6 b5b3 b2b3 d7a4 b3a4 d5c3
+info score cp 7 time 8865 depth 7 nodes 666647 ordering 0.81 pv c4d6 b5b3 b2b3 d7a4 b3a4 d5c3 a4a5
+failed
+info score cp 34 time 0 depth 1 nodes 84 ordering 1 pv b1d3
+info score cp 16 time 11 depth 2 nodes 836 ordering 0.86 pv b1d3 c8d8
+info score cp 79 time 93 depth 3 nodes 8970 ordering 0.87 pv c3e4 d7c6 e4f6
+info score cp 134 time 320 depth 4 nodes 23740 ordering 0.89 pv c3d5 e6d5 c1c7 b8c7
+info score cp 200 time 863 depth 5 nodes 73240 ordering 0.9 pv c3d5 f6d5 c1c7 b8c7 b1e4
+info score cp 182 time 2389 depth 6 nodes 182538 ordering 0.91 pv c3d5 f6d5 c1c7 b8c7 b1e4 f8d8
+info score cp 241 time 9431 depth 7 nodes 859419 ordering 0.9 pv c3e4 d7c6 b2f6 g7f6 e4f6 g8g7 f6d7
+passed
+info score cp 248 time 2 depth 1 nodes 199 ordering 1 pv a7e7
+info score cp 222 time 37 depth 2 nodes 1333 ordering 0.99 pv a7e7 f3f4
+info score cp 233 time 158 depth 3 nodes 8866 ordering 0.96 pv g7g5 e1d2 a7e7
+info score cp 247 time 724 depth 4 nodes 43742 ordering 0.93 pv a7e7 e2e3 e7f6 e1d2
+info score cp 296 time 1606 depth 5 nodes 108779 ordering 0.91 pv b5d4 c3d4 c8c5 c1d1 c5c8
+info score cp 285 time 2137 depth 6 nodes 152735 ordering 0.91 pv b5d4 c3d4 c8c5 c1d1 c5c8 e1d2
+info score cp 318 time 3321 depth 7 nodes 290525 ordering 0.92 pv b5d4 c3d4 c8c5 c1d1 c5b5 e1d2 a7e7
+info score cp 177 time 9935 depth 8 nodes 863578 ordering 0.86 pv b5d4 c3d4 c4c5 d4c5 c8c5 c1d1 c5c1 g1f1
+passed
+info score cp 194 time 2 depth 1 nodes 155 ordering 0.98 pv f2f3
+info score cp 999997 time 11 depth 2 nodes 814 ordering 0.97 pv f2f7 f8f7
+info score cp 999997 time 29 depth 3 nodes 2297 ordering 0.99 pv f2f7 f8f7 e1e8
+passed
+info score cp 139 time 1 depth 1 nodes 127 ordering 1 pv c7a5
+info score cp 108 time 6 depth 2 nodes 703 ordering 0.98 pv c7c8 f6f5
+info score cp 144 time 53 depth 3 nodes 4067 ordering 0.97 pv c7c8 g6g5 e1e7
+info score cp 108 time 389 depth 4 nodes 28394 ordering 0.91 pv c7c8 f6f5 e1d1 b7b5
+info score cp 136 time 1471 depth 5 nodes 108180 ordering 0.88 pv c7c8 b7f7 c8e8 g6g5 e8e4
+info score cp 128 time 4329 depth 6 nodes 333498 ordering 0.86 pv c7c8 b7f7 c8e8 f6f5 e8e5 f8g7
+failed
+info score cp -281 time 0 depth 1 nodes 111 ordering 1 pv f8e6
+info score cp 999997 time 8 depth 2 nodes 759 ordering 0.94 pv h3h6 g7h6
+info score cp 999997 time 33 depth 3 nodes 3966 ordering 0.98 pv h3h6 g7h6 g5f6
+passed
+info score cp -126 time 1 depth 1 nodes 129 ordering 0.85 pv g3e5
+info score cp -126 time 8 depth 2 nodes 626 ordering 0.93 pv g3e5 g4e5
+info score cp -150 time 46 depth 3 nodes 4270 ordering 0.95 pv g3e5 g4e5 d5e7
+info score cp -147 time 285 depth 4 nodes 22177 ordering 0.92 pv d5e7 g8h8 g3f3 b3c2
+info score cp -119 time 837 depth 5 nodes 81027 ordering 0.94 pv d5e7 g8h8 g3f3 b3c2 d3c2
+info score cp -211 time 9935 depth 6 nodes 776757 ordering 0.89 pv g3e5 g4e5 d5f4 e5d3 c2d3 c6c5
+failed
+info score cp 50 time 4 depth 1 nodes 328 ordering 0.98 pv f5e6
+info score cp 50 time 9 depth 2 nodes 898 ordering 0.96 pv f5e6 g8h8
+info score cp 999995 time 51 depth 3 nodes 5659 ordering 0.94 pv e7g7 g8g7 g5h6
+info score cp 999995 time 126 depth 4 nodes 15796 ordering 0.97 pv e7g7 g8g7 g5h6 g7h6
+info score cp 999995 time 256 depth 5 nodes 34227 ordering 0.98 pv e7g7 g8g7 g5h6 g7h6 f5g5
+passed
+info score cp 158 time 2 depth 1 nodes 174 ordering 1 pv f4f6
+info score cp 603 time 10 depth 2 nodes 887 ordering 0.97 pv g5e6 g6g5
+info score cp 606 time 35 depth 3 nodes 4122 ordering 0.99 pv g5e6 g6g5 f4f6
+info score cp 610 time 108 depth 4 nodes 13511 ordering 0.99 pv g5e6 g6g5 f4f6 h5g6
+info score cp 743 time 212 depth 5 nodes 25067 ordering 1 pv g5e6 g6g5 f4f6 h5g6 e6f8
+info score cp 743 time 853 depth 6 nodes 93673 ordering 0.97 pv g5e6 g6g5 f4f6 h5g6 e6f8 g6f6
+info score cp 743 time 2563 depth 7 nodes 293740 ordering 0.97 pv g5e6 g6g5 f4f6 h5g6 e6f8 g6f6 f1f6
+info score cp 743 time 7176 depth 8 nodes 827709 ordering 0.95 pv g5e6 g6g5 f4f6 h5g6 e6f8 g6f6 f1f6 h6g7
+passed
+info score cp 164 time 1 depth 1 nodes 156 ordering 1 pv d4e6
+info score cp 999997 time 8 depth 2 nodes 841 ordering 1 pv g4d7 b8d7
+info score cp 999997 time 62 depth 3 nodes 7873 ordering 1 pv g4d7 b8d7 d4e6
+passed
+info score cp -147 time 1 depth 1 nodes 166 ordering 0.96 pv f1d1
+info score cp -170 time 32 depth 2 nodes 2301 ordering 0.92 pv d6e8 b2a2
+info score cp 11 time 130 depth 3 nodes 11433 ordering 0.94 pv d6e8 d7f7 f1f7
+info score cp 999993 time 334 depth 4 nodes 31142 ordering 0.97 pv h4d8 d7d8 f7f8q d8f8
+info score cp 999993 time 845 depth 5 nodes 87271 ordering 0.99 pv h4d8 d7d8 f7f8q d8f8 f1f8
+info score cp 999993 time 9023 depth 6 nodes 1043553 ordering 1 pv h4d8 d7d8 f7f8q d8f8 f1f8 e6f8
+info score cp 999993 time 9935 depth 7 nodes 1137038 ordering 1 pv h4d8 d7d8 f7f8q d8f8 f1f8 e6f8 d6f7
+passed
+info score cp -109 time 1 depth 1 nodes 131 ordering 0.94 pv h1f1
+info score cp -145 time 12 depth 2 nodes 738 ordering 0.95 pv h1f1 g8e7
+info score cp -126 time 52 depth 3 nodes 3404 ordering 0.9 pv h1f1 g8e7 a1c1
+info score cp 99 time 211 depth 4 nodes 17358 ordering 0.92 pv c4d5 e6d5 a4c6 e8e7
+info score cp 103 time 418 depth 5 nodes 37998 ordering 0.96 pv c4d5 e6d5 a4c6 e8d8 c6a8
+info score cp 139 time 1282 depth 6 nodes 128079 ordering 0.96 pv c4d5 e6d5 a4c6 e8d8 c6a8 d8d7
+info score cp 128 time 5875 depth 7 nodes 581215 ordering 0.92 pv c4d5 e6d5 a4c6 e8d8 c6a8 d8d7 a8a7
+info score cp 163 time 9935 depth 8 nodes 983885 ordering 0.93 pv c4d5 e6d5 a4c6 e8d8 c6a8 d8d7 a8a7 d7e6
+passed
+info score cp 118 time 2 depth 1 nodes 239 ordering 0.98 pv g4d7
+info score cp 97 time 10 depth 2 nodes 1028 ordering 0.94 pv c6d5 e3g4
+info score cp 178 time 71 depth 3 nodes 6222 ordering 0.95 pv c6d5 b3d5 g4e6
+info score cp 174 time 209 depth 4 nodes 21502 ordering 0.96 pv c6d5 b3d5 g4e6 d5e5
+info score cp 138 time 773 depth 5 nodes 76477 ordering 0.93 pv c6d5 b3d5 g4e6 d5e5 f3e2
+info score cp 148 time 3055 depth 6 nodes 312985 ordering 0.91 pv c6d5 b3d5 g4e6 d5g5 h6g6 g5e5
+failed
+info score cp 88 time 0 depth 1 nodes 79 ordering 1 pv b4c6
+info score cp 103 time 5 depth 2 nodes 555 ordering 0.93 pv c2d2 d4e5
+info score cp 209 time 28 depth 3 nodes 2966 ordering 0.89 pv c2c4 d4c4 e4d2
+info score cp 209 time 103 depth 4 nodes 10104 ordering 0.93 pv c2c4 d4c4 e4d2 c4d4
+info score cp 209 time 429 depth 5 nodes 45776 ordering 0.9 pv c2c4 d4c4 e4d2 c4d4 d2b3
+info score cp 209 time 1153 depth 6 nodes 128374 ordering 0.92 pv c2c4 d4c4 e4d2 c4d4 d2b3 d4c4
+info score cp 209 time 3444 depth 7 nodes 379445 ordering 0.91 pv c2c4 d4c4 e4d2 c4d4 d2b3 d4c4 b3a1
+info score cp 235 time 8524 depth 8 nodes 920352 ordering 0.91 pv c2c4 d4c4 e4d2 c4d4 d2b3 d4c4 b3a1 d5b4
+passed
+info score cp -227 time 0 depth 1 nodes 89 ordering 0.86 pv d2d4
+info score cp -137 time 6 depth 2 nodes 627 ordering 0.93 pv d2d8 f2f8
+info score cp -137 time 15 depth 3 nodes 1458 ordering 0.97 pv d2d8 f2f8 d8c7
+info score cp 148 time 87 depth 4 nodes 9528 ordering 0.94 pv e3e2 e4e3 d2d8 b8d8
+info score cp 165 time 216 depth 5 nodes 22269 ordering 0.93 pv e3e2 e4e3 d2d8 f2f8 d8f8
+info score cp 147 time 992 depth 6 nodes 116063 ordering 0.88 pv e3e2 e4e3 d2d8 f2f8 d8f8 b8f8
+info score cp 208 time 2155 depth 7 nodes 229920 ordering 0.87 pv e3e2 e4e3 d2d5 c7c6 d5g2 f2g2 e2g2
+passed
+info score cp 155 time 1 depth 1 nodes 117 ordering 0.91 pv a3c1
+info score cp 155 time 7 depth 2 nodes 641 ordering 0.94 pv a3c1 c3d1
+info score cp 177 time 61 depth 3 nodes 6031 ordering 0.91 pv d5d4 d3d4 a3a1
+info score cp 178 time 187 depth 4 nodes 19558 ordering 0.92 pv d5d4 e1g1 d4c3 d3d4
+info score cp 232 time 430 depth 5 nodes 47547 ordering 0.92 pv d5d4 e1g1 d4c3 d3d6 a8c8
+info score cp 225 time 1117 depth 6 nodes 130608 ordering 0.94 pv d5d4 e1g1 d4c3 g3d6 a8d8 f1d1
+info score cp 226 time 2891 depth 7 nodes 322771 ordering 0.91 pv d5d4 e1g1 d4c3 g3d6 a8d8 f1d1 a3a4
+info score cp 225 time 9935 depth 8 nodes 1060566 ordering 0.88 pv d5d4 e1g1 d4c3 g3d6 a8d8 f1d1 a3a4 g1h1
+passed
+info score cp 308 time 1 depth 1 nodes 98 ordering 0.92 pv f2d2
+info score cp 323 time 8 depth 2 nodes 676 ordering 0.96 pv f2f1 g1h2
+info score cp 285 time 42 depth 3 nodes 4138 ordering 0.94 pv f2f1 g1h2 f1d1
+info score cp 298 time 285 depth 4 nodes 24500 ordering 0.94 pv f2d2 h5g3 d2d1 g1h2
+info score cp 999991 time 955 depth 5 nodes 87217 ordering 0.92 pv f2g2 g1g2 f5f2 g2g3 f7f3
+info score cp 999991 time 9237 depth 6 nodes 1062787 ordering 0.99 pv f2g2 g1g2 f5f2 g2g3 f7f3 g3h4
+passed
+info score cp 180 time 2 depth 1 nodes 196 ordering 1 pv c5c4
+info score cp 150 time 8 depth 2 nodes 826 ordering 0.97 pv d7a4 a3c5
+info score cp 259 time 52 depth 3 nodes 5340 ordering 0.93 pv d7d2 e3d2 e4e3
+info score cp 767 time 102 depth 4 nodes 11480 ordering 0.93 pv d7d2 e3d2 e4e3 d2d5
+info score cp 1259 time 299 depth 5 nodes 32649 ordering 0.91 pv d7d2 f1f2 d2e3 a1f1 e3c3
+info score cp 1353 time 605 depth 6 nodes 64982 ordering 0.91 pv d7d2 f1f2 d2e3 a1b1 h8h2 g2h2
+info score cp 1411 time 1400 depth 7 nodes 164754 ordering 0.94 pv d7d2 f1f2 d2e3 a1b1 h8h2 g2h2 e3f2
+info score cp 1533 time 4592 depth 8 nodes 521224 ordering 0.94 pv d7d2 f1f2 d2e3 a3c5 e3c5 a1b1 e4e3 b1b7
+passed
+info score cp 23 time 0 depth 1 nodes 110 ordering 1 pv f8d8
+info score cp -5 time 16 depth 2 nodes 1551 ordering 0.8 pv e2g4 c3d3
+info score cp 6 time 62 depth 3 nodes 6152 ordering 0.86 pv e2g4 c5d6 c7d6
+info score cp -25 time 366 depth 4 nodes 33994 ordering 0.9 pv e2g4 c3d3 d6c5 b4c5
+info score cp 371 time 1443 depth 5 nodes 140459 ordering 0.91 pv g7h6 e3d4 e5d4 c3e1 h6e3
+info score cp 374 time 1897 depth 6 nodes 185537 ordering 0.91 pv g7h6 e3d4 e5d4 c3e1 h6e3 g1h1
+info score cp 396 time 4142 depth 7 nodes 389313 ordering 0.9 pv g7h6 e3d4 e5d4 c3e1 h6e3 g1h1 e2c2
+info score cp 397 time 8269 depth 8 nodes 799238 ordering 0.9 pv g7h6 e3d4 e5d4 c3e1 h6e3 g1h1 e2c2 c5d6
+passed
+info score cp -115 time 2 depth 1 nodes 161 ordering 0.97 pv g7d7
+info score cp -115 time 9 depth 2 nodes 1056 ordering 0.97 pv g7d7 c4e5
+info score cp -177 time 58 depth 3 nodes 4933 ordering 0.91 pv g7f7 c4e5 f7f8
+info score cp 203 time 219 depth 4 nodes 22403 ordering 0.93 pv a2c4 b4b1 c4f1 b1f1
+info score cp 386 time 335 depth 5 nodes 31225 ordering 0.94 pv a2c4 b4b1 c4f1 b1f1 g1f1
+info score cp 386 time 641 depth 6 nodes 65510 ordering 0.94 pv a2c4 b4b1 c4f1 b1f1 g1f1 h7h6
+info score cp 416 time 2284 depth 7 nodes 173705 ordering 0.86 pv a2c4 b4b1 c4f1 b1f1 g1f1 h7h5 f1e2
+info score cp 421 time 4754 depth 8 nodes 397283 ordering 0.88 pv a2c4 b4b1 c4f1 b1f1 g1f1 h7h5 g7e7 h8g8
+info score cp 519 time 8388 depth 9 nodes 716575 ordering 0.89 pv a2c4 b4b1 c4f1 b1f1 g1f1 h7h6 g7e7 h8g8 e7e6
+passed
+info score cp -60 time 2 depth 1 nodes 225 ordering 0.76 pv g3f3
+info score cp -76 time 34 depth 2 nodes 2755 ordering 0.85 pv h4h5 g6g5
+info score cp -71 time 112 depth 3 nodes 10018 ordering 0.91 pv h4h5 e7h4 g3f3
+info score cp -76 time 314 depth 4 nodes 30613 ordering 0.91 pv h4h5 g6g5 f2f4 e7c5
+info score cp 66 time 3107 depth 5 nodes 298305 ordering 0.9 pv e3h6 g7f6 h4h5 d8c7 h6g5
+info score cp 255 time 8588 depth 6 nodes 793378 ordering 0.9 pv e3h6 g7h6 e5f7 h6g7 f7d8 c8d8
+passed
+info score cp 185 time 1 depth 1 nodes 131 ordering 1 pv f4e2
+info score cp 178 time 8 depth 2 nodes 606 ordering 0.98 pv f4e2 g1f1
+info score cp 999995 time 133 depth 3 nodes 9914 ordering 0.93 pv e5e1 f2e1 f4e2
+info score cp 999995 time 216 depth 4 nodes 17285 ordering 0.95 pv e5e1 f2e1 f4e2 g1h1
+info score cp 999995 time 326 depth 5 nodes 32306 ordering 0.97 pv e5e1 f2e1 f4e2 g1h1 f8f1
+passed
+info score cp 224 time 1 depth 1 nodes 137 ordering 0.83 pv e6f7
+info score cp 224 time 9 depth 2 nodes 995 ordering 0.91 pv e6f7 e8f7
+info score cp 999995 time 91 depth 3 nodes 8913 ordering 0.94 pv e3h6 g7f6 h5f5
+info score cp 999995 time 219 depth 4 nodes 26544 ordering 0.97 pv e3h6 g7f6 h5f5 f6f5
+info score cp 999995 time 497 depth 5 nodes 66223 ordering 0.99 pv e3h6 g7f6 h5f5 f6f5 h6f4
+passed
+info score cp 99 time 0 depth 1 nodes 116 ordering 1 pv c8d8
+info score cp 73 time 29 depth 2 nodes 1375 ordering 0.92 pv c8d8 b1b2
+info score cp 91 time 67 depth 3 nodes 6113 ordering 0.91 pv c8d8 b1b2 f8e8
+info score cp 156 time 261 depth 4 nodes 22903 ordering 0.9 pv f4g2 e1d1 g2f4 b1b2
+info score cp 174 time 689 depth 5 nodes 77552 ordering 0.9 pv f4g2 e1d1 g2f4 b1b2 f8e8
+info score cp 204 time 1837 depth 6 nodes 181187 ordering 0.9 pv f4g2 e1e5 g2f4 f1c1 c8c1 b1c1
+info score cp 227 time 8424 depth 7 nodes 906018 ordering 0.87 pv f4g2 e1e5 g2f4 f1g1 f4g6 e5e2 f8e8
+passed
+info score cp -75 time 3 depth 1 nodes 280 ordering 0.91 pv d3b3
+info score cp -75 time 7 depth 2 nodes 652 ordering 0.92 pv d3b3 d6d5
+info score cp -44 time 91 depth 3 nodes 8821 ordering 0.89 pv f4h5 e4d4 d3d4
+info score cp 120 time 183 depth 4 nodes 18979 ordering 0.93 pv f4h5 e4d4 d3d4 c6d4
+info score cp 120 time 493 depth 5 nodes 53892 ordering 0.94 pv f4h5 e4d4 d3d4 c6d4 h5f6
+info score cp 120 time 1229 depth 6 nodes 139902 ordering 0.93 pv f4h5 e4d4 d3d4 c6d4 h5f6 g8g7
+info score cp 69 time 3864 depth 7 nodes 436752 ordering 0.9 pv f4h5 e4d4 d3d4 c6d4 h5f6 g8f7 f6g4
+passed
+info score cp -87 time 0 depth 1 nodes 87 ordering 1 pv h8e8
+info score cp -141 time 18 depth 2 nodes 1340 ordering 0.97 pv g6g5 f4f3
+info score cp -80 time 50 depth 3 nodes 5352 ordering 0.98 pv g6g5 f4f3 h8e8
+info score cp -113 time 274 depth 4 nodes 24784 ordering 0.94 pv f6f5 a1d1 h8e8 c4b5
+info score cp -90 time 3128 depth 5 nodes 329507 ordering 0.85 pv d8d7 f4d2 h8e8 a1d1 g7h8
+info score cp 250 time 6869 depth 6 nodes 709955 ordering 0.87 pv h8h2 h1h2 g6g5 c3e2 g5f4 e2d4
+info score cp 207 time 9935 depth 7 nodes 1051195 ordering 0.87 pv h8h2 h1h2 g6g5 f4f2 d4f2 f1f2 g7g8
+passed
+info score cp -151 time 5 depth 1 nodes 371 ordering 0.88 pv b6c4
+info score cp -9 time 18 depth 2 nodes 1280 ordering 0.89 pv e7a3 b2b1
+info score cp 999995 time 64 depth 3 nodes 6223 ordering 0.96 pv e7a3 b2b1 a3a2
+info score cp 999995 time 192 depth 4 nodes 18858 ordering 0.99 pv e7a3 b2b1 a3a2 b1c1
+info score cp 999995 time 518 depth 5 nodes 55096 ordering 0.99 pv e7a3 b2b1 a3a2 b1c1 a2c2
+passed
+info score cp 8 time 0 depth 1 nodes 104 ordering 1 pv h2h7
+info score cp -12 time 12 depth 2 nodes 999 ordering 0.87 pv e4h7 g8f8
+info score cp -38 time 61 depth 3 nodes 6874 ordering 0.93 pv e4h7 g8f8 h7e4
+info score cp -33 time 308 depth 4 nodes 24175 ordering 0.92 pv e4h7 g8f8 h7e4 f6f5
+info score cp -57 time 2302 depth 5 nodes 242543 ordering 0.9 pv e4h7 g8f8 h7e4 f6f5 h2h8
+info score cp -42 time 4701 depth 6 nodes 478521 ordering 0.9 pv e4h7 g8f8 h7e4 f6f5 e4e3 f8g8
+info score cp -12 time 9935 depth 7 nodes 1027029 ordering 0.89 pv e4h7 g8f8 h7e4 f6f5 f4e6 f7e6 e4e6
+failed
+info score cp 75 time 2 depth 1 nodes 214 ordering 1 pv a8b8
+info score cp 14 time 12 depth 2 nodes 1121 ordering 1 pv a8b8 a1d1
+info score cp 999995 time 72 depth 3 nodes 7011 ordering 0.96 pv f2g1 e1g1 h3f2
+info score cp 999995 time 139 depth 4 nodes 15863 ordering 0.98 pv f2g1 e1g1 h3f2 h1g2
+info score cp 999995 time 266 depth 5 nodes 33857 ordering 0.99 pv f2g1 e1g1 h3f2 h1g2 c8h3
+passed
+info score cp 93 time 3 depth 1 nodes 283 ordering 0.97 pv f8d8
+info score cp 46 time 57 depth 2 nodes 4196 ordering 0.97 pv c8a6 e2a6
+info score cp 88 time 171 depth 3 nodes 13266 ordering 0.97 pv c8d7 e1g1 a8d8
+info score cp 60 time 1032 depth 4 nodes 76138 ordering 0.98 pv c8b7 e1g1 a8d8 f1e1
+info score cp 78 time 2392 depth 5 nodes 207569 ordering 0.97 pv c8b7 e1g1 a8d8 f1e1 f8e8
+info score cp 53 time 9013 depth 6 nodes 708897 ordering 0.96 pv c8b7 e1g1 a8d8 c1d2 f6e4 g3e4
+failed
+info score cp 114 time 1 depth 1 nodes 156 ordering 1 pv h3f1
+info score cp 114 time 5 depth 2 nodes 471 ordering 1 pv h3f1 g1f1
+info score cp 678 time 33 depth 3 nodes 3170 ordering 0.95 pv f6g4 g1g2 f3g2
+info score cp 678 time 70 depth 4 nodes 7729 ordering 0.94 pv f6g4 g1g2 f3g2 f1g2
+info score cp 642 time 250 depth 5 nodes 27486 ordering 0.93 pv f6g4 g1g2 f3g2 f1g2 h3g2
+info score cp 624 time 599 depth 6 nodes 65675 ordering 0.94 pv f6g4 g1g2 f3g2 f1g2 h3g2 h1g2
+info score cp 627 time 3280 depth 7 nodes 343069 ordering 0.91 pv f6g4 g1g2 f3g2 f1g2 h3g2 h1g2 h8h5
+passed
+info score cp 66 time 0 depth 1 nodes 118 ordering 1 pv g5f7
+info score cp 10 time 12 depth 2 nodes 1111 ordering 0.88 pv e1g1 f8d8
+info score cp 33 time 115 depth 3 nodes 12587 ordering 0.81 pv e1g1 b7b5 c4e5
+info score cp 43 time 331 depth 4 nodes 31132 ordering 0.88 pv g5h7 f8d8 h7f6 d7f6
+info score cp 66 time 2916 depth 5 nodes 310180 ordering 0.87 pv d1h5 d7f6 g5e6 g6h5 e6c7
+info score cp 347 time 4039 depth 6 nodes 403758 ordering 0.87 pv d1h5 d7f6 b2f6 h7h6 h5h6 f8e8
+passed
+info score cp 6 time 1 depth 1 nodes 130 ordering 1 pv g1d1
+info score cp -13 time 9 depth 2 nodes 799 ordering 0.79 pv g1d1 b8c8
+info score cp 26 time 79 depth 3 nodes 8855 ordering 0.92 pv f2f4 e5d6 g1d1
+info score cp 32 time 188 depth 4 nodes 20642 ordering 0.92 pv c1c6 b8a8 a2a4 e5h2
+info score cp 78 time 724 depth 5 nodes 83860 ordering 0.91 pv c1c6 e5h2 g1d1 b8a8 e2f1
+info score cp 133 time 2646 depth 6 nodes 279171 ordering 0.88 pv c1c6 a6c8 c6c5 e5d6 c5b5 b8b5
+info score cp 107 time 8383 depth 7 nodes 919272 ordering 0.86 pv c1c6 a6c8 c6c5 f7f6 d3b5 c8d7 a2a4
+failed
+info score cp 181 time 0 depth 1 nodes 108 ordering 1 pv g5h7
+info score cp 999997 time 8 depth 2 nodes 843 ordering 0.99 pv f6e7 a7e7
+info score cp 999997 time 53 depth 3 nodes 6446 ordering 1 pv f6e7 a7e7 d5f6
+passed
+info score cp -173 time 1 depth 1 nodes 135 ordering 1 pv h5f3
+info score cp -192 time 5 depth 2 nodes 495 ordering 0.96 pv h5f3 b8c8
+info score cp -163 time 44 depth 3 nodes 4106 ordering 0.93 pv h5e2 g7g6 h3g3
+info score cp -170 time 123 depth 4 nodes 12499 ordering 0.94 pv h5e2 d6c5 d5d6 g8h8
+info score cp 54 time 926 depth 5 nodes 78110 ordering 0.91 pv h5h7 g8f8 h4g6 e8g6 f5g6
+info score cp 82 time 1610 depth 6 nodes 137379 ordering 0.9 pv h5h7 g8f8 h3g3 e8f7 g3g7 d6d7
+info score cp 428 time 3896 depth 7 nodes 350959 ordering 0.9 pv h5h7 g8f8 h7h8 f8e7 h8g7 e8f7 h4g6
+info score cp 443 time 7815 depth 8 nodes 754790 ordering 0.92 pv h5h7 g8f8 h7h8 f8e7 h8g7 e8f7 h4g6 e7d7
+passed
+info score cp 68 time 1 depth 1 nodes 129 ordering 0.81 pv h6e3
+info score cp 68 time 10 depth 2 nodes 1076 ordering 0.8 pv h6e3 g4h5
+info score cp 999995 time 92 depth 3 nodes 8148 ordering 0.86 pv h6f8 g4h5 h4h5
+info score cp 999995 time 240 depth 4 nodes 29805 ordering 0.91 pv h6f8 g4h5 h4h5 g6h5
+info score cp 999995 time 350 depth 5 nodes 45791 ordering 0.93 pv h6f8 g4h5 h4h5 g6h5 d6h6
+passed
+info score cp -2 time 0 depth 1 nodes 99 ordering 1 pv f5e4
+info score cp -2 time 4 depth 2 nodes 478 ordering 0.98 pv f5e4 e3e4
+info score cp -2 time 29 depth 3 nodes 3163 ordering 0.99 pv f5e4 e3e4 d2b2
+info score cp 73 time 92 depth 4 nodes 9810 ordering 0.97 pv f4h3 e3h3 f5e4 e1e4
+info score cp 553 time 232 depth 5 nodes 24230 ordering 0.94 pv f4h3 e3h3 f5e4 h3h8 g8h8
+info score cp 573 time 650 depth 6 nodes 67742 ordering 0.91 pv f4h3 e3h3 f5e4 h3e3 e4f4 e1e2
+info score cp 573 time 1613 depth 7 nodes 171743 ordering 0.93 pv f4h3 e3h3 f5e4 h3e3 e4c2 e3e5 c2b2
+info score cp 713 time 3996 depth 8 nodes 442486 ordering 0.9 pv f4h3 e3h3 f5e4 h3e3 e4c2 e3e5 c2b2 e5g5
+info score cp 718 time 9935 depth 9 nodes 1049963 ordering 0.9 pv f4h3 e3h3 f5e4 h3e3 e4c2 b2b4 c2a2 e3e5 g5g4
+passed
+info score cp -258 time 1 depth 1 nodes 187 ordering 1 pv f6f3
+info score cp 999997 time 6 depth 2 nodes 711 ordering 0.99 pv f6g7 f8g7
+info score cp 999997 time 35 depth 3 nodes 4572 ordering 1 pv f6g7 f8g7 e8f6
+passed
+info score cp 158 time 1 depth 1 nodes 103 ordering 1 pv h4f5
+info score cp 117 time 7 depth 2 nodes 725 ordering 0.86 pv e4e1 g7f5
+info score cp 398 time 58 depth 3 nodes 4216 ordering 0.9 pv e7e8 g7e8 e4e8
+info score cp 392 time 92 depth 4 nodes 8007 ordering 0.93 pv e7e8 g7e8 e4e8 f8g7
+info score cp 447 time 162 depth 5 nodes 15734 ordering 0.94 pv e7e8 g7e8 e4e8 d8e8 g6g7
+info score cp 493 time 379 depth 6 nodes 40398 ordering 0.95 pv e7e8 d8e8 e4e8 g7e8 d7d8q a6a5
+info score cp 508 time 907 depth 7 nodes 97788 ordering 0.96 pv e7e8 d8e8 e4e8 g7e8 d7d8q a6a5 f3e4
+info score cp 527 time 9935 depth 8 nodes 921926 ordering 0.87 pv e7e8 d8e8 e4e8 g7e8 d7d8q b7b5 d8a8 b5b4
+passed
+info score cp -126 time 0 depth 1 nodes 109 ordering 1 pv d1f2
+info score cp -126 time 5 depth 2 nodes 533 ordering 0.96 pv d1f2 h1g2
+info score cp -112 time 39 depth 3 nodes 4247 ordering 0.91 pv d1f2 h1g2 d7h3
+info score cp -1 time 81 depth 4 nodes 9101 ordering 0.93 pv d1f2 h1g2 f2d3 c1d3
+info score cp -21 time 415 depth 5 nodes 48099 ordering 0.92 pv d1f2 h1g2 f2d3 c1d3 b6d4
+info score cp -1 time 854 depth 6 nodes 101691 ordering 0.93 pv d1f2 h1g2 f2d3 c1d3 b6b5 g2f3
+info score cp 625 time 6938 depth 7 nodes 756553 ordering 0.89 pv d7h3 d2e2 d1f2 h1g1 f2e4 g1h1 e4f2
+info score cp 625 time 9732 depth 8 nodes 1075710 ordering 0.89 pv d7h3 d2e2 d1f2 h1g1 f2e4 g1h1 e4f2 h1g1
+passed
+info score cp 302 time 0 depth 1 nodes 91 ordering 1 pv e8c8
+info score cp 302 time 5 depth 2 nodes 491 ordering 0.85 pv e8c8 d7c8
+info score cp 1070 time 32 depth 3 nodes 3983 ordering 0.85 pv e2c4 d7d5 e8f8
+info score cp 1070 time 55 depth 4 nodes 6759 ordering 0.91 pv e2c4 d7d5 e8f8 c8f8
+info score cp 999995 time 115 depth 5 nodes 13667 ordering 0.94 pv e2c4 d7d5 c4d5 c8e8 d5g8
+passed
+info score cp -36 time 2 depth 1 nodes 189 ordering 1 pv g2h2
+info score cp 494 time 13 depth 2 nodes 1268 ordering 0.97 pv b4d3 d1d3
+info score cp 488 time 77 depth 3 nodes 7366 ordering 0.99 pv b4d3 d1d3 e4d3
+info score cp 569 time 255 depth 4 nodes 28286 ordering 0.98 pv b4d3 d1d3 e4d3 e1c1
+info score cp 569 time 666 depth 5 nodes 77768 ordering 0.98 pv b4d3 d1d3 e4d3 e1c1 d3d2
+info score cp 778 time 1853 depth 6 nodes 203231 ordering 0.95 pv b4d3 d1d3 e4d3 e1c1 c5a3 e6b3
+info score cp 778 time 5081 depth 7 nodes 552817 ordering 0.96 pv b4d3 d1d3 e4d3 e1c1 c5a3 e6b3 d3c2
+passed
+info score cp -30 time 6 depth 1 nodes 444 ordering 1 pv b3d5
+info score cp -105 time 21 depth 2 nodes 1538 ordering 0.98 pv f7f6 a1b1
+info score cp -40 time 144 depth 3 nodes 11860 ordering 0.96 pv b3d5 e5d4 c2a2
+info score cp -116 time 680 depth 4 nodes 48508 ordering 0.94 pv b3d5 e5b8 f7f5 a6a7
+info score cp -73 time 2359 depth 5 nodes 215841 ordering 0.94 pv b3e3 e5f4 e3e7 f4d2 c2d2
+info score cp -109 time 9516 depth 6 nodes 754462 ordering 0.91 pv d2f2 f1f2 b3e3 a1f1 c2f2 f1f2
+failed
+info score cp 120 time 2 depth 1 nodes 248 ordering 0.92 pv f5h6
+info score cp 89 time 11 depth 2 nodes 1118 ordering 0.95 pv g3e3 e5h2
+info score cp 119 time 59 depth 3 nodes 6245 ordering 0.94 pv g3h4 e5b2 f5g7
+info score cp 64 time 299 depth 4 nodes 32414 ordering 0.9 pv f2f4 e5b2 e4e5 g7g6
+info score cp 93 time 1440 depth 5 nodes 159333 ordering 0.9 pv g3h3 f8d8 d1b1 d8d2 f2f4
+info score cp 570 time 3315 depth 6 nodes 375868 ordering 0.88 pv f5h6 g8h8 g3e5 c7c8 h6f5 f7f6
+info score cp 554 time 4559 depth 7 nodes 523607 ordering 0.89 pv f5h6 g8h8 g3e5 c7c8 h6f5 f7f6 e5e7
+info score cp 573 time 7723 depth 8 nodes 920848 ordering 0.9 pv f5h6 g8h8 g3e5 c7c8 h6f5 f8g8 b2b4 c8f8
+passed
+info score cp -102 time 1 depth 1 nodes 179 ordering 0.97 pv h2f3
+info score cp -112 time 16 depth 2 nodes 956 ordering 0.95 pv h2g4 d8d1
+info score cp -107 time 60 depth 3 nodes 5107 ordering 0.97 pv h2g4 f6g4 h3g4
+info score cp -117 time 234 depth 4 nodes 19560 ordering 0.93 pv g2g3 f4f5 h2g4 d8d1
+info score cp -110 time 1579 depth 5 nodes 158513 ordering 0.86 pv b2f6 d8d1 e1d1 f4f6 h2f3
+info score cp 93 time 3083 depth 6 nodes 329094 ordering 0.88 pv g2g3 f4e4 d1d8 f8d8 b2f6 e4e2
+info score cp 120 time 5165 depth 7 nodes 590173 ordering 0.89 pv g2g3 f4e4 d1d8 f8d8 h2g4 e4e2 g4f6
+info score cp 120 time 9935 depth 8 nodes 1051057 ordering 0.9 pv g2g3 f4e4 d1d8 f8d8 h2g4 e4e2 g4f6 g8g7
+passed
+info score cp 83 time 1 depth 1 nodes 143 ordering 1 pv b8d8
+info score cp 57 time 10 depth 2 nodes 840 ordering 1 pv b8b6 a6a4
+info score cp 118 time 43 depth 3 nodes 5044 ordering 1 pv b8b6 a6a4 a8d8
+info score cp 37 time 348 depth 4 nodes 28302 ordering 0.93 pv b8b6 a6a4 d5e4 d3e4
+info score cp 60 time 2336 depth 5 nodes 229705 ordering 0.9 pv b8b6 a6a4 a8d8 e1g1 d7d6
+info score cp 34 time 9935 depth 6 nodes 823479 ordering 0.91 pv b8b6 a6a4 a8d8 e1g1 d5e4 d3e4
+failed
+info score cp -708 time 1 depth 1 nodes 108 ordering 0.96 pv f2f1
+info score cp -712 time 4 depth 2 nodes 431 ordering 0.99 pv f2f1 g2g1
+info score cp 999995 time 15 depth 3 nodes 1764 ordering 1 pv f2f1 g2g1 f5g3
+info score cp 999995 time 31 depth 4 nodes 3977 ordering 1 pv f2f1 g2g1 f5g3 h2g3
+info score cp 999995 time 55 depth 5 nodes 7301 ordering 1 pv f2f1 g2g1 f5g3 h2g3 f1h3
+passed
+info score cp -102 time 0 depth 1 nodes 89 ordering 1 pv c7c5
+info score cp 42 time 9 depth 2 nodes 830 ordering 0.91 pv f4e2 c3a5
+info score cp 42 time 33 depth 3 nodes 3960 ordering 0.95 pv f4e2 c3a5 e2g1
+info score cp 78 time 152 depth 4 nodes 17630 ordering 0.92 pv d8d3 g1g5 d3c3 g5h5
+info score cp 238 time 443 depth 5 nodes 45364 ordering 0.87 pv d8d3 g1g6 h7g6 c3a5 d3d1
+info score cp 259 time 1835 depth 6 nodes 184687 ordering 0.85 pv d8d3 g1g6 h7g6 c3c1 h5g5 c4c5
+info score cp 259 time 4799 depth 7 nodes 470527 ordering 0.87 pv d8d3 g1g6 h7g6 c3c1 h5g5 c4c5 g5e5
+passed
+info score cp 72 time 1 depth 1 nodes 153 ordering 1 pv c1d1
+info score cp 86 time 21 depth 2 nodes 1483 ordering 0.91 pv c1d1 d5e6
+info score cp 129 time 87 depth 3 nodes 8411 ordering 0.93 pv c1d1 d5f5 d1d8
+info score cp 147 time 162 depth 4 nodes 14130 ordering 0.91 pv c1d1 d5f5 d1d8 c6d8
+info score cp 126 time 2282 depth 5 nodes 202905 ordering 0.82 pv c1d1 d5f5 d1d8 c6d8 f3d4
+info score cp 172 time 4682 depth 6 nodes 411667 ordering 0.86 pv f1d1 d5f5 d1d8 c6d8 b5d3 f5d7
+failed
+info score cp 155 time 3 depth 1 nodes 231 ordering 0.9 pv d5d6
+info score cp 119 time 11 depth 2 nodes 568 ordering 0.93 pv d5d6 a5c6
+info score cp 135 time 284 depth 3 nodes 17865 ordering 0.93 pv d5d6 f8g6 g4e3
+info score cp 103 time 1077 depth 4 nodes 59872 ordering 0.84 pv d5e6 f8e6 g3h3 h7h6
+info score cp 255 time 2977 depth 5 nodes 207883 ordering 0.85 pv b2f6 d8d7 g4e5 d7c7 f6d8
+info score cp 234 time 4829 depth 6 nodes 338874 ordering 0.85 pv b2f6 d8d7 g4e5 d7c7 d5d6 c7d6
+passed
+info score cp -35 time 3 depth 1 nodes 121 ordering 0.91 pv a1d1
+info score cp -53 time 23 depth 2 nodes 734 ordering 0.77 pv a1d1 f8d8
+info score cp 281 time 255 depth 3 nodes 8594 ordering 0.91 pv a1a7 c8b7 a7b7
+info score cp 289 time 499 depth 4 nodes 18092 ordering 0.93 pv a1a7 c8d7 a7d7 e7d7
+info score cp 783 time 976 depth 5 nodes 35528 ordering 0.96 pv a1a7 c8d7 a7d7 f8f7 d7e7
+info score cp 783 time 1809 depth 6 nodes 63593 ordering 0.94 pv a1a7 c8d7 a7d7 f8f7 d7e7 f7e7
+info score cp 1409 time 8614 depth 7 nodes 269315 ordering 0.89 pv a1a7 c8b7 a7b7 e7f7 d5f7 f8d8 f7g6
+info score cp 1494 time 9935 depth 8 nodes 421778 ordering 0.9 pv a1a7 c8b7 a7b7 e7f7 d5f7 f8a8 f7g6 a8a1
+passed
+info score cp 88 time 1 depth 1 nodes 117 ordering 1 pv c2a2
+info score cp 88 time 3 depth 2 nodes 396 ordering 1 pv c2a2 b8e8
+info score cp 88 time 12 depth 3 nodes 1548 ordering 1 pv c2a2 b8e8 a2a8
+info score cp 88 time 41 depth 4 nodes 5078 ordering 1 pv c2a2 b8e8 a2a8 e8f8
+info score cp 47 time 113 depth 5 nodes 11496 ordering 0.98 pv c2a2 b8e8 a2a8 e8f8 a8f8
+info score cp 62 time 441 depth 6 nodes 54254 ordering 0.95 pv c2a2 a8a2 e8b8 b1b8 f8b8 a2d5
+info score cp 62 time 835 depth 7 nodes 94466 ordering 0.9 pv c2a2 b8e8 a2a8 e8f8 a8f8 g1f2 f6f5
+info score cp 68 time 2600 depth 8 nodes 353873 ordering 0.88 pv c2a2 b8e8 a2a8 e8f8 a8f8 g1f2 f6f5 f2f3
+info score cp 27 time 8150 depth 9 nodes 988455 ordering 0.84 pv c2a2 b8e8 a2a8 e8f8 a8f8 b1e1 c7c5 g1f2 f6f5
+passed
+info score cp 44 time 1 depth 1 nodes 188 ordering 1 pv g5g4
+info score cp 58 time 9 depth 2 nodes 922 ordering 0.87 pv g5g4 e4f6
+info score cp 159 time 54 depth 3 nodes 5346 ordering 0.87 pv g5h6 e6e5 h6g7
+info score cp 159 time 94 depth 4 nodes 10758 ordering 0.91 pv g5h6 e6e5 h6g7 e5g7
+info score cp 999995 time 210 depth 5 nodes 25510 ordering 0.91 pv g5h6 e6e5 b2e5 g7h6 f5h6
+passed
+info score cp -338 time 2 depth 1 nodes 197 ordering 0.96 pv h2h5
+info score cp -260 time 11 depth 2 nodes 1085 ordering 0.94 pv d5c7 e5f4
+info score cp -260 time 39 depth 3 nodes 5069 ordering 0.97 pv d5c7 e5f4 h2f4
+info score cp -212 time 127 depth 4 nodes 16876 ordering 0.97 pv d5c7 e8e7 c7a8 e7a3
+info score cp -272 time 828 depth 5 nodes 103806 ordering 0.89 pv d5b6 a8b8 e1e5 e8e5 b6c8
+info score cp -282 time 3081 depth 6 nodes 366206 ordering 0.88 pv d5b6 a8b8 b6c4 e5f4 h2f4 c8e6
+info score cp -246 time 9935 depth 7 nodes 1183244 ordering 0.87 pv d5b6 a8b8 b6c4 f7f6 c4d6 e5f4 h2f4
+failed
+info score cp 68 time 0 depth 1 nodes 109 ordering 1 pv h1d1
+info score cp 7 time 6 depth 2 nodes 592 ordering 0.8 pv h1d1 a8d8
+info score cp 40 time 58 depth 3 nodes 7064 ordering 0.89 pv e2f3 a8c8 h1d1
+info score cp 62 time 183 depth 4 nodes 19711 ordering 0.88 pv d2g5 f8g6 d4f6 e8e2
+info score cp 62 time 1159 depth 5 nodes 146260 ordering 0.89 pv d2g5 f8g6 d4f6 e8e2 f5g6
+info score cp 158 time 2808 depth 6 nodes 303971 ordering 0.89 pv d2g5 f7h5 d4f6 e8e2 f6g7 c7g7
+info score cp 282 time 6487 depth 7 nodes 713261 ordering 0.88 pv d2g5 f7h5 d4f6 c7f7 f6g7 f7g7 g5g7
+passed
+info score cp -3 time 3 depth 1 nodes 401 ordering 0.91 pv a2a1q
+info score cp -3 time 9 depth 2 nodes 988 ordering 0.91 pv a2a1q c1a1
+info score cp 178 time 36 depth 3 nodes 4347 ordering 0.91 pv d6c6 b8b2 c6c1
+info score cp 182 time 91 depth 4 nodes 10397 ordering 0.92 pv d6c6 c1a1 c8d7 b8b4
+info score cp 162 time 262 depth 5 nodes 32597 ordering 0.94 pv d6c6 c1a1 c8d7 b8b4 c6c7
+info score cp 150 time 743 depth 6 nodes 90830 ordering 0.86 pv d6c6 c1a1 c8f5 a1a2 c6c1 g1h2
+info score cp 163 time 4261 depth 7 nodes 495654 ordering 0.87 pv d6c6 c1a1 c6c7 b8c8 c7c8 a1a2 e7e5
+passed
+info score cp -192 time 1 depth 1 nodes 147 ordering 0.83 pv f2f4
+info score cp -248 time 5 depth 2 nodes 577 ordering 0.8 pv f2f4 d7d5
+info score cp -227 time 130 depth 3 nodes 6930 ordering 0.92 pv b3h3 d4e5 h3h7
+info score cp -258 time 911 depth 4 nodes 30856 ordering 0.87 pv f2f4 d7d6 e5d6 c7d6
+info score cp -192 time 3395 depth 5 nodes 170845 ordering 0.91 pv f2f4 d7d6 g1e2 d6e5 f4e5
+info score cp -133 time 6738 depth 6 nodes 349941 ordering 0.89 pv g4g7 g8g7 b3g3 d8g5 g3g5 g7h6
+info score cp -68 time 9196 depth 7 nodes 598862 ordering 0.91 pv g4g7 g8g7 b3g3 d8g5 g3g5 g7h6 a3c1
+passed
+info score cp 43 time 1 depth 1 nodes 128 ordering 0.93 pv h5f3
+info score cp 33 time 34 depth 2 nodes 1209 ordering 0.83 pv h5f7 g8h8
+info score cp 33 time 109 depth 3 nodes 8827 ordering 0.9 pv h5f3 d8d2 f3e4
+info score cp 27 time 529 depth 4 nodes 52021 ordering 0.89 pv f1d1 g7g6 f5e6 g8g7
+info score cp 27 time 2410 depth 5 nodes 234078 ordering 0.86 pv b3b4 c7e7 h5f7 g8h8 f7e6
+info score cp 398 time 5955 depth 6 nodes 564458 ordering 0.86 pv h5f7 g8h8 f7e8 f8c5 f5c5 h7h6
+info score cp 861 time 8253 depth 7 nodes 802700 ordering 0.87 pv h5f7 g8h8 f7e8 h7h5 f5h5 h8g8 e8f7
+passed
+info score cp 165 time 0 depth 1 nodes 113 ordering 1 pv a4b5
+info score cp 159 time 10 depth 2 nodes 796 ordering 0.96 pv a4b5 a6b6
+info score cp 277 time 77 depth 3 nodes 8133 ordering 0.95 pv a4b5 a6b6 d5c6
+info score cp 486 time 405 depth 4 nodes 40951 ordering 0.97 pv e1e5 d6e5 g3e5 e8d7
+info score cp 671 time 1116 depth 5 nodes 114117 ordering 0.98 pv e1e5 d6e5 g3e5 e8d7 e5f5
+info score cp 765 time 4035 depth 6 nodes 412720 ordering 0.98 pv e1e5 d6e5 g3e5 e8d7 e5f5 a6e6
+passed
+info score cp -290 time 0 depth 1 nodes 105 ordering 0.75 pv e2f3
+info score cp -291 time 6 depth 2 nodes 817 ordering 0.8 pv e2d3 h7h6
+info score cp -285 time 54 depth 3 nodes 6915 ordering 0.89 pv e2d3 h7h6 c2c4
+info score cp -296 time 159 depth 4 nodes 20549 ordering 0.9 pv e2d3 h7h6 f4f5 e6d4
+info score cp -194 time 1433 depth 5 nodes 157378 ordering 0.83 pv e2b5 e6f4 h3f1 d7g4 g3f4
+info score cp -101 time 2705 depth 6 nodes 311439 ordering 0.84 pv d1h1 f7f6 h3h7 g8f7 e2d3 e6d4
+info score cp -64 time 8809 depth 7 nodes 924571 ordering 0.86 pv d1h1 f7f6 h3h7 g8f7 h7h5 g7g6 h5h7
+passed
+info score cp 233 time 0 depth 1 nodes 98 ordering 1 pv h5h7
+info score cp 217 time 8 depth 2 nodes 830 ordering 0.83 pv h5h7 a8b8
+info score cp 233 time 63 depth 3 nodes 6971 ordering 0.94 pv h5h7 d7e5 f1d3
+info score cp 999991 time 172 depth 4 nodes 20375 ordering 0.95 pv h5f7 f8f7 g4h6 f7f8
+info score cp 999991 time 514 depth 5 nodes 67791 ordering 0.98 pv h5f7 f8f7 g4h6 f7f8 g3g8
+info score cp 999991 time 2107 depth 6 nodes 278306 ordering 0.99 pv h5f7 f8f7 g4h6 f7f8 g3g8 f8e7
+info score cp 999991 time 9935 depth 7 nodes 1243072 ordering 1 pv h5f7 f8f7 g4h6 f7f8 g3g8 f8e7 g8g7
+passed
+info score cp -261 time 1 depth 1 nodes 176 ordering 1 pv h8h7
+info score cp -317 time 9 depth 2 nodes 988 ordering 0.97 pv h8h7 d7d5
+info score cp -225 time 62 depth 3 nodes 7066 ordering 0.97 pv h8h7 f6e5 d4e5
+info score cp -270 time 316 depth 4 nodes 36592 ordering 0.94 pv h8h7 d7d5 e5g6 e7d6
+info score cp 999991 time 1949 depth 5 nodes 178661 ordering 0.89 pv h8g7 f6g7 f1f7 e7d6 c3b5
+info score cp 999991 time 3202 depth 6 nodes 337050 ordering 0.93 pv h8g7 f6g7 f1f7 e7d6 c3b5 d6d5
+info score cp 999991 time 7301 depth 7 nodes 840272 ordering 0.97 pv h8g7 f6g7 f1f7 e7d6 c3b5 d6d5 c2c4
+passed
+info score cp -455 time 2 depth 1 nodes 185 ordering 0.88 pv c1g5
+info score cp -561 time 11 depth 2 nodes 702 ordering 0.88 pv c1g5 d8d3
+info score cp -525 time 59 depth 3 nodes 4719 ordering 0.9 pv c1e3 c6e5 e3b6
+info score cp -518 time 171 depth 4 nodes 14703 ordering 0.91 pv c1e3 c6e5 e3b6 b4d3
+info score cp -551 time 3085 depth 5 nodes 238740 ordering 0.83 pv e2d1 f5f4 h5g5 b4d3 e1d3
+info score cp -628 time 9935 depth 6 nodes 845034 ordering 0.83 pv e2d1 f8f7 g1g6 b4a2 d1c2 b1c2
+failed
+info score cp 33 time 0 depth 1 nodes 121 ordering 1 pv h3d3
+info score cp 2 time 14 depth 2 nodes 1323 ordering 0.82 pv c4c5 b6d5
+info score cp 45 time 78 depth 3 nodes 8525 ordering 0.9 pv e2d3 a8c8 e5f7
+info score cp 68 time 675 depth 4 nodes 61847 ordering 0.89 pv h3f3 d8d4 f3f7 e7b4
+info score cp 276 time 3200 depth 5 nodes 309277 ordering 0.87 pv e4g5 e7g5 h3h8 g8h8 e5f7
+info score cp 286 time 3998 depth 6 nodes 382972 ordering 0.88 pv e4g5 e7g5 h3h8 g8h8 e5f7 h8g8
+info score cp 352 time 8468 depth 7 nodes 831649 ordering 0.89 pv e4g5 e7g5 h3h8 g8h8 e5f7 h8g8 f7g5
+passed
+info score cp 163 time 0 depth 1 nodes 92 ordering 1 pv e3c1
+info score cp 163 time 6 depth 2 nodes 501 ordering 1 pv d3h7 g8f8
+info score cp 126 time 44 depth 3 nodes 3203 ordering 0.97 pv e1c1 b7g2 e3h6
+info score cp 999993 time 147 depth 4 nodes 10616 ordering 0.95 pv d3h7 g8f8 h7h8 f8e7
+info score cp 999993 time 252 depth 5 nodes 20679 ordering 0.96 pv d3h7 g8f8 h7h8 f8e7 d4f5
+info score cp 999993 time 536 depth 6 nodes 45052 ordering 0.98 pv d3h7 g8f8 h7h8 f8e7 d4f5 e6f5
+info score cp 999993 time 2058 depth 7 nodes 228919 ordering 0.99 pv d3h7 g8f8 h7h8 f8e7 d4f5 e6f5 e3c5
+passed
+info score cp 287 time 0 depth 1 nodes 98 ordering 1 pv e5d7
+info score cp 17 time 11 depth 2 nodes 936 ordering 0.92 pv a1d1 a8c8
+info score cp 56 time 56 depth 3 nodes 6890 ordering 0.91 pv a1d1 d7e5 e2e5
+info score cp 29 time 193 depth 4 nodes 20406 ordering 0.89 pv a1d1 a8c8 f1e1 f6e4
+info score cp 105 time 2043 depth 5 nodes 231263 ordering 0.9 pv e5f7 d8b6 f7e5 d7e5 e2e5
+info score cp 87 time 3252 depth 6 nodes 360659 ordering 0.91 pv e5f7 d8b6 f7g5 e7d6 e2e3 d6f4
+info score cp 116 time 6548 depth 7 nodes 747987 ordering 0.9 pv e5f7 d8b6 f7g5 e7d6 f4d6 b6d6 a1e1
+passed
+info score cp -45 time 1 depth 1 nodes 128 ordering 0.94 pv c2c4
+info score cp 161 time 12 depth 2 nodes 1291 ordering 0.78 pv e4f6 e8f7
+info score cp 113 time 117 depth 3 nodes 11665 ordering 0.89 pv e4g3 f8c5 g3f5
+info score cp 113 time 398 depth 4 nodes 41146 ordering 0.92 pv e4g3 f8c5 g3f5 c5d4
+info score cp 999991 time 1603 depth 5 nodes 167923 ordering 0.91 pv d4d7 e6d7 e4d6 e8d8 d6f7
+info score cp 999991 time 3325 depth 6 nodes 391372 ordering 0.95 pv d4d7 e6d7 e4d6 e8d8 d6f7 d8c8
+info score cp 999991 time 8445 depth 7 nodes 1034131 ordering 0.98 pv d4d7 e6d7 e4d6 e8d8 d6f7 d8c8 e1e8
+passed
+info score cp 133 time 0 depth 1 nodes 110 ordering 1 pv h5g6
+info score cp 133 time 6 depth 2 nodes 689 ordering 0.94 pv h5g6 e4g4
+info score cp 609 time 50 depth 3 nodes 5303 ordering 0.93 pv g5h6 e4f4 f2f4
+info score cp 729 time 152 depth 4 nodes 16239 ordering 0.97 pv g5h6 e4e2 h5g6 e2f2
+info score cp 729 time 927 depth 5 nodes 101680 ordering 0.93 pv g5h6 e4e2 g4c8 g6e8 c8g4
+info score cp 1105 time 1563 depth 6 nodes 173183 ordering 0.94 pv g5h6 e4e2 h5g6 e2f2 h2g3 c4b2
+info score cp 1224 time 3862 depth 7 nodes 437574 ordering 0.93 pv g5h6 e4e2 h5g6 e2f2 h2g3 f2g2 g3g2
+info score cp 1536 time 9590 depth 8 nodes 1082026 ordering 0.94 pv g5h6 e4e2 h5g6 e2f2 h2g3 f2g2 g3g2 c4e3
+passed
+info score cp -55 time 0 depth 1 nodes 90 ordering 1 pv c6e4
+info score cp -55 time 4 depth 2 nodes 443 ordering 0.97 pv c6e4 h4e4
+info score cp 999995 time 24 depth 3 nodes 2957 ordering 0.98 pv f7f1 e3g1 f1f3
+info score cp 999995 time 53 depth 4 nodes 6619 ordering 0.99 pv f7f1 e3g1 f1f3 e4f3
+info score cp 999995 time 89 depth 5 nodes 12752 ordering 0.99 pv f7f1 e3g1 f1f3 e4f3 c6f3
+passed
+info score cp 123 time 6 depth 1 nodes 385 ordering 0.98 pv e4f6
+info score cp 105 time 15 depth 2 nodes 951 ordering 0.98 pv e4f6 f1d1
+info score cp 148 time 68 depth 3 nodes 5789 ordering 0.94 pv e2f1 g1f1 d8d1
+info score cp 148 time 225 depth 4 nodes 17823 ordering 0.92 pv e2f1 g1f1 d8d1 f1e2
+info score cp 556 time 1279 depth 5 nodes 126458 ordering 0.92 pv e2f1 g1h2 e4f6 f5c5 f1e2
+info score cp 552 time 2984 depth 6 nodes 314582 ordering 0.92 pv e2f1 g1h2 e4f6 f5c5 f1e2 c5c7
+info score cp 557 time 9873 depth 7 nodes 1153276 ordering 0.92 pv e2f1 g1h2 e4f6 f5c5 f6g4 h2g3 g4e5
+passed
+info score cp 313 time 0 depth 1 nodes 108 ordering 1 pv g3e4
+info score cp 297 time 6 depth 2 nodes 656 ordering 0.88 pv g3h5 g7h8
+info score cp 328 time 31 depth 3 nodes 3937 ordering 0.91 pv g3h5 g7h8 h5g3
+info score cp 289 time 128 depth 4 nodes 13825 ordering 0.9 pv g3h5 g7h8 h5g3 a8c8
+info score cp 299 time 973 depth 5 nodes 117167 ordering 0.87 pv g3h5 g7h8 d1d6 e6d7 h5f6
+info score cp 299 time 2787 depth 6 nodes 305370 ordering 0.86 pv g3h5 g7h8 d1d6 e6d7 h5f6 h8f6
+info score cp 301 time 9935 depth 7 nodes 1085626 ordering 0.84 pv g3h5 g7h8 d1d6 e6d7 d6f6 e5e4 g1f1
+failed
+info score cp 20 time 0 depth 1 nodes 108 ordering 1 pv b2a3
+info score cp -6 time 12 depth 2 nodes 881 ordering 0.82 pv b2a3 a2d5
+info score cp 5 time 50 depth 3 nodes 5975 ordering 0.87 pv b2a3 a2d5 h4g5
+info score cp -6 time 221 depth 4 nodes 20925 ordering 0.94 pv b2a3 a2b3 d1e1 b3d5
+info score cp 7 time 1049 depth 5 nodes 138254 ordering 0.94 pv b2a3 a2d5 h4g5 b7b2 g4f4
+info score cp -1 time 2140 depth 6 nodes 260083 ordering 0.9 pv b2a3 a2d5 g1h1 d5b3 d1e1 b3d5
+info score cp 0 time 9935 depth 7 nodes 1172209 ordering 0.89 pv b2a3 a2d5 g4e2 d5g2 e2a6 b7e4 d6d7
+failed
+info score cp -162 time 1 depth 1 nodes 170 ordering 0.88 pv g1e2
+info score cp -163 time 18 depth 2 nodes 1504 ordering 0.91 pv g1e2 b4c5
+info score cp -161 time 141 depth 3 nodes 12927 ordering 0.9 pv a2a3 b4c3 d2c3
+info score cp -142 time 499 depth 4 nodes 47327 ordering 0.92 pv f4e5 b4c3 d2c3 d4e6
+info score cp -61 time 2649 depth 5 nodes 247312 ordering 0.89 pv c3e4 c8f5 d2b4 f5e4 e1e4
+info score cp 64 time 5347 depth 6 nodes 543005 ordering 0.9 pv c3e4 c8f5 d2b4 f5e4 f1d3 d8d5
+info score cp -52 time 9935 depth 7 nodes 1014580 ordering 0.9 pv c3e4 c8f5 d2b4 f5e4 e1e4 f6e4 f4e5
+passed
+info score cp 185 time 0 depth 1 nodes 91 ordering 1 pv e5f4
+info score cp 155 time 9 depth 2 nodes 820 ordering 0.96 pv d6h6 h5g5
+info score cp 190 time 49 depth 3 nodes 5085 ordering 0.94 pv e5f4 b4c5 b6c5
+info score cp 169 time 251 depth 4 nodes 24560 ordering 0.92 pv e5f4 h5h4 d6h6 h4f2
+info score cp 204 time 1409 depth 5 nodes 136203 ordering 0.89 pv e5f4 b4c5 c7c5 g1h1 f8d8
+info score cp 276 time 5794 depth 6 nodes 569835 ordering 0.86 pv d6h6 h5g5 d4f3 g2f3 h6g6 g5g6
+info score cp 344 time 9341 depth 7 nodes 908709 ordering 0.85 pv d6h6 h5g5 e5f4 d1e1 d4f3 g2f3 h6g6
+passed
+info score cp 75 time 1 depth 1 nodes 157 ordering 1 pv e7d6
+info score cp 103 time 10 depth 2 nodes 1096 ordering 0.98 pv e7d7 b5d7
+info score cp 999995 time 60 depth 3 nodes 6082 ordering 0.9 pv e7h4 g3h4 d4f2
+info score cp 999995 time 114 depth 4 nodes 12913 ordering 0.94 pv e7h4 g3h4 d4f2 h4g5
+info score cp 999995 time 228 depth 5 nodes 27990 ordering 0.97 pv e7h4 g3h4 d4f2 h4g5 h7h6
+passed
+info score cp -296 time 1 depth 1 nodes 170 ordering 0.95 pv f1e1
+info score cp -279 time 19 depth 2 nodes 1492 ordering 0.92 pv f1e1 e4f4
+info score cp -281 time 63 depth 3 nodes 6819 ordering 0.91 pv f1e1 e4c2 g5d2
+info score cp -281 time 191 depth 4 nodes 17969 ordering 0.9 pv f1e1 e4c2 g5d2 c2d2
+info score cp -283 time 757 depth 5 nodes 87380 ordering 0.93 pv f1e1 e4c2 d1d2 c2c5 b2d4
+info score cp -151 time 5802 depth 6 nodes 514031 ordering 0.86 pv e5f7 e6e5 f7h6 g8h8 d1d8 h8g7
+info score cp 190 time 9935 depth 7 nodes 872270 ordering 0.87 pv e5f7 e6e5 g5f6 h7h5 f7h6 g8h7 f6e7
+passed
+info score cp 8 time 0 depth 1 nodes 124 ordering 1 pv f8e7
+info score cp -33 time 11 depth 2 nodes 982 ordering 0.96 pv f6h4 f3d5
+info score cp -32 time 72 depth 3 nodes 7398 ordering 0.94 pv f8e7 d2e4 f6h4
+info score cp 204 time 420 depth 4 nodes 38168 ordering 0.93 pv d6d5 e3d4 c6d4 c3d4
+info score cp 204 time 678 depth 5 nodes 68522 ordering 0.93 pv d6d5 e3d4 c6d4 c3d4 d5c4
+info score cp 204 time 1476 depth 6 nodes 152823 ordering 0.93 pv d6d5 e3d4 c6d4 c3d4 d5c4 d2c4
+info score cp 220 time 5909 depth 7 nodes 595835 ordering 0.89 pv d6d5 e3d4 c6d4 c3d4 d5c4 d2c4 h8g8
+passed
+info score cp 25 time 0 depth 1 nodes 106 ordering 1 pv b3a5
+info score cp -56 time 8 depth 2 nodes 791 ordering 0.86 pv d4e5 c7c6
+info score cp -1 time 57 depth 3 nodes 6610 ordering 0.88 pv d3e4 d5e4 b3a5
+info score cp -48 time 624 depth 4 nodes 59583 ordering 0.88 pv d1f3 e7d6 a1f1 a8d8
+info score cp -46 time 4614 depth 5 nodes 449424 ordering 0.86 pv d1f3 a5a4 d4e5 c7b6 e5d4
+info score cp -67 time 9935 depth 6 nodes 885677 ordering 0.86 pv d1f3 a5a4 d4e5 c7d7 d3e4 d5e4
+failed
+info score cp 312 time 0 depth 1 nodes 43 ordering 1 pv h5d5
+info score cp 271 time 1 depth 2 nodes 187 ordering 0.92 pv h5d5 h4f5
+info score cp 296 time 7 depth 3 nodes 803 ordering 0.93 pv h5d5 h4g6 d5d8
+info score cp 280 time 22 depth 4 nodes 2588 ordering 0.93 pv h5d5 h4g6 d5d8 d2c3
+info score cp 287 time 58 depth 5 nodes 6859 ordering 0.91 pv h5d5 h4g6 d5d6 g6f4 d6d8
+info score cp 271 time 156 depth 6 nodes 18621 ordering 0.9 pv h5d5 h4g6 d5d6 g6f4 d6d8 d2c3
+info score cp 267 time 414 depth 7 nodes 48639 ordering 0.91 pv h5d5 h4g6 d5d6 g6f4 d6d8 d2c3 d8e8
+info score cp 267 time 1103 depth 8 nodes 127127 ordering 0.89 pv h5d5 h4g6 d5d8 d2c3 e4f5 g6f4 f5e4 f4e6
+info score cp 267 time 3807 depth 9 nodes 426414 ordering 0.83 pv h5d5 h4g6 d5d8 d2c3 d8d5 g6f4 d5d8 f4e6 d8e8
+info score cp 266 time 9935 depth 10 nodes 1081972 ordering 0.82 pv h5d5 h4g6 d5d8 d2c3 d8d5 g6f4 d5d8 f4e6 d8e8 e6d4
+failed
+info score cp 183 time 0 depth 1 nodes 33 ordering nan pv b7d7
+info score cp 157 time 1 depth 2 nodes 225 ordering 0.95 pv b7f7 b2d2
+info score cp 173 time 7 depth 3 nodes 1004 ordering 0.81 pv b7f7 b2d2 c8b7
+info score cp 152 time 22 depth 4 nodes 2811 ordering 0.92 pv b7f7 f2f4 c8b7 g3f3
+info score cp 163 time 97 depth 5 nodes 12473 ordering 0.88 pv b7f7 f2f4 c8b7 g3f3 f7d7
+info score cp 153 time 232 depth 6 nodes 31961 ordering 0.89 pv a5a4 g3f4 b7f7 f4e3 c8b7 b2d2
+info score cp 168 time 476 depth 7 nodes 62120 ordering 0.85 pv b7f7 f2f4 f7h7 b2g2 h7b7 g3f3 b3b2
+info score cp 157 time 2297 depth 8 nodes 281434 ordering 0.83 pv a5a4 g3f4 b7d7 b2d2 c8b7 d2e2 d7d8 e2e1
+info score cp 168 time 9685 depth 9 nodes 1076037 ordering 0.79 pv b7f7 b2d2 c8b7 d2e2 a5a4 f2f4 f7h7 e2d2 h7g7
+failed
+info score cp 335 time 1 depth 1 nodes 119 ordering 1 pv f5d7
+info score cp 325 time 5 depth 2 nodes 576 ordering 1 pv d1d7 g6f5
+info score cp 305 time 37 depth 3 nodes 4298 ordering 0.97 pv d1d7 e7e8 d7d8
+info score cp 284 time 145 depth 4 nodes 15746 ordering 0.98 pv f5d7 a8e8 d7e7 e8e7
+info score cp 149 time 628 depth 5 nodes 77187 ordering 0.95 pv d1d7 a8d8 f5g6 h7g6 d7e7
+info score cp 120 time 5085 depth 6 nodes 505697 ordering 0.87 pv c1g5 g6f5 g5e7 f8d8 e7d8 a8d8
+info score cp 152 time 9935 depth 7 nodes 1015070 ordering 0.88 pv c1g5 g6f5 g5e7 b7f3 g2f3 f8d8 e7d8
+passed
+info score cp 12 time 0 depth 1 nodes 95 ordering 1 pv b8e8
+info score cp 12 time 6 depth 2 nodes 483 ordering 0.86 pv b8e8 f8e8
+info score cp 2 time 50 depth 3 nodes 5523 ordering 0.9 pv a6a7 c2d2 b8e8
+info score cp 2 time 101 depth 4 nodes 9633 ordering 0.91 pv a6a7 c2d2 b8e8 f8e8
+info score cp 27 time 581 depth 5 nodes 72319 ordering 0.91 pv a6b5 e8b8 b5b8 c2c1 g1f2
+info score cp 33 time 1045 depth 6 nodes 110563 ordering 0.89 pv a6b5 c7c6 b8e8 f8e8 b5b8 e8b8
+info score cp 207 time 3870 depth 7 nodes 458562 ordering 0.85 pv b8e8 f8e8 a6a4 c2g2 g1g2 e8g6 g2f2
+info score cp 202 time 5321 depth 8 nodes 585984 ordering 0.86 pv b8e8 f8e8 a6a4 c2g2 g1g2 e8g6 g2f2 f6f5
+info score cp 185 time 9935 depth 9 nodes 1193184 ordering 0.86 pv b8e8 f8e8 a6a4 c2g2 g1g2 e8g6 g2f2 g6h5 b1h1
+failed
+info score cp 76 time 1 depth 1 nodes 121 ordering 1 pv c6c5
+info score cp 91 time 11 depth 2 nodes 1015 ordering 0.99 pv f7f2 d2f2
+info score cp 72 time 61 depth 3 nodes 5845 ordering 0.98 pv f7f2 d2f2 f8d8
+info score cp 476 time 271 depth 4 nodes 24300 ordering 0.94 pv d4b3 e1f3 b3d2 b2d2
+info score cp 470 time 640 depth 5 nodes 66315 ordering 0.94 pv d4b3 e1f3 f7f3 f1g1 b3d2
+info score cp 465 time 1720 depth 6 nodes 176680 ordering 0.93 pv d4b3 f1g2 b3d2 f2d2 e3e1 b2c3
+info score cp 496 time 3966 depth 7 nodes 416983 ordering 0.93 pv d4b3 f1g2 b3d2 f2d2 e3e1 g2h3 c6c5
+info score cp 505 time 9935 depth 8 nodes 1016242 ordering 0.92 pv d4b3 f1g2 b3d2 f2d2 e3e1 h2h3 c6c5 g3g4
+passed
+info score cp -18 time 0 depth 1 nodes 104 ordering 1 pv c1c4
+info score cp -33 time 17 depth 2 nodes 1465 ordering 0.89 pv f4g4 c8b8
+info score cp 2 time 87 depth 3 nodes 7724 ordering 0.93 pv h3b3 b4a5 c1c4
+info score cp 1 time 254 depth 4 nodes 25405 ordering 0.9 pv c1c4 b4b6 f6f7 b6d6
+info score cp 38 time 1081 depth 5 nodes 102858 ordering 0.88 pv h3b3 b4a5 b3b8 c8d7 b8b7
+info score cp 62 time 2055 depth 6 nodes 196875 ordering 0.89 pv h3b3 b4a5 f4b8 c8d7 b8b7 d7d6
+info score cp 296 time 9935 depth 7 nodes 922484 ordering 0.86 pv h3b3 b4a4 f4b8 c8d7 b8b7 d7e6 b7e4
+passed
+info score cp 230 time 2 depth 1 nodes 154 ordering 0.97 pv e6e4
+info score cp 230 time 6 depth 2 nodes 581 ordering 0.98 pv e6e4 f7e7
+info score cp 275 time 37 depth 3 nodes 4051 ordering 0.98 pv e6e4 f7e7 d7e7
+info score cp 294 time 138 depth 4 nodes 14896 ordering 0.97 pv e6e4 g7h8 d7b7 b2e5
+info score cp 272 time 515 depth 5 nodes 57497 ordering 0.97 pv e6e4 f7e7 d7e7 f8f7 e7b7
+info score cp 279 time 2522 depth 6 nodes 249293 ordering 0.9 pv e6e4 g7h8 e7f7 f8f7 e4b7 f7f8
+info score cp 328 time 8194 depth 7 nodes 819107 ordering 0.87 pv e6e4 b2e5 e7f7 f8f7 e4b7 f7d7 b7d7
+passed
+info score cp 182 time 1 depth 1 nodes 114 ordering 1 pv g2h3
+info score cp 172 time 9 depth 2 nodes 1105 ordering 0.9 pv g3e1 e2e1
+info score cp 157 time 53 depth 3 nodes 5908 ordering 0.96 pv g2h3 e1g3 c3g3
+info score cp 152 time 217 depth 4 nodes 25794 ordering 0.96 pv g3e1 e2e1 g2d5 b8d8
+info score cp 146 time 639 depth 5 nodes 78345 ordering 0.94 pv g3e1 e2e1 c3c2 b8e8 g2h3
+info score cp 152 time 2360 depth 6 nodes 277436 ordering 0.9 pv g3e1 e2e1 c3c2 a2a3 g2h3 b8b7
+info score cp 141 time 9935 depth 7 nodes 1048009 ordering 0.86 pv g3e1 e2e1 g2d5 b8d8 c3h3 d8d7 a7a6
+failed
+info score cp 147 time 4 depth 1 nodes 312 ordering 0.96 pv c2h2
+info score cp 147 time 21 depth 2 nodes 1975 ordering 0.98 pv c2h2 g5e4
+info score cp 24 time 185 depth 3 nodes 13786 ordering 0.93 pv c2c5 g5e4 f7d5
+info score cp 28 time 606 depth 4 nodes 57915 ordering 0.93 pv c2c5 g5e4 f7d5 b7a8
+info score cp 84 time 1939 depth 5 nodes 175746 ordering 0.96 pv c2c5 b1a1 f7d5 b7d5 c5d5
+info score cp -32 time 9935 depth 6 nodes 948272 ordering 0.9 pv c2c5 b1a1 f7d5 b7d5 c5d5 d4e5
+failed
+info score cp -12 time 0 depth 1 nodes 107 ordering 1 pv g3f4
+info score cp 13 time 6 depth 2 nodes 558 ordering 0.95 pv g3f4 e6f4
+info score cp 13 time 33 depth 3 nodes 3377 ordering 0.98 pv g3f4 e6f4 b1d1
+info score cp 18 time 133 depth 4 nodes 12239 ordering 0.96 pv c5b5 b7b6 g3f4 e6f4
+info score cp 19 time 343 depth 5 nodes 33993 ordering 0.94 pv c5b5 b7b6 b1d1 f4g3 f2g3
+info score cp 13 time 1103 depth 6 nodes 112421 ordering 0.86 pv g3f4 e6f4 b1d1 d7e7 c5b5 f4g2
+info score cp -2 time 9935 depth 7 nodes 885449 ordering 0.83 pv g3f4 e6f4 b1d1 d7e7 g2f1 b7b6 c5c6
+failed
+info score cp -147 time 0 depth 1 nodes 73 ordering 0.82 pv f6f5
+info score cp -167 time 7 depth 2 nodes 617 ordering 0.91 pv f2f1 h3h4
+info score cp -168 time 38 depth 3 nodes 3555 ordering 0.92 pv f6f5 a5e5 g7f7
+info score cp -157 time 108 depth 4 nodes 10585 ordering 0.9 pv f2d4 a5c7 g7h6 g3g4
+info score cp -163 time 458 depth 5 nodes 46344 ordering 0.84 pv f2d4 a5c7 g7h6 c7c6 f6f5
+info score cp -142 time 1665 depth 6 nodes 164898 ordering 0.83 pv f2f1 h3h4 f1g2 h2h3 g7f7 a5a7
+info score cp -148 time 8820 depth 7 nodes 831021 ordering 0.8 pv f2f1 h3h4 f1g2 h2h3 g7f7 a5a7 f7e6
+passed
+info score cp -163 time 3 depth 1 nodes 202 ordering 0.93 pv g5f3
+info score cp -163 time 8 depth 2 nodes 590 ordering 0.93 pv g5f3 h5g4
+info score cp -163 time 49 depth 3 nodes 4432 ordering 0.93 pv g5f3 h5g4 f3e1
+info score cp -163 time 181 depth 4 nodes 15592 ordering 0.93 pv g5f3 h5g4 f3e1 f6d4
+info score cp -105 time 770 depth 5 nodes 71184 ordering 0.92 pv c2c6 e1g1 g2g1 c7h2 g1h2
+info score cp 254 time 1894 depth 6 nodes 173761 ordering 0.91 pv c2c6 e1g1 g2g1 c7h2 g1h2 f6c6
+passed
+info score cp 130 time 0 depth 1 nodes 107 ordering 1 pv e5f7
+info score cp 130 time 6 depth 2 nodes 561 ordering 1 pv b3f7 f8f7
+info score cp 130 time 52 depth 3 nodes 6086 ordering 0.94 pv b3f7 f8f7 e5f7
+info score cp 211 time 177 depth 4 nodes 18832 ordering 0.93 pv f5f6 g7f6 h3g4 g8h8
+info score cp 211 time 977 depth 5 nodes 113415 ordering 0.93 pv f5f6 g7f6 h3g4 g8h8 e5f7
+info score cp 202 time 2512 depth 6 nodes 287958 ordering 0.91 pv f5f6 g7f6 h3g4 g8h8 e5f7 f8f7
+info score cp 224 time 9941 depth 7 nodes 1094812 ordering 0.87 pv f5f6 g7f6 h3g4 g8h8 e5f7 f8f7 b3f7
+failed
+info score cp -4 time 0 depth 1 nodes 104 ordering 1 pv b1d3
+info score cp 200 time 7 depth 2 nodes 727 ordering 0.77 pv e4d6 d7b8
+info score cp 226 time 50 depth 3 nodes 5005 ordering 0.9 pv d1d7 c8d7 e4f6
+info score cp 241 time 132 depth 4 nodes 15001 ordering 0.94 pv d1d7 c8d7 e4f6 g8f8
+info score cp 241 time 229 depth 5 nodes 25414 ordering 0.96 pv d1d7 c8d7 e4f6 g8f8 f6h7
+info score cp 411 time 593 depth 6 nodes 64892 ordering 0.94 pv d1d7 c8d7 e4f6 e7f6 c3f6 a8d8
+info score cp 400 time 1470 depth 7 nodes 173848 ordering 0.96 pv d1d7 c8d7 e4f6 e7f6 c3f6 a8d8 f6d4
+info score cp 429 time 4319 depth 8 nodes 538502 ordering 0.92 pv d1d7 c8d7 e4f6 e7f6 c3f6 a8d8 b1g6 f7g6
+info score cp 439 time 9935 depth 9 nodes 1193211 ordering 0.91 pv d1d7 c8d7 e4f6 e7f6 c3f6 a8d8 b1g6 f7g6 f6g6
+passed
+info score cp 136 time 1 depth 1 nodes 116 ordering 1 pv d6f5
+info score cp 59 time 13 depth 2 nodes 1253 ordering 0.86 pv d6c4 b6b5
+info score cp 115 time 81 depth 3 nodes 7894 ordering 0.9 pv b4b5 e6c7 f2d4
+info score cp 69 time 451 depth 4 nodes 42495 ordering 0.88 pv f2e2 h5h7 e2e3 b8d8
+info score cp 90 time 1230 depth 5 nodes 128850 ordering 0.89 pv b4b5 b8d8 f2e3 h5h7 g1g2
+info score cp 103 time 4166 depth 6 nodes 420959 ordering 0.88 pv b4b5 b8d8 d6c4 f8e8 c4b6 d7d5
+failed
+info score cp 67 time 1 depth 1 nodes 128 ordering 1 pv b1b7
+info score cp 5 time 26 depth 2 nodes 1703 ordering 0.9 pv d1d5 d6d5
+info score cp 236 time 112 depth 3 nodes 8694 ordering 0.95 pv d1d5 d6d5 e3d3
+info score cp 999993 time 349 depth 4 nodes 28660 ordering 0.97 pv e3c5 d6c5 c1a3 c5c4
+info score cp 999993 time 990 depth 5 nodes 98604 ordering 0.99 pv e3c5 d6c5 c1a3 c5c4 a4b5
+info score cp 999993 time 3291 depth 6 nodes 345366 ordering 1 pv e3c5 d6c5 c1a3 c5c4 a4b5 c4c3
+info score cp 999993 time 9935 depth 7 nodes 1026808 ordering 1 pv e3c5 d6c5 c1a3 c5c4 a4b5 c4c3 b1c1
+passed
+info score cp 149 time 1 depth 1 nodes 125 ordering 0.92 pv e6e7
+info score cp 113 time 10 depth 2 nodes 829 ordering 0.96 pv c3b5 c7e7
+info score cp 143 time 51 depth 3 nodes 5842 ordering 0.97 pv c3b5 c7e7 d4f6
+info score cp 153 time 204 depth 4 nodes 17884 ordering 0.92 pv c3b5 c7c6 b5a7 c6e4
+info score cp 162 time 861 depth 5 nodes 94222 ordering 0.94 pv c3b5 c7b6 d4f6 g8f6 b5d6
+info score cp 217 time 6788 depth 6 nodes 597792 ordering 0.9 pv d3g6 h7h8 d4f6 g7f6 f3f6 g8f6
+passed
+info score cp 148 time 1 depth 1 nodes 113 ordering 0.96 pv g4f3
+info score cp 999997 time 9 depth 2 nodes 896 ordering 0.81 pv g4h5 g6h5
+info score cp 999997 time 34 depth 3 nodes 3439 ordering 0.95 pv g4h5 g6h5 g3f5
+passed
+info score cp 38 time 1 depth 1 nodes 121 ordering 1 pv d6e5
+info score cp 24 time 10 depth 2 nodes 1041 ordering 0.98 pv d6c5 c8b8
+info score cp -30 time 48 depth 3 nodes 5228 ordering 0.99 pv b1b5 a6b5 d6c5
+info score cp 9 time 282 depth 4 nodes 33193 ordering 0.92 pv d6c5 c8b8 e7d6 b8a8
+info score cp 10 time 1016 depth 5 nodes 115549 ordering 0.91 pv d6c5 c8b8 e7d6 b8a8 d6e5
+info score cp 0 time 3388 depth 6 nodes 378819 ordering 0.89 pv d6c5 c8b8 e7d6 b8a8 b1b2 f7h5
+info score cp 10 time 7909 depth 7 nodes 856050 ordering 0.88 pv d6c5 c8b8 e7d6 b8a8 d6e5 f7h5 b1b5
+failed
+info score cp -112 time 1 depth 1 nodes 146 ordering 0.9 pv d6c5
+info score cp -112 time 7 depth 2 nodes 642 ordering 0.96 pv d6c5 g1h1
+info score cp 1 time 41 depth 3 nodes 4480 ordering 0.91 pv d6d5 g5e5 d5a2
+info score cp 11 time 155 depth 4 nodes 17219 ordering 0.9 pv d6c5 g1h1 c5d5 g5e5
+info score cp -5 time 420 depth 5 nodes 49226 ordering 0.9 pv d6c5 g1h1 c5d5 g5e5 d5a2
+info score cp 78 time 1465 depth 6 nodes 172540 ordering 0.85 pv d6c5 g1h1 c5d5 h2h3 f8e8 e1e3
+info score cp 78 time 3268 depth 7 nodes 378858 ordering 0.86 pv d6c5 g1h1 c5c4 h1g1 c4d4 g1h1 d4c4
+info score cp 88 time 9935 depth 8 nodes 1091125 ordering 0.84 pv d6c5 g1h1 c5d5 h2h3 f8e8 e1e2 h8g8 g5f5
+passed
+info score cp 150 time 0 depth 1 nodes 108 ordering 0.91 pv a1d1
+info score cp 89 time 7 depth 2 nodes 661 ordering 0.82 pv a1d1 a8d8
+info score cp 90 time 86 depth 3 nodes 9703 ordering 0.93 pv a1d1 a8d8 b2c3
+info score cp 69 time 212 depth 4 nodes 23289 ordering 0.9 pv a1d1 a8d8 f3e5 c6c5
+info score cp 75 time 1745 depth 5 nodes 220628 ordering 0.9 pv a1d1 a8d8 f3e5 c6c5 e5f7
+info score cp 50 time 9935 depth 6 nodes 875436 ordering 0.84 pv a1d1 a8d8 b2c3 c6c5 f3e5 d6e5
+failed
+info score cp 149 time 1 depth 1 nodes 107 ordering 1 pv f3c6
+info score cp 26 time 19 depth 2 nodes 1474 ordering 0.85 pv e3e1 f6h7
+info score cp 37 time 98 depth 3 nodes 8098 ordering 0.88 pv e3e1 a2a4 f3c3
+info score cp 52 time 311 depth 4 nodes 23067 ordering 0.87 pv e3e1 a2b2 f3c6 b8f4
+info score cp 114 time 914 depth 5 nodes 68094 ordering 0.86 pv e3e1 a2b2 f3c6 b2d4 g1h1
+info score cp 103 time 2269 depth 6 nodes 173481 ordering 0.86 pv e3e1 a2d5 f3d5 c6d5 e1e6 f6h7
+failed
+info score cp -44 time 2 depth 1 nodes 165 ordering 0.71 pv d4d3
+info score cp -14 time 9 depth 2 nodes 715 ordering 0.7 pv d4h8 e6c8
+info score cp 21 time 69 depth 3 nodes 6866 ordering 0.83 pv d4e5 c6c8 b1b7
+info score cp 47 time 169 depth 4 nodes 17437 ordering 0.89 pv d4h8 c6c8 h8c8 e6c8
+info score cp 54 time 469 depth 5 nodes 50927 ordering 0.92 pv d4b2 c6c8 b2b7 c8b7 a6b7
+info score cp 48 time 913 depth 6 nodes 97768 ordering 0.9 pv d4b2 c6c8 b2b7 c8b7 a6b7 a8b8
+info score cp 64 time 2692 depth 7 nodes 281932 ordering 0.89 pv d4b2 c6c8 b2b7 c8b7 a6b7 a8b8 f2f4
+info score cp 127 time 9935 depth 8 nodes 956153 ordering 0.86 pv d4b4 c6c7 b4f8 e6c8 b1d1 f7f5 d1d5 c7c1
+failed
+info score cp -53 time 1 depth 1 nodes 164 ordering 0.82 pv a2d5
+info score cp 120 time 19 depth 2 nodes 1398 ordering 0.92 pv f6d5 c3c5
+info score cp 50 time 91 depth 3 nodes 7829 ordering 0.94 pv f6d5 d3h7 g8h7
+info score cp 77 time 377 depth 4 nodes 32247 ordering 0.93 pv f6d5 d3h7 g8h8 c3c5
+info score cp 157 time 928 depth 5 nodes 79245 ordering 0.93 pv f6d5 d3h7 g8h7 c3d3 h7h8
+info score cp 167 time 2793 depth 6 nodes 250395 ordering 0.93 pv f6d5 c3c5 a2b2 c1d2 d5f4 c5c7
+info score cp 167 time 9935 depth 7 nodes 844885 ordering 0.93 pv f6d5 c3c5 a2b2 c1d2 d5f4 c5c7 f4d3
+failed
+info score cp -52 time 3 depth 1 nodes 201 ordering 0.97 pv g1f1
+info score cp -77 time 13 depth 2 nodes 799 ordering 0.96 pv g1f1 f7c4
+info score cp -103 time 58 depth 3 nodes 4412 ordering 0.94 pv g1f1 f7c4 f1f2
+info score cp 999993 time 152 depth 4 nodes 11963 ordering 0.96 pv e3e8 g8e8 e1e8 f7e8
+info score cp 999993 time 218 depth 5 nodes 18874 ordering 0.97 pv e3e8 g8e8 e1e8 f7e8 c6c7
+info score cp 999993 time 384 depth 6 nodes 35955 ordering 0.98 pv e3e8 g8e8 e1e8 f7e8 c6c7 g3f3
+info score cp 999993 time 1382 depth 7 nodes 128489 ordering 0.98 pv e3e8 g8e8 e1e8 f7e8 c6c7 g3f3 c7c8q
+passed
+info score cp -62 time 3 depth 1 nodes 302 ordering 0.97 pv g4g5
+info score cp -108 time 21 depth 2 nodes 1604 ordering 0.92 pv g4g5 h2f3
+info score cp 47 time 146 depth 3 nodes 10313 ordering 0.94 pv f4h3 d2c2 g4g3
+info score cp 47 time 214 depth 4 nodes 15922 ordering 0.94 pv f4h3 d2c2 g4g3 g2h3
+info score cp 343 time 686 depth 5 nodes 65417 ordering 0.91 pv f4h3 g2h3 h6d2 h2g4 d2d3
+info score cp 321 time 2366 depth 6 nodes 189668 ordering 0.89 pv f4h3 g2h3 h6d2 h2g4 d2b2 d1e2
+info score cp 350 time 6624 depth 7 nodes 589854 ordering 0.89 pv f4h3 g2h3 h6d2 d1g4 d2f2 g1g2 f2f4
+passed
+info score cp -159 time 2 depth 1 nodes 169 ordering 0.98 pv f6f5
+info score cp -339 time 14 depth 2 nodes 974 ordering 0.93 pv f6g6 f7g6
+info score cp -303 time 62 depth 3 nodes 4196 ordering 0.92 pv f6g6 f7g6 h4e7
+info score cp 396 time 176 depth 4 nodes 13261 ordering 0.95 pv f6g6 f7g6 h4e7 d5f7
+info score cp 390 time 361 depth 5 nodes 29681 ordering 0.97 pv f6g6 f7g6 h4e7 d5f7 g4g6
+info score cp 451 time 992 depth 6 nodes 87386 ordering 0.96 pv f6g6 f7g6 h4e7 g7h6 g4h4 d5h5
+info score cp 451 time 3076 depth 7 nodes 281778 ordering 0.95 pv f6g6 f7g6 h4e7 g7h6 g4h4 d5h5 h4h5
+info score cp 568 time 9935 depth 8 nodes 847429 ordering 0.91 pv f6g6 f7g6 h4e7 d5f7 g4g6 g7g6 f3e5 g6f5
+failed
+info score cp 20 time 1 depth 1 nodes 137 ordering 1 pv d1g4
+info score cp -3 time 7 depth 2 nodes 607 ordering 0.92 pv d1g4 c6c5
+info score cp -3 time 55 depth 3 nodes 5278 ordering 0.94 pv d1g4 c6c5 g4e4
+info score cp -8 time 195 depth 4 nodes 15982 ordering 0.91 pv d1g4 f8e8 f1c4 c6c5
+info score cp 3 time 993 depth 5 nodes 94544 ordering 0.91 pv d1g4 f8e8 d4f5 e7e6 f1c4
+info score cp 108 time 5581 depth 6 nodes 433477 ordering 0.84 pv d4f5 e7g5 f5h6 g5h6 d1d8 f8d8
+info score cp 82 time 9935 depth 7 nodes 867068 ordering 0.85 pv d4f5 e7g5 f5h6 g5h6 d1d8 f8d8 h4h6
+passed
+info score cp 20 time 1 depth 1 nodes 118 ordering 1 pv c2c4
+info score cp 9 time 21 depth 2 nodes 1622 ordering 0.9 pv g1h1 f7f5
+info score cp 101 time 100 depth 3 nodes 7637 ordering 0.89 pv e4g5 e6e7 g5f7
+info score cp 208 time 232 depth 4 nodes 19567 ordering 0.91 pv d1d4 e5d4 e4f6 e6f6
+info score cp 20 time 1090 depth 5 nodes 84582 ordering 0.9 pv d1d4 e5d4 e4f6 g8h8 e1e6
+info score cp 265 time 2203 depth 6 nodes 189852 ordering 0.89 pv d1d4 e5d4 e4f6 g8h8 e1e6 f7e6
+info score cp 259 time 5619 depth 7 nodes 477140 ordering 0.9 pv d1d4 e5d4 e4f6 g8h8 e1e6 f7e6 f6e8
+passed
+info score cp -145 time 0 depth 1 nodes 90 ordering 1 pv f1d1
+info score cp -228 time 14 depth 2 nodes 719 ordering 0.86 pv g3g5 a8d8
+info score cp -175 time 104 depth 3 nodes 7167 ordering 0.91 pv f1b1 a8a3 b1e1
+info score cp -233 time 554 depth 4 nodes 40289 ordering 0.84 pv h4g5 h6g5 g3g5 a8d8
+info score cp -7 time 926 depth 5 nodes 68836 ordering 0.86 pv h5g6 h6g6 f1e1 a8d8 g3g6
+info score cp 45 time 1538 depth 6 nodes 116034 ordering 0.87 pv h5g6 h6g6 g3g6 h8g6 h4h6 f8f7
+info score cp -9 time 3690 depth 7 nodes 291970 ordering 0.85 pv h5g6 h6g6 h4f4 a8a2 f4e5 a2g2 g3g2
+passed
+info score cp -74 time 2 depth 1 nodes 167 ordering 0.94 pv g5f7
+info score cp -344 time 10 depth 2 nodes 744 ordering 0.95 pv g5f7 f8f7
+info score cp -296 time 133 depth 3 nodes 8857 ordering 0.91 pv d1h5 h7h6 h1g1
+info score cp -296 time 358 depth 4 nodes 26372 ordering 0.92 pv d1h5 h7h6 h1g1 h6g5
+info score cp -257 time 1530 depth 5 nodes 119296 ordering 0.95 pv d1h5 h7h6 g5f7 f8f7 d5c7
+info score cp -247 time 4961 depth 6 nodes 388537 ordering 0.92 pv d1h5 h7h6 g5f7 f8f7 d5e3 f2h1
+passed
+info score cp 45 time 2 depth 1 nodes 123 ordering 1 pv b1d1
+info score cp 11 time 19 depth 2 nodes 1419 ordering 0.89 pv c7e6 c8c2
+info score cp -99 time 101 depth 3 nodes 7571 ordering 0.91 pv c7e6 c8c1 f1e2
+info score cp -119 time 525 depth 4 nodes 41621 ordering 0.9 pv c7e6 c8c1 f1e2 c1c2
+info score cp 999991 time 4389 depth 5 nodes 317193 ordering 0.86 pv d5e6 d7c7 b1b7 c7d8 a5c6
+info score cp 999991 time 5303 depth 6 nodes 385616 ordering 0.89 pv d5e6 d7c7 b1b7 c7d8 a5c6 c8c6
+info score cp 999991 time 8946 depth 7 nodes 676120 ordering 0.93 pv d5e6 d7c7 b1b7 c7d8 a5c6 c8c6 b7b8
+passed
+info score cp 136 time 0 depth 1 nodes 82 ordering 1 pv g3g2
+info score cp 281 time 7 depth 2 nodes 543 ordering 0.99 pv g3g2 h1g2
+info score cp 281 time 63 depth 3 nodes 4947 ordering 0.99 pv g3g2 h1g2 f3e1
+info score cp 274 time 238 depth 4 nodes 17674 ordering 0.96 pv g3g2 h1g2 f3d2 g2f2
+info score cp 315 time 1024 depth 5 nodes 95270 ordering 0.94 pv g3g2 h1g2 f3d2 g2h2 d2f1
+info score cp 317 time 4885 depth 6 nodes 443238 ordering 0.91 pv g3g2 h1g2 f3d2 g2g1 d2f1 a1f1
+info score cp 317 time 9935 depth 7 nodes 884714 ordering 0.89 pv g3g2 h1g2 f3d2 g2h2 d2f1 a1f1 a8e8
+failed
+info score cp 19 time 0 depth 1 nodes 111 ordering 1 pv h3e6
+info score cp -7 time 9 depth 2 nodes 990 ordering 0.94 pv h3e6 c3c4
+info score cp 4 time 72 depth 3 nodes 6726 ordering 0.94 pv h3e6 c3c4 e7f6
+info score cp -12 time 348 depth 4 nodes 34214 ordering 0.95 pv h3e6 c3c4 e7f6 c7e5
+info score cp -6 time 2992 depth 5 nodes 232826 ordering 0.9 pv h3c8 c7f4 c8e6 c3c4 e7f6
+info score cp -21 time 9935 depth 6 nodes 821538 ordering 0.9 pv h3c8 c7d6 c8e6 d6e7 e6e7 d2d8
+failed
+info score cp 199 time 1 depth 1 nodes 153 ordering 0.86 pv d5c7
+info score cp 72 time 26 depth 2 nodes 1581 ordering 0.91 pv f2f4 b8c6
+info score cp 120 time 240 depth 3 nodes 15615 ordering 0.94 pv f7f4 e4d6 c4d3
+info score cp 999993 time 909 depth 4 nodes 60434 ordering 0.96 pv f7g8 h8g8 d5e7 g8f8
+info score cp 999993 time 1300 depth 5 nodes 99026 ordering 0.97 pv f7g8 h8g8 d5e7 g8f8 e5g6
+info score cp 999993 time 3947 depth 6 nodes 353827 ordering 0.99 pv f7g8 h8g8 d5e7 g8f8 e5g6 h7g6
+info score cp 999993 time 9935 depth 7 nodes 910590 ordering 0.99 pv f7g8 h8g8 d5e7 g8f8 e5g6 h7g6 e7g6
+passed
+info score cp -134 time 1 depth 1 nodes 137 ordering 1 pv e7c5
+info score cp 41 time 12 depth 2 nodes 889 ordering 0.94 pv e7c5 d1d3
+info score cp 41 time 67 depth 3 nodes 6364 ordering 0.95 pv e7c5 d1d3 c5c4
+info score cp 26 time 468 depth 4 nodes 38194 ordering 0.92 pv f4h2 g1h1 e7c5 d1d2
+info score cp 135 time 2101 depth 5 nodes 182436 ordering 0.9 pv e7e5 d1f1 f4h2 g1h1 d8d4
+info score cp 61 time 5463 depth 6 nodes 442262 ordering 0.91 pv f4h2 g1h2 e7e5 h2g1 a4d1 d4c6
+info score cp 50 time 9935 depth 7 nodes 811446 ordering 0.9 pv f4h2 g1h2 e7e5 h2g1 a4d1 d4c6 e5e1
+failed
+info score cp 78 time 1 depth 1 nodes 108 ordering 1 pv c2e4
+info score cp 78 time 4 depth 2 nodes 327 ordering 1 pv c2e4 f6e4
+info score cp 54 time 33 depth 3 nodes 3153 ordering 0.95 pv c2e4 f6e4 e5e6
+info score cp 48 time 122 depth 4 nodes 8477 ordering 0.95 pv c2e4 f6e4 e5e6 d7e5
+info score cp 54 time 502 depth 5 nodes 46783 ordering 0.96 pv c2e4 f6e4 e5e6 f7e6 f5e6
+info score cp 38 time 1354 depth 6 nodes 108012 ordering 0.93 pv c2e4 f6e4 e5e6 f7e6 f5e6 d7e5
+info score cp 51 time 5286 depth 7 nodes 483937 ordering 0.9 pv c2e4 f6e4 f1f3 e4c3 e2c3 d7e5 a1e1
+info score cp 43 time 9935 depth 8 nodes 889378 ordering 0.83 pv c2e4 f6e4 e5e6 f7e6 f5e6 d7c5 e6e7 h8g8
+failed
+info score cp -65 time 3 depth 1 nodes 269 ordering 0.96 pv e4g3
+info score cp -65 time 11 depth 2 nodes 767 ordering 0.98 pv e4g3 f4g3
+info score cp -141 time 81 depth 3 nodes 6282 ordering 0.97 pv e4g3 f4g3 f2g3
+info score cp -56 time 391 depth 4 nodes 29333 ordering 0.93 pv f2g3 e5f3 g3f4 d2e4
+info score cp -10 time 1475 depth 5 nodes 119833 ordering 0.92 pv f2g3 e5g6 e8g6 f4g3 g6g3
+info score cp 999989 time 5123 depth 6 nodes 394007 ordering 0.92 pv h8h2 f4h2 e4g3 h2g3 e8h8 g3h2
+info score cp 999989 time 7415 depth 7 nodes 631136 ordering 0.93 pv h8h2 f4h2 e4g3 h2g3 e8h8 g3h2 h8h2
+passed
+info score cp -21 time 4 depth 1 nodes 221 ordering 0.94 pv a2a3
+info score cp -37 time 17 depth 2 nodes 888 ordering 0.91 pv a2a3 f8d6
+info score cp 456 time 97 depth 3 nodes 7630 ordering 0.94 pv d5c7 c8c7 e4c6
+info score cp 1335 time 208 depth 4 nodes 18282 ordering 0.97 pv d5c7 c8c7 e4c6 e6d7
+info score cp 999991 time 398 depth 5 nodes 38455 ordering 0.97 pv d5c7 c8c7 e4c6 e6d7 c6e4
+info score cp 999991 time 763 depth 6 nodes 68777 ordering 0.99 pv d5c7 c8c7 e4c6 e6d7 c6e4 b5e5
+info score cp 999991 time 3151 depth 7 nodes 296945 ordering 0.99 pv d5c7 c8c7 e4c6 e6d7 c6e4 b5e5 e4e5
+info score cp 999991 time 7759 depth 8 nodes 774931 ordering 0.98 pv d5c7 c8c7 e4c6 e6d7 c6e4 b5e5 e4e5 d7e6
+passed
+info score cp -163 time 3 depth 1 nodes 275 ordering 0.96 pv e2e1
+info score cp -163 time 10 depth 2 nodes 794 ordering 0.96 pv e2e1 b4c3
+info score cp 380 time 85 depth 3 nodes 6329 ordering 0.95 pv e2e8 c8e8 d1g4
+info score cp 439 time 166 depth 4 nodes 12939 ordering 0.96 pv e2e8 c8e8 d1g4 f7g5
+info score cp 683 time 274 depth 5 nodes 24227 ordering 0.97 pv e2e8 c8e8 d1g4 f7g5 g4f5
+info score cp 683 time 1451 depth 6 nodes 137459 ordering 0.97 pv e2e8 c8e8 d1g4 f7g5 g4f5 b4e7
+info score cp 728 time 5348 depth 7 nodes 503711 ordering 0.96 pv e2e8 c8e8 d1g4 f7g5 g4f5 b4e7 a1d1
+info score cp 793 time 9935 depth 8 nodes 912851 ordering 0.95 pv e2e8 c8e8 d1g4 f7g5 g4f5 b4e7 f5d5 g5f7
+passed
+info score cp 106 time 2 depth 1 nodes 195 ordering 0.98 pv e1g1
+info score cp 106 time 16 depth 2 nodes 854 ordering 0.98 pv e1g1 b4c3
+info score cp 106 time 67 depth 3 nodes 3825 ordering 0.92 pv e1g1 b4c3 b2c3
+info score cp 97 time 269 depth 4 nodes 20408 ordering 0.9 pv e1c1 b4c3 f3c3 a5d5
+info score cp 101 time 1458 depth 5 nodes 109658 ordering 0.85 pv a1d1 b4c3 f3c3 a5c3 b2c3
+info score cp 41 time 9935 depth 6 nodes 826550 ordering 0.86 pv a1a2 b4c3 b2c3 g8f6 e1g1 h8e8
+failed
+info score cp 94 time 0 depth 1 nodes 100 ordering 1 pv d4a7
+info score cp 152 time 8 depth 2 nodes 438 ordering 1 pv e2e8 c8e8
+info score cp 152 time 32 depth 3 nodes 3385 ordering 1 pv e2e8 c8e8 e1e8
+info score cp 141 time 81 depth 4 nodes 8183 ordering 0.98 pv e2e8 c8e8 e1e8 d7e8
+info score cp 147 time 395 depth 5 nodes 33185 ordering 0.96 pv e2e8 c8e8 e1e8 d7e8 d4a7
+info score cp 140 time 2220 depth 6 nodes 193976 ordering 0.86 pv d4g4 d7b5 a2a4 b5e2 e1e2 c8c1
+info score cp 140 time 4841 depth 7 nodes 456088 ordering 0.87 pv d4g4 d7b5 a2a4 b5e2 e1e2 c8c1 e2e1
+passed
+info score cp -63 time 0 depth 1 nodes 51 ordering 1 pv g7g8q
+info score cp -184 time 7 depth 2 nodes 349 ordering 0.79 pv g7g8q c5c1
+info score cp -445 time 36 depth 3 nodes 2256 ordering 0.88 pv e6d6 c7d6 d1d2
+info score cp -415 time 72 depth 4 nodes 5409 ordering 0.89 pv e6d6 c7d6 f6f7 c5c1
+info score cp 12 time 235 depth 5 nodes 17517 ordering 0.87 pv e6d6 c7d6 f6f7 c5c1 d1d2
+info score cp -68 time 481 depth 6 nodes 36289 ordering 0.89 pv e6d6 d8d6 g7g8q d6d8 g8d8 c8d8
+info score cp 67 time 1375 depth 7 nodes 105949 ordering 0.9 pv e6d6 d8d6 g7g8q d6d8 g8d8 c8d8 f6f7
+info score cp 67 time 3034 depth 8 nodes 233628 ordering 0.9 pv e6d6 d8d6 g7g8q d6d8 g8d8 c8d8 f6f7 c5f5
+info score cp 71 time 8439 depth 9 nodes 635093 ordering 0.89 pv e6d6 d8d6 g7g8q d6d8 g8d8 c8d8 f6f7 c5f5 f7f8q
+passed
+info score cp 283 time 1 depth 1 nodes 98 ordering 1 pv b2d2
+info score cp 222 time 7 depth 2 nodes 564 ordering 0.83 pv b2d2 h8d8
+info score cp 328 time 35 depth 3 nodes 3424 ordering 0.89 pv b5a5 b6a5 b2b8
+info score cp 264 time 201 depth 4 nodes 18727 ordering 0.91 pv g2g4 h8d8 g4f5 g6f5
+info score cp 275 time 665 depth 5 nodes 59341 ordering 0.91 pv g2g4 h8d8 g4f5 g6f5 b2d2
+info score cp 327 time 8071 depth 6 nodes 616920 ordering 0.82 pv e3c5 h8e8 c5d4 c8a6 e2d3 c7c8
+passed
+info score cp 67 time 1 depth 1 nodes 182 ordering 0.94 pv d3d8
+info score cp 67 time 20 depth 2 nodes 1381 ordering 0.96 pv e4f2 h1g1
+info score cp 225 time 149 depth 3 nodes 11399 ordering 0.95 pv e4g3 e1g3 d3g3
+info score cp 241 time 432 depth 4 nodes 32872 ordering 0.96 pv e4g3 e1g3 d3g3 h2g3
+info score cp 437 time 1069 depth 5 nodes 95139 ordering 0.97 pv e4g3 e1g3 d3g3 h2g3 c6g2
+info score cp 556 time 2434 depth 6 nodes 216707 ordering 0.97 pv e4g3 e1g3 d3g3 h2g3 e7e2 c4e3
+info score cp 603 time 7326 depth 7 nodes 708812 ordering 0.97 pv e4g3 e1g3 d3g3 h2g3 e7e2 c4e3 a7e3
+info score cp 785 time 9935 depth 8 nodes 968570 ordering 0.95 pv e4g3 e1g3 d3g3 h2g3 e7e2 f1g1 a7g1 a1g1
+passed
+info score cp 57 time 0 depth 1 nodes 74 ordering 1 pv c6c5
+info score cp 37 time 16 depth 2 nodes 1107 ordering 0.89 pv b7b5 a4b5
+info score cp 57 time 134 depth 3 nodes 10712 ordering 0.89 pv f8d8 f1e1 c6c5
+info score cp 77 time 325 depth 4 nodes 27502 ordering 0.89 pv b7b5 a4b5 a6b5 c4e2
+info score cp 77 time 950 depth 5 nodes 73466 ordering 0.91 pv b7b5 a4b5 a6b5 c4e2 f4e2
+info score cp 108 time 3202 depth 6 nodes 220611 ordering 0.9 pv b7b5 a4b5 a6b5 c4e2 f4e2 c3e2
+info score cp 145 time 9230 depth 7 nodes 623583 ordering 0.89 pv b7b5 a4b5 a6b5 c3b5 c6b5 b3b5 f8d8
+failed
+info score cp -212 time 2 depth 1 nodes 155 ordering 0.89 pv d7b7
+info score cp -429 time 29 depth 2 nodes 1394 ordering 0.84 pv d7d2 f2g3
+info score cp -479 time 85 depth 3 nodes 5086 ordering 0.89 pv e7g7 g5g7 d1d5
+info score cp 329 time 364 depth 4 nodes 23340 ordering 0.91 pv d1d5 g8h8 d5g5 f2g1
+info score cp 920 time 625 depth 5 nodes 44605 ordering 0.93 pv d1d5 g8h8 d7d8 f2f8 d8f8
+info score cp 920 time 1116 depth 6 nodes 85073 ordering 0.95 pv d1d5 g8h8 d7d8 f2f8 d8f8 a8f8
+info score cp 950 time 2950 depth 7 nodes 220023 ordering 0.96 pv d1d5 g8h8 d7d8 f2f8 d8f8 a8f8 d5g5
+info score cp 950 time 8543 depth 8 nodes 678665 ordering 0.96 pv d1d5 g8h8 d7d8 f2f8 d8f8 a8f8 d5g5 b6d4
+passed
+info score cp -9 time 1 depth 1 nodes 134 ordering 1 pv b8d8
+info score cp -5 time 12 depth 2 nodes 1084 ordering 0.89 pv b8d8 g2g4
+info score cp 26 time 129 depth 3 nodes 11858 ordering 0.95 pv a6d3 d1d3 b8d8
+info score cp 5 time 457 depth 4 nodes 43388 ordering 0.95 pv a6d3 d1d3 b8d8 h3f3
+info score cp 88 time 2172 depth 5 nodes 202868 ordering 0.91 pv g8g2 f1f3 g2g1 f3f1 g1f1
+info score cp 130 time 8537 depth 6 nodes 761899 ordering 0.89 pv g8g2 d1d2 g2d2 e1d2 d5d4 c3b4
+failed
+info score cp 52 time 2 depth 1 nodes 195 ordering 0.98 pv c4f7
+info score cp 43 time 7 depth 2 nodes 636 ordering 0.99 pv c4f7 e8e7
+info score cp 43 time 47 depth 3 nodes 5950 ordering 0.99 pv c4f7 e8e7 c3d5
+info score cp 42 time 199 depth 4 nodes 21773 ordering 0.98 pv c4f7 e8e7 c3d5 f6d5
+info score cp 999991 time 415 depth 5 nodes 50902 ordering 0.98 pv c4f7 e8e7 d4f6 e7f6 c3d5
+info score cp 999991 time 920 depth 6 nodes 114448 ordering 0.99 pv c4f7 e8e7 d4f6 e7f6 c3d5 f6e5
+info score cp 999991 time 5977 depth 7 nodes 750345 ordering 0.99 pv c4f7 e8e7 d4f6 e7f6 c3d5 f6e5 g5f3
+passed
+info score cp 62 time 2 depth 1 nodes 219 ordering 0.97 pv c2d3
+info score cp 1 time 26 depth 2 nodes 1717 ordering 0.92 pv c2d3 a8d8
+info score cp 92 time 171 depth 3 nodes 13420 ordering 0.88 pv c2e2 g6h6 g2h1
+info score cp 31 time 446 depth 4 nodes 35222 ordering 0.91 pv c2e2 g6h6 g2h1 a8d8
+info score cp 253 time 3402 depth 5 nodes 256839 ordering 0.89 pv e3f5 g6f7 f3c3 f7g8 f5e7
+info score cp 250 time 5144 depth 6 nodes 398333 ordering 0.89 pv e3f5 g6f7 f5e7 f7e7 c2c5 e7d8
+info score cp 258 time 9935 depth 7 nodes 814852 ordering 0.89 pv e3f5 g6f7 f5e7 f7e7 f4f5 e6h6 g2h1
+passed
+info score cp 93 time 1 depth 1 nodes 166 ordering 1 pv f8g7
+info score cp 92 time 7 depth 2 nodes 693 ordering 0.96 pv c2e2 b1b6
+info score cp 110 time 44 depth 3 nodes 5201 ordering 0.92 pv c2e2 b1b6 c8d8
+info score cp 88 time 185 depth 4 nodes 15938 ordering 0.94 pv c2e2 b1b6 a8b8 b6f6
+info score cp 106 time 689 depth 5 nodes 81852 ordering 0.94 pv c2e2 b1b6 a8b8 b6f6 c8d8
+info score cp 70 time 3598 depth 6 nodes 299679 ordering 0.92 pv c2e2 f1e1 e2d2 a3f8 c8f8 b1b6
+info score cp 89 time 9935 depth 7 nodes 1052370 ordering 0.91 pv c2e2 b1b6 a8b8 b6a7 f8a3 a1a3 b8b2
+failed
+info score cp 376 time 0 depth 1 nodes 95 ordering 1 pv f3f4
+info score cp 276 time 14 depth 2 nodes 909 ordering 0.81 pv c7c2 a2c2
+info score cp 262 time 40 depth 3 nodes 3199 ordering 0.89 pv c7c2 h3g3 g1h1
+info score cp 253 time 182 depth 4 nodes 12984 ordering 0.89 pv c7c2 h3g3 g1f1 g3h3
+info score cp 378 time 570 depth 5 nodes 43671 ordering 0.93 pv c7h7 h6h7 e3e7 h7g6 c8g8
+info score cp 742 time 1147 depth 6 nodes 78327 ordering 0.94 pv c7h7 h6h7 e3e7 h7g6 c8g8 g6f5
+info score cp 742 time 3005 depth 7 nodes 227916 ordering 0.93 pv c7h7 h6h7 e3e7 h7g6 c8g8 g6f5 e7c5
+info score cp 742 time 8610 depth 8 nodes 665438 ordering 0.94 pv c7h7 h6h7 e3e7 h7g6 c8g8 g6f5 e7c5 f5e6
+passed
+info score cp -246 time 1 depth 1 nodes 134 ordering 1 pv b5d3
+info score cp -276 time 8 depth 2 nodes 690 ordering 0.96 pv h1h8 g8f7
+info score cp -302 time 26 depth 3 nodes 2692 ordering 0.94 pv h1h8 g8f7 b5d3
+info score cp -273 time 181 depth 4 nodes 16864 ordering 0.91 pv h1e1 c2f2 f4g3 f6e4
+info score cp 999993 time 1185 depth 5 nodes 99038 ordering 0.88 pv h1h8 g8f7 b5e8 f6e8 f4g5
+info score cp 999993 time 1329 depth 6 nodes 113638 ordering 0.89 pv h1h8 g8f7 b5e8 f6e8 f4g5 g2e4
+info score cp 999993 time 1724 depth 7 nodes 151444 ordering 0.91 pv h1h8 g8f7 b5e8 f6e8 f4g5 g2e4 h8f8
+passed
+info score cp -565 time 0 depth 1 nodes 97 ordering 0.91 pv e3b3
+info score cp -430 time 8 depth 2 nodes 844 ordering 0.97 pv e6f7 g8f7
+info score cp -545 time 88 depth 3 nodes 7478 ordering 0.94 pv e3b3 b6c4 h3f2
+info score cp -552 time 245 depth 4 nodes 24772 ordering 0.95 pv e3b3 g4g6 e6f7 f8f7
+info score cp -573 time 1612 depth 5 nodes 141762 ordering 0.92 pv e3b3 g4g6 e6f7 f8f7 h6e3
+info score cp -586 time 9775 depth 6 nodes 908247 ordering 0.9 pv e3b3 b6c4 b2c1 g4g6 e6f7 g8h8
+failed
+info score cp 285 time 3 depth 1 nodes 217 ordering 0.95 pv d2e1
+info score cp 153 time 16 depth 2 nodes 1354 ordering 0.93 pv d2f2 g3g2
+info score cp 153 time 34 depth 3 nodes 3403 ordering 0.94 pv d2f2 g3g2 f2g2
+info score cp 153 time 96 depth 4 nodes 9910 ordering 0.97 pv d2f2 g3g2 f2g2 h3g2
+info score cp 77 time 390 depth 5 nodes 42601 ordering 0.97 pv d2f2 g3f2 g1f2 b3c1 b2c1
+info score cp 96 time 1025 depth 6 nodes 109957 ordering 0.93 pv d2f2 g3f2 g1f2 b3c1 b2c1 h3g2
+info score cp 90 time 9935 depth 7 nodes 845463 ordering 0.85 pv d2f2 g3f2 g1f2 b3c1 b2c1 h3g2 f2g2
+failed
+info score cp -636 time 1 depth 1 nodes 136 ordering 0.94 pv h1e1
+info score cp -716 time 10 depth 2 nodes 880 ordering 0.95 pv g2e2 b3e6
+info score cp -648 time 64 depth 3 nodes 6327 ordering 0.95 pv h1g1 e7f8 g1c1
+info score cp -711 time 319 depth 4 nodes 25143 ordering 0.91 pv h1g1 e7f8 a5a3 b3d5
+info score cp 999991 time 711 depth 5 nodes 65961 ordering 0.92 pv g2g7 h8g7 h7h8q d8h8 a5g5
+info score cp 999991 time 896 depth 6 nodes 86454 ordering 0.94 pv g2g7 h8g7 h7h8q d8h8 a5g5 g7f8
+info score cp 999991 time 1705 depth 7 nodes 192522 ordering 0.95 pv g2g7 h8g7 h7h8q d8h8 a5g5 g7f8 h1h8
+info score cp 999991 time 3170 depth 8 nodes 371911 ordering 0.97 pv g2g7 h8g7 h7h8q d8h8 a5g5 g7f8 h1h8 f6g8
+info score cp 999991 time 7141 depth 9 nodes 876225 ordering 0.97 pv g2g7 h8g7 h7h8q d8h8 a5g5 g7f8 h1h8 f6g8 g5g8
+passed
+info score cp -343 time 1 depth 1 nodes 137 ordering 1 pv h5e2
+info score cp -333 time 7 depth 2 nodes 685 ordering 0.93 pv h5e2 d3e4
+info score cp 98 time 42 depth 3 nodes 4197 ordering 0.93 pv d8d5 g5d5 h5g6
+info score cp 98 time 116 depth 4 nodes 12149 ordering 0.95 pv d8d5 g5d5 h5g6 d5e4
+info score cp 159 time 320 depth 5 nodes 37463 ordering 0.96 pv d8d5 g5d5 h5g6 d5e4 f8f7
+info score cp 159 time 1023 depth 6 nodes 121031 ordering 0.95 pv d8d5 g5d5 h5g6 d5e4 f8f7 e3c5
+info score cp 159 time 3679 depth 7 nodes 427788 ordering 0.94 pv d8d5 g5d5 h5g6 d5e4 f8f7 e3c5 g6e4
+info score cp 163 time 9730 depth 8 nodes 1103097 ordering 0.94 pv d8d5 g5d5 h5g6 d5e4 f8f7 e3c5 g6e4 d3e4
+passed
+info score cp 297 time 1 depth 1 nodes 131 ordering 0.94 pv d1d3
+info score cp 281 time 9 depth 2 nodes 947 ordering 0.86 pv d1d2 a5b4
+info score cp 306 time 71 depth 3 nodes 7204 ordering 0.9 pv d1h5 e7b4 g5e6
+info score cp 326 time 187 depth 4 nodes 18934 ordering 0.92 pv d1h5 e7b4 g5e6 f8e7
+info score cp 382 time 747 depth 5 nodes 82906 ordering 0.93 pv d1h5 e7c5 g5e6 f8e7 h5c5
+info score cp 382 time 3239 depth 6 nodes 324593 ordering 0.92 pv d1h5 e7c5 g5e6 f8e7 h5c5 a5c5
+failed
+info score cp 32 time 3 depth 1 nodes 245 ordering 0.77 pv d6c6
+info score cp 16 time 12 depth 2 nodes 788 ordering 0.73 pv d6c6 a8b8
+info score cp 12 time 57 depth 3 nodes 5061 ordering 0.79 pv d6c6 a8b8 c6d6
+info score cp -29 time 310 depth 4 nodes 28313 ordering 0.83 pv h5f4 e2a2 f1e1 f8e8
+info score cp 29 time 1302 depth 5 nodes 125699 ordering 0.84 pv d6e7 h7h6 d1d8 f8d8 e7d8
+info score cp -44 time 3946 depth 6 nodes 381706 ordering 0.84 pv h5f4 e2a2 f1e1 c8b7 d1d2 a2c4
+info score cp -33 time 9935 depth 7 nodes 1034417 ordering 0.85 pv h5f4 e2a2 d6e7 c8a6 f1e1 f8e8 e7d6
+failed
+info score cp -21 time 3 depth 1 nodes 254 ordering 0.98 pv e6b6
+info score cp -52 time 10 depth 2 nodes 865 ordering 0.98 pv e6b6 b2b1
+info score cp -42 time 70 depth 3 nodes 6760 ordering 0.93 pv e6b6 b2b1 b6b5
+info score cp 128 time 260 depth 4 nodes 24609 ordering 0.88 pv e6e5 c1c4 c5d3 b2b1
+info score cp 176 time 473 depth 5 nodes 51028 ordering 0.91 pv e6e5 c1c4 e5g3 c4c5 g3g2
+info score cp 266 time 1125 depth 6 nodes 124299 ordering 0.9 pv e6e5 c1d1 e5g3 e4e5 c5e6 d4e4
+info score cp 288 time 3812 depth 7 nodes 433888 ordering 0.9 pv e6e5 c1d1 e5g3 e4e5 c5e6 d4e4 g3f4
+info score cp 288 time 8637 depth 8 nodes 966350 ordering 0.9 pv e6e5 c1d1 e5g3 e4e5 c5e6 d4e4 e6c5 e4d4
+passed
+info score cp -8 time 1 depth 1 nodes 167 ordering 0.91 pv f4e6
+info score cp -8 time 14 depth 2 nodes 1334 ordering 0.93 pv f4g6 b3e3
+info score cp -6 time 90 depth 3 nodes 9294 ordering 0.93 pv f4g6 b3e3 f8e8
+info score cp 999993 time 365 depth 4 nodes 37956 ordering 0.91 pv f4e2 d2e2 f8f1 g1f1
+info score cp 999993 time 643 depth 5 nodes 74023 ordering 0.94 pv f4e2 d2e2 f8f1 g1f1 c6h1
+info score cp 999993 time 1461 depth 6 nodes 178533 ordering 0.97 pv f4e2 d2e2 f8f1 g1f1 c6h1 f1f2
+info score cp 999993 time 9935 depth 7 nodes 1094185 ordering 0.99 pv f4e2 d2e2 f8f1 g1f1 c6h1 f1f2 e5g4
+passed
+info score cp 215 time 0 depth 1 nodes 93 ordering 1 pv c5d5
+info score cp 184 time 9 depth 2 nodes 727 ordering 0.87 pv c5d5 g2f4
+info score cp 205 time 46 depth 3 nodes 5039 ordering 0.93 pv c5d5 d7e6 d5d6
+info score cp 208 time 841 depth 4 nodes 64687 ordering 0.9 pv g1h1 f8d8 b1a2 d7e6
+info score cp 205 time 1780 depth 5 nodes 161649 ordering 0.88 pv g1h1 g2e3 e5e3 g4d4 b1d3
+info score cp 199 time 3187 depth 6 nodes 287325 ordering 0.88 pv g1h1 g2e3 e5e3 g4d4 b1d3 d7e6
+failed
+info score cp -168 time 1 depth 1 nodes 95 ordering 1 pv b7c7
+info score cp -145 time 7 depth 2 nodes 703 ordering 0.98 pv d5d6 e7d8
+info score cp -154 time 38 depth 3 nodes 3787 ordering 0.94 pv d5d6 e7e6 b7b3
+info score cp -139 time 119 depth 4 nodes 12508 ordering 0.92 pv d5d6 e7e6 b7b3 e6f5
+info score cp 128 time 302 depth 5 nodes 31752 ordering 0.93 pv d5d6 e7e6 b7b3 e6f5 g3g4
+info score cp 108 time 790 depth 6 nodes 85552 ordering 0.94 pv d5d6 e7e6 b7b3 e6f5 g3g4 f5g5
+info score cp 128 time 2747 depth 7 nodes 289056 ordering 0.94 pv d5d6 e7e6 b7b3 e6f5 g3g4 f5g5 b3e3
+passed
+info score cp -3 time 0 depth 1 nodes 103 ordering 1 pv a4b5
+info score cp -80 time 12 depth 2 nodes 973 ordering 0.85 pv a1c1 f6f5
+info score cp -42 time 60 depth 3 nodes 6139 ordering 0.94 pv a4b5 c6b5 a1d1
+info score cp -63 time 274 depth 4 nodes 28288 ordering 0.94 pv e2e3 f6f5 f3e5 d7d5
+info score cp -62 time 2482 depth 5 nodes 268195 ordering 0.93 pv a4b5 c6b5 a1e1 f6f5 f3e5
+info score cp -72 time 9935 depth 6 nodes 930177 ordering 0.9 pv e2e3 f6f5 f3g5 e7g5 e4g5 b5a4
+failed
+info score cp 87 time 3 depth 1 nodes 292 ordering 0.86 pv g4f4
+info score cp 87 time 10 depth 2 nodes 862 ordering 0.88 pv g4f4 b7b2
+info score cp 139 time 61 depth 3 nodes 6654 ordering 0.91 pv g4f4 h8g7 d1d2
+info score cp 139 time 203 depth 4 nodes 20253 ordering 0.92 pv g4f4 h8g7 f4g3 g7h8
+info score cp 289 time 1059 depth 5 nodes 111054 ordering 0.9 pv d4f5 d8g8 d6e5 h7h6 e5f6
+info score cp 306 time 2426 depth 6 nodes 257655 ordering 0.9 pv g4f4 d8d6 f4d6 h8g7 d4f5 g7g6
+info score cp 730 time 9935 depth 7 nodes 992509 ordering 0.86 pv d6f8 d8f8 d4f5 c4f1 d1f1 f8g8 g4e2
+passed
+info score cp -373 time 0 depth 1 nodes 88 ordering 1 pv c3c4
+info score cp -394 time 8 depth 2 nodes 751 ordering 0.97 pv a6a5 f7b7
+info score cp 999995 time 33 depth 3 nodes 3511 ordering 0.98 pv d1d5 c6d5 f4d3
+info score cp 999995 time 69 depth 4 nodes 7986 ordering 0.99 pv d1d5 c6d5 f4d3 e4d3
+info score cp 999995 time 129 depth 5 nodes 15684 ordering 0.99 pv d1d5 c6d5 f4d3 e4d3 f2f4
+passed
+info score cp 17 time 10 depth 1 nodes 570 ordering 0.74 pv e7f8
+info score cp 17 time 23 depth 2 nodes 1397 ordering 0.81 pv e7f8 c4e6
+info score cp 18 time 136 depth 3 nodes 10041 ordering 0.84 pv d8d6 c4b3 c6b5
+info score cp 33 time 541 depth 4 nodes 41179 ordering 0.89 pv d8d6 c4b3 a6a5 e5a5
+info score cp 172 time 2380 depth 5 nodes 189366 ordering 0.87 pv d8f8 e5e3 f8f4 e3f4 h5f4
+info score cp 152 time 8461 depth 6 nodes 698690 ordering 0.86 pv d8f8 e5c5 e7e8 c5e3 f8f4 e3f4
+failed
+info score cp -49 time 9 depth 1 nodes 701 ordering 0.99 pv e7e2
+info score cp -52 time 22 depth 2 nodes 1696 ordering 0.99 pv e7e2 c1d1
+info score cp -69 time 210 depth 3 nodes 16779 ordering 0.93 pv e7h4 h2h3 c6b5
+info score cp -75 time 755 depth 4 nodes 57892 ordering 0.94 pv e7h4 h2h3 c6b5 d2f3
+info score cp -63 time 4104 depth 5 nodes 370330 ordering 0.92 pv f8e8 d4c5 e7g5 d2f3 c6f3
+info score cp -63 time 9935 depth 6 nodes 873445 ordering 0.9 pv f8e8 d4c5 e7g5 d2f3 c6f3 c5d6
+failed
+info score cp 178 time 1 depth 1 nodes 106 ordering 1 pv d3d4
+info score cp 133 time 6 depth 2 nodes 627 ordering 0.88 pv d8e8 c5a3
+info score cp 138 time 36 depth 3 nodes 3391 ordering 0.95 pv d8c7 c5a3 g1d1
+info score cp 999993 time 169 depth 4 nodes 16106 ordering 0.92 pv d8h8 g7h8 g6g7 h8g8
+info score cp 999993 time 212 depth 5 nodes 21828 ordering 0.94 pv d8h8 g7h8 g6g7 h8g8 e4h7
+info score cp 999993 time 334 depth 6 nodes 37077 ordering 0.96 pv d8h8 g7h8 g6g7 h8g8 e4h7 g8h7
+info score cp 999993 time 781 depth 7 nodes 92630 ordering 0.98 pv d8h8 g7h8 g6g7 h8g8 e4h7 g8h7 g7g8q
+passed
+info score cp 13 time 1 depth 1 nodes 145 ordering 0.97 pv b6c4
+info score cp 53 time 8 depth 2 nodes 855 ordering 0.98 pv b6d5 c7c8
+info score cp 93 time 54 depth 3 nodes 6372 ordering 0.97 pv b6d7 b8d7 d1d7
+info score cp 93 time 337 depth 4 nodes 41929 ordering 0.95 pv b6d5 c7c8 d5b6 c8c7
+info score cp 106 time 724 depth 5 nodes 92932 ordering 0.97 pv b6d7 f8f7 d7b8 c7b8 c5b7
+info score cp 423 time 2793 depth 6 nodes 360778 ordering 0.95 pv c5a4 b8d7 d1d7 c7b8 a4c5 e8e7
+info score cp 546 time 6077 depth 7 nodes 792966 ordering 0.97 pv c5a4 b8d7 d1d7 c7b8 d7g7 f8g8 g7h7
+info score cp 587 time 9935 depth 8 nodes 1286729 ordering 0.97 pv c5a4 b8d7 d1d7 c7b8 d7g7 f8g8 g7h7 f6f5
+failed
+info score cp -132 time 0 depth 1 nodes 84 ordering 1 pv f6g7
+info score cp -151 time 6 depth 2 nodes 455 ordering 0.96 pv f6g7 h8g7
+info score cp -66 time 54 depth 3 nodes 4345 ordering 0.94 pv g5g6 h7h6 d7f7
+info score cp -25 time 143 depth 4 nodes 11965 ordering 0.95 pv g5g6 h7h6 f6g7 h8g7
+info score cp 10 time 502 depth 5 nodes 47907 ordering 0.93 pv g5g6 h7h6 d7f7 f8g8 f6g7
+info score cp 232 time 1466 depth 6 nodes 139443 ordering 0.92 pv g5g6 h7h6 h5h6 g7h6 g6g7 h8g8
+info score cp 232 time 3616 depth 7 nodes 365775 ordering 0.91 pv g5g6 h7h6 h5h6 g7h6 g6g7 h8g8 g7f8q
+passed

@@ -96,6 +96,12 @@ int pop_count(const Bitboard bb) {
 #endif // __GNUC__
 }
 
+int pop_count8(uint8_t i8) {
+    Bitboard bb{0};
+    bb |= i8;
+    return pop_count(bb);
+}
+
 /**
  * Fills all the squares north of the squares occupied in the bitboard 1s
  * @param bb bitboard to be filled

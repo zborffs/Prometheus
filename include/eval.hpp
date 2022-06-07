@@ -126,6 +126,7 @@ namespace internal {
     Centipawns_t eval_queens(const Board &board, EvaluationState &es, bool verbose = false);
     Centipawns_t eval_kings(const Board &board, EvaluationState &es, bool verbose = false);
     Centipawns_t eval_tempo(const Board &board, EvaluationState &es, bool verbose = false);
+    Centipawns_t eval_king_safety(const Board &board, EvaluationState &es, bool verbose = false);
 
     /// Useful Bitmask helper functions
     Bitboard file_fill_sq(Square_t sq);

@@ -719,6 +719,13 @@ const Centipawns_t PAWN_ISLAND[4] = {
 };
 const Centipawns_t HALF_ISOLATED_PAWN = -5;
 
+/// KING SAFETY
+const Centipawns_t CASTLING_BONUS = 95; // encourage castling (worth slightly less than 1 pawn)
+const Centipawns_t OPEN_FILE_CASTLING_PENALTY = -200; // discourage opening a file in front of castled king
+const Centipawns_t PAWN_SHIELD_HOLE_PENALTY = -125; // discourage moving pawns outside the pawn shield area
+const Centipawns_t PAWN_STORM_PENALTY = -100; // discourage enemy from moving pawns near pawn shield
+const Centipawns_t KING_VIRTUAL_MOBILITY = -10; // discourage king from being on open files or open ranks
+
 /// opening (development)
 // move same piece more than once (-20 repeat piece -10 repeat pawn)
 // early exchange of queens with loss of castling rights = -40

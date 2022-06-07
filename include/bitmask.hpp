@@ -58,6 +58,7 @@ std::string draw_bitboard(Bitboard bb) noexcept;
 int bitscan_forward(Bitboard bb);
 int bitscan_reverse(Bitboard bb);
 int pop_count(Bitboard bb);
+int pop_count8(uint8_t i8);
 Bitboard north_fill(Bitboard bb);
 Bitboard south_fill(Bitboard bb);
 Bitboard file_fill(Bitboard bb);

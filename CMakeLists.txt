@@ -18,7 +18,7 @@ find_package(spdlog REQUIRED) # Logging Library
 include_directories(${GTEST_INCLUDE_DIR})
 include_directories(include)
 
-#
+# Apply SSE related directives if USE_SSE command is used in cmd line
 if (USE_SSE)
     add_compile_definitions(USE_SSE)
     add_compile_definitions(__BMI2__)
@@ -27,7 +27,7 @@ endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wshadow -pedantic -march=native") # -Werror
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g") # -O3
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /WX")

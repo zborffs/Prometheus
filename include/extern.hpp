@@ -93,6 +93,13 @@ extern const Centipawns_t PAWN_HANGING;
 extern const Centipawns_t PAWN_ISLAND[4];
 extern const Centipawns_t HALF_ISOLATED_PAWN;
 
+/// king safety
+extern const Centipawns_t CASTLING_BONUS;
+extern const Centipawns_t OPEN_FILE_CASTLING_PENALTY;
+extern const Centipawns_t PAWN_SHIELD_HOLE_PENALTY;
+extern const Centipawns_t PAWN_STORM_PENALTY;
+extern const Centipawns_t KING_VIRTUAL_MOBILITY;
+
 /// development
 extern const Centipawns_t Q_B4_3_MINORS;
 extern const Centipawns_t OVERALL_DEV_BONUS;
