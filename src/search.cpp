@@ -913,8 +913,8 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
 //            " nps " << (double)(search_state.raw_nodes / (time_elapsed / 1000.)) <<
             " ordering " << search_state.ordering() <<
 //            " window_ratio " << search_state.window_ratio() <<
-            " load_factor " << static_cast<double>(search_state.tt.load_factor()) <<
-            " hit_rate " << static_cast<double>(search_state.tt.hit_rate()) <<
+//            " load_factor " << static_cast<double>(search_state.tt.load_factor()) <<
+//            " hit_rate " << static_cast<double>(search_state.tt.hit_rate()) <<
             " overwrite_percentage " << static_cast<double>(search_state.tt.overwrite_percentage()) <<
 #endif // NDEBUG
             " pv " << pv_string << std::endl;

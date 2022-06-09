@@ -605,14 +605,14 @@ const double CONNECTIVITY[5] = {
 const Centipawns_t KNIGHT_MOBILITY = 10;
 const Centipawns_t KNIGHT_OUTPOST_BONUS = 5;
 const Centipawns_t KNIGHT_PST[64] = {
-    -50, -40, -30, -30, -30, -30, -40, -50,
-    -40, -20,   0,   0,   0,   0, -20, -40,
-    -30,   5,  10,  15,  15,  10,   5, -30,
-    -30,   0,  15,  20,  20,  15,   0, -30,
-    -30,   5,  15,  20,  20,  15,   5, -30,
-    -30,   6,  12,  15,  15,  12,   6, -30,
-    -40, -20,   1,   1,   1,   1, -20, -40,
-    -50, -30, -30, -30, -30, -30, -40, -50
+    0, -10, 0, 0, 0, 0, -10, 0,
+    0, 0, 0, 5, 5, 0, 0, 0,
+    0, 0, 10, 10, 10, 10, 0, 0,
+    0, 0, 10, 20, 20, 10, 0, 0,
+    5, 10, 15, 20, 20, 15, 10, 5,
+    5, 10, 10, 20, 20, 10, 10, 5,
+    0, 0, 5, 10, 10, 5, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0
 };
 
 const Centipawns_t OM_ROOK_MOBILITY = 10;
@@ -623,27 +623,27 @@ const Centipawns_t ROOK_ON_OPEN_FILE_BONUS_NO_OPPOSING_ROOK = 25;
 const Centipawns_t ROOK_SUPPORTING_PASSED_PAWNS = 50;
 const Centipawns_t CONNECTED_ROOK_BONUS = 30;
 const Centipawns_t ROOK_PST[64] = {
-    -40, -20,  3, 25, 25,  3, -20, -40,
-    -20,   0,  0, 15, 15,  0,   0, -20,
-    -10,   0,  0, 10, 10,  0,   0, -10,
-     -5,   0,  0,  5,  5,  0,   0,  -5,
-     -5,   0,  0,  5,  5,  0,   0,  -5,
-     -10,  0,  0,  5,  5,  0,   0, -10,
-     10,  10, 10, 40, 40, 10,  10,  10,
-    -40, -20,  0, 20, 20,  0, -20, -40
+    0, 0, 5, 10, 10, 5, 0, 0,
+    0, 0, 5, 10, 10, 5, 0, 0,
+    0, 0, 5, 10, 10, 5, 0, 0,
+    0, 0, 5, 10, 10, 5, 0, 0,
+    0, 0, 5, 10, 10, 5, 0, 0,
+    0, 0, 5, 10, 10, 5, 0, 0,
+    25, 25, 25, 25, 25, 25, 25, 25,
+    0, 0, 5, 10, 10, 5, 0, 0
 };
 const Centipawns_t ROOK_ON_SEVENTH = 9;
 
 const Centipawns_t OM_BISHOP_MOBILITY = 10;
 const Centipawns_t BISHOP_PST[64] = {
-    -20, -10, -10, -10, -10, -10, -10, -20,
-    -10,  10,   0,   0,   0,   0,  10, -10,
-    -10,   4,  15,  10,  10,  15,   4, -10,
-    -10,  -5,  10,  20,  20,  10,  -5, -10,
-    -10,   5,  10,  20,  20,  10,   5, -10,
-    -10,  -5,  15,  10,  10,  15,  -5, -10,
-    -10,   5,   0,   0,   0,   0,   5, -10,
-    -20, -10, -40, -10, -10, -40, -10, -20
+    0, 0, -10, 0, 0, -10, 0, 0,
+    0, 5, 0, 10, 10, 0, 5, 0,
+    0, 0, 10, 15, 15, 10, 0, 0,
+    0, 10, 15, 20, 20, 15, 10, 0,
+    0, 10, 15, 20, 20, 15, 10, 0,
+    0, 0, 10, 15, 15, 10, 0, 0,
+    0, 0, 0, 10, 10, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0
 };
 const Centipawns_t BISHOP_PAIR_BONUS = 10;
 const Centipawns_t BISHOP_ON_LONG_DIAGONAL = 7;
@@ -651,14 +651,14 @@ const Centipawns_t BISHOP_ON_OPEN_LONG_DIAGONAL = 12;
 
 const Centipawns_t QUEEN_MOBILITY = 10;
 const Centipawns_t QUEEN_PST[64] = {
-    -50, -30, -10, -5, -5, -10, -30, -50,
-    -30,   0,  -5, 10, 10,  -5,   0, -30,
-    -10,  -9,  15, 20, 20,  15,  -9, -10,
-     -5,   5,  17, 30, 30,  17,   5,  -5,
-     -5,   5,  17, 30, 30,  17,   5,  -5,
-    -10,  -9,  15, 15, 15,  15,  -9, -10,
-     10,  10,  10, 10, 10,  10,  10,  10,
-    -50, -30, -10, -5, -5, -10, -30, -50 // -50, -30, -10, -5, -5, -10, -30, -50
+    0, 0, 0, -5, -5, 0, 0, 0,
+    0,   0,  0, 10, 10,  0,   0, 0,
+    0,  0,  10, 15, 15,  10,  0, 0,
+     0,   10,  15, 25, 25,  15,   10,  0,
+     0,   10,  15, 25, 25,  15,   10,  0,
+    0,  0,  10, 15, 15,  10,  0, 0,
+     15,  15,  15, 25, 25,  15,  15,  15,
+    0, 0, 0, 0, 0, 0, 0, 0
 };
 
 const Centipawns_t OM_KING_MOBILITY = 11;
@@ -688,18 +688,18 @@ const Centipawns_t E_KING_PST[64] = {
 const Centipawns_t PAWN_MOBILITY = 10;
 const Centipawns_t PAWN_PST[64] = {
     0,   0,  0,    0,   0,   0,  0,  0,
-    5,   0,  10, -20, -20,  10,  0,  5,
-    5,  -5, -10,  20,  20, -10, -5,  5,
-    0,   0,  20,  40,  40,  20,  0,  0,
-    5,   5,  20,  40,  40,  20,  5,  5,
-    10, 10,  20,  30,  30,  20, 10, 10,
-    50, 50,  50,  50,  50,  50, 50, 50,
+    10,   10,  0, -10, -10,  0,  10,  10,
+    5,  0, 0,  5,  5, 0, 0,  5,
+    0,   0,  10,  20,  20,  10,  0,  0,
+    5,   5,  5,  10,  10,  5,  5,  5,
+    10, 10,  10,  20,  20,  10, 10, 10,
+    20, 20,  20,  30,  30,  20, 20, 20,
     0,   0,   0,   0,   0,   0,  0,  0
 };
 
 const Centipawns_t PASSED_PAWN[8] = {
     //0, 0, 0, 12, 25, 50, 100, 0 // make these weights MUCH bigger
-    0, 0, 0, 15, 30, 90, 900, 0
+    0, 5, 10, 20, 35, 60, 100, 200
 };
 
 const Centipawns_t PAWN_ATTACK_CENTER = 15;
@@ -707,7 +707,7 @@ const Centipawns_t PAWN_UNOPPOSED_PAWN = 5;
 const Centipawns_t PAWN_BACKWARD = -5;
 const Centipawns_t PAWN_BLOCKING = -5;
 const Centipawns_t PAWN_DOUBLE = -25; // penalty for each pawn that's doubled. so if 3 are doubled, then 75
-const Centipawns_t PAWN_ISOLATED = -20;
+const Centipawns_t PAWN_ISOLATED = -10;
 const Centipawns_t PAWN_KING_SHELTER = 10; // BONUS FOR COMPOSING KING SHELTER
 const Centipawns_t PAWN_IN_CHAIN = 10; // BONUS FOR BEING IN PAWN CHAIN https://www.chessprogramming.org/Defended_Pawns_(Bitboards)
 const Centipawns_t PAWN_AS_BASE_OF_CHAIN = 5; // BONUS FOR ATTACKING / DEFENDING BASE
@@ -720,7 +720,7 @@ const Centipawns_t PAWN_ISLAND[4] = {
 const Centipawns_t HALF_ISOLATED_PAWN = -5;
 
 /// KING SAFETY
-const Centipawns_t CASTLING_BONUS = 50; // encourage castling (worth slightly less than 1 pawn)
+const Centipawns_t CASTLING_BONUS = 30; // encourage castling (worth slightly less than 1 pawn)
 const Centipawns_t OPEN_FILE_CASTLING_PENALTY = -100; // discourage opening a file in front of castled king
 const Centipawns_t PAWN_SHIELD_HOLE_PENALTY = -75; // discourage moving pawns outside the pawn shield area
 const Centipawns_t PAWN_STORM_PENALTY = -55; // discourage enemy from moving pawns near pawn shield
@@ -746,6 +746,5 @@ const Depth MULTICUT_DEPTH = 3;
 const Depth MULTICUT_M = 15;
 const Depth MULTICUT_C = 5;
 const Depth MATE_THREAT_EXTENSION = 2;
-const int AGE_DIFFERENCE_THRESHOLD = 16;
 
 #endif // PROMETHEUS_GLOBALS_HPP
