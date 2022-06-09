@@ -224,6 +224,7 @@ namespace internal {
         Centipawns_t init_alpha = alpha;
         Centipawns_t score = -INF;
         Depth num_extensions = 0;
+        Depth num_reductions = 0;
         Depth R = compute_adap_null_move_r(depth);
 
         // Check the hash table for extra information
@@ -268,8 +269,6 @@ namespace internal {
                     case EXACT: return hash_score;
                 }
             }
-
-//            score = hash_score; // alpha = hash_score
         }
 
         /// Check Extensions
@@ -331,6 +330,22 @@ namespace internal {
         order_moves(movelist, search_state, board, hash_move);
 
         for (std::size_t i = 0; i < movelist.size(); ++i) {
+            // late move reductions: search reduced depth on moves not satisfying the following conditions
+            // - Tactical Moves (captures and promotions) -> must be a quiet move or castle
+            // - Moves while in check
+            // - Moves which give check (how to check this)?
+            // - Moves that cause a search extension
+            // - Anytime in a PV-Node in a PVS search
+            // - Depth < 3 (sometimes depth < 2)
+//            bool lmr_local{ false }; // late move reduction
+//            if (i >= 5 && (movelist[i].flag() & CAPTURE_MOVE) == 0 && (movelist[i].flag() & PROMO) == 0 && !board.is_king_checked(board.side_2_move()) && depth >= 3 && num_extensions == 0 && movelist[i].moved != W_PAWN && movelist[i].moved != B_PAWN) {
+//                num_reductions = 1;
+////                if (i >= 4 + 6) {
+////                    num_reductions = (int)(depth / 3);
+////                }
+//                lmr_local = true;
+//            }
+
             /// for each move, determine its legality by playing it and seeing whether you put yourself in check
             board.make_move(movelist[i]);
             if (board.is_king_checked(!board.side_2_move())) {
@@ -339,10 +354,22 @@ namespace internal {
                 --i;
                 continue;
             }
+
+//            if (board.is_king_checked(board.side_2_move())) {
+//                num_reductions = 0;
+//                lmr_local = false;
+//            }
+
             ++search_state.height;
 
-            /// recursively call this function, decrementing the depth and flipping the scores
-            score = -search(board, options, search_state, eval_state, depth - 1 + num_extensions, -beta, -alpha, true);
+            // recursively call this function, decrementing the depth and flipping the scores
+            score = -search(board, options, search_state, eval_state, depth - 1 + num_extensions - num_reductions, -beta, -alpha, true);
+
+//            if (lmr_local && score > alpha) {
+//                // re-search the position if the score returned at reduced depth exceeds alpha
+//                score = -search(board, options, search_state, eval_state, depth - 1 + num_extensions, -beta, -alpha, true);
+//            }
+
             board.unmake_move();
             --search_state.height;
 
@@ -453,13 +480,10 @@ namespace internal {
         assert(alpha < beta);
 
         if (board.is_draw()) {
-//            SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Quitting q-search because it's a draw!");
             return 0;
         }
 
-        if (depth == 0) {
-//            SPDLOG_LOGGER_INFO(spdlog::get(logger_name), "Quitting q-search because we reached the depth limit");
-            return standing_pat;
+        if (depth == 0) {return standing_pat;
         }
 
         if (standing_pat >= beta) {
@@ -555,7 +579,7 @@ namespace internal {
         }
 
         /// If the user has asked us to stop, then stop
-#ifndef WIND32
+#ifndef WIND32x
         fd_set readfds;
         FD_ZERO(&readfds);
         FD_SET(fileno(stdin), &readfds);
@@ -886,13 +910,12 @@ ChessMove think(Board& board, UCIOptions& options, SearchState& search_state, Ev
         std::cout << std::setprecision(2) << "info score cp " << score << " time " << time_elapsed << " depth " << depth <<
 #ifndef NDEBUG
             " nodes " << search_state.raw_nodes <<
-//            " leaf_nodes " << search_state.leaf_nodes <<
 //            " nps " << (double)(search_state.raw_nodes / (time_elapsed / 1000.)) <<
             " ordering " << search_state.ordering() <<
 //            " window_ratio " << search_state.window_ratio() <<
-//            " load_factor " << static_cast<double>(search_state.tt.load_factor()) <<
-//            " hit_rate " << static_cast<double>(search_state.tt.hit_rate()) <<
-//            " overwrite_percentage " << static_cast<double>(search_state.tt.overwrite_percentage()) <<
+            " load_factor " << static_cast<double>(search_state.tt.load_factor()) <<
+            " hit_rate " << static_cast<double>(search_state.tt.hit_rate()) <<
+            " overwrite_percentage " << static_cast<double>(search_state.tt.overwrite_percentage()) <<
 #endif // NDEBUG
             " pv " << pv_string << std::endl;
 

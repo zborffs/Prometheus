@@ -720,11 +720,11 @@ const Centipawns_t PAWN_ISLAND[4] = {
 const Centipawns_t HALF_ISOLATED_PAWN = -5;
 
 /// KING SAFETY
-const Centipawns_t CASTLING_BONUS = 95; // encourage castling (worth slightly less than 1 pawn)
-const Centipawns_t OPEN_FILE_CASTLING_PENALTY = -200; // discourage opening a file in front of castled king
-const Centipawns_t PAWN_SHIELD_HOLE_PENALTY = -125; // discourage moving pawns outside the pawn shield area
-const Centipawns_t PAWN_STORM_PENALTY = -100; // discourage enemy from moving pawns near pawn shield
-const Centipawns_t KING_VIRTUAL_MOBILITY = -10; // discourage king from being on open files or open ranks
+const Centipawns_t CASTLING_BONUS = 50; // encourage castling (worth slightly less than 1 pawn)
+const Centipawns_t OPEN_FILE_CASTLING_PENALTY = -100; // discourage opening a file in front of castled king
+const Centipawns_t PAWN_SHIELD_HOLE_PENALTY = -75; // discourage moving pawns outside the pawn shield area
+const Centipawns_t PAWN_STORM_PENALTY = -55; // discourage enemy from moving pawns near pawn shield
+const Centipawns_t KING_VIRTUAL_MOBILITY = -5; // discourage king from being on open files or open ranks
 
 /// opening (development)
 // move same piece more than once (-20 repeat piece -10 repeat pawn)
@@ -745,14 +745,7 @@ const Depth MULTICUT_R = 3;
 const Depth MULTICUT_DEPTH = 3;
 const Depth MULTICUT_M = 15;
 const Depth MULTICUT_C = 5;
-const Depth CHECKOUT_EXTENSION = 2;
-const Depth ONE_REPLY_EXTENSION = 2;
-const Depth RECAPTURE_EXTENSION = 2;
-const Depth PASSED_PAWN_EXTENSION_SEVENTH = 2;
 const Depth MATE_THREAT_EXTENSION = 2;
-const Depth LATE_MOVE_REDUCTION_PLY_DISCOUNT = 1;
-const Depth LATE_MOVE_REDUCTION_DISCOUNT_NUMBER = 6;
-const double LATE_MOVE_REDUCTION_DISCOUNT_PERCENTAGE = 0.25;
 const int AGE_DIFFERENCE_THRESHOLD = 16;
 
 #endif // PROMETHEUS_GLOBALS_HPP

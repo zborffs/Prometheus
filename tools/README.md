@@ -6,9 +6,10 @@ none of the software in this directory is in the engine executable though, so it
 data
 ----
 ### Regression 0
-- Tournament 600 games with ```go movetime 1000``` (i.e. 1 second per move for each engine) btw Prometheus and vice
-- Bratko-Kopec test suite with 30 seconds per position
-- WAC test suite with 10 seconds per position
+- Tournament 600 games with ```go movetime 1000``` (i.e. 1 second per move for each engine) btw Prometheus and vice 
+(in release mode)
+- Bratko-Kopec test suite with 30 seconds per position (in debug mode)
+- WAC test suite with 10 seconds per position (in debug mode)
 
 opening book
 ------------
